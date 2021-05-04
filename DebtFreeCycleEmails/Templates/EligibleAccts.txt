@@ -1,0 +1,23 @@
+﻿<p>
+	Thank you for engaging our firm to represent you.
+</p>
+<p>
+	In reviewing your file, I see that you have certain unsecured debts that this firm does not represent 
+	you on. Please understand that because we do not represent you on these particular debts, we will not 
+	be able to communicate with the creditors holding these unsecured debts or assist you in any way to 
+	resolve these debts. Should you be sued in regards to any debt we have not been hired to assist you 
+	with, we will not be able to represent you in any such lawsuit. If you would like us to represent you 
+	on these debts, please contact us immediately.
+</p>
+<p>
+	Also, as you are aware, if a lawsuit is filed against you in regards to those unsecured debts we have 
+	been hired to assist you with, an additional separate written agreement will be required before we can 
+	represent you in court to defend you in the lawsuit. 
+</p>
+<p>
+	Once again I would like to thank you for engaging our firm and for your time in reading this email.
+</p>
+<p>
+	Thank you,<br/>
+	{{company}}
+</p>

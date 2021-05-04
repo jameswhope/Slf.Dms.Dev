@@ -1,0 +1,518 @@
+﻿body {
+    font-family: Tahoma;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-right: 20px;  
+}
+
+td {
+    text-align: left;
+    font-size: 13px;
+    text-transform: capitalize;  
+    page-break-inside: avoid; 
+}
+
+tr, td, span
+{
+     page-break-inside: avoid; 
+    }
+
+.tuLogo {
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.tuLogoImage 
+{
+     margin-top: 17px; 
+     float: left; 
+     width: 160px; 
+     height: 143px; 
+     background-repeat: no-repeat; 
+     background-size: 160px 143px;
+}
+
+.tuLogoText {
+    font-size: 15px;
+    font-weight: bold;
+    color: #f38a17;
+    text-transform: uppercase;
+    margin-left: 160px;
+    margin-top: 140px;  
+}
+
+.tuHeader {
+    width: 100%;
+}
+
+    .tuHeader table {
+        width: 100%;
+    }
+
+.subscriberPanel {
+    border-left: solid 2px #C0C0C0;
+    width: 300px;
+    height: 100%;
+    font-size: 10px;
+    padding-left: 5px;
+}
+
+.subscriberPanel td 
+{
+    font-size: 11px;
+    }
+
+    .subscriberPanel td:first-child {
+        color: #808080;
+        font-weight: bold;
+        font-family:Tahoma;
+        width: 150px;
+    }
+
+        .subscriberPanel td:first-child + td {
+            text-align: left;
+        }
+
+.parametersLabel {
+    font-size: 11px;
+    font-weight: bold;
+    color: #18a96f;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.section {
+    border: none;
+    width: 98%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+}
+
+.indicativeName {
+    border-top: solid 2px #808080;
+}
+
+    .indicativeName table {
+        width: 100%;
+        text-transform: uppercase;
+    }
+
+        .indicativeName table td:first-child + td,
+        .indicativeName table td:first-child + td + td + td,
+        .indicativeName table td:first-child + td + td + td + td + td {
+            text-transform: capitalize;
+            color: #808080;
+            font-weight: bold;
+            font-family:Tahoma;
+            font-size: 14px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .indicativeName table tr:first-child + tr td:first-child {
+            color: #808080;
+            font-weight: bold;
+            font-family:Tahoma;
+            text-transform: capitalize;
+            font-size: 14px;
+        }
+
+.indicativeAddress {
+    margin-top: 5px;
+    width: 100%;
+    border-top: solid 1px #C0C0C0;
+}
+
+    .indicativeAddress table {
+        width: 100%;
+    }
+
+        .indicativeAddress table td {
+            width: 33%;
+            vertical-align: top; 
+        }
+
+.addressStatus {
+    color: #808080;
+    font-weight: bold;
+    font-family:Tahoma;
+    text-transform: capitalize;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.address {
+    text-transform: uppercase;
+    padding-top: 3px;
+}
+
+.addressDate {
+    text-transform: capitalize;
+    font-size: 13px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.headSection {
+    margin-top: 10px;
+    width: 100%;
+}
+
+    .headSection h2 {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #18a96f;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .headSection h2:after {
+            display: inline-block;
+            content: "";
+            height: 4px;
+            background: #18a96f;
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            margin-top: -2px;
+            margin-left: 30px;
+        }
+
+    .headSection hr {
+        float: right;
+        display: inline;
+    }
+
+.employment {
+    margin-top: 5px;
+    width: 100%;
+}
+
+    .employment table {
+        width: 100%;
+        border-collapse: collapse;
+        padding-top: 2px;
+    }
+
+    .employment td:first-child {
+        color: #000000;
+    }
+
+        .employment td:first-child + td,
+        .employment td:first-child + td + td + td,
+        .employment td:first-child + td + td + td + td + td {
+            text-transform: capitalize;
+            color: #808080;
+            font-weight: bold;
+            font-size: 14px;
+            font-family:Tahoma;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+    .employment tr:first-child td {
+        border-top: none !important;
+    }
+
+.firstRow td {
+    border-top: solid 1px #C0C0C0;
+    padding-top: 2px;
+}
+
+.lastRow td {
+    padding-bottom: 20px;
+}
+
+.trade {
+    margin-top: 5px;
+    width: 100%;
+}
+
+    .trade table {
+        width: 100%;
+        border-collapse: collapse;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .months12,
+    .trade td:first-child,
+    .trade td:first-child + td + td,
+    .trade td:first-child + td + td + td + td,
+    .trade td:first-child + td + td + td + td + td + td {
+        text-transform: capitalize;
+        color: #808080;
+        font-weight: bold;
+        font-family:Tahoma;
+        font-size: 14px;
+        text-align: right;
+        padding-right: 10px;
+        white-space: nowrap; 
+    }
+
+    .trade tr:first-child td {
+        border-top: none !important;
+    }
+
+    .trade .firstRow td:first-child 
+    {
+        font-family: Tahoma; 
+        font-size: 15px;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: #000000;
+        text-align: left;
+    }
+
+        .trade .firstRow td:first-child + td + td + td {
+            font-size: 15px;
+            text-align: right;
+        }
+
+.paymentHistory {
+    border-collapse: collapse;
+    width: 60px !important;
+    vertical-align: top;
+    page-break-inside: avoid; 
+}
+
+    .paymentHistory td 
+    {
+        font-family: Tahoma !important; 
+        font-size: 12px !important;
+        font-weight: normal !important;
+        color: #000000 !important;
+        text-align: center !important;
+        width: 33% !important;
+        padding: 3px 3px 3px 3px !important;
+        page-break-inside: avoid; 
+    }
+
+    .paymentHistory tr:first-child + tr span {
+        padding: 3px 3px 3px 3px;
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+    .paymentHistory tr:first-child + tr td:first-child span {
+        padding: 3px 3px 3px 3px !important;
+        background-color: #C0C0C0;
+    }
+
+    .paymentHistory tr:first-child + tr td:first-child + td span {
+        padding: 3px 3px 3px 3px;
+        background-color: #b7acac;
+    }
+
+    .paymentHistory tr:first-child + tr td:first-child + td + td span {
+        padding: 3px 3px 3px 3px;
+        background-color: #808080;
+    }
+ 
+
+.latePayments, .paymentPattern {
+    vertical-align: top;
+    font-size: 13px !important;
+    color: #000000 !important;
+}
+
+    .latePayments span {
+        font-size: 13px;
+        font-weight: normal;
+    }
+
+.delinquency {
+    font-weight: bold;
+    font-size: 13px;
+    font-family:Tahoma !important;  
+    float: right;
+    top: 0;
+    right: 0 !important;
+    text-align: right !important;
+}
+
+.months12 + td {
+    text-align: left !important;
+    font-size: 13px !important;
+    font-family: Tahoma !important; 
+    font-weight: normal !important;
+    color: #000000 !important;
+}
+
+.collection {
+    margin-top: 5px;
+    width: 100%;
+}
+
+    .collection table {
+        width: 100%;
+        border-collapse: collapse;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .collection td:first-child,
+    .collection td:first-child + td + td,
+    .collection td:first-child + td + td + td + td,
+    .collection td:first-child + td + td + td + td + td + td {
+        text-transform: capitalize;
+        color: #808080;
+        font-weight: bold;
+        font-family:Tahoma;
+        font-size: 14px;
+        text-align: right;
+        padding-right: 10px;
+        white-space: nowrap; 
+    }
+
+    .collection tr:first-child td {
+        border-top: none !important;
+    }
+
+    .collection .firstRow td:first-child 
+    {
+        font-family: Tahoma; 
+        font-size: 15px;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: #000000;
+        text-align: left;
+    }
+
+        .collection .firstRow td:first-child + td + td + td {
+            font-size: 15px;
+            text-align: right;
+        }
+
+.inquiry {
+    margin-top: 5px;
+    width: 100%;
+}
+
+    .inquiry table {
+        width: 100%;
+        border-collapse: collapse;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .inquiry table tr:first-child td {
+        text-transform: capitalize;
+        color: #808080 !important;
+        font-weight: bold;
+        font-family:Tahoma;
+        font-size: 14px;
+        padding-bottom: 5px; 
+    }
+
+    .inquiry table td {
+        color: #000000 !important;
+        font-size: 13px;
+        padding-bottom: 3px; 
+
+    }
+
+    .publicRecord {
+    margin-top: 5px;
+    width: 100%;
+}
+
+    .publicRecord table {
+        width: 100%;
+        border-collapse: collapse;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .publicRecord td:first-child,
+    .publicRecord td:first-child + td + td,
+    .publicRecord td:first-child + td + td + td + td,
+    .publicRecord td:first-child + td + td + td + td + td + td {
+        text-transform: capitalize;
+        color: #808080;
+        font-weight: bold;
+        font-family:Tahoma;
+        font-size: 14px;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .publicRecord tr:first-child td {
+        border-top: none !important;
+    }
+
+    .publicRecord .firstRow td:first-child 
+    {
+        font-family: Tahoma; 
+        font-size: 15px;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: #000000;
+        text-align: left;
+    }
+
+        .publicRecord .firstRow td:first-child + td + td + td {
+            font-size: 15px;
+            text-align: right;
+        }
+
+.endFooter {
+    font-size: 17px;
+    font-weight: bold;
+    color: #f38a17;
+    text-transform: uppercase;
+    border-bottom: solid 2px #808080; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    margin-right: 20px; 
+    padding-bottom: 5px;
+    margin-top: 20px;   
+     
+}
+
+.creditor
+{   
+    width: 100%;
+    }
+
+.contact 
+{
+    float: left;
+    padding: 5px 5px 5px 5px; 
+    width: 24%;
+    display: table; 
+    }
+    
+ .contact > div
+{
+   /* clear: both; */   
+    background-color: #E6E6E6;
+    padding: 5px 5px 5px 5px; 
+}
+
+.contact > div div
+{
+    font-weight: bold; 
+    height: 20px; 
+    font-size: 11px;
+    white-space: nowrap; 
+}
+
+.contact > div div+div
+{
+    font-weight: normal; 
+    height: 40px;      
+    font-size: 10px; 
+
+}
+
+.contact > div div+div+div
+{
+    height: 15px; 
+    font-size: 11px;  
+}
+
+  
+  

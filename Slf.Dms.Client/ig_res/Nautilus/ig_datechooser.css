@@ -1,0 +1,42 @@
+.igdc_NautilusEditWithButtons
+{
+	font-size:10px;
+	font-family: Verdana;
+	border:solid 1px #cccccc;
+}
+
+
+.igdc_NautilusCalendar
+{
+}
+
+
+.igdc_NautilusEditInContainer
+{
+	font-size:11px;
+	font-family:Tahoma;
+	border-style:none;
+	border-width:0px;
+	padding-left:3px;
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+
+.igdc_NautilusButton
+{
+	background-color:Transparent;
+}
+
+
+.igdc_NautilusButtonHover
+{
+	background-color:Transparent;
+}
+
+
+.igcal_NautilusDropDown
+{
+	font-size:11px;
+}

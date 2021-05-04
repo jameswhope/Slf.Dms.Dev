@@ -1,0 +1,199 @@
+.iglb_NautilusControl
+{
+	/*font-size:medium;
+	border:solid 1px Silver;*/
+	margin-bottom:0px;
+	cursor:default;
+}
+
+
+.iglb_NautilusControl_Exp
+{
+	/*font-size:medium;
+	border:solid 1px Silver;*/
+	cursor:default;
+}
+
+
+.iglb_NautilusButton
+{
+	background-repeat:repeat-x;
+	background-position:right top ;
+	background-image: url(images/header11.png);
+	font-size:11px;
+	font-family:Tahoma;
+	padding-top:2px;
+	padding-bottom:1px;
+	padding-left:3px;
+	cursor:hand;
+	color:White;
+}
+
+
+.iglb_NautilusButtonHover
+{
+	/*background-position:top ;
+	background-image: url(images/headerhover.png);*/
+	font-size:11px;
+	font-family:Tahoma;
+	padding-top:2px;
+	padding-bottom:1px;
+	padding-left:3px;
+	cursor:hand;
+	text-decoration:underline;
+	border-bottom: dotted 1px #4E79A3;
+}
+
+
+.iglb_NautilusButtonSelected
+{
+	/*background-repeat:repeat-x;
+	background-position:right top ;
+	background-image: url(images/header11.png);*/
+	font-size:11px;
+	font-family:Tahoma;
+	padding-top:2px;
+	padding-bottom:1px;
+	padding-left:3px;
+	cursor:hand;
+	text-decoration:underline;
+	border-bottom: dotted 1px #4E79A3;
+}
+
+
+.iglb_NautilusHeaderCollapsed
+{
+	/*background-repeat:repeat-x;
+	background-position:right top ;
+	background-image: url(images/header11.png);*/
+	font-size:11px;
+	font-family:Tahoma;
+	padding-top:2px;
+	padding-bottom:1px;
+	padding-left:3px;
+	cursor:hand;
+	border-bottom: dotted 1px #4E79A3;
+	height:25px;
+}
+
+
+.iglb_NautilusHeaderExpanded
+{
+	/*background-repeat:repeat-x;
+	background-position:right top ;
+	background-image: url(images/header11.png);*/
+	font-size:11px;
+	font-family:Tahoma;
+	padding-top:2px;
+	padding-bottom:1px;
+	padding-left:3px;
+	cursor:hand;
+	color:rgb(50,112,163);
+	font-weight:bold;
+}
+
+
+.iglb_NautilusHeaderHover
+{
+	/*background-position:top ;
+	background-image: url(images/headerhover.png);*/
+	font-size:small;
+	padding-top:2px;
+	padding-bottom:1px;
+	padding-left:3px;
+	cursor:hand;
+	color:rgb(50,112,163);
+	font-weight:bold;
+}
+
+
+.iglb_NautilusGroup
+{
+}
+
+
+.iglb_NautilusGroup_Exp
+{
+}
+
+
+.iglb_NautilusItem
+{
+	background-color:Transparent;
+	font-size:xx-small;
+	margin-top:8px;
+	margin-bottom:3px;
+	padding-left:4px;
+	text-align:left;
+}
+
+
+.iglb_NautilusItem_Exp
+{
+	background-color:Transparent;
+	font-size:xx-small;
+	margin-top:4px;
+	margin-bottom:0px;
+	padding-bottom:3px;
+	padding-left:4px;
+	cursor:hand;
+	text-align:left;
+}
+
+
+.iglb_NautilusItemHover
+{
+	font-size:xx-small;
+	margin-top:8px;
+	margin-bottom:3px;
+	padding-left:4px;
+	cursor:hand;
+	color:#FE5400;
+	text-align:left;
+	text-decoration:underline;
+}
+
+
+.iglb_NautilusItemHover_Exp
+{
+	font-size:xx-small;
+	margin-top:4px;
+	margin-bottom:0px;
+	padding-bottom:3px;
+	padding-left:4px;
+	cursor:hand;
+	color:#FE5400;
+	text-align:left;
+	text-decoration:underline;
+}
+
+
+.iglb_NautilusItemSelected
+{
+	background-color:Transparent;
+	font-weight:bold;
+	font-size:xx-small;
+	margin-top:8px;
+	margin-bottom:3px;
+	padding-left:4px;
+	cursor:hand;
+	color:#FE5400;
+	text-align:left;
+}
+
+
+.iglb_NautilusItemSelected_Exp
+{
+	background-color:Transparent;
+	font-weight:bold;
+	font-size:xx-small;
+	margin-top:4px;
+	margin-bottom:0px;
+	padding-bottom:3px;
+	padding-left:4px;
+	cursor:hand;
+	color:#FE5400;
+	text-align:left;
+}
+
+

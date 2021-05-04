@@ -1,0 +1,347 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/campayne.master" AutoEventWireup="false" CodeFile="site-analytics.aspx.vb" Inherits="reports_site_analytics" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Assembly="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+<asp:Content ID="Head1" ContentPlaceHolderID="head" runat="Server">
+
+    <script language="javascript" type="text/javascript">
+        function SetDates(ddl) {
+            var txtDate1 = document.getElementById("<%=txtDate1.ClientId %>");
+            var txtDate2 = document.getElementById("<%=txtDate2.ClientId %>");
+
+            var str = ddl.value;
+            if (str != "Custom") {
+                var parts = str.split(",");
+                txtDate1.value = parts[0];
+                txtDate2.value = parts[1];
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        //initial jquery stuff
+
+
+        function pageLoad() {
+            docReady();
+        }
+
+        function docReady() {
+            $(document).ready(function() {
+                $(".jqButton").button();
+                //LoadChart('leadsbypath');
+            });
+        }
+
+        function LoadChart(chartname) {
+            var options = {
+                chart: {
+                    renderTo: chartname + 'container',
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    backgroundColor: '#FFFFFF',
+                    verticalAlign: 'top',
+                    floating: false,
+                    itemStyle: {
+                        cursor: 'pointer'
+                    }
+                },
+
+                tooltip: {
+                    formatter: function() {
+                        return '<b>' + this.point.name + '</b>: ' + this.y + ' ';
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Browser share',
+                    data: []
+                }]
+            };
+
+            chart = new Highcharts.Chart(options);
+
+            var datefrom = $("*[id$='txtDate1']").val();
+            var dateto = $("*[id$='txtDate2']").val();
+            var website = $("*[id$='ddlSites'] option:selected").text();
+            var dArray = "{";
+            dArray += "'chartname': '" + chartname + "',";
+            dArray += "'datefrom': '" + datefrom + "',";
+            dArray += "'dateto': '" + dateto + "',";
+            dArray += "'website': '" + website + "'";
+            dArray += "}";
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: dArray,
+                contentType: "application/json; charset=utf-8",
+                url: "default.aspx/PM_getChartData",
+                success: function(response) {
+                    var obj = eval('(' + response.d + ')');
+//                    var series = { data: [] };
+//                    series.type = 'pie';
+//                    series.name = chartname;
+                    for (ob in obj) {
+                        if (obj[ob].SeriesName != null) {
+                            //series.data.push('"' + obj[ob].SeriesName + '","' +  obj[ob].SeriesData + '"');
+                            var point2 = { name: obj[ob].SeriesName, y: parseFloat(obj[ob].SeriesData)};
+                            //chart.series[0].addPoint(parseFloat(obj[ob].SeriesData));
+                            chart.series[0].addPoint(point2);
+                        }
+                    }
+                },
+                cache: false,
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+</script>
+
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div id="daterange">
+        <div style="padding: 10px 10px 0 0">
+            <asp:DropDownList ID="ddlSites" runat="server" Font-Size="12px" DataSourceID="dsSites"
+                DataTextField="SiteName" DataValueField="SiteID">
+                <asp:ListItem Text="localdreamjobs.com"></asp:ListItem>
+                <asp:ListItem Text="landmyjob.com"></asp:ListItem>
+                <asp:ListItem Text="joblanded.com"></asp:ListItem>
+            </asp:DropDownList>
+            <asp:SqlDataSource ID="dsSites" runat="server" ConnectionString="<%$ ConnectionStrings:IDENTIFYLEDB %>"
+                SelectCommand="SELECT [SiteID], [SiteName] FROM [tblSites]"></asp:SqlDataSource>
+            <asp:DropDownList ID="ddlQuickPickDate" runat="server" Font-Size="12px">
+            </asp:DropDownList>
+            <asp:TextBox ID="txtDate1" runat="server" Size="6" MaxLength="10" Font-Size="12px"></asp:TextBox>&nbsp;-&nbsp;<asp:TextBox
+                ID="txtDate2" runat="server" MaxLength="10" Size="6" Font-Size="12px"></asp:TextBox>
+            <small>
+                <asp:LinkButton ID="btnApply" runat="server" Text="Apply" CssClass="jqButton" Font-Size="12px" />
+            </small>
+        </div>
+    </div>
+    <div style="width: 100%;">
+        <div style="position: relative; float: left; width: 300px; padding: 5px;">
+            <div class="container2" style="width: 290px">
+                <div class="header">
+                    <img src="images/square-green.png" alt="" align="absmiddle" />Top Keywords
+                </div>
+                <div class="content2">
+                    <asp:GridView ID="gvTopSeeds" runat="server" AutoGenerateColumns="false" GridLines="None"
+                        BorderStyle="None" AlternatingRowStyle-CssClass="altrow" Width="100%">
+                        <Columns>
+                            <asp:BoundField DataField="seed" HeaderText="Keyword" HeaderStyle-HorizontalAlign="Left"
+                                HeaderStyle-CssClass="headitem" ItemStyle-CssClass="griditem" />
+                            <asp:BoundField DataField="cnt" HeaderText="Visits" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField DataField="pct" HeaderText="% visits" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:p2}" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+            <div class="container2" style="width: 290px">
+                <div class="header">
+                    <img src="images/square-green.png" alt="" align="absmiddle" />Top Referring Sites
+                </div>
+                <div class="content2">
+                    <asp:GridView ID="gvReferring" runat="server" AutoGenerateColumns="false" GridLines="None"
+                        BorderStyle="None" AlternatingRowStyle-CssClass="altrow" Width="100%">
+                        <Columns>
+                            <asp:BoundField DataField="referringsite" HeaderText="Site" HeaderStyle-HorizontalAlign="Left"
+                                HeaderStyle-CssClass="headitem" ItemStyle-CssClass="griditem" />
+                            <asp:BoundField DataField="cnt" HeaderText="Visits" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField DataField="pct" HeaderText="% visits" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:p2}" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative; float: left; width: 410px; padding: 5px">
+            <div class="container" style="width: 400px">
+                <div class="header">
+                    <img src="images/square-green.png" align="absmiddle" />Leads By Path (<asp:Label
+                        ID="lblPath" runat="server"></asp:Label>)
+                </div>
+                <div class="content">
+                    <%--<div id="leadsbypathcontainer" style="width: 100%; height: 350px">
+                    </div>--%>
+                    <asp:Chart ID="chtPath" runat="server" BorderWidth="1px" Width="398px">
+                        <Series>
+                            <asp:Series Name="Series1" Label="#PERCENT{P1}" BorderColor="180, 26, 59, 105">
+                            </asp:Series>
+                        </Series>
+                        <Legends>
+                            <asp:Legend BackColor="Transparent" Alignment="Far" Docking="Right" Font="Trebuchet MS, 8.25pt, style=Bold"
+                                IsTextAutoFit="true" Name="Default" LegendStyle="Column">
+                            </asp:Legend>
+                        </Legends>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1" BackColor="Transparent" BackSecondaryColor="Transparent">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                        <BorderSkin SkinStyle="None"></BorderSkin>
+                    </asp:Chart>
+                </div>
+            </div>
+            <div class="container" style="width: 400px">
+                <div class="header">
+                    <img src="images/square-green.png" alt="" align="absmiddle" />Offer Inquiries (Avg.
+                    per
+                    <asp:Label ID="lblAvg" runat="server"></asp:Label>)
+                </div>
+                <div class="content2">
+                    <asp:GridView ID="gvInquiries" runat="server" AutoGenerateColumns="false" GridLines="None"
+                        BorderStyle="None" AlternatingRowStyle-CssClass="altrow" Width="100%" ShowFooter="true">
+                        <Columns>
+                            <asp:BoundField DataField="offer" HeaderText="Offer" HeaderStyle-HorizontalAlign="Left"
+                                HeaderStyle-CssClass="headitem" ItemStyle-CssClass="griditem" />
+                            <asp:BoundField DataField="inquiries" HeaderText="Inquiries" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField DataField="leads" HeaderText="Leads" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField DataField="no thanks" HeaderText="No Thanks" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField DataField="no response" HeaderText="No Response" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField DataField="conversion" HeaderText="Conv" HeaderStyle-CssClass="headitem"
+                                ItemStyle-CssClass="griditem" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:p1}" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative; float: right;">
+            <div class="container" style="width: 600px">
+                <div class="header">
+                    <img src="images/square-green.png" align="absmiddle" />Visits (<asp:Label ID="lblVisits"
+                        runat="server"></asp:Label>)
+                </div>
+                <div class="content">
+                    <asp:Chart ID="chtVisits" runat="server" Width="598px" Height="150px">
+                        <Series>
+                            <asp:Series Name="Total Visits" MarkerSize="7" BorderWidth="3" XValueType="Double"
+                                ChartType="Line" MarkerStyle="Circle" ShadowColor="Black" ShadowOffset="2" YValueType="Double"
+                                ChartArea="ChartArea1" Legend="Default">
+                            </asp:Series>
+                            <asp:Series Name="Unique Visits" MarkerSize="7" BorderWidth="3" XValueType="Double"
+                                ChartType="Line" MarkerStyle="Circle" ShadowColor="Black" ShadowOffset="2" YValueType="Double"
+                                ChartArea="ChartArea1" Legend="Default">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1" BorderColor="64, 64, 64, 64" BorderDashStyle="Solid"
+                                BackSecondaryColor="Transparent" BackColor="64, 165, 191, 228" ShadowColor="Transparent"
+                                BackGradientStyle="TopBottom">
+                                <AxisY LineColor="64, 64, 64, 64" LabelAutoFitMaxFontSize="8">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisY>
+                                <AxisX LineColor="64, 64, 64, 64" LabelAutoFitMaxFontSize="8">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" Angle="90" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisX>
+                            </asp:ChartArea>
+                        </ChartAreas>
+                        <Legends>
+                            <asp:Legend BackColor="Transparent" Alignment="Far" Docking="Right" Font="Trebuchet MS, 8.25pt, style=Bold"
+                                IsTextAutoFit="False" Name="Default" LegendStyle="Column">
+                            </asp:Legend>
+                        </Legends>
+                    </asp:Chart>
+                </div>
+            </div>
+            <div class="container" style="width: 600px">
+                <div class="header">
+                    <img src="images/square-green.png" align="absmiddle" />Conversion
+                </div>
+                <div class="content">
+                    <asp:Chart ID="chtConversions" runat="server" Width="598px" Height="150px">
+                        <Series>
+                            <asp:Series Name="Unique Visits" MarkerSize="7" BorderWidth="3" XValueType="Double"
+                                ChartType="Line" MarkerStyle="Circle" ShadowColor="Black" ShadowOffset="2" YValueType="Double"
+                                ChartArea="ChartArea1" Legend="Default" Color="#FCAC37">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1" BorderColor="64, 64, 64, 64" BorderDashStyle="Solid"
+                                BackSecondaryColor="Transparent" BackColor="64, 165, 191, 228" ShadowColor="Transparent"
+                                BackGradientStyle="TopBottom">
+                                <AxisY LineColor="64, 64, 64, 64" LabelAutoFitMaxFontSize="8" Maximum="1">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" Format="P0" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisY>
+                                <AxisX LineColor="64, 64, 64, 64" LabelAutoFitMaxFontSize="8">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" Angle="90" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisX>
+                            </asp:ChartArea>
+                        </ChartAreas>
+                        <Legends>
+                            <asp:Legend BackColor="Transparent" Alignment="Far" Docking="Right" Font="Trebuchet MS, 8.25pt, style=Bold"
+                                IsTextAutoFit="False" Name="Default" LegendStyle="Column">
+                            </asp:Legend>
+                        </Legends>
+                    </asp:Chart>
+                </div>
+            </div>
+            <div class="container" style="width: 600px">
+                <div class="header">
+                    <img src="images/square-green.png" align="absmiddle" />Leads (<asp:Label ID="lblLeads"
+                        runat="server"></asp:Label>)
+                </div>
+                <div class="content">
+                    <asp:Chart ID="chtLeads" runat="server" Width="598px" Height="150px">
+                        <Series>
+                            <asp:Series Name="Total Leads" MarkerSize="7" BorderWidth="3" XValueType="Double"
+                                ChartType="Line" MarkerStyle="Circle" ShadowColor="Black" ShadowOffset="2" YValueType="Double"
+                                ChartArea="ChartArea1" Legend="Default">
+                            </asp:Series>
+                            <asp:Series Name="Unique Leads" MarkerSize="7" BorderWidth="3" XValueType="Double"
+                                ChartType="Line" MarkerStyle="Circle" ShadowColor="Black" ShadowOffset="2" YValueType="Double"
+                                ChartArea="ChartArea1" Legend="Default">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1" BorderColor="64, 64, 64, 64" BorderDashStyle="Solid"
+                                BackSecondaryColor="Transparent" BackColor="64, 165, 191, 228" ShadowColor="Transparent"
+                                BackGradientStyle="TopBottom">
+                                <AxisY LineColor="64, 64, 64, 64" LabelAutoFitMaxFontSize="8">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisY>
+                                <AxisX LineColor="64, 64, 64, 64" LabelAutoFitMaxFontSize="8">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" Angle="90" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisX>
+                            </asp:ChartArea>
+                        </ChartAreas>
+                        <Legends>
+                            <asp:Legend BackColor="Transparent" Alignment="Far" Docking="Right" Font="Trebuchet MS, 8.25pt, style=Bold"
+                                IsTextAutoFit="False" Name="Default" LegendStyle="Column">
+                            </asp:Legend>
+                        </Legends>
+                    </asp:Chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>

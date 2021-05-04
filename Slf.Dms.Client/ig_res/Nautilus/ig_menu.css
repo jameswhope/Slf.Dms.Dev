@@ -1,0 +1,102 @@
+.igmn_NautilusControl
+{
+	background-color:WhiteSmoke;
+	background-repeat:repeat-x;
+	background-position:right top ;
+	background-image: url(images/header11.png);
+	border-color:Transparent;
+	border-right:solid 1px #223E6E;
+	border-bottom:solid 1px #223E6E;
+	border-left:solid 1px #223E6E;
+	color:White;
+}
+
+
+.igmn_NautilusIsland
+{
+	background-color:White;
+	background-repeat:repeat-y;
+	background-position:left ;
+	background-image: url(images/buttonbg.png);
+	border:solid 1px #E1E1E1;
+}
+
+
+.igmn_NautilusItem
+{
+	background-color:Transparent;
+	border:solid 1px Transparent;
+	height: 20px;
+	cursor:hand;
+}
+
+
+.igmn_NautilusLeaf
+{
+}
+
+
+.igmn_NautilusParent
+{
+}
+
+
+.igmn_NautilusTopLevelLeaf
+{
+}
+
+
+.igmn_NautilusTopLevelParent
+{
+}
+
+
+.igmn_NautilusHeader
+{
+}
+
+
+.igmn_NautilusSeparator
+{
+	background-color:Yellow;
+	color:Black;
+}
+
+
+.igmn_NautilusHover
+{
+	background-color:Transparent;
+	background-position:center ;
+	background-image: url(images/header11.png);
+	border:solid 1px #C3C3C3;
+	padding:0px;
+	height: 20px;
+	color:White;
+}
+
+
+.igmn_NautilusTopLevelHover
+{
+	background-color:Transparent;
+	background-position:center ;
+	background-image: url(images/header_hover.gif);
+	border:solid 1px #C3C3C3;
+	padding:0px;
+	height: 20px;
+	color:Black;
+}
+
+
+.igmn_NautilusTopSelected
+{
+}
+
+
+.igmn_NautilusDisabled
+{
+	font-size:xx-small;
+	font-family: Verdana;
+	color:#E1E1E1;
+}
+
+

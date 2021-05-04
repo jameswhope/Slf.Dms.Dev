@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3" PrintWidth="15120" DocumentName="ActiveReports Document" ScriptLang="C#" CodeFile="query_commission_batchpayments.vb">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0; " />
+    <Style Name="Heading1" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 16pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading2" Value="font-family: Times New Roman; font-style: italic; font-variant: inherit; font-weight: bold; font-size: 14pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading3" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 13pt; font-size-adjust: inherit; font-stretch: inherit; " />
+  </StyleSheet>
+  <Sections>
+    <Section Type="ReportHeader" Name="ReportHeader" Height="450" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label16" MOD="4" Left="90" Top="0" Width="6660" Height="270" Caption="Query Results - Commission Batch Payments:" Style="ddo-char-set: 0; text-align: left; font-weight: bold; font-size: 9.75pt; " />
+    </Section>
+    <Section Type="GroupHeader" Name="sortofPageHeader" Height="390" RepeatStyle="4" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label1" MOD="4" Left="5130" Top="0" Width="3510" Height="270" Caption="Recipient" />
+      <Control Type="AR.Label" Name="Label2" MOD="4" Left="8640" Top="0" Width="1260" Height="270" Caption="Transfer Amt" Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label4" MOD="4" Left="9900" Top="0" Width="1260" Height="270" Caption="Total Amt" Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label5" MOD="4" Left="11250" Top="0" Width="1350" Height="270" Caption="Check #" Style="text-align: left; " />
+      <Control Type="AR.Line" Name="Line1" MOD="4" X1="0" Y1="360" X2="16200" Y2="360" LineWeight="3" />
+      <Control Type="AR.Label" Name="Label6" MOD="4" Left="12600" Top="0" Width="1530" Height="270" Caption="Check Date" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label14" MOD="4" Left="14130" Top="0" Width="990" Height="270" Caption="ACH Tries" Style="text-align: left; " />
+      <Control Type="AR.Label" Name="Label" MOD="4" Left="0" Top="0" Width="630" Height="270" Caption="Batch" Style="text-align: left; " />
+      <Control Type="AR.Label" Name="Label3" MOD="4" Left="630" Top="0" Width="1440" Height="270" Caption="Batch Date" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label7" MOD="4" Left="2070" Top="0" Width="3060" Height="270" Caption="From" />
+    </Section>
+    <Section Type="Detail" Name="Detail" Height="480" BackColor="16777215" KeepTogether="1" CanShrink="0">
+      <Control Type="AR.Field" Name="CommRecName" DataField="CommRecName" MOD="4" Left="5130" Top="90" Width="3510" Height="270" Text="CommRecName" CanGrow="0" />
+      <Control Type="AR.Field" Name="TransferAmount" DataField="TransferAmount" MOD="4" Left="8640" Top="90" Width="1260" Height="270" Text="TransferAmount" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="Amount" DataField="Amount" MOD="4" Left="9900" Top="90" Width="1260" Height="270" Text="Amount" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="CheckNumber" DataField="CheckNumber" MOD="4" Left="11250" Top="90" Width="1350" Height="270" Text="CheckNumber" OutputFormat="" CanGrow="0" Style="text-align: left; " />
+      <Control Type="AR.Line" Name="Separator" MOD="4" X1="0" Y1="450" X2="16200" Y2="450" LineColor="13882323" />
+      <Control Type="AR.Field" Name="CheckDate" DataField="CheckDate" MOD="4" Left="12600" Top="90" Width="1530" Height="270" Text="CheckDate" OutputFormat="MMM d, yyyy" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="ACHTries" DataField="ACHTries" MOD="4" Left="14130" Top="90" Width="990" Height="270" Text="ACHTries" OutputFormat="" CanGrow="0" Style="text-align: left; " />
+      <Control Type="AR.Field" Name="CommBatchId" DataField="CommBatchId" MOD="4" Left="0" Top="90" Width="630" Height="270" Text="CommBatchId" OutputFormat="" CanGrow="0" Style="text-align: left; " />
+      <Control Type="AR.Field" Name="BatchDate" DataField="BatchDate" MOD="4" Left="630" Top="90" Width="1440" Height="270" Text="BatchDate" OutputFormat="MMM d, yyyy" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="ParentCommRecName" DataField="ParentCommRecName" MOD="4" Left="2070" Top="90" Width="3060" Height="270" Text="ParentCommRecName" CanGrow="0" />
+    </Section>
+    <Section Type="GroupFooter" Name="sortofPageFooter" Height="0" BackColor="16777215" CanShrink="0" />
+    <Section Type="ReportFooter" Name="ReportFooter" Height="450" BackStyle="1" BackColor="15790320" KeepTogether="1" CanShrink="0">
+      <Control Type="AR.Field" Name="CountCommBatchTransferId" DataField="CommBatchTransferId" MOD="4" Left="720" Top="90" Width="2160" Height="270" Text="CountCommBatchTransferId" OutputFormat="#,##0" Style="font-weight: bold; " SummaryType="1" SummaryFunc="2" SummaryRunning="2" SummaryDistinct="CommBatchTransferId" />
+      <Control Type="AR.Label" Name="Label11" MOD="4" Left="90" Top="90" Width="630" Height="270" Caption="Total:" Style="font-weight: bold; " />
+      <Control Type="AR.Field" Name="SumAmount" DataField="Amount" MOD="4" Left="9900" Top="90" Width="1260" Height="270" Text="SumAmount" OutputFormat="$#,##0.00" Style="text-align: right; font-weight: bold; " SummaryType="1" SummaryRunning="2" SummaryDistinct="Amount" />
+      <Control Type="AR.Field" Name="TextBox" DataField="TransferAmount" MOD="4" Left="6930" Top="90" Width="2970" Height="270" Text="SumTransferAmount" OutputFormat="$#,##0.00" Style="text-align: right; font-weight: bold; " SummaryType="1" SummaryRunning="2" SummaryDistinct="TransferAmount" />
+    </Section>
+  </Sections>
+  <PageSettings />
+</ActiveReportsLayout>

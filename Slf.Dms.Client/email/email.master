@@ -1,0 +1,36 @@
+<%@ Master Language="VB" MasterPageFile="~/Site.master" CodeFile="email.master.vb"
+	Inherits="email_email" %>
+
+<asp:Content ID="cntMenu" ContentPlaceHolderID="cphMenu" runat="Server">
+	<asp:Panel ID="pnlMenu" runat="server">
+		<table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false">
+			<tr>
+				<td>
+					<img width="8" height="1" src="~/images/spacer.gif" runat="server" />
+				</td>
+				<td nowrap="true">
+					<a runat="server" class="menuButton" href="~/email">
+						<img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_admin.png" />Email
+						Home</a>
+				</td>
+				
+				<td style="width: 100%;">
+					&nbsp;
+				</td>
+				<td nowrap="true" id="tdSearch" runat="server">
+					<a runat="server" class="menuButton" href="~/search.aspx">
+						<img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_search.png" />Search</a>
+				</td>
+				<td>
+					<img width="8" height="1" src="~/images/spacer.gif" runat="server" />
+				</td>
+			</tr>
+		</table>
+	</asp:Panel>
+</asp:Content>
+<asp:Content ID="cntBody" ContentPlaceHolderID="cphBody" runat="Server">
+	<asp:Panel ID="pnlBody" runat="server">
+		<asp:ContentPlaceHolder ID="cphBody" runat="server">
+		</asp:ContentPlaceHolder>
+	</asp:Panel>
+</asp:Content>

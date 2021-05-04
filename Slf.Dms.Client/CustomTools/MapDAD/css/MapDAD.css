@@ -1,0 +1,123 @@
+﻿.GroupItem
+{
+	background-image: url('../../../images/MapGroupBackground.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: default;
+	float: left;
+	height: 16px;
+	margin: 1px;
+	padding-top: 2px;
+	text-align: center;
+	vertical-align: middle;
+	width: 16px;
+}
+
+.GroupLegend
+{
+	border: solid 1px black;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#C9C9C9, direction=200, strength=4);
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	height: 150px;
+	overflow: visible;
+	position: absolute;
+	width: 250px;
+	z-index: 99999;
+}
+
+.GroupLegend table
+{
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+}
+
+.GroupLegendHeader
+{
+	background-color: #B0C4DE;
+	border-bottom: solid 1px #000000;
+	cursor: move;
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+	height: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.GroupLegendHolder
+{
+	background-color: #DADAE6;
+	filter: progid:DXImageTransform.Microsoft.BasicImage(opacity=0.6);
+	height: 100%;
+	opacity: 0.6;
+	padding: 7px;
+	width: 100%;
+}
+
+.HorizontalLine
+{
+	border-top: 1px solid #000000;
+	position: absolute;
+}
+
+.MapCanvasScrollbar
+{
+	background-color: #C9C9C9;
+	opacity: 0.6;
+	z-index: 999999;
+}
+
+.MapItem
+{
+	color: #000000;
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	height: 90px;
+	overflow: hidden;
+	text-align: center;
+	width: 64px;
+	z-index: 2;
+}
+
+.MapItemDrop
+{
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 48px;
+	width: 64px;
+	z-index: 1;
+}
+
+.MapItemTitle
+{
+	background-color: #E5ECf9;
+	border: solid 1px #3366CC;
+	float: left;
+	height: 23px;
+	min-width: 64px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.MapItemTitleInput
+{
+	font-family: Tahoma;
+	font-size: 9px;
+	overflow: hidden;
+}
+
+.ToolboxItem
+{
+	height: 48px;
+	width: 48px;
+}
+
+.VerticalLine
+{
+	border-left: 1px solid #000000;
+	position: absolute;
+}

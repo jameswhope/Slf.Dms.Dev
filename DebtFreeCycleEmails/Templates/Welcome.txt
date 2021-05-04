@@ -1,0 +1,122 @@
+﻿<div>
+    <p>
+        Dear {{clientname}},
+    </p>
+    <p>
+        Thank you for choosing {{company}} to represent you in your efforts
+        to settle your outstanding creditor debts. We look forward to working with you to
+        reach your goal. It is important to understand that your engagement with our office
+        requires mutual cooperation. There are three ways you can help to improve our service
+        of your accounts:
+        <ol>
+            <li><b>Notify the firm of any changes to your household’s financial situation.</b> If there
+                are any lifestyle changes due to loss of property, change of income, or new medical
+                conditions that affect your financial situation (whether it affects your earning
+                potential or an increase in medical costs), please notify the firm as soon as possible.
+                Specific changes or a combination of changes may positively impact our ability to
+                negotiate a better settlement for you.</li>
+            <li><b>Notify the firm of any communication from collectors.</b> In our experience, we have
+                seen that some collectors can be very aggressive and dismissive of your rights,
+                so we want to ask you to make sure to work closely with us and report any phone
+                calls you receive from a collector. We document these cases so that your attorneys
+                can determine if collectors are violating the Fair Debt Collections Practices Act
+                or other state collection laws.</li>
+            <li><b>Most importantly, when the firm calls you, please return our call as soon as possible.</b>
+                We may have a great settlement we need to review with you, and we will need your
+                authorization to pay your creditor.</li>
+        </ol>
+    </p>
+    <p>
+        Please take a moment to go online and become familiar with our client portal, through which most of 
+        our communications will be delivered. Simply click the 'Client Portal' link below and login to your 
+        account with the username and password you set up during the verification process. If you cannot use 
+        the link, you may also cut and paste the full address into your browser. 
+    </p>
+    <p>
+		In addition to keeping your information with the firm current, you'll also have access to other 
+		important resources from the firm, such as 
+		<ol>
+            <li>
+				<b>Telephone Response Cards:</b> What to say to your creditors if they continue to call
+            </li>
+            <li>
+				<b>Collection Communication Log:</b> Report collection abuse to the firm
+            </li>
+            <li>
+				<b>Letters of Representation:</b> These are copies of the letters being sent to your 
+				creditors telling them we now represent you.
+            </li>
+            <li>
+				<b>Service Guide:</b> A reference to our legal services
+            </li>
+            <li>
+				<b>Legal Guide:</b> A reference to common legal questions you may have.
+            </li>
+        </ol>
+    </p>
+    <p>
+		If you have any questions or need assistance logging into the client portal, please contact our 
+		Client Services Department at {{clientservicesphone}}.
+	</p>
+	<p>
+		Client Portal: <a href='{{url}}'>{{url}}</a> &nbsp;&nbsp;-- Click on the link 'Client Login'
+	</p>
+	<p>
+		Thank you for taking the time to review this bit of information. Please keep an eye out for more 
+		informative emails from the firm. We will do our best to keep you posted by email as it's less 
+		intrusive on your time. However, feel free to call into Client Services to get updates as often 
+		as you desire. 
+	</p>
+    <p>
+        Kindest Regards,
+    </p>
+    <p>
+        {{company}}</p>
+    <br />
+    <p>
+        FOR YOUR REFERENCE:<br />
+        <b>If you have any questions or concerns regarding your representation</b>, please call
+        our firm’s Client Services Department at <b>{{clientservicesphone}}</b>. A representative of the firm will be happy to assist you Monday-Friday
+        7:00AM to 5:00PM, Pacific Time.
+        <br />
+        <br />
+        <b>If any collectors contact you by phone</b>, please read the script from the telephone
+        response card included in your welcome package and direct the collector to call
+        <b>{{creditorservicesphone}}</b> to put them in touch with someone
+        at our firm who can assist them.
+        <br />
+        <br />
+        <b>If you receive any notices or statements from your creditors, please fax to {{clientservicesfax}}
+        or mail to {{companyaddress}}.</b>
+    </p>
+</div>
+<hr>
+<div style="text-align: center">
+    IMPORTANT NOTES</div>
+<p>
+    THE SEQUENCE IN WHICH YOUR DEBTS ARE SETTLED, AS WELL AS THE AMOUNT AND FREQUENCY
+    OF YOUR DEPOSITS IS CRITICAL TO THE EFFORTS TO SETTLE THE ACCOUNTS. IN GENERAL,
+    THE MORE YOU ARE ABLE TO DEPOSIT, THE SOONER WE CAN SEEK SUCCESSFUL SETTLEMENTS
+    OF THE ACCOUNTS. SINCE THE MONTHLY SERVICE FEE STOPS ON AN ACCOUNT ONCE IT IS SETTLED
+    AND CONTINGENCY FEES DUE HAVE BEEN PAID, YOU MAY BE ABLE TO REDUCE THE AMOUNT OF
+    MONTHLY SERVICE FEES YOU PAY BY ENABLING US TO NEGOTIATE SUCCESSFUL SETTLEMENTS
+    SOONER. WHILE OTHER FACTORS WE CANNOT CONTROL (SUCH AS WHAT SETTLEMENT A CREDITOR
+    MAY ACCEPT, AND WHEN THEY ACCEPT IT) WILL AFFECT HOW SOON YOUR ACCOUNTS ARE SETTLED,
+    YOUR DEPOSIT AMOUNTS WILL BE AN IMPORTANT FACTOR IN YOUR SUCCESS.</p>
+<p>
+    CONFIDENTIALITY NOTICE: This e-mail transmission, and any documents, files or previous
+    e-mail messages attached to it, may contain confidential information that is legally
+    privileged. If you are not the intended recipient, or a person responsible for delivering
+    it to the intended recipient, you are hereby notified that any disclosure, copying,
+    distribution or use of any of the information contained in or attached to this message
+    is STRICTLY PROHIBITED. If you have received this transmission in error, please
+    immediately notify us by reply e-mail, and destroy the original transmission and
+    its attachments without reading them or saving them to disk. Thank you.</p>
+<p>
+    IRS CIRCULAR 230 NOTICE: To ensure compliance with requirements imposed by the IRS,
+    we inform you that any U.S. tax advice contained in this communication (or in any
+    attachment) is not intended or written to be used, and cannot be used, for the purpose
+    of (i) avoiding penalties under the Internal Revenue Code or (ii) promoting, marketing
+    or recommending to another party any transaction or matter addressed in this communication
+    (or in any attachment).</p>
+<hr>

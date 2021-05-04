@@ -1,0 +1,4 @@
+<%@ Master Language="VB" CodeFile="clients.master.vb" Inherits="research_queries_clients_clients" MasterPageFile="~/research/queries/queries.master"%>
+<asp:Content runat="server" ContentPlaceHolderID="cphBody" ID="cntBody">
+    <asp:ContentPlaceHolder ID="cphBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

@@ -1,0 +1,199 @@
+<%@ Master Language="VB" MasterPageFile="~/site.master" CodeFile="Negotiation.master.vb" Inherits="negotiation_Negotiation" %>
+
+<asp:Content ID="cntMenu" runat="server" ContentPlaceHolderID="cphMenu">
+
+    <link href="<%=ResolveUrl("~/negotiation/css/ajax.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveUrl("~/negotiation/css/globalstyle.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveUrl("~/negotiation/css/dialer.css") %>" rel="stylesheet" type="text/css" />
+    <link href='<%= ResolveUrl(GlobalFiles.JQuery.CSS) %>' rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<%= ResolveUrl(GlobalFiles.JQuery.JQuery) %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl(GlobalFiles.JQuery.UI) %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~/jquery/json2.js") %>"></script>
+
+    <asp:ContentPlaceHolder ID="cphMenu" runat="server">
+    
+        <table cellpadding="0" cellspacing="0" class="menuTable">
+            <tr>
+                <td style="height: 28px">
+                    <img runat="server" width="8" height="1" src="~/images/spacer.gif" />
+                </td>
+                <td nowrap="nowrap">
+                    <a runat="server" class="menuButton" href="~/negotiation">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/16x16_web_home.png" />Home</a>
+                </td>
+                <td>
+                    |
+                </td>
+                <td nowrap="nowrap">
+                    <a runat="server" class="menuButton" href="~/negotiation/assignments">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/16x16_users.png" />Assignments</a>
+                </td>
+                <td>
+                    |
+                </td>
+                <td nowrap="nowrap">
+                    <a runat="server" class="menuButton" href="~/negotiation/attach">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/12x16_paperclip.png" /><asp:Label ID="lblAttachSIF" runat="server" Text="Attach SIF"></asp:Label></a>
+                </td>
+                <td>
+                    |
+                </td>
+                <td nowrap="nowrap">&nbsp;
+                    <a runat="server" class="menuButton" href="~/negotiation/chkbyphone">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/16x16_phone2.png" /><asp:Label ID="lblChkbyphone" runat="server" Text="Checks By Phone"></asp:Label></a>
+                </td>
+                <td id="tdMgrSep" runat="server" visible="false">
+                    |
+                </td>
+                <td id="tdMgr" runat="server" nowrap="nowrap">
+                    <a runat="server" class="menuButton" href="~/negotiation/managers">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/16x16_exclamationpoint.png" /><asp:Label ID="lblMgrApproval" runat="server" Text="Manager Approval"></asp:Label></a>
+                </td>
+                <td id="tdProcSep" runat="server" visible="false">
+                    |
+                </td>
+                <td id="tdProc" runat="server" nowrap="nowrap" visible="false">
+                    <a runat="server" class="menuButton" href="~/negotiation/processing">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/16x16_process.png" />Settlement Processing</a>
+                </td>
+<%--                <td id="td2" runat="server" visible="true">
+                    |
+                </td>
+                <td id="td1" runat="server" nowrap="nowrap" visible="true">
+                    <a id="A1" runat="server" class="menuButton" href="~/negotiation/SettlementExceptions/SettlementExceptions.aspx">
+                        <img id="Img1" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/16x16_no_file.png" />Expired Settlements</a>
+                </td>--%>
+                <td style="width: 100%;">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="cntBody" runat="server" ContentPlaceHolderID="cphBody">
+    <ajaxToolkit:ToolkitScriptManager ID="smScriptManager" runat="server"  EnablePartialRendering="true"
+        EnablePageMethods="true" />
+
+    <script language="javascript" type="text/javascript">
+        var pm = Sys.WebForms.PageRequestManager.getInstance();
+        var useWebPart = true;
+
+        pm.add_beginRequest(OnBeginRequest);
+        pm.add_endRequest(OnEndRequest);
+        function OnEndRequest(sender, args) {
+            document.getElementById('dvLoading').style.display = 'none';
+        }
+        function OnBeginRequest(sender, args) {
+            ShowLoading(sender._postBackSettings.sourceElement);
+        }
+
+        function ShowLoading(sourceElement) {
+            var dvLoading = document.getElementById('dvLoading');
+            if (useWebPart == true) {
+                var element = GetWebPart(sourceElement);
+
+                if (element != null) {
+                    var bounds = Sys.UI.DomElement.getBounds(element);
+
+                    dvLoading.style.height = bounds.height - 27;
+                    dvLoading.style.lineHeight = dvLoading.style.height;
+                    dvLoading.style.width = bounds.width;
+
+                    Sys.UI.DomElement.setLocation(dvLoading, bounds.x, bounds.y + 27);
+
+                    dvLoading.style.display = 'inline';
+                }
+            }
+        }
+
+        function GetWebPart(element) {
+            var parent = element;
+
+            while (parent.className != 'ibox nego') {
+                if (!parent.parentElement) {
+                    return null;
+                }
+
+                parent = parent.parentElement;
+            }
+
+            return parent;
+        }
+
+        function MoveToNext(item, length) {
+            var nextItem;
+
+            if (GetCaretPosition() >= length && item.tabIndex) {
+                for (i = 0; i < document.all.length; i++) {
+                    if (document.all[i].tabIndex > item.tabIndex) {
+                        if (nextItem) {
+                            if (document.all[i].tabIndex < nextItem.tabIndex) {
+                                nextItem = document.all[i];
+                            }
+                        }
+                        else {
+                            nextItem = document.all[i];
+                        }
+
+                        if (nextItem.tabIndex == item.tabIndex + 1) {
+                            break;
+                        }
+                    }
+                }
+
+                if (nextItem) {
+                    nextItem.focus();
+                }
+            }
+        }
+
+        function GetCaretPosition() {
+            return Math.abs(document.selection.createRange().moveStart('character', -1000000));
+        }
+
+        function dyntog(a, thisimg) {
+            var imgMax = new Image(16, 16);
+            imgMax.src = "images/maximize_off.png";
+            var imgMin = new Image(16, 16);
+            imgMin.src = "images/minimize_off.png";
+
+            if (a.style.display == "none") {
+                a.style.display = "block";
+                thisimg.src = imgMin.src;
+                thisimg.title = "Click to Minimize the table";
+            }
+            else if (a.style.display == "block") {
+                a.style.display = "none";
+                thisimg.src = imgMax.src;
+                thisimg.title = "Click to Maximize the table";
+            }
+            return false;
+        }
+
+        function FormatAsCurrency(obj) {
+            if (!obj.readOnly) {
+                obj.value = new Number(obj.value.replace(/[^(0-9\.)]/g, '')).localeFormat('c');
+            }
+        }
+    </script>
+
+    <div class="container">
+        <div id="dvLoading" class="loadingDiv">
+            <img id="imgLoading" class="loadingImage" src="<%=ResolveUrl("~/negotiation/images/ajax-loader.gif") %>"
+                alt="Loading" />
+        </div>
+        <asp:UpdatePanel ID="updMain" runat="server">
+            <ContentTemplate>
+                <asp:ContentPlaceHolder ID="cphBody" runat="server">
+                </asp:ContentPlaceHolder>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+</asp:Content>

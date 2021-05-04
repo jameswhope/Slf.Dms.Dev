@@ -1,0 +1,131 @@
+<%@ Master Language="VB" MasterPageFile="~/Site.master" CodeFile="~/research/research.master.vb"
+    Inherits="research_research" %>
+
+<asp:Content ID="cntMenu" ContentPlaceHolderID="cphMenu" runat="Server">
+    <asp:Panel ID="pnlMenu" runat="server">
+        <table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false">
+            <tr>
+                <td>
+                    <img width="8" height="1" src="~/images/spacer.gif" runat="server" />
+                </td>
+                <asp:PlaceHolder ID="pnlHome" runat="server">
+                    <td nowrap="true">
+                        <a id="A2" runat="server" class="menuButton" href="~/research">
+                            <img id="Img2" runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_admin.png" />Research Home</a>
+                    </td>
+                    <td class="menuSeparator">
+                        |
+                    </td>
+                </asp:PlaceHolder>
+                <asp:PlaceHolder ID="pnlQueries" runat="server">
+                    <td nowrap="true">
+                        <a runat="server" class="menuButton" href="~/research/queries">
+                            <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_query.png" />Queries</a>
+                    </td>
+                    <td class="menuSeparator">
+                        |
+                    </td>
+                </asp:PlaceHolder>
+                <asp:PlaceHolder ID="pnlReports" runat="server">
+                    <td nowrap="true">
+                        <a runat="server" class="menuButton" href="~/research/reports">
+                            <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_report.png" />Reports</a>
+                    </td>
+                </asp:PlaceHolder>
+                <asp:PlaceHolder ID="pnlNegotiationInterface" runat="server">
+                    <td class="menuSeparator">
+                        |
+                    </td>
+                    <td nowrap="true">
+                        <a runat="server" class="menuButton" href="~/research/negotiation/">
+                            <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_tools.png" />Negotiation
+                            Interface</a>
+                    </td>
+                </asp:PlaceHolder>
+                <asp:PlaceHolder ID="pnlMetrics" runat="server">
+                    <td class="menuSeparator">
+                        |
+                    </td>
+                    <td nowrap="true">
+                        <a runat="server" class="menuButton" href="~/research/metrics">
+                            <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_chart_bar.png" />Metrics</a>
+                    </td>
+                </asp:PlaceHolder>
+                <td class="menuSeparator">
+                    |
+                </td>
+                <td nowrap="true">
+                    <a id="A1" runat="server" class="menuButton" href="~/research/tools">
+                        <img id="Img1" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                            src="~/images/16x16_chart_bar.png" />Tools</a>
+                </td>
+                </asp:PlaceHolder>
+                <td style="width: 100%;">
+                    &nbsp;
+                </td>
+                <td nowrap="true" id="tdSearch" runat="server">
+                    <a runat="server" class="menuButton" href="~/search.aspx">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_search.png" />Search</a>
+                </td>
+                <td>
+                    <img width="8" height="28" src="~/images/spacer.gif" runat="server" />
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="pnlMenuAgent" Visible="true" runat="server">
+        <table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false">
+            <tr>
+                <td>
+                    <img width="8" height="28" src="~/images/spacer.gif" runat="server" />
+                </td>
+                <td nowrap="true">
+                    <a class="menuButton" href="~/research/queries/clients/agency.aspx" runat="server">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_person.png" />My
+                        Clients</a>
+                </td>
+                <td class="menuSeparator">
+                    |
+                </td>
+                <td nowrap="true" id="tdReferNewClients" runat="server">
+                    <a class="menuButton" href="~/clients/new/agencydefault.aspx" runat="server">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_person_add.png" />Refer
+                        Clients</a>
+                </td>
+                <td class="menuSeparator">
+                    |
+                </td>
+                <td nowrap="true">
+                    <a class="menuButton" href="~/research/reports/financial/servicefees/agency.aspx"
+                        runat="server">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_trust.png" />Service
+                        Fees</a>
+                </td>
+                <td class="menuSeparator">
+                    |
+                </td>
+                <td nowrap="true">
+                    <a class="menuButton" href="~/research/queries/financial/servicefees/remainingreceivables.aspx"
+                        runat="server">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_trust.png" />Receivables</a>
+                </td>
+                <td class="menuSeparator">
+                    |
+                </td>
+                <td nowrap="true">
+                    <a class="menuButton" href="#" runat="server">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_trust.png" />Batches</a>
+                </td>
+                <td style="width: 100%;">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+</asp:Content>
+<asp:Content ID="cntBody" ContentPlaceHolderID="cphBody" runat="Server">
+    <asp:ContentPlaceHolder ID="cphBody" runat="server">
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="cphBodyAgency" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

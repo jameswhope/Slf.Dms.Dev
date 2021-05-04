@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fbbf8a03-c3fd-4a5f-9bfe-3130e4c0642d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://sdkstage.microbilt.com/WebServices/Ex/ExStd.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ExStd.xsd" MetadataType="Schema" ID="ef55810a-4bc0-46d8-b12c-b62ff4b70328" SourceId="1" SourceUrl="https://sdkstage.microbilt.com/WebServices/EX/ExStd.svc?xsd=xsd2" />
+    <MetadataFile FileName="ExStd1.xsd" MetadataType="Schema" ID="c33f8e8d-9cc5-4787-98f8-46dc42a40de6" SourceId="1" SourceUrl="https://sdkstage.microbilt.com/WebServices/EX/ExStd.svc?xsd=xsd0" />
+    <MetadataFile FileName="ExStdSvc.wsdl" MetadataType="Wsdl" ID="3dba980d-1aeb-4412-802e-3ad504b11a3c" SourceId="1" SourceUrl="https://sdkstage.microbilt.com/WebServices/Ex/ExStd.svc?wsdl" />
+    <MetadataFile FileName="ExStd.wsdl" MetadataType="Wsdl" ID="cf721869-6334-43b4-bc97-ee30e8e5960f" SourceId="1" SourceUrl="https://sdkstage.microbilt.com/WebServices/EX/ExStd.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ExStd2.xsd" MetadataType="Schema" ID="5af12f87-9239-4a67-a822-e885efe24ce2" SourceId="1" SourceUrl="https://sdkstage.microbilt.com/WebServices/EX/ExStd.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

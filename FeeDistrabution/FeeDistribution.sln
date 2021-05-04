@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "FeeDistribution", "FeeDistrabution\FeeDistribution.rptproj", "{0F867B93-F21A-4A5D-BD27-CA32861B1C43}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://lex-dev-30:8080/
+		SccProjectUniqueName0 = FeeDistrabution\\FeeDistribution.rptproj
+		SccProjectName0 = FeeDistrabution
+		SccLocalPath0 = FeeDistrabution
+		SccLocalPath1 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Production|Default = Production|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.Debug|Default.ActiveCfg = Debug
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.Debug|Default.Build.0 = DebugLocal
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.Debug|Default.Deploy.0 = DebugLocal
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.DebugLocal|Default.Build.0 = DebugLocal
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.Production|Default.ActiveCfg = Production
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.Production|Default.Build.0 = Production
+		{0F867B93-F21A-4A5D-BD27-CA32861B1C43}.Production|Default.Deploy.0 = Production
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

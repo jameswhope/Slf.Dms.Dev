@@ -1,0 +1,23 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "DBScripts"
+   MSDTVersion = "80"
+   DefDBRef = "sql2.DMS_DEV.dbo"
+   SccProjectName = "SAK"
+   SccLocalPath = "SAK"
+   SccAuxPath = "SAK"
+   SccProvider = "SAK"
+   Begin DBRefFolder = "Database References"
+      Begin DBRefNode = "sql2.DMS_DEV.dbo"
+         ConnectStr = "Data Source=SQL2;Initial Catalog=DMS_DEV;Integrated Security=True"
+         Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
+         Colorizer = 6
+      End
+   End
+   Begin Folder = "StoredProcs"
+      Script = "stp_GetJobStepLastRunTime.sql"
+      Script = "stp_GetPaymentCommissionDiff.sql"
+   End
+   Begin Folder = "Tables"
+      Script = "tblPaymentCommissionDiff.sql"
+   End
+End

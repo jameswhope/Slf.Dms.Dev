@@ -1,0 +1,67 @@
+﻿Imports System
+Imports System.IO
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.Collections.Generic
+Imports System.Data
+Imports System.Xml.Linq
+Imports System.Data.SqlClient
+Imports Drg.Util.DataAccess
+Imports Drg.Util.DataHelpers
+Partial Class processing_popups_ProcessSettlement
+    Inherits System.Web.UI.Page
+
+#Region "Declaration"
+    Public SettlementID As Integer = 0
+    Public UserID As Integer = 0
+    Private Information As SettlementMatterHelper.SettlementInformation
+#End Region
+
+#Region "Events"
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        UserID = DataHelper.Nz_int(Page.User.Identity.Name)
+        If Session("UserID") Is Nothing Then
+            Session("UserID") = UserID
+        End If
+
+        If Not Request.QueryString("sid") Is Nothing Then
+            SettlementID = Integer.Parse(Request.QueryString("sid"))
+        End If
+
+    End Sub
+
+    Protected Sub lnkSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSave.Click
+        Information = SettlementMatterHelper.GetSettlementInformation(SettlementID)
+        Dim CheckNumber As Integer
+        Dim MatterId As Integer = CInt(DataHelper.FieldLookup("tblSettlements", "MatterId", "SettlementId=" & SettlementID))
+
+        CheckNumber = CInt(DataHelper.FieldLookup("tblAccount_PaymentProcessing", "CheckNumber", "MatterId = " & MatterId))
+        Dim CheckAmount As Double = CDbl(DataHelper.FieldLookup("tblAccount_PaymentProcessing", "CheckAmount", "MatterId = " & MatterId))
+
+        Dim RegisterXml As XElement = SettlementMatterHelper.InsertSettlementPayments(Information.ClientID, Information.AccountID, CheckNumber, UserID, SettlementID)
+
+        Dim RegisterId = CInt(RegisterXml.Attribute("Id").Value)
+        Dim FeeRegisterId = CInt(RegisterXml.Attribute("FeeId").Value)
+
+        Using connection As IDbConnection = ConnectionFactory.Create()
+            connection.Open()
+
+            Using cmd As IDbCommand = connection.CreateCommand()
+                cmd.CommandText = "stp_ResolveSettlementProcessing"
+                cmd.CommandType = CommandType.StoredProcedure
+                DatabaseHelper.AddParameter(cmd, "SettlementId", SettlementID)
+                DatabaseHelper.AddParameter(cmd, "Note", IIf(String.IsNullOrEmpty(txtNote.Text), Nothing, txtNote.Text))
+                DatabaseHelper.AddParameter(cmd, "CreatedBy", UserID)
+                DatabaseHelper.AddParameter(cmd, "Reference", IIf(String.IsNullOrEmpty(txtRefernce.Text), Nothing, txtRefernce.Text))
+                DatabaseHelper.AddParameter(cmd, "CheckNumber", CheckNumber)
+                DatabaseHelper.AddParameter(cmd, "CheckAmount", CheckAmount)
+                DatabaseHelper.AddParameter(cmd, "RegisterId", RegisterId)
+                DatabaseHelper.AddParameter(cmd, "FeeRegisterId", FeeRegisterId)
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
+
+        ClientScript.RegisterClientScriptBlock(GetType(Page), "ProcessConfirmation", "<script> window.onload = function() { CloseConfirmationWindow(); } </script>")
+    End Sub
+#End Region
+End Class

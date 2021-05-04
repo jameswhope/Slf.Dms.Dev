@@ -1,0 +1,21 @@
+<License Version="1.0">
+  <Customer Name="Data Research Group" />
+  <Products>
+    <Product AssemblyName="AssistedSolutions.WebControls.InputMask" Version="3.0.0" ExpirationDate="9999-12-31" Type="Commercial" Scope="Redistributable" />
+  </Products>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>r8cNG7Q+y3auaHx0xEH82Z026a8=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>ICLfp+qXbb9kXiget2DzSwgJ3Xn4ZiMXP5vlL1Wuef0hdAh87FH+LPmua4yKiqlpD0JMOUF/u6bE9HtB/v2CtJnYJY0KbaUH1XNM3lyS5GO77B4qrjvPuqM1CojL8/SVUH2lwSHUZXWyxTTKolBnTbfwsiXpBo5x1jD0zuvF0Vw=</SignatureValue>
+  </Signature>
+</License>

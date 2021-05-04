@@ -1,0 +1,1 @@
+﻿INSERT INTO [tblRelationType]([Table],[KeyField],[Name],[IconURL],[NavigateURL],[DocRelation]) VALUES ('tblSettlements','settlementid','Settlement','~/images/16x16_form_red.png','~/clients/client/creditors/mediation/calculator.aspx?id=$x$','account')

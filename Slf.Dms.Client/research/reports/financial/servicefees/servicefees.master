@@ -1,0 +1,8 @@
+<%@ Master Language="VB" CodeFile="servicefees.master.vb" Inherits="research_reports_financial_servicefees_servicefees" MasterPageFile="~/research/research.master" %>
+
+<asp:Content runat="server" ContentPlaceHolderID="cphBody" ID="cntBody">
+    <asp:ContentPlaceHolder ID="cphBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="cphBodyAgency" ID="cntBodyAgency">
+    <asp:ContentPlaceHolder ID="cphBodyAgency" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

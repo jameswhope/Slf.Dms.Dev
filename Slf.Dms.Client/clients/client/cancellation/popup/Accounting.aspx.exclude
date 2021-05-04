@@ -1,0 +1,19 @@
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Accounting.aspx.vb" Inherits="Clients_client_cancellation_popup_Accounting" %>
+<%@ Register Src="~/Clients/client/cancellation/webparts/CancellationSummary.ascx" TagName="CancelSummary"
+    TagPrefix="webPart" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Cancellation Information</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <ajaxToolkit:ToolkitScriptManager ID="smCancel" runat="server">
+    </ajaxToolkit:ToolkitScriptManager>
+    <div>
+        <webPart:CancelSummary runat="server" ID="cSummary" />
+    </div>
+    </form>
+</body>
+</html>

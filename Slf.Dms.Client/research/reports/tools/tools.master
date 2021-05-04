@@ -1,0 +1,32 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/research/research.master" AutoEventWireup="false" CodeFile="tools.master.vb" Inherits="ToolsMaster" %>
+
+<asp:Content ID="cntBody" ContentPlaceHolderID="cphBody" Runat="Server">
+<ajaxToolkit:ToolkitScriptManager ID="smTools" runat="server" />
+<asp:PlaceHolder ID="pnlBody" runat="server">
+
+    <script type="text/javascript">
+
+    function sideTab_OnMouseOver(obj)
+    {
+        obj.style.color = "rgb(90,90,90)";
+        obj.style.backgroundColor = "rgb(240,245,251)";
+    }
+    function sideTab_OnMouseOut(obj)
+    {
+        obj.style.color = "";
+        obj.style.backgroundColor = "";
+    }
+
+    </script>
+
+    
+</asp:PlaceHolder>
+<table style="width: 100%; height: 100%;" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td valign="top">
+                <asp:contentplaceholder id="cphBody" runat="server"></asp:contentplaceholder>
+            </td>
+        </tr>
+    </table>
+
+</asp:Content>

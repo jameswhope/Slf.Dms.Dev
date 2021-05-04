@@ -1,0 +1,461 @@
+﻿Imports Drg.Util.DataHelpers
+Imports System.Data
+Imports Drg.Util.DataAccess
+Imports System.Data.SqlClient
+Imports GridViewHelper
+Partial Class Clients_client_cancellation_webparts_CancellationNotes
+    Inherits System.Web.UI.UserControl
+#Region "View Comms modules"
+#Region "Declares"
+    Public DataClientID As String = ""
+    Public ClientName As String = ""
+
+    Public PhoneCallID As Integer
+    Private qs As Drg.Util.Helpers.QueryStringCollection
+    Private baseTable As String = "tblNote"
+    Public ContextSensitive As String
+
+    Public Enum FormType
+        Comms = 0
+        Note = 1
+        PhoneCall = 2
+        Litigation = 3
+    End Enum
+#End Region
+
+#Region "Events"
+#Region "CommsGridview"
+    Protected Sub gvNotes_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvNotes.PageIndexChanging
+        gvNotes.PageIndex = e.NewPageIndex
+
+        Dim dtNotes As DataTable = DirectCast(ViewState("gvNotesDataSource"), DataTable)
+        gvNotes.DataSource = dtNotes
+        gvNotes.DataBind()
+    End Sub
+    Protected Sub lnkOpenPhoneCall_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkOpenPhoneCall.Click
+        Me.hdnAction.Value = "e"
+
+        LoadCall(CInt(hdnFieldId.Value))
+        ShowForm(FormType.PhoneCall)
+    End Sub
+    Protected Sub lnkOpenNote_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkOpenNote.Click
+        Me.hdnAction.Value = "e"
+
+        LoadNote(CInt(hdnFieldId.Value))
+        ShowForm(FormType.Note)
+    End Sub
+    Protected Sub gvNotes_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvNotes.RowDataBound
+        Select Case e.Row.RowType
+
+            Case DataControlRowType.DataRow
+
+                e.Row.Style("cursor") = "hand"
+                e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor = '#f3f3f3'; ")
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor = '#ffffff'; this.style.textDecoration = 'none';")
+
+
+                e.Row.Attributes.Add("cellspacing", "0px")
+                e.Row.Style("height") = "5px"
+
+
+                Dim rowView As DataRowView = CType(e.Row.DataItem, DataRowView)
+
+                e.Row.Attributes.Add("onclick", "javascript:OpenRecord('" & rowView("type").ToString.ToLower & "'," & CInt(rowView("fieldid")) & ")")
+
+                Dim lblD As Label = e.Row.FindControl("noteText")
+                Dim descText As String = rowView("message")
+
+                If descText.Length > 100 Then
+                    lblD.Text = descText.Substring(0, 100) & "..."
+                Else
+                    lblD.Text = descText
+                End If
+
+                Dim img As Image = e.Row.FindControl("imgDir")
+
+                Select Case rowView("type").ToString.ToLower
+
+                    Case "phonecall"
+                        img.ImageUrl = "~/images/16x16_call" & IIf(rowView("direction") = True, "out", "in") & ".png"
+                    Case "mail"
+                        img.ImageUrl = "~/images/16x16_email_read.png"
+                    Case Else
+                        img.ImageUrl = "~/images/16x16_note.png"
+
+                End Select
+        End Select
+    End Sub
+    Protected Sub gvNotes_Sorting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSortEventArgs) Handles gvNotes.Sorting
+
+        Dim dtNotes As DataTable = DirectCast(ViewState("gvNotesDataSource"), DataTable)
+
+        If Not dtNotes Is Nothing Then
+
+            Dim gv As GridView = DirectCast(sender, GridView)
+            GridViewHelper.AppendSortOrderImageToGridHeader(e.SortDirection, e.SortExpression, gv)
+
+            Dim dataView As DataView = New DataView(dtNotes)
+            Dim sortExp As String = "[" & e.SortExpression & "]"
+
+            If sortExp = "[Note]" Then
+                sortExp = "[message] "
+            End If
+            If ViewState("SortDir") = "ASC" Then
+                sortExp += " DESC"
+                ViewState("SortDir") = "DESC"
+            Else
+                sortExp += " ASC"
+                ViewState("SortDir") = "ASC"
+            End If
+
+            dataView.Sort = sortExp
+
+            Dim dtSort As DataTable = dataView.ToTable
+            gvNotes.DataSource = dtSort
+            gvNotes.DataBind()
+
+            ViewState("gvNotesDataSource") = dtSort
+
+        End If
+
+
+    End Sub
+    Protected Sub ddlPage_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim ddlCurrentPage As DropDownList = DirectCast(sender, DropDownList)
+
+        gvNotes.PageIndex = ddlCurrentPage.SelectedValue - 1
+
+        Dim dtNotes As DataTable = DirectCast(ViewState("gvNotesDataSource"), DataTable)
+        gvNotes.DataSource = dtNotes
+        gvNotes.DataBind()
+
+
+    End Sub
+#End Region
+
+    
+#End Region
+
+#Region "Subs/Funcs"
+    Public Sub LoadCommData(ByVal sClientID As String)
+        Me.hiddenIDs.Value = sClientID
+        ViewState("SortDir") = "ASC"
+
+        Dim sqlSelect As String = "stp_GetCommunicationForClient " & "@returntop = '50'" & ", @clientid = " & sClientID & " "
+
+        Using saTemp = New SqlClient.SqlDataAdapter(sqlSelect, System.Configuration.ConfigurationManager.AppSettings("connectionstring"))
+            Dim dtComm As New DataTable
+            saTemp.Fill(dtComm)
+
+            gvNotes.AutoGenerateColumns = False
+            Me.gvNotes.PageIndex = 0
+            Me.gvNotes.DataSource = dtComm
+            Me.gvNotes.DataBind()
+
+            ViewState("gvNotesDataSource") = Me.gvNotes.DataSource
+        End Using
+
+        PopulateExternal()
+        PopulateInternal()
+    End Sub
+    
+    Public Sub ShowForm(ByVal FormToShow As FormType)
+        Select Case FormToShow
+            Case FormType.Comms
+                Me.pnlComms.Style("display") = "block"
+                Me.pnlNote.Style("display") = "none"
+                Me.pnlCall.Style("display") = "none"
+                Me.pnlLit.Style("display") = "none"
+
+                Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+
+                Me.LoadCommData(IDs(0))
+
+            Case FormType.Note
+                Me.pnlComms.Style("display") = "none"
+                Me.pnlNote.Style("display") = "block"
+                Me.pnlCall.Style("display") = "none"
+                Me.pnlLit.Style("display") = "none"
+            Case FormType.PhoneCall
+                Me.pnlComms.Style("display") = "none"
+                Me.pnlNote.Style("display") = "none"
+                Me.pnlLit.Style("display") = "none"
+                Me.pnlCall.Style("display") = "block"
+            Case FormType.Litigation
+                Me.pnlComms.Style("display") = "none"
+                Me.pnlNote.Style("display") = "none"
+                Me.pnlCall.Style("display") = "none"
+                Me.pnlLit.Style("display") = "block"
+
+
+        End Select
+    End Sub
+#End Region
+#End Region
+
+#Region "Note Modules"
+
+#Region "Declares"
+
+    Public NoteID As Integer
+#End Region
+
+#Region "Subs/Funcs"
+    Private Sub LoadNote(ByVal sNoteID As Integer)
+
+        Me.hdnTempNoteID.Value = sNoteID
+        Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+        ClientName = ClientHelper.GetDefaultPersonName(IDs(0))
+        ltrNew.Text = "Note For " & ClientName
+
+        Dim rd As IDataReader = Nothing
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+
+        cmd.CommandText = "SELECT Created, CreatedBy, LastModified, LastModifiedBy, Value FROM tblNote WHERE NoteID = @NoteID"
+
+        DatabaseHelper.AddParameter(cmd, "NoteID", sNoteID)
+
+        Try
+
+            cmd.Connection.Open()
+            rd = cmd.ExecuteReader(CommandBehavior.SingleRow)
+
+            If rd.Read() Then
+                Dim created As DateTime = DatabaseHelper.Peel_date(rd, "Created")
+                Dim lastModified As DateTime = DatabaseHelper.Peel_date(rd, "LastModified")
+
+                txtCreatedBy.Text = UserHelper.GetName(DatabaseHelper.Peel_int(rd, "CreatedBy"))
+                txtCreatedDate.Text = created.ToShortDateString() + " at " + created.ToShortTimeString()
+                txtLastModifiedBy.Text = UserHelper.GetName(DatabaseHelper.Peel_int(rd, "LastModifiedBy"))
+                txtLastModifiedDate.Text = lastModified.ToShortDateString() + " at " + lastModified.ToShortTimeString()
+
+                txtMessage.Text = DatabaseHelper.Peel_string(rd, "Value")
+
+            End If
+        Finally
+            DatabaseHelper.EnsureReaderClosed(rd)
+            DatabaseHelper.EnsureConnectionClosed(cmd.Connection)
+        End Try
+
+    End Sub
+
+    Private Function InsertOrUpdateNote() As Integer
+        If Me.hdnAction.Value = "a" Then
+            Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+
+            NoteHelper.InsertNote(txtMessage.Text, CInt(Page.User.Identity.Name), IDs(0))
+        Else
+            NoteID = Me.hdnTempNoteID.Value
+            NoteHelper.UpdateNote(NoteID, txtMessage.Text, CInt(Page.User.Identity.Name))
+        End If
+
+        Return NoteID
+    End Function
+#End Region
+
+#Region "Events"
+    Protected Sub lnkAddNote_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkAddNote.Click
+        Me.hdnAction.Value = "a"
+        Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+        ClientName = ClientHelper.GetDefaultPersonName(IDs(0))
+        ltrNew.Text = "New Note For " & ClientName
+        Dim now As DateTime = DateTime.Now
+
+        txtCreatedBy.Text = UserHelper.GetName(CInt(Page.User.Identity.Name))
+        txtCreatedDate.Text = now.ToShortDateString() '+ " at " + now.ToShortTimeString()
+        txtLastModifiedBy.Text = UserHelper.GetName(CInt(Page.User.Identity.Name))
+        txtLastModifiedDate.Text = now.ToShortDateString() '+ " at " + now.ToShortTimeString()
+        txtMessage.Text = ""
+        Me.ShowForm(FormType.Note)
+    End Sub
+    Protected Sub lnkCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkCancel.Click
+        Me.ShowForm(FormType.Comms)
+    End Sub
+    Protected Sub lnkSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSave.Click
+
+        Me.InsertOrUpdateNote()
+        Me.ShowForm(FormType.Comms)
+    End Sub
+#End Region
+
+#End Region
+
+#Region "Phone Call Modules"
+
+#Region "Declares"
+
+#End Region
+
+#Region "Subs/Funcs"
+    Private Sub PopulateExternal()
+        Dim rd As IDataReader = Nothing
+
+        Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+        DataClientID = IDs(0)
+
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+
+        cmd.CommandText = "SELECT FirstName, LastName, PersonID FROM tblPerson WHERE ClientID = @ClientID"
+
+        DatabaseHelper.AddParameter(cmd, "ClientID", DataClientID)
+
+        Try
+
+            cmd.Connection.Open()
+            rd = cmd.ExecuteReader()
+
+            cboExternal.Items.Clear()
+            cboExternal.Items.Add(New ListItem("", "0"))
+            cboExternal.SelectedIndex = 0
+
+            While rd.Read()
+                Dim Name As String = DatabaseHelper.Peel_string(rd, "FirstName") & " " & DatabaseHelper.Peel_string(rd, "LastName")
+                cboExternal.Items.Add(New ListItem(Name, DatabaseHelper.Peel_int(rd, "PersonID").ToString))
+            End While
+
+        Finally
+            DatabaseHelper.EnsureReaderClosed(rd)
+            DatabaseHelper.EnsureConnectionClosed(cmd.Connection)
+        End Try
+    End Sub
+    Private Sub PopulateInternal()
+        Dim rd As IDataReader = Nothing
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+
+        cmd.CommandText = "SELECT FirstName, LastName, UserId FROM tblUser"
+
+        Try
+
+            cmd.Connection.Open()
+            rd = cmd.ExecuteReader()
+
+            cboInternal.Items.Clear()
+            cboInternal.Items.Add(New ListItem("", "0"))
+            cboInternal.SelectedIndex = 0
+
+            While rd.Read()
+                Dim Name As String = DatabaseHelper.Peel_string(rd, "FirstName") & " " & DatabaseHelper.Peel_string(rd, "LastName")
+                cboInternal.Items.Add(New ListItem(Name, DatabaseHelper.Peel_int(rd, "UserID").ToString))
+            End While
+
+        Finally
+            DatabaseHelper.EnsureReaderClosed(rd)
+            DatabaseHelper.EnsureConnectionClosed(cmd.Connection)
+        End Try
+    End Sub
+    Private Sub LoadCall(ByVal PhoneID As Integer)
+        Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+        ClientName = ClientHelper.GetDefaultPersonName(IDs(0))
+        ltrNewCall.Text = "Phone Call Note For " & ClientName
+
+        Dim rd As IDataReader = Nothing
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+
+        cmd.CommandText = "SELECT * FROM tblPhoneCall WHERE PhoneCallID = @PhoneCallID"
+
+        DatabaseHelper.AddParameter(cmd, "PhoneCallID", PhoneID)
+
+        Try
+
+            cmd.Connection.Open()
+            rd = cmd.ExecuteReader(CommandBehavior.SingleRow)
+
+            If rd.Read() Then
+
+                Dim created As DateTime = DatabaseHelper.Peel_date(rd, "Created")
+                Dim lastModified As DateTime = DatabaseHelper.Peel_date(rd, "LastModified")
+
+
+                txtCallMsg.Text = rd("Body").ToString
+                txtSubject.Text = DatabaseHelper.Peel_string(rd, "Subject")
+                txtStarted.Text = DatabaseHelper.Peel_date(rd, "StartTime").ToString("MM/dd/yyyy hh:mm:ss tt")
+                txtEnded.Text = DatabaseHelper.Peel_date(rd, "EndTime").ToString("MM/dd/yyyy hh:mm:ss tt")
+                txtPhoneNumber.Text = DatabaseHelper.Peel_string(rd, "PhoneNumber")
+
+                ListHelper.SetSelected(cboExternal, DatabaseHelper.Peel_int(rd, "PersonID").ToString())
+                ListHelper.SetSelected(cboInternal, DatabaseHelper.Peel_int(rd, "UserID").ToString())
+
+                Select Case DatabaseHelper.Peel_bool(rd, "Direction")
+
+                    Case True
+                        rbOutgoing.Checked = True
+                        rbIncoming.Checked = False
+                    Case False
+                        rbOutgoing.Checked = False
+                        rbIncoming.Checked = True
+                        ltrSwapOnLoad.Text = "<script>var cboInternal = document.getElementById(""" + cboInternal.ClientID + """);"
+                        ltrSwapOnLoad.Text += "var cboExternal = document.getElementById(""" + cboExternal.ClientID + """);"
+                        ltrSwapOnLoad.Text += "var tdSenderHolder = document.getElementById(""" + tdSenderHolder.ClientID + """);"
+                        ltrSwapOnLoad.Text += "var tdRecipientHolder = document.getElementById(""" + tdRecipientHolder.ClientID + """);"
+                        ltrSwapOnLoad.Text += "tdSenderHolder.appendChild(cboExternal);"
+                        ltrSwapOnLoad.Text += "tdRecipientHolder.appendChild(cboInternal);</script>"
+                End Select
+
+            End If
+
+        Finally
+            DatabaseHelper.EnsureReaderClosed(rd)
+            DatabaseHelper.EnsureConnectionClosed(cmd.Connection)
+        End Try
+
+    End Sub
+    Private Function InsertOrUpdatePhoneCall() As Integer
+        Dim startDate As DateTime
+        Dim endDate As DateTime
+
+        If Not DateTime.TryParse(txtStarted.Text, startDate) Then
+            startDate = DateTime.Now
+        End If
+
+        If Not DateTime.TryParse(txtEnded.Text, endDate) Then
+            endDate = DateTime.Now
+        End If
+
+        If Me.hdnAction.Value = "a" Then
+            Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+            DataClientID = IDs(0)
+
+            PhoneCallID = PhoneCallHelper.InsertPhoneCall(DataClientID, CInt(Page.User.Identity.Name), cboInternal.SelectedValue, cboExternal.SelectedValue, rbOutgoing.Checked, txtPhoneNumber.Text.Replace("(", "").Replace(")", "").Replace("-", ""), txtCallMsg.Text, txtSubject.Text, startDate, endDate)
+        Else
+
+            PhoneCallHelper.UpdatePhoneCall(PhoneCallID, CInt(Page.User.Identity.Name), DataHelper.Nz_int(cboInternal.SelectedValue), _
+            DataHelper.Nz_int(cboExternal.SelectedValue), rbOutgoing.Checked, txtPhoneNumber.Text.Replace("(", "").Replace(")", "").Replace("-", ""), _
+            txtCallMsg.Text, txtSubject.Text, startDate, endDate)
+
+        End If
+
+        Return PhoneCallID
+    End Function
+#End Region
+
+#Region "Events"
+    Protected Sub lnkAddCall_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkAddCall.Click
+        Me.hdnAction.Value = "a"
+        Dim IDs As String() = Me.hiddenIDs.Value.Split(":")
+        DataClientID = IDs(0)
+        ClientName = ClientHelper.GetDefaultPersonName(DataClientID)
+        ltrNew.Text = "New Phone Call Note For " & ClientName
+        txtCallMsg.Text = ""
+        txtStarted.Text = Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+        txtEnded.Text = ""
+        txtPhoneNumber.Text = ""
+        ListHelper.SetSelected(cboInternal, CInt(Page.User.Identity.Name))
+        ListHelper.SetSelected(cboExternal, "")
+
+        hdnTempPhoneCallID.Value = SharedFunctions.DocumentAttachment.GetUniqueTempID()
+
+        ShowForm(FormType.PhoneCall)
+    End Sub
+    Protected Sub lnkCancelCall_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkCancelCall.Click
+        Me.ShowForm(FormType.Comms)
+    End Sub
+    Protected Sub lnkSaveCall_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSaveCall.Click
+        InsertOrUpdatePhoneCall()
+        Me.ShowForm(FormType.Comms)
+    End Sub
+#End Region
+
+#End Region
+
+   
+End Class

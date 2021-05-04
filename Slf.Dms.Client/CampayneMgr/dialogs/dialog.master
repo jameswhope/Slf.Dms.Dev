@@ -1,0 +1,70 @@
+﻿<%@ Master Language="VB" CodeFile="dialog.master.vb" Inherits="dialogs_dialog"  %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="act" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="~/css/identifyle.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="../jquery/css/ui-lightness/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+    <link type="text/css" href="~/jquery/css/toast/jquery.toastmessage.css" rel="stylesheet" />
+    <link href="../jquery/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../jquery/jqgrid/ui.jqgrid.css" />
+    <script type="text/javascript">
+        function doAjax(functionName, functionArrayArgs, doAsync, onSuccess, onError) {
+            var obj = null;
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "../service/cmService.asmx/" + functionName,
+                data: functionArrayArgs,
+                dataType: "json",
+                async: doAsync,
+                success: function (response) {
+                    onSuccess(response);
+                },
+                error: function (response) {
+                    onError(response.responseText);
+                }
+            });
+        }
+    </script>
+
+    <asp:ContentPlaceHolder id="dialogHeadCnt" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <act:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePageMethods="true">
+        <Scripts>
+            <asp:ScriptReference Path="~/jquery/jquery-1.7.2.min.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/jquery-ui-1.8.20.custom.min.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/jquery.maskedinput-1.3.min.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/ckeditor/ckeditor.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/ckeditor/adapters/jquery.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/jquery.listnav.min-2.1.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/jquery.toastmessage.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/highcharts.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/table2CSV.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/campayne.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/json2.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/jquery.dataTables.min.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/plupload/plupload.full.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/plupload/jquery.plupload.queue/jquery.plupload.queue.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/jqgrid/grid.locale-en.js"  ScriptMode="Release"/>
+            <asp:ScriptReference Path="~/jquery/jqgrid/jquery.jqGrid.min.js"  ScriptMode="Release"/>
+            <asp:ScriptReference Path="~/jquery/jqgrid/grid.formedit.js"  ScriptMode="Release"/>
+            <asp:ScriptReference Path="~/jquery/jqgrid/grid.common.js"  ScriptMode="Release"/>
+            <asp:ScriptReference Path="~/jquery/jqgrid/json2.js"  ScriptMode="Release"/>
+            <asp:ScriptReference Path="~/jquery/jqgrid/jqModal.js"  ScriptMode="Release"/>
+            <asp:ScriptReference Path="~/jquery/jqgrid/jqDnR.js"  ScriptMode="Release"/>
+        </Scripts>
+    </act:ToolkitScriptManager>
+    <div>
+        <asp:ContentPlaceHolder id="cphDialogBody" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

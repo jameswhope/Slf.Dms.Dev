@@ -1,0 +1,166 @@
+<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="StatementPrep.aspx.vb" Inherits="search" title="DMP - Client Statement Preperation" %>
+<%@ Register TagPrefix="asi" Namespace="Slf.Dms.Controls" Assembly="Slf.Dms.Controls" %>
+<%@ Import Namespace="Drg.Util.DataHelpers" %>
+
+<asp:Content ID="cphMenu" ContentPlaceHolderID="cphMenu" Runat="Server"><asp:Panel ID="pnlMenu" runat="server">
+
+    <asp:Panel runat="server" ID="pnlMenuDefault">
+        <table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false">
+            <tr>
+                <td><img width="8" height="28" src="~/images/spacer.gif" runat="server" /></td>
+                <td nowrap="true">
+                    <a class="menuButton" href="~/" runat="server">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_web_home.png" />Home Page</a></td>
+                <td class="menuSeparator">|</td>
+                <asp:PlaceHolder ID="pnlEnrollNewClient" runat="server">
+                <td nowrap="true">
+                    <a class="menuButton" href="~/clients/new" runat="server">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_person.png" />Screen New Client</a></td>
+                </asp:PlaceHolder>
+                <!--<td class="menuSeparator">|</td>
+                <td nowrap="true">
+                    <a class="menuButton" runat="server" href="~/tasks/task/new.aspx">
+                        <img runat="server" align="absmiddle" border="0" class="menuButtonImage" src="~/images/16x16_calendar_add.png" />Add New Task</a></td>-->
+                <td style="width:100%;">&nbsp;</td>
+                <td><img width="8" height="28" src="~/images/spacer.gif" runat="server" /></td>
+            </tr>
+        </table>
+    </asp:Panel>
+
+</asp:Panel></asp:Content>
+
+<asp:Content ID="cphBody" ContentPlaceHolderID="cphBody" Runat="Server"><asp:Panel id="pnlBody" runat="server">
+
+<body>
+
+<script type="text/javascript" src="<%= ResolveUrl("~/jscript/controls/xptabstrip.js") %>"></script>
+<script type="text/javascript">
+
+var SearchPanes = new Array();
+
+function RowHover(td, on)
+{
+    if (on)
+	    td.parentElement.style.backgroundColor = "#f5f5f5";
+    else
+	    td.parentElement.style.backgroundColor = "";
+}
+function TaskClick(TaskID)
+{
+    window.navigate("<%= ResolveUrl("~/tasks/task/resolve.aspx?id=") %>" + TaskID);
+}
+function ClientHover(td, on)
+{
+    if (on)
+	    td.parentElement.style.backgroundColor = "#f5f5f5";
+    else
+	    td.parentElement.style.backgroundColor = "";
+}
+function ClientClick(ClientID)
+{
+    window.navigate("<%= ResolveUrl("~/clients/client/?id=") %>" + ClientID);
+
+    window.event.cancelBubble = true;
+
+    return false;
+}
+function NoteHover(td, on)
+{
+    if (on)
+	    td.parentElement.style.backgroundColor = "rgb(255,255,210)";
+    else
+	    td.parentElement.style.backgroundColor = "rgb(255,255,234)";
+}
+function NoteClick(NoteID)
+{
+    window.navigate("<%= ResolveUrl("~/clients/client/?id=") %>" + NoteID);
+
+    window.event.cancelBubble = true;
+
+    return false;
+}
+</script>
+
+    <asp:Panel runat="server" ID="pnlBodyDefault">
+        <table style="font-family:tahoma;font-size:11px;width: 100%; height: 100%;" cellpadding="0" cellspacing="20" border="0">
+            <tr>
+                <td valign="top" style="width:75%;">
+                    <table style="table-layout:fixed;font-family:tahoma;font-size:11px;width:100%;" cellpadding="5" cellspacing="0" border="0">
+                        <tr>
+                            <td><a runat="server" id="lnkSimple">S</a>ingle Statement&nbsp;&nbsp;|&nbsp;&nbsp;<a runat="server" id="lnkAdvanced">S</a>tatements 
+                                for the Period</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table style="font-family:tahoma;font-size:11px;width:640px;" cellpadding="0" 
+                                    cellspacing="0" border="0">
+                                    <caption>
+                                        &nbsp; &nbsp; Statement(s) for the period
+                                    </caption>
+                                            <tr>
+                                                <td style="width: 686px">
+                                                    Client Account Number for Single statement:
+                                                    <asp:TextBox ID="txtAccountNumber" runat="server" CssClass="entry" Width="105px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                                <tr>
+                                                    <td style="width: 686px">
+                                                        Start Date:
+                                                        <asp:TextBox ID="txtStartDate" runat="server" CssClass="entry" Width="105px"></asp:TextBox>
+                                                        End Date:
+                                                        <asp:TextBox ID="txtEndDate" runat="server" CssClass="entry" Width="105px"></asp:TextBox>
+                                                    </td>
+                                                    <td style="padding-left:5;width:16;">
+                                                        <asp:LinkButton ID="lnkCreateStatements" runat="server"><img id="Img4" 
+                                                src="~/images/16x16_arrowright_clear.png" runat="server" align="middle" 
+                                                border="0" />
+</asp:LinkButton>
+                                                    </td>
+                                                </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:0 5 10 5;color:#a1a1a1;font-style:italic;">
+                    <br />
+                </td>
+            </tr>
+        </table>
+        <div ID="dvSearch1" runat="server" style="padding-top:10;">
+            <asp:Panel ID="pnlNoStatement" runat="server" 
+                style="text-align:center;color:#a1a1a1;padding: 5 5 5 5;">
+                No statement information is available for the period selected.</asp:Panel>
+        </div>
+        <table>
+        <tr>
+        <td>
+        <div ID="dvStatementsPrepared" runat="server" style="padding-top:10;">
+        </div>
+        </td>
+        <td style='background-image: url(<%= ResolveUrl("~/images/dot.png") %>); background-repeat: repeat-y; background-position: center top;'>
+            <img runat="server" height="1" src="~/images/spacer.gif" width="3" /></td>
+        <td style="width:20%;" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+            </table>
+        </td>
+        </tr>
+        </table>
+    </asp:Panel>
+
+    <!-- The following linkbutton controls are only on the page so that the client script (above)
+            can call a postback event handled by one of these controls.  They have not inner value
+            so they will not be visibly displayed on the page -->
+
+    <asp:LinkButton runat="server" ID="lnkSave"></asp:LinkButton>
+    <asp:LinkButton runat="server" ID="lnkClear"></asp:LinkButton>
+
+</body>
+
+</asp:Panel></asp:Content>

@@ -1,0 +1,325 @@
+﻿.ajax__calendar_container { z-index : 1001 ; }
+
+.enrollment_body
+{
+	margin: 0 10px 10px 10px;
+}
+.enrollment_body td
+{
+	font-family: tahoma;
+    font-size: 11px;
+    padding:0 10px 0 0;
+}
+.enrollment_body a
+{
+	color:rgb(50,112,163);
+	text-decoration:none;
+}
+.enrollment_body a:hover
+{
+	text-decoration:underline;
+}
+.entry
+{
+    font-family: tahoma;
+    font-size: 11px;
+    width: 100%;
+    border: solid 1px #7F9DB9;
+    height: 19px;
+}
+table
+{
+    font-family: tahoma;
+    font-size: 11px;
+}
+.window
+{
+    width: 100%;
+    background-color: #f1f1f1;
+    margin: 0 0 10px 0;
+    border:solid 1px #e1e1e1;
+}
+.window2
+{
+    background-color: #f1f1f1;
+    margin: 0 0 10px 0;
+    border:solid 1px #e1e1e1;
+}
+.window h2, .window2 h2, .window h3
+{
+    background-color: #F0E68C;
+    height: 22px;
+    font-weight: bold;
+    font-family: tahoma;
+    font-size: 11px;
+    padding: 3px;
+    margin: 0;
+}
+.window h2 a, .window2 h2 a
+{
+	font-weight:normal;
+	float:right;
+}
+.window h3
+{
+	font-weight:normal;
+}
+.window td, .window2 td
+{
+    padding: 1px 1px 1px 1px;
+}
+.calculator
+{
+	border-collapse:collapse;
+}
+.calculator td
+{
+    padding: 0;
+    border-bottom:solid 1px #f1f1f1;
+    border-right:solid 1px #f1f1f1;
+}
+.calculator h2
+{
+    background-color: #4682B4;
+    height: 20px;
+    font-weight: bold;
+    font-family: tahoma;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+    padding: 3px;
+    margin: 0;
+}
+.calculator h3
+{
+    padding: 3px;
+    background-color: #ADD8E6;
+    font-weight: normal;
+    font-family: tahoma;
+    font-size: 11px;
+    margin: 0;
+    white-space: nowrap;
+    text-align:left;
+}
+.calculator h4
+{
+    padding: 3px;
+    font-weight: normal;
+    font-family: tahoma;
+    font-size: 11px;
+    margin: 0;
+    white-space: nowrap;
+}
+.calculator h5
+{
+    padding: 3px;
+    font-weight: normal;
+    font-weight: bold;
+    font-family: tahoma;
+    font-size: 11px;
+    color: Yellow;
+    text-align: center;
+    margin: 0;
+    width: 55px;
+    display: inline;
+    background-color: #4682B4;
+    height: 20px;
+}
+.green
+{
+    background-color: #7CFC00;
+    height: 20px;
+    padding: 3px;
+}
+.red
+{
+    background-color: red;
+    color: yellow;
+    height: 20px;
+    padding: 3px;
+}
+.orange
+{
+    background-color: orange;
+    color: black;
+    height: 20px;
+    padding: 3px;
+}
+.summary
+{
+    width: 100%;
+    background-color: #f1f1f1;
+    margin: 0 0 15px 0;
+    border:solid 1px #e1e1e1;
+}
+.summary h2
+{
+    background-color: #F0E68C;
+    height: 20px;
+    font-weight: bold;
+    font-family: tahoma;
+    font-size: 11px;
+    padding: 3px;
+    margin: 0;
+}
+.summary td
+{
+    padding: 1px 1px 1px 1px;
+    height: 24px; 
+}
+.enrollmentMenuButton
+{
+	margin:1px;
+	padding:2px;
+	white-space:nowrap;
+	height:22px;
+	color:Black;
+	text-decoration:none;
+}
+.enrollmentMenuButtonHover, .enrollmentMenuButton:hover
+{
+	margin:1px;
+	padding:1px;
+	background-color:#e8f3ff;
+	border:solid 1px #336699;
+}
+  
+.top-col
+{
+	background-color:#4682B4;
+	color:#FFF;
+	font-weight:bold;
+	text-align:center;
+	border-left:solid 1px #FFF;
+	height:20px;
+	padding:3px;
+	margin:0;
+	white-space:nowrap;
+}
+.left-col
+{
+	background-color:#ADD8E6;
+	border-top:solid 1px;
+	height:20px;
+	padding:3px;
+	margin:0;
+	white-space:nowrap;
+}
+.center-col
+{
+	background-color:#FFF;
+	border-bottom:solid 1px #d3d3d3;
+	border-right:solid 1px #d3d3d3;
+	height:20px;
+	padding:3px;
+	margin:0;
+	text-align:right;
+	white-space:nowrap;
+}
+.center-col2
+{
+	background-color:#FFF;
+	border-bottom:solid 1px #d3d3d3;
+	border-right:solid 1px #d3d3d3;
+	height:20px;
+	padding:3px;
+	margin:0;
+	text-align:left;
+	white-space:nowrap;
+	vertical-align:top;
+}
+.center-col3
+{
+	background-color:#FFF;
+	border-bottom:solid 1px #d3d3d3;
+	border-right:solid 1px #d3d3d3;
+	height:20px;
+	padding:3px;
+	margin:0;
+	text-align:center;
+	white-space:nowrap;
+	vertical-align:top;
+}
+
+.estcalc
+{
+	width:100%;
+	border-collapse:collapse;
+}
+.estcalc th
+{
+	border-bottom:solid 1px #cccccc;
+	padding-bottom:2px;
+	text-align:left;
+}
+.estcalc-split td
+{
+	border-bottom:solid 1px #cccccc;
+	padding-bottom:2px;
+}
+
+ul#tabs
+{
+    list-style-type: none;
+    margin: 10px 0 0 0;
+    padding: 0 0 0.3em 0;
+}
+ul#tabs li
+{
+    display: inline;
+}
+ul#tabs li a
+{
+    color: #42454a;
+    background-color: #dedbde;
+    border: 1px solid #c9c3ba;
+    border-bottom: none;
+    padding: 0.3em 1.3em 0.3em 1.3em;
+    text-decoration: none;
+}
+ul#tabs li a:hover
+{
+    background-color: #f1f0ee;
+}
+ul#tabs li a.selected
+{
+    color: #000;
+    background-color: #fff;
+    font-weight: normal;
+    padding: 0.7em 1.3em 0.38em 1.3em;
+}
+div.tabContent
+{
+    border: 1px solid #c9c3ba;
+    padding: 0.5em;
+    background-color: #fff;
+}
+div.tabContent.hide
+{
+    display: none;
+}
+
+.creditortxt
+{
+    font-family: Tahoma;
+    font-size: 11px;
+    width: 100%;
+    border: solid 1px #c1c1c1;
+    background-color: #fff;
+}
+
+.DocHeader
+{
+    color: #999999;
+    text-decoration: none;
+    font-weight: normal;
+    font-style: italic;
+    border-width: 0px;
+    white-space: nowrap;
+}
+.DocItem
+{
+    color: #999999;
+    border-width: 0px;
+    white-space: nowrap;
+}

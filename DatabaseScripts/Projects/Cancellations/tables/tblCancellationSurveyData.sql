@@ -1,0 +1,67 @@
+﻿IF not EXISTS (SELECT * FROM sysobjects WHERE type = 'U' AND name = 'tblCancellationSurveyData')
+	BEGIN
+		CREATE TABLE [dbo].[tblCancellationSurveyData](
+		[CancellationSurveyID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+		[ClientID] [numeric](18, 0) NOT NULL,
+		[CheckedTransactionsForSettlementFees] [bit] NULL CONSTRAINT [DF__tblCancel__Check__246AB6DB]  DEFAULT ((0)),
+		[CheckedClientAgreesToPayOwedSettlementFees] [bit] NULL CONSTRAINT [DF__tblCancel__Check__255EDB14]  DEFAULT ((0)),
+		[VerifiedBankingInformationIsRemoved] [bit] NULL CONSTRAINT [DF__tblCancel__Verif__2652FF4D]  DEFAULT ((0)),
+		[ChangedStatusToCancelled] [bit] NULL CONSTRAINT [DF__tblCancel__Chang__27472386]  DEFAULT ((0)),
+		[VerifiedMailingAddressPhone] [bit] NULL CONSTRAINT [DF__tblCancel__Verif__283B47BF]  DEFAULT ((0)),
+		[CheckedNoRetainerAgengy] [bit] NULL CONSTRAINT [DF__tblCancel__Check__2A239031]  DEFAULT ((0)),
+		[CheckedLitigationStatusRepresentation] [bit] NULL CONSTRAINT [DF__tblCancel__Check__2B17B46A]  DEFAULT ((0)),
+		[CheckedForFinanceDeptNotes] [bit] NULL CONSTRAINT [DF__tblCancel__Check__2C0BD8A3]  DEFAULT ((0)),
+		[A_AskedClientToFaxMailCancellationRequest] [bit] NULL CONSTRAINT [DF__tblCancel__A_Ask__2CFFFCDC]  DEFAULT ((0)),
+		[A_InformedClientOnceRequestReceivedNoticeMailed] [bit] NULL CONSTRAINT [DF__tblCancel__A_Inf__2DF42115]  DEFAULT ((0)),
+		[A_MailedCancellationNotice] [bit] NULL CONSTRAINT [DF__tblCancel__A_Mai__2EE8454E]  DEFAULT ((0)),
+		[A_MailedCancellationNoticeDate] [datetime] NULL,
+		[A_AddedNoteToSystem] [bit] NULL CONSTRAINT [DF__tblCancel__A_Add__2FDC6987]  DEFAULT ((0)),
+		[B_AskedClientToFaxMailCancellationRequest] [bit] NULL CONSTRAINT [DF__tblCancel__B_Ask__30D08DC0]  DEFAULT ((0)),
+		[B_InformedClientProcessingReimbursementAccountBalance] [bit] NULL CONSTRAINT [DF__tblCancel__B_Inf__31C4B1F9]  DEFAULT ((0)),
+		[B_InformedClientProcessingReimbursementAccountBalanceAmount] [money] NULL CONSTRAINT [DF__tblCancel__B_Inf__32B8D632]  DEFAULT ((0.00)),
+		[B_InformedClientReimbursementProcessIsTwoWeeksFromRequestReceived] [bit] NULL CONSTRAINT [DF__tblCancel__B_Inf__33ACFA6B]  DEFAULT ((0)),
+		[B_InformedClientSignedRequestReceived] [bit] NULL CONSTRAINT [DF__tblCancel__B_Inf__34A11EA4]  DEFAULT ((0)),
+		[B_InformedClientSignedRequestReceivedDate] [datetime] NULL,
+		[C_AskedClientToFaxMailCancellationRequest] [bit] NULL CONSTRAINT [DF__tblCancel__C_Ask__359542DD]  DEFAULT ((0)),
+		[C_ReviewedTransactionForFees] [bit] NULL CONSTRAINT [DF__tblCancel__C_Rev__36896716]  DEFAULT ((0)),
+		[C_ReviewedRecentNotesForAdditionalCancellationInfo] [bit] NULL CONSTRAINT [DF__tblCancel__C_Rev__377D8B4F]  DEFAULT ((0)),
+		[C_CheckedDateOfLastDeposit] [bit] NULL CONSTRAINT [DF__tblCancel__C_Che__3871AF88]  DEFAULT ((0)),
+		[C_CheckedDateOfLastDepositDate] [datetime] NULL,
+		[C_CancellationCode] [varchar](25) NULL,
+		[C_CancellationReason] [varchar](100) NULL,
+		[C_ClientWantsRefundMailedViaFedex] [bit] NULL CONSTRAINT [DF__tblCancel__C_Cli__3965D3C1]  DEFAULT ((0)),
+		[C_InformedClientReimbursementProcessIsTwoWeeksFromRequestReceived] [bit] NULL CONSTRAINT [DF__tblCancel__C_Inf__3B4E1C33]  DEFAULT ((0)),
+		[C_InformedClientProcessingRefund] [bit] NULL CONSTRAINT [DF__tblCancel__C_Inf__3C42406C]  DEFAULT ((0)),
+		[C_InformedClientProcessingRefundAmount] [money] NULL CONSTRAINT [DF__tblCancel__C_Inf__3D3664A5]  DEFAULT ((0.00)),
+		[C_InformedClientSignedRequestReceived] [bit] NULL CONSTRAINT [DF__tblCancel__C_Inf__3E2A88DE]  DEFAULT ((0)),
+		[C_InformedClientSignedRequestReceivedDate] [datetime] NULL,
+		[Processing_VoidedFeesBeingRefundedClient] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__3F1EAD17]  DEFAULT ((0)),
+		[Processing_PositiveBalanceAmount] [money] NULL CONSTRAINT [DF__tblCancel__Proce__4012D150]  DEFAULT ((0.00)),
+		[Processing_RefundAmount] [money] NULL CONSTRAINT [DF__tblCancel__Proce__4106F589]  DEFAULT ((0.00)),
+		[Processing_CheckTotal] [money] NULL CONSTRAINT [DF__tblCancel__Proce__41FB19C2]  DEFAULT ((0.00)),
+		[Processing_FilledOutCheckRequestFormSentToFinanceDept] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__42EF3DFB]  DEFAULT ((0)),
+		[Processing_PrintedCancellationNotice] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__43E36234]  DEFAULT ((0)),
+		[Processing_CancellationMailedViaFedex] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__44D7866D]  DEFAULT ((0)),
+		[Processing_VerfiedAddressOnNoticeMatchesDB] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__45CBAAA6]  DEFAULT ((0)),
+		[Processing_DeductedAmtFromTransactionAndVerifiedAmtMatchesDB] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__46BFCEDF]  DEFAULT ((0)),
+		[Processing_AddedCheckDisbursementSystemNote] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__47B3F318]  DEFAULT ((0)),
+		[Processing_ReturnedCancellationPaperworkToAccountingDeptForVerification] [bit] NULL CONSTRAINT [DF__tblCancel__Proce__48A81751]  DEFAULT ((0)),
+		[Processing_DateRequestReceived] [datetime] NULL CONSTRAINT [DF__tblCancel__Proce__499C3B8A]  DEFAULT ((0)),
+		[Processing_DateToBeMailed] [datetime] NULL CONSTRAINT [DF__tblCancel__Proce__4A905FC3]  DEFAULT ((0)),
+		[Processing_TotalDeposits] [money] NULL CONSTRAINT [DF_tblCancellationSurveyData_Processing_TotalDeposits]  DEFAULT ((0.00)),
+		[Processing_MaintenanceFees] [money] NULL CONSTRAINT [DF_tblCancellationSurveyData_Processing_MaintenanceFees]  DEFAULT ((0.00)),
+		[Processing_RetainerFees] [money] NULL CONSTRAINT [DF_tblCancellationSurveyData_Processing_RetainerFees]  DEFAULT ((0.00)),
+		[Processing_SettlementFees] [money] NULL CONSTRAINT [DF_tblCancellationSurveyData_Processing_SettlementFees]  DEFAULT ((0.00)),
+		[Processing_OtherFees] [money] NULL CONSTRAINT [DF_tblCancellationSurveyData_Processing_OtherFees]  DEFAULT ((0.00)),
+		[Created] [datetime] NOT NULL CONSTRAINT [DF_tblCancellationSurveyData_Created]  DEFAULT (getdate()),
+		[CreatedBy] [numeric](18, 0) NOT NULL,
+		[LastModified] [datetime] NOT NULL CONSTRAINT [DF_tblCancellationSurveyData_LastModified]  DEFAULT (getdate()),
+		[LastModifiedBy] [numeric](18, 0) NOT NULL
+		) ON [PRIMARY]
+	END
+GO
+
+
+
+
+GRANT SELECT ON tblCancellationSurveyData TO PUBLIC

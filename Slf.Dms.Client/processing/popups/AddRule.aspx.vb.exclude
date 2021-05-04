@@ -1,0 +1,116 @@
+Imports Drg.Util.Helpers
+Imports Drg.Util.DataAccess
+Imports Drg.Util.DataHelpers
+
+Imports Slf.Dms.Records
+
+Imports System.Data
+Imports System.Drawing
+Imports System.Collections.Generic
+
+Partial Class processing_popups_AddRule
+    Inherits System.Web.UI.Page
+
+#Region "Variables"
+    Public UserID As Integer
+    Public ClientID As Integer
+#End Region
+
+#Region "Page Events"
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        UserID = DataHelper.Nz_int(Page.User.Identity.Name)
+
+        If Not Request.QueryString Is Nothing Then
+            ClientID = DataHelper.Nz_int(Request.QueryString("id"), 0)
+
+            SetAttributes()
+        End If
+    End Sub
+#End Region
+
+#Region "Other Events"
+    Protected Sub lnkSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSave.Click
+        If RequiredExist() Then
+            InsertRule()
+
+            ScriptManager.RegisterClientScriptBlock(Page, GetType(Page), "CloseWindow", "window.opener.LoadDeposits();window.close();", True)
+        End If
+    End Sub
+#End Region
+
+#Region "Utilities"
+    Private Sub SetAttributes()
+        txtBankRoutingNumber.Attributes("onkeypress") = "AllowOnlyNumbersStrict();"
+        txtBankAccountNumber.Attributes("onkeypress") = "AllowOnlyNumbersStrict();"
+    End Sub
+
+    Private Sub InsertRule()
+        Using cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+            Using cmd.Connection
+                DatabaseHelper.AddParameter(cmd, "BankName", DataHelper.Zn(txtBankName.Text))
+                DatabaseHelper.AddParameter(cmd, "BankRoutingNumber", txtBankRoutingNumber.Text)
+                DatabaseHelper.AddParameter(cmd, "BankAccountNumber", txtBankAccountNumber.Text)
+                DatabaseHelper.AddParameter(cmd, "DepositAmount", DataHelper.Nz_double(txtDepositAmount.Text))
+
+                If cboBankType.SelectedValue = "0" Then
+                    DatabaseHelper.AddParameter(cmd, "BankType", DBNull.Value, DbType.String)
+                Else
+                    DatabaseHelper.AddParameter(cmd, "BankType", cboBankType.SelectedValue, DbType.String)
+                End If
+
+                Dim startDate As Nullable(Of DateTime) = DataHelper.Nz_ndate(txtStartDate.Text)
+
+                If startDate.HasValue Then
+                    startDate = New DateTime(startDate.Value.Year, startDate.Value.Month, 1)
+                End If
+
+                Dim endDate As Nullable(Of DateTime) = DataHelper.Nz_ndate(txtEndDate.Text)
+
+                If endDate.HasValue Then
+                    endDate = New DateTime(endDate.Value.Year, endDate.Value.Month, DateTime.DaysInMonth(endDate.Value.Year, endDate.Value.Month))
+                End If
+
+                DatabaseHelper.AddParameter(cmd, "StartDate", startDate)
+                DatabaseHelper.AddParameter(cmd, "EndDate", endDate)
+                DatabaseHelper.AddParameter(cmd, "DepositDay", Integer.Parse(ddlDepositDay.SelectedValue))
+                DatabaseHelper.AddParameter(cmd, "LastModified", Now)
+                DatabaseHelper.AddParameter(cmd, "LastModifiedBy", UserID)
+
+                DatabaseHelper.AddParameter(cmd, "ClientID", ClientID)
+                DatabaseHelper.AddParameter(cmd, "Created", Now)
+                DatabaseHelper.AddParameter(cmd, "CreatedBy", UserID)
+
+                DatabaseHelper.BuildInsertCommandText(cmd, "tblRuleACH", "RuleACHId", SqlDbType.Int)
+
+                cmd.Connection.Open()
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
+    End Sub
+
+    Private Sub DisplayError(ByVal Message As String, ByVal ToFocus As WebControl)
+        dvError.Style("display") = "inline"
+        tdError.InnerHtml = Message
+
+        ToFocus.Style("border") = "solid 2px red"
+
+        'ScriptManager.RegisterClientScriptBlock(Page, GetType(Page), "ResizeWindow", "window.resizeBy(0, 64);", True)
+    End Sub
+
+    Private Function RequiredExist() As Boolean
+        txtBankRoutingNumber.Style.Remove("border")
+
+        Dim RoutingNumber As String = DataHelper.FieldLookup("tblRoutingNumber", "RoutingNumber", "RoutingNumber = '" & _
+        txtBankRoutingNumber.Text & "'")
+
+        If RoutingNumber.Length = 0 Then
+            DisplayError("The Bank Routing Number you entered does not validate against the Federal ACH Directory.", txtBankRoutingNumber)
+
+            Return False
+        End If
+
+        Return True
+    End Function
+#End Region
+
+End Class

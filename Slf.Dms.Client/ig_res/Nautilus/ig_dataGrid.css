@@ -1,0 +1,163 @@
+.igg_NautilusControl
+{
+	background-repeat:repeat-x;
+	font-size:11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border-top:solid 0px #688CAF;
+	border-right:solid 1px #9EB6CE;
+	border-bottom:solid 0px #9EB6CE;
+	border-left:solid 1px #9EB6CE;
+}
+
+
+tbody.igg_NautilusItem tr td
+{
+	background-color:White;
+	border-top:solid 1px #D0D7E5;
+	padding:5px 8px 5px 8px;
+	text-align:left;
+	vertical-align:middle;
+	overflow:hidden;
+}
+
+
+tbody tr.igg_NautilusAlt td
+{
+	background-color:#F6F9FB;
+	padding:5px 8px 5px 8px;
+	text-align:left;
+	vertical-align:middle;
+}
+
+
+.igg_NautilusHeader
+{
+	background-color:#D2D2D2;
+	background-image: url(images/igg_header.gif);
+	height: 35px;
+	color:White;
+}
+
+
+.igg_NautilusHeaderCaption
+{
+	padding-left:8px;
+	text-align:left;
+	overflow:hidden;
+}
+
+
+.igg_NautilusFooter
+{
+	background-color:#E4F0FA;
+	background-image: url(images/igg_footer.gif);
+	height: 15px;
+}
+
+
+.igg_NautilusFooterCaption
+{
+	overflow:hidden;
+}
+
+
+.igg_NautilusPager
+{
+	background-position:bottom ;
+	background-image: url(./images/igg_bottom.gif);
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:right;
+}
+
+
+.igg_NautilusPageLink
+{
+	font-weight:bold;
+	margin-right:10px;
+	cursor:hand;
+	color:White;
+	text-decoration:underline;
+}
+
+
+.igg_NautilusPageCurrent
+{
+	font-weight:bold;
+	padding-right:10px;
+	color:#F76301;
+}
+
+
+.igg_NautilusEditCell
+{
+}
+
+
+.igg_NautilusActiveRow
+{
+}
+
+
+.igg_NautilusActiveColumn
+{
+}
+
+
+.igg_NautilusScrollbarIntersection
+{
+}
+
+
+.igg_NautilusSelectedRowSelector
+{
+}
+
+
+.igg_NautilusSelectedRowSelectorImage
+{
+}
+
+
+.igg_NautilusSelectedHeader
+{
+}
+
+
+tbody tr td.igg_NautilusActiveCell
+{
+}
+
+
+.igg_NautilusActiveRowSelectorImage
+{
+}
+
+
+.igg_NautilusRowSelector
+{
+	padding-top:1px;
+	width: 35px;
+	color:Black;
+	vertical-align:middle;
+}
+
+
+.igg_NautilusHeaderRowSelector
+{
+}
+
+
+.igg_NautilusFooterRowSelector
+{
+}
+
+
+tbody tr td.igg_NautilusSelectedCell
+{
+	background-color:#F76301;
+	background-image: url(images/igg_selected.gif);
+	color:White;
+}
+
+

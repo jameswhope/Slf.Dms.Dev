@@ -1,0 +1,1 @@
+﻿ ALTER TABLE tblLeadDocuments Alter Column DocumentId Varchar(100)

@@ -1,0 +1,26 @@
+﻿INSERT INTO tbltrust
+(Name, 
+[Default], 
+City, 
+StateID, 
+RoutingNumber, 
+AccountNumber, 
+Created, 
+CreatedBy, 
+LastModified, 
+LastModifiedBy, 
+DisplayName, 
+Display) 
+VALUES
+('Woolery',
+0,
+'Fontana',
+5,
+'121108250',
+'1459364236',
+getdate(),
+493,
+getdate(),
+493,
+'Woolery Accountancy',
+1) 

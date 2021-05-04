@@ -1,0 +1,114 @@
+﻿
+.money { color:Red; }
+.grid 
+{ 
+	width:700px; 
+	font-family:Tahoma;
+	font-size :11px;
+	/*border:solid 1px #408BB6;*/
+}
+.grid H2 
+{ 
+	margin:0; padding:0; 
+	color:#ffffff;
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+}
+.grid .mid
+{
+	padding:0px 0px 0px 0px;
+}
+.grid .datatable
+{
+	width:100%; 
+}        
+.grid .datatable TH
+{
+    font-size:11px;
+    font-family:tahoma ; 
+    font-weight:normal ; 
+    padding:2px 4px;
+    background-color:rgb(220,220,220);
+}
+.grid .datatable TH A
+{ 
+	text-decoration:none;
+	padding-right:18px; 
+	/*color:#0066cc;*/
+	color:Black ; 
+	 
+}
+.grid .datatable TH.sortasc A { background:url(../images/sort-asc.png) right center no-repeat; }
+.grid .datatable TH.sortdesc A { background:url(../images/sort-desc.png) right center no-repeat; }
+.grid .datatable .row TD
+{
+    font-size:11px;
+    text-align:left;
+    padding:3px 2px 0px 4px;
+   
+}      
+.grid .datatable .row:hover
+{
+	/*background-color:#fffacd;
+	color:#000;*/
+}
+.grid .datatable .row TD.first { padding-left:10px; }
+.grid .datatable TH.first { padding-left:10px;
+                          
+                       
+                             }
+.grid .datatable .row:hover .first
+{
+    background-repeat:no-repeat;
+	/*background-image:url(../images/bullet.gif);background-position:left center ;*/
+}  
+/* Data Pager Styles */
+.grid TR.pager-row TD
+{
+    /*border-top:solid 2px #bbd9ee;*/
+}
+.grid .pager
+{
+    font-family:arial,sans-serif;
+    text-align:center;
+    padding:6px;	
+    font-size:14px;
+} 
+.grid .pager SPAN.command,        
+.grid .pager SPAN.current,        
+.grid .pager A.command,
+.grid TR.pager-row TD A
+{
+    color:#5a90ce;
+    padding:0px 4px;
+    text-decoration:none;
+    border:none;
+}
+.grid .pager A.command:hover,
+.grid TR.pager-row TD A:hover
+{
+    border:solid 1px #408BB6;
+    background-color:#59A5D1;
+    color:#fff;
+    padding:0px 3px;
+    text-decoration:none;
+}        
+.grid .pager SPAN.current,
+.grid TR.pager-row TD SPAN
+{
+	border:none;
+    font-weight:bold;
+    color:#3e3e3e;
+    padding:0px 6px;
+}
+.grid TR.pager-row TD
+{
+	border-top:none;
+	text-align:center;
+}
+.grid TR.pager-row TABLE
+{
+	height:30px;
+	margin:0 auto 0 auto;
+}

@@ -1,0 +1,568 @@
+﻿Imports System.Collections.Generic
+Imports Drg.Util.DataAccess
+Imports Drg.Util.DataHelpers
+Imports System.Data
+Imports Drg.Util.Helpers
+Imports System.Data.SqlClient
+Imports System.Xml.Linq
+
+Partial Class Clients_client_cancellation_Default
+    Inherits PermissionPage
+
+#Region "Variables"
+    Private UserID As Integer
+    Private UserTypeID As Integer
+    Public DataClientID As Integer
+    Public MatterId As Integer
+    Public Property cancelSurveyID() As String
+        Get
+            Return ViewState("cancelSurveyID")
+        End Get
+        Set(ByVal value As String)
+            ViewState("cancelSurveyID") = value
+        End Set
+    End Property
+#End Region
+#Region "Events"
+    Protected Sub Clients_client_cancellation_Default_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        UserID = Integer.Parse(Page.User.Identity.Name)
+        UserTypeID = Integer.Parse(DataHelper.FieldLookup("tblUser", "UserTypeId", "UserId=" & UserID))
+        DataClientID = Request.QueryString("id")
+        MatterId = Request.QueryString("mid")
+
+        Dim TaskResolution As String = DataHelper.FieldLookup("tblTask", "TaskResolutionId", "TaskId in (select TaskId From tblMatterTask Where MatterId = " & MatterId & ")")
+
+        If Not IsPostBack Then
+            LoadClientInfo()
+
+            If String.IsNullOrEmpty(TaskResolution) Then
+                LoadCancellationData()
+                dvNewCancel.Style.Item("display") = "inline"
+                trUpdate.Style.Item("display") = "none"
+            ElseIf CInt(TaskResolution) = 1 Then
+                'cSummary.LoadCancellationSummary(MatterId)
+                dvNewCancel.Style.Item("display") = "none"
+                trUpdate.Style.Item("display") = "inline"
+            End If
+
+            AcctSummary.LoadAccounts(DataClientID)
+            wpCalculator.LoadClientInfo(DataClientID)
+            cclNotes.LoadCommData(DataClientID)
+            dsDeposit.SelectParameters("clientid").DefaultValue = DataClientID
+            dsDeposit.DataBind()
+            gvDeposit.DataBind()
+        End If
+
+        SetRollups(TaskResolution)
+        RefreshData()
+    End Sub
+    Protected Sub lnkCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkCancel.Click
+        Response.Redirect("~/clients/client/?id=" & DataClientID)
+    End Sub
+    Protected Sub lnkSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSave.Click
+        Dim TotalRefund As Double = CDbl(lblRefundAmt.Text)
+        Dim PayableTo As String = IIf(rdPayTo.Checked, rdPayTo.Text, txtPayable.Text)
+        Dim AccountsToRefund As XElement
+        Dim RegisterId As Integer
+        Dim EntryTypeId As Integer
+        Dim clientAgreedToPay As Boolean
+
+        If CDbl(lblSDA.Text) > 0 AndAlso radAccept.Checked Then
+            For Each row As GridViewRow In gvMaintFee.Rows
+                If row.RowType = DataControlRowType.DataRow Then
+                    Dim chk As System.Web.UI.HtmlControls.HtmlInputCheckBox = row.FindControl("chk_selectFee")
+
+                    If chk.Checked Then
+                        If AccountsToRefund Is Nothing Then
+                            AccountsToRefund = New XElement("Accounts")
+                        End If
+
+                        Dim AccountXml As New XElement("Account")
+                        RegisterId = CInt(CType(row.FindControl("hdnRegisterId"), HtmlInputHidden).Value)
+
+                        AccountXml.Add(New XAttribute("regid", RegisterId.ToString()))
+                        AccountXml.Add(New XAttribute("eid", "1"))
+
+                        AccountsToRefund.Add(AccountXml)
+                    End If
+                End If
+            Next
+
+            Dim dt As DataTable = SqlHelper.GetDataTable("select r.RegisterId from tblRegister r inner join tblAccount a ON a.AccountID = r.AccountId and a.AccountStatusId <> 54 where r.ClientId = " & DataClientID & " and r.EntryTypeId = 2", CommandType.Text)
+
+            If Not dt Is Nothing Then
+                For Each row As DataRow In dt.Rows
+                    If AccountsToRefund Is Nothing Then
+                        AccountsToRefund = New XElement("Accounts")
+                    End If
+
+                    Dim AccountXml As New XElement("Account")
+
+                    AccountXml.Add(New XAttribute("regid", CInt(row.Item("RegisterId"))))
+                    AccountXml.Add(New XAttribute("eid", "2"))
+
+                    AccountsToRefund.Add(AccountXml)
+                Next
+            End If
+
+            For Each row As GridViewRow In gvOtherFee.Rows
+                If row.RowType = DataControlRowType.DataRow Then
+                    Dim chk As System.Web.UI.HtmlControls.HtmlInputCheckBox = row.FindControl("chk_selectOtherFee")
+
+                    If chk.Checked Then
+                        If AccountsToRefund Is Nothing Then
+                            AccountsToRefund = New XElement("Accounts")
+                        End If
+
+                        Dim AccountXml As New XElement("Account")
+                        RegisterId = CInt(CType(row.FindControl("hdnOtherRegisterId"), HtmlInputHidden).Value)
+                        EntryTypeId = CInt(CType(row.FindControl("hdnEntryType"), HtmlInputHidden).Value)
+
+                        AccountXml.Add(New XAttribute("regid", RegisterId.ToString()))
+                        AccountXml.Add(New XAttribute("eid", EntryTypeId.ToString()))
+
+                        AccountsToRefund.Add(AccountXml)
+                    End If
+                End If
+            Next
+        Else
+            AccountsToRefund = Nothing
+        End If
+
+        If CDbl(lblFeeOwed.Text) > 0 AndAlso radAgree.Checked Then
+            clientAgreedToPay = True
+        Else
+            clientAgreedToPay = False
+        End If
+
+
+
+        PendingCancelHelper.SaveCancellationSurvey(MatterId, TotalRefund, clientAgreedToPay, Integer.Parse(Page.User.Identity.Name), radAccept.Checked, AccountsToRefund, CInt(ddlSubReason.SelectedValue), _
+                                            IIf(ddlReason.SelectedValue = "FC" Or ddlReason.SelectedValue = "RA", txtReasonName.Text, Nothing), _
+                                            IIf((ddlReason.SelectedValue = "BK" Or ddlReason.SelectedValue = "BKDR" Or ddlReason.SelectedValue = "SA"), txtReasonName.Text, Nothing), _
+                                            txtReason.Text, txtAttPhone.Text, txtAttEmail.Text, txtAttCity.Text, txtAttStreet.Text, ddlState.SelectedValue, txtAttZip.Text, PayableTo, _
+                                            ddlDelivery.SelectedValue, CDbl(lblDelFee.Text))
+
+        Response.Redirect("~/clients/client/?id=" & DataClientID)
+    End Sub
+#End Region
+#Region "GridView Events"
+    Protected Sub gvTransactions_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvTransactions.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim rowAmount As Double = CDbl(e.Row.Cells(5).Text)
+            Dim chkAmount = CType(e.Row.FindControl("chk_selectRecord"), HtmlInputCheckBox)
+
+            chkAmount.Attributes.Add("onclick", "javascript:ExcludeFeeAmount(" & rowAmount & "," & chkAmount.ClientID & ");")
+        End If
+    End Sub
+    
+    Protected Sub gvRules_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvRules.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim strRule As String = CType(e.Row.FindControl("hdnRuleId"), HtmlInputHidden).Value
+            Dim typeName As String = e.Row.Cells(1).Text
+
+            For Each cell As TableCell In e.Row.Cells
+                If typeName = "ADHOC" Then
+                    cell.Attributes.Add("onClick", "javascript:return AdhocClick(" & strRule & ")")
+                ElseIf typeName = "RULE" Then
+                    cell.Attributes.Add("onClick", "javascript:return RuleClick(" & strRule & ")")
+                End If
+            Next
+        End If
+    End Sub
+    Protected Sub gvMaintFee_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMaintFee.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim rowAmount As Double = CDbl(e.Row.Cells(3).Text)
+            Dim chkAmount = CType(e.Row.FindControl("chk_selectFee"), HtmlInputCheckBox)
+
+            If chkAmount.Checked Then
+                hdnMaintFeeCount.Value = CDbl(hdnMaintFeeCount.Value) + rowAmount
+            End If
+
+            chkAmount.Attributes.Add("onclick", "javascript:RefundMaintFee(" & rowAmount & "," & chkAmount.ClientID & ");")
+        End If
+    End Sub
+    Protected Sub gvOtherFee_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvOtherFee.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim rowAmount As Double = CDbl(e.Row.Cells(3).Text)
+            Dim chkAmount = CType(e.Row.FindControl("chk_selectOtherFee"), HtmlInputCheckBox)
+
+            If chkAmount.Checked Then
+                hdnOtherFeeCount.Value = CDbl(hdnOtherFeeCount.Value) + rowAmount
+            End If
+
+            chkAmount.Attributes.Add("onclick", "javascript:RefundOtherFee(" & rowAmount & "," & chkAmount.ClientID & ");")
+        End If
+    End Sub
+
+    Protected Sub gvRetainer_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvRetainer.PageIndexChanging
+        gvRetainer.PageIndex = e.NewPageIndex
+        gvRetainer.DataBind()
+
+        LoadRetainerFeeDetails()
+        RefreshData()
+    End Sub
+
+    Protected Sub ddlReason_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlReason.SelectedIndexChanged
+        ShowReasonInformation()
+
+        ddlSubReason.Items.Clear()
+
+        If ddlReason.SelectedValue = "SL" Then
+            ddlSubReason.Items.Add(New ListItem("None", "0"))
+            ddlSubReason.SelectedValue = "0"
+
+            trSubReason.Style.Item("display") = "none"
+        Else
+            Using dt As DataTable = SharedFunctions.AsyncDB.executeDataTableAsync("select CancellationSubReasonId, CancellationSubReason from tblClientCancellationSubReason with(nolock) where CancellationReasonId = (select CancellationREasonId from tblClientCancellationReason where CancellationCode = '" & ddlReason.SelectedValue & "') order by CancellationSubReasonId", ConfigurationManager.AppSettings("connectionstring").ToString)
+                For Each reason As DataRow In dt.Rows
+                    Try
+                        ddlSubReason.Items.Add(New ListItem(reason("CancellationSubReason").ToString, reason("CancellationSubReasonId").ToString()))
+                    Catch ex As Exception
+                        Continue For
+                    End Try
+                Next
+
+                If dt.Rows.Count = 1 AndAlso dt.Rows(0)("CancellationSubReason") = ddlReason.SelectedItem.Text Then
+                    trSubReason.Style.Item("display") = "none"
+                Else
+                    trSubReason.Style.Item("display") = "inline"
+                End If
+            End Using
+
+        End If
+    End Sub
+#End Region
+#Region "Utilities"
+    Private Sub LoadClientInfo()
+        lnkClient.InnerText = ClientHelper.GetDefaultPersonName(Master.DataClientID)
+
+        Using ds As DataSet = SqlHelper.GetDataSet("select Firstname + ' ' + LastName As Name FROM tblPerson Where CanAuthorize = 1 and ClientId = " & DataClientID & " order by PersonId", CommandType.Text)
+            If ds.Tables.Count > 0 And Not ds.Tables(0) Is Nothing Then
+                For Each dRow As DataRow In ds.Tables(0).Rows
+                    If String.IsNullOrEmpty(rdPayTo.Text) Then
+                        rdPayTo.Text = dRow("Name").ToString()
+                    Else
+                        rdPayTo.Text += " Or "
+                        rdPayTo.Text += dRow("Name").ToString()
+                    End If
+                Next
+            End If
+        End Using
+
+        ddlState.Items.Clear()
+        Using dt As DataTable = SharedFunctions.AsyncDB.executeDataTableAsync("select StateId, abbreviation from tblstate with(nolock) order by name", ConfigurationManager.AppSettings("connectionstring").ToString)
+            For Each state As DataRow In dt.Rows
+                Try
+                    ddlState.Items.Add(New ListItem(state("abbreviation").ToString, state("StateId").ToString))
+                Catch ex As Exception
+                    Continue For
+                End Try
+            Next
+        End Using
+        lnkClient.HRef = String.Format("~/clients/client/?id={0}", Master.DataClientID)
+    End Sub
+
+    Private Sub LoadCancellationData()
+        hdnTotalRetainer.Value = 0
+        hdnTotalMaintRefund.Value = 0
+        Dim SDABalance As Double = CDbl(DataHelper.FieldLookup("tblClient", "AvailableSDA", "ClientId = " & DataClientID))
+        Dim PFOBalance As Double = CDbl(DataHelper.FieldLookup("tblClient", "PFOBalance", "ClientId = " & DataClientID))
+        Dim SDA As Double = CDbl(DataHelper.FieldLookup("tblClient", "SDABalance", "ClientId = " & DataClientID))
+        Dim BankReserve As Double = CDbl(DataHelper.FieldLookup("tblClient", "BankReserve", "ClientId = " & DataClientID))
+
+        Dim params As New List(Of SqlParameter)
+        params.Add(New SqlParameter("@ClientID", SqlDbType.Int))
+        params.Item(0).Value = DataClientID
+        Dim PaymentPlan As Double = SqlHelper.ExecuteScalar("stp_FundsOnHold", CommandType.StoredProcedure, params.ToArray)
+        BankReserve = BankReserve + PaymentPlan
+
+        lblFeeOwed.Text = FormatCurrency(PFOBalance, 2)
+        hdnFeeOwed.Value = FormatCurrency(PFOBalance, 2)
+        lblSDA.Text = FormatCurrency(SDABalance, 2)
+        lblSDABalance.Text = FormatCurrency(SDA, 2)
+        lblFunds.Text = FormatCurrency((SDA - PFOBalance - BankReserve - SDABalance), 2)
+        lblRefundAmt.Text = IIf((SDA - PFOBalance - 15 - CDbl(lblFunds.Text)) > 0, (SDA - PFOBalance - 15 - CDbl(lblFunds.Text)), 0)
+        hdnRefundAmt.Value = IIf((SDA - PFOBalance - 15 - CDbl(lblFunds.Text)) > 0, (SDA - PFOBalance - 15 - CDbl(lblFunds.Text)), 0)
+
+        If SDABalance > 0 Then
+            lblSDA.ForeColor = System.Drawing.Color.Green
+            LoadRetainerFeeDetails()
+            LoadMaintenanceFeeDetails()
+            LoadOtherFeeDetails()
+            trFundsAvailable.Style.Item("display") = "inline"
+            trRefund.Style.Item("display") = "inline"
+        Else
+            lblSDA.ForeColor = System.Drawing.Color.Red
+            trFundsAvailable.Style.Item("display") = "none"
+            trRefund.Style.Item("display") = "inline"
+        End If
+
+        If PFOBalance > 0 Then
+            lblFeeOwed.ForeColor = System.Drawing.Color.Red
+            LoadPendingFeeDetails()
+            LoadACHInfo()
+            LoadRulesInfo()
+            dvFeesOwed.Style.Item("display") = "inline"
+        Else
+            lblFeeOwed.ForeColor = System.Drawing.Color.Green
+            dvFeesOwed.Style.Item("display") = "none"
+        End If
+
+        ddlReason.Items.Clear()
+        ddlReason.Items.Add(New ListItem("--Select--", "SL"))
+        Using dt As DataTable = SharedFunctions.AsyncDB.executeDataTableAsync("select CancellationCode, CancellationReason from tblClientCancellationReason with(nolock) order by CancellationCode", ConfigurationManager.AppSettings("connectionstring").ToString)
+            For Each reason As DataRow In dt.Rows
+                Try
+                    ddlReason.Items.Add(New ListItem(reason("CancellationReason").ToString, reason("CancellationCode").ToString()))
+                Catch ex As Exception
+                    Continue For
+                End Try
+            Next
+        End Using
+        ddlReason.SelectedValue = "SL"
+
+        ddlSubReason.Items.Add(New ListItem("None", "0"))
+        trSubReason.Style.Item("display") = "none"
+
+        hdnMaintFeeCount.Value = "0"
+        hdnTotalOther.Value = 0
+        hdnOtherFeeCount.Value = "0"
+
+        radAgree.Attributes.Add("onClick", "javascript:ChangeStatus(1)")
+        radDisagree.Attributes.Add("onClick", "javascript:ChangeStatus(0)")
+        radAccept.Attributes.Add("onClick", "javascript:ShowRefund(1)")
+        radReject.Attributes.Add("onClick", "javascript:ShowRefund(0)")
+        rdOther.Attributes.Add("onClick", "javascript:ShowPayTo(1);")
+        rdPayTo.Attributes.Add("onClick", "javascript:ShowPayTo(0);")
+        txtAttZip.Attributes("onkeypress") = "javascript:onlyDigits();"
+    End Sub
+    Private Sub RefreshData()
+        DataClientID = Request.QueryString("id")
+        MatterId = Request.QueryString("mid")
+
+        If radAgree.Checked Then
+            dvACH.Style.Item("display") = "inline"
+            dvRule.Style.Item("display") = "inline"
+            'dvAddAdhoc.Style.Item("display") = "inline"
+            dvAddRule.Style.Item("display") = "inline"
+        ElseIf radDisagree.Checked Then
+            dvACH.Style.Item("display") = "none"
+            dvRule.Style.Item("display") = "none"
+            'dvAddAdhoc.Style.Item("display") = "none"
+            dvAddRule.Style.Item("display") = "none"
+        End If
+
+        If radAccept.Checked Then
+            trChooseRefund.Style.Item("display") = "inline"
+            lblRefundAmt.Text = FormatCurrency(CDbl(hdnRefundAmt.Value) + CDbl(hdnTotalRetainer.Value) + CDbl(hdnTotalMaintRefund.Value), 2)
+        ElseIf radReject.Checked Then
+            trChooseRefund.Style.Item("display") = "none"
+            lblRefundAmt.Text = FormatCurrency(hdnRefundAmt.Value, 2)
+        End If
+
+        If rdPayTo.Checked Then
+            trPayable.Style.Item("display") = "none"
+            txtPayable.Text = ""
+        ElseIf rdOther.Checked Then
+            trPayable.Style.Item("display") = "inline"
+        End If
+
+        ShowReasonInformation()
+    End Sub
+    Private Sub LoadRetainerFeeDetails()
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+        Dim ds As New DataSet
+        Dim amount As Double = 0
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "select r.RegisterId,r.TransactionDate,(r.Amount * -1) As Amount, c.[Name] as AccountName, ast.Code As AccountStatus from tblRegister r inner join tblAccount a ON a.AccountID = r.AccountId and a.AccountStatusId <> 54 inner join tblCreditorInstance ci ON ci.CreditorInstanceId = a.CurrentCreditorInstanceId inner join tblCreditor c ON c.CreditorId = ci.CreditorId inner join tblAccountStatus ast ON ast.AccountStatusId = a.AccountStatusId where r.ClientId = " & DataClientID & " and r.EntryTypeId = 2 and r.Void is null and r.Bounce is null"
+        Dim sqlDA As New SqlDataAdapter(cmd)
+        sqlDA.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvRetainer.DataSource = ds
+                    gvRetainer.DataBind()
+
+                    For Each row As DataRow In ds.Tables(0).Rows
+                        amount += CDbl(row("Amount"))
+                    Next
+                End If
+            End If
+        End If
+
+        hdnTotalRetainer.Value = amount
+    End Sub
+    Private Sub ShowReasonInformation()
+        lblReasonText.Text = ""
+        lblReasonName.Text = ""
+        dvReason1.Style.Item("display") = "none"
+        dvReason2.Style.Item("display") = "none"
+        dvReason3.Style.Item("display") = "none"
+
+        If ddlSubReason.Items.Count = 1 AndAlso ddlSubReason.SelectedItem.Text = ddlReason.SelectedItem.Text Then
+            trSubReason.Style.Item("display") = "none"
+        Else
+            trSubReason.Style.Item("display") = "inline"
+        End If
+
+        Select Case ddlReason.SelectedValue
+            Case "FC", "RA"
+                lblReasonText.Text = "Summary:"
+                lblReasonName.Text = "Agency Name:"
+                dvReason1.Style.Item("display") = "inline"
+                dvReason3.Style.Item("display") = "inline"
+            Case "BKDR", "BK", "SA"
+                lblReasonText.Text = "Attorney Information:"
+                lblReasonName.Text = "Attorney Name:"
+                dvReason1.Style.Item("display") = "inline"
+                dvReason2.Style.Item("display") = "inline"
+                dvReason3.Style.Item("display") = "inline"
+            Case Else
+                lblReasonText.Text = "Note:"
+                dvReason3.Style.Item("display") = "inline"
+        End Select
+    End Sub
+    Private Sub LoadMaintenanceFeeDetails()
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.Text
+
+        cmd.CommandText = "select r.TransactionDate,(r.Amount * -1) As Amount, r.Description, r.RegisterId from tblRegister r where r.ClientId = " & DataClientID & " and r.EntryTypeId = 1 and r.Void is null and r.Bounce is null order by TransactionDate desc"
+
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvMaintFee.DataSource = ds
+                    gvMaintFee.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub LoadOtherFeeDetails()
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.Text
+
+        cmd.CommandText = "SELECT r.TransactionDate, (r.Amount * -1) As Amount, r.Description, r.RegisterId,r.EntryTypeId, e.[DisplayName] FROM tblRegister r inner join tblEntryType e ON e.EntryTypeId = r.EntryTypeId and e.Fee = 1 WHERE r.ClientId = " & DataClientID & " and r.EntryTypeId not in (1,2) and r.Bounce is null and r.Void is null order by r.TransactionDate Desc"
+
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvOtherFee.DataSource = ds
+                    gvOtherFee.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub LoadPendingFeeDetails()
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.Text
+
+        cmd.CommandText = "SELECT et.DisplayName AS [Transaction Type], r.TransactionDate AS [Transaction Date], r.Description,(r.Amount + isnull((select sum(Amount) FROM tblRegister where AdjustedRegisterId = r.RegisterId),'')) As [Original Amount],(((r.Amount + isnull((select sum(Amount) FROM tblRegister where AdjustedRegisterId = r.RegisterId), '')) * -1) - isnull((select sum(Amount) From tblRegisterPayment where FeeRegisterId = r.RegisterId and Voided = 0 and Bounced = 0), 0)) As [Amount Owed] FROM tblRegister AS r INNER JOIN tblEntryType AS et ON r.EntryTypeId = et.EntryTypeId and et.Fee = 1 WHERE (r.ClientId = " & DataClientID & ") AND (r.IsFullyPaid = 0) and r.Bounce is null and r.Void is null"
+
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvTransactions.DataSource = ds
+                    gvTransactions.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Public Function GetCheckBox(ByVal value As String) As String
+        Select Case value
+            Case "1"
+                Return "<input type='checkbox' runat='server' id='chk_Bounce' disabled='disabled' checked='checked' />"
+            Case "0"
+                Return "<input type='checkbox' runat='server' id='chk_Bounce' disabled='disabled'  />"
+            Case Else
+                Return "<input type='checkbox' runat='server' id='chk_Bounce' disabled='disabled'  />"
+        End Select
+    End Function
+    Private Sub LoadACHInfo()
+        'achAddButton.HRef = "javascript:EditMulti()"
+        'Flyout1.AttachTo = "lnkEditMulti"
+        'Me.multipleDepositList.Client = DataClientID
+        'Me.multipleDepositList.ControlLoad(False)
+        'Me.multipleDepositList.FloorValidation = FloorValidationMode.Warning
+
+        Dim cmd As IDbCommand = ConnectionFactory.CreateCommand("get_ClientACHInfo")
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.StoredProcedure
+
+        DatabaseHelper.AddParameter(cmd, "clientid", DataClientID)
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvACH.DataSource = ds
+                    gvACH.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub LoadRulesInfo()
+        Dim cmd As IDbCommand = ConnectionFactory.CreateCommand("stp_cancellation_getClientRulesAndAdhoc")
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.StoredProcedure
+
+        DatabaseHelper.AddParameter(cmd, "clientid", DataClientID)
+        DatabaseHelper.AddParameter(cmd, "OnlyNotDeposited", 1)
+        DatabaseHelper.AddParameter(cmd, "OnlyCurrent", 0)
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvRules.DataSource = ds
+                    gvRules.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub SetRollups(ByVal TaskResolution As String)
+        Dim CommonTasks As List(Of String) = Master.CommonTasks
+        If Master.UserEdit Then
+            If String.IsNullOrEmpty(TaskResolution) Then
+                CommonTasks.Add("<a style=""color:rgb(51,118,171);"" class=""lnk"" href=""#"" onclick=""Survey_Save(1);return false;""><img style=""margin-right:8px;"" border=""0"" runat=""server"" src=""" & ResolveUrl("~/images/16x16_save.png") & """ align=""absmiddle""/>Save Survey</a>")
+            End If
+            CommonTasks.Add("<a style=""color:rgb(51,118,171);"" class=""lnk"" href=""#"" onclick=""Survey_Save(0);return false;""><img style=""margin-right:8px;"" border=""0"" runat=""server"" src=""" & ResolveUrl("~/images/16x16_cancel.png") & """ align=""absmiddle""/>Cancel</a>")
+            CommonTasks.Add("<a style=""color:rgb(51,118,171);"" class=""lnk"" href=""#"" onclick=""javascript:OpenScanning();return false;""><img style=""margin-right:8px;"" border=""0"" runat=""server"" src=""" & ResolveUrl("~/images/16x16_file_remove.png") & """ align=""absmiddle""/>Scan Document</a>")
+        End If
+
+    End Sub
+
+    Private Sub AlertShow(ByVal Message As String)
+        Dim cleanMessage As String = Message.Replace("'", "")
+        Dim script As String = "<script type=""text/javascript"">alert('" + cleanMessage + "');</script>"
+        Dim page As Page = TryCast(HttpContext.Current.CurrentHandler, Page)
+        If page IsNot Nothing AndAlso Not page.ClientScript.IsClientScriptBlockRegistered("alert") Then
+            page.ClientScript.RegisterClientScriptBlock(GetType(Alert), "alert", script)
+        End If
+    End Sub
+
+
+    Public Overrides Sub AddPermissionControls(ByVal c As System.Collections.Generic.Dictionary(Of String, System.Web.UI.Control))
+        AddControl(Me, c, "Clients-Client Cancellation", 1, False)
+    End Sub
+
+#End Region
+
+End Class
+
+

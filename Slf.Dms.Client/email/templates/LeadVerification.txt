@@ -1,0 +1,50 @@
+﻿<div>
+    <p>
+        {{clientname}},
+    </p>
+    <p>
+        A representative of {{company}} has requested your verification of information on file. Please click 
+        on the link below to view and confirm the information you have provided to the firm. If your e-mail 
+        client does not allow you to click on the link, please cut and paste it into your browser.
+    </p>
+    <p>
+		<a href='{{url}}'>{{url}}</a>
+    </p>
+    <p>
+		Username: {{username}}<br />
+		Temporary Password: {{password}}
+    </p>
+    <p>
+        Thank you,
+    </p>
+    <p>
+        {{company}}</p>
+    <br />
+</div>
+<hr>
+<div style="text-align: center">
+    IMPORTANT NOTES</div>
+<p>
+    THE SEQUENCE IN WHICH YOUR DEBTS ARE SETTLED, AS WELL AS THE AMOUNT AND FREQUENCY
+    OF YOUR DEPOSITS IS CRITICAL TO THE EFFORTS TO SETTLE THE ACCOUNTS. IN GENERAL,
+    THE MORE YOU ARE ABLE TO DEPOSIT, THE SOONER WE CAN SEEK SUCCESSFUL SETTLEMENTS
+    OF THE ACCOUNTS. OTHER FACTORS WE CANNOT CONTROL (SUCH AS WHAT SETTLEMENT A CREDITOR
+    MAY ACCEPT, AND WHEN THEY ACCEPT IT) WILL AFFECT HOW SOON YOUR ACCOUNTS ARE SETTLED,
+    YOUR DEPOSIT AMOUNTS WILL BE AN IMPORTANT FACTOR IN YOUR SUCCESS.</p>
+<p>
+    CONFIDENTIALITY NOTICE: This e-mail transmission, and any documents, files or previous
+    e-mail messages attached to it, may contain confidential information that is legally
+    privileged. If you are not the intended recipient, or a person responsible for delivering
+    it to the intended recipient, you are hereby notified that any disclosure, copying,
+    distribution or use of any of the information contained in or attached to this message
+    is STRICTLY PROHIBITED. If you have received this transmission in error, please
+    immediately notify us by reply e-mail, and destroy the original transmission and
+    its attachments without reading them or saving them to disk. Thank you.</p>
+<p>
+    IRS CIRCULAR 230 NOTICE: To ensure compliance with requirements imposed by the IRS,
+    we inform you that any U.S. tax advice contained in this communication (or in any
+    attachment) is not intended or written to be used, and cannot be used, for the purpose
+    of (i) avoiding penalties under the Internal Revenue Code or (ii) promoting, marketing
+    or recommending to another party any transaction or matter addressed in this communication
+    (or in any attachment).</p>
+<hr>

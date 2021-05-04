@@ -1,0 +1,132 @@
+Imports Drg.Util.Helpers
+Imports Drg.Util.DataAccess
+Imports Drg.Util.DataHelpers
+
+Imports Slf.Dms.Records
+
+Imports System.Data
+Imports System.Drawing
+Imports System.Collections.Generic
+
+Partial Class processing_popups_AddAdditional
+    Inherits System.Web.UI.Page
+
+#Region "Variables"
+    Private UserID As Integer
+    Private Action As String
+    Private AdHocAchID As Integer
+    Public ClientID As Integer
+    Public NextDate As String
+#End Region
+
+#Region "Page Events"
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        UserID = DataHelper.Nz_int(Page.User.Identity.Name)
+
+        If Not Request.QueryString Is Nothing Then
+            ClientID = DataHelper.Nz_int(Request.QueryString("id"), 0)
+            AdHocAchID = DataHelper.Nz_int(Request.QueryString("ahachid"), 0)
+            Action = DataHelper.Nz_string(Request.QueryString("a"))
+            NextDate = LocalHelper.AddBusinessDays(Now, 2).ToString("MM/dd/yyyy")
+
+            SetAttributes()
+        End If
+    End Sub
+#End Region
+
+#Region "Other Events"
+    Protected Sub lnkSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSave.Click
+        If RequiredExist() Then
+            InsertAdditionalACH()
+
+            ScriptManager.RegisterClientScriptBlock(Page, GetType(Page), "CloseWindow", "window.opener.LoadDeposits();window.close();", True)
+        End If
+    End Sub
+#End Region
+
+#Region "Utilities"
+    Private Sub SetAttributes()
+        txtBankRoutingNumber.Attributes("onkeypress") = "AllowOnlyNumbersStrict();"
+        txtBankAccountNumber.Attributes("onkeypress") = "AllowOnlyNumbersStrict();"
+    End Sub
+
+    Private Sub InsertAdditionalACH()
+        Using cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+            Using cmd.Connection
+                DatabaseHelper.AddParameter(cmd, "BankName", DataHelper.Zn(txtBankName.Text))
+                DatabaseHelper.AddParameter(cmd, "BankRoutingNumber", txtBankRoutingNumber.Text)
+                DatabaseHelper.AddParameter(cmd, "BankAccountNumber", txtBankAccountNumber.Text)
+                DatabaseHelper.AddParameter(cmd, "DepositAmount", DataHelper.Nz_double(txtDepositAmount.Text))
+                DatabaseHelper.AddParameter(cmd, "DepositDate", DateTime.Parse(txtDepositDate.Text))
+                DatabaseHelper.AddParameter(cmd, "LastModified", Now)
+                DatabaseHelper.AddParameter(cmd, "LastModifiedBy", UserID)
+
+                If cboBankType.SelectedValue = "0" Then
+                    DatabaseHelper.AddParameter(cmd, "BankType", DBNull.Value, DbType.String)
+                Else
+                    DatabaseHelper.AddParameter(cmd, "BankType", cboBankType.SelectedValue, DbType.String)
+                End If
+
+                DatabaseHelper.AddParameter(cmd, "ClientID", ClientID)
+                DatabaseHelper.AddParameter(cmd, "Created", Now)
+                DatabaseHelper.AddParameter(cmd, "CreatedBy", UserID)
+
+                DatabaseHelper.BuildInsertCommandText(cmd, "tblAdHocACH", "AdHocACHId", SqlDbType.Int)
+
+                cmd.Connection.Open()
+                cmd.ExecuteNonQuery()
+            End Using
+
+            DataHelper.Nz_int(cmd.Parameters("@AdHocACHId").Value)
+        End Using
+    End Sub
+
+    Private Sub DisplayError(ByVal Message As String, ByVal ToFocus As WebControl)
+        dvError.Style("display") = "inline"
+        tdError.InnerHtml = Message
+
+        ToFocus.Style("border") = "solid 2px red"
+
+        'ScriptManager.RegisterClientScriptBlock(Page, GetType(Page), "ResizeWindow", "window.resizeBy(0, 64);", True)
+    End Sub
+
+    Private Function RequiredExist() As Boolean
+        Dim d As DateTime
+
+        txtDepositDate.Style.Remove("border")
+        txtBankRoutingNumber.Style.Remove("border")
+
+        If Not DateTime.TryParse(txtDepositDate.Text, d) Then
+            DisplayError("The Deposit Date you entered is not a valid date.", txtDepositDate)
+            Return False
+        End If
+
+        If d.DayOfWeek = DayOfWeek.Saturday Or d.DayOfWeek = DayOfWeek.Sunday Then
+            DisplayError("The Deposit Date you entered is on a weekend.", txtDepositDate)
+            Return False
+        End If
+
+        Dim HolidayName As String = DataHelper.Nz_string(DataHelper.FieldLookup("tblBankHoliday", "Name", DataHelper.StripTime("Date") & "='" & d.ToString("MM/dd/yyyy") & "'"))
+        If Not String.IsNullOrEmpty(HolidayName) Then
+            DisplayError("The Deposit Date you entered is on a bank holiday (" & HolidayName & ").", txtDepositDate)
+            Return False
+        End If
+
+        If LocalHelper.AddBusinessDays(d, -2) < CDate(Format(Now, "MM/dd/yyyy")) Then
+            DisplayError("The Deposit Date you entered is not a minimum of two business days from now.", txtDepositDate)
+            Return False
+        End If
+
+        Dim RoutingNumber As String = DataHelper.FieldLookup("tblRoutingNumber", "RoutingNumber", _
+            "RoutingNumber = '" & txtBankRoutingNumber.Text & "'")
+
+        If RoutingNumber.Length = 0 Then
+            DisplayError("The Bank Routing Number you entered does not validate against the Federal ACH Directory.", txtBankRoutingNumber)
+            Return False
+        End If
+
+        Return True
+    End Function
+#End Region
+
+End Class

@@ -1,0 +1,75 @@
+table.treetable {
+  border: 1px solid #888;
+  border-collapse: collapse;
+  font-size: 11px;
+  font-family: Tahoma;
+  line-height: 1.5;
+  margin: 0px 10px 10px 10px;
+  padding-right: 10px; 
+  width: 100%;
+}
+
+table.treetable caption {
+  font-size: .9em;
+  font-weight: bold;
+  margin-bottom: .2em;
+}
+
+table.treetable thead {
+  background: #C5D9F1 repeat-x top left;
+}
+
+table.treetable thead tr th {
+  border: 1px solid #888;
+  font-weight: bold;
+  padding: .3em 1em .2em 1em;
+  text-align: left;
+}
+
+table.treetable tbody tr td {
+  cursor: default;
+  padding: .3em 1em;
+}
+
+
+table.treetable tr span.indenter a {
+	padding: 10px 10px  10px 10px;
+	background-repeat: no-repeat;
+	background-position: center left;
+	text-decoration: none;
+	}
+
+
+table.treetable tr.collapsed span.indenter a {
+  background-image: url(../../jquery/css/images/detail_expand.png);
+}
+
+table.treetable tr.expanded span.indenter a {
+  background-image: url(../../jquery/css/images/detail_minimize.png);
+}
+
+table.treetable tr.selected {
+  background-color: #3875d7;
+  color: #fff;
+}
+
+table.treetable tr.collapsed.selected span.indenter a {
+  background-image: url(../../jquery/css/images/detail_expand.png);
+}
+
+table.treetable tr.expanded.selected span.indenter a {
+  background-image: url(../../jquery/css/images/detail_minimize.png);
+}
+
+table.treetable tr.level0 {
+	background-color: #c7c7c7;
+	}
+table.treetable tr.level1 {
+	background-color: #dedede;
+	}
+table.treetable tr.level2 {
+	background-color: lightyellow;
+	}
+table.treetable tr td{
+	border-bottom: dotted 1px #c1c1c1;
+	}

@@ -1,0 +1,189 @@
+﻿.filterBox
+{
+    background-color: Gray;
+    color: #fff;
+}
+
+.footerRow
+{
+    text-align: right;
+    font-weight: 700;
+    height: 30px;
+    background-color: Gray;
+    border-top: 2px solid black;
+}
+
+.breadcrumb
+{
+    list-style: none;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    line-height: 20px;
+    overflow: auto;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.breadcrumb li
+{
+    float: left;
+    padding-left: 8px;
+    color: #FF9900;
+}
+
+.breadcrumb li a
+{
+    background: transparent url(images/blue-arrow.png) no-repeat right center;
+    padding: 0 24px 2px 0;
+}
+
+.breadcrumb li a:link, #breadcrumbs li a:visited
+{
+    text-decoration: none;
+    color: #003366;
+}
+
+.breadcrumb li a:hover, #breadcrumbs li a:focus
+{
+    text-decoration: underline;
+    color: #0099CC;
+}
+
+.portlet
+{
+    margin: 0 1em 1em 0;
+}
+
+.portlet-header
+{
+    padding-bottom: 4px;
+    padding-left: .2em;
+    margin: .3em;
+}
+
+.portlet-header .ui-icon
+{
+    float: right;
+}
+
+.portlet-content
+{
+    padding: .4em;
+}
+
+.ui-sortable-placeholder
+{
+    border: #000000;
+    visibility: visible !important;
+    height: 50px !important;
+}
+
+.ui-sortable-placeholder *
+{
+    visibility: hidden;
+}
+
+.notifyBox
+{
+    padding: 15px;
+}
+
+.notifyBox a
+{
+    text-decoration: : underline !important;
+    padding: 2px;
+}
+
+.lnk
+{
+    text-decoration: : underline;
+    color: #0000ff;
+}
+
+.portalnav, .portalnav ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.portalnav
+{
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 100;
+    position: relative;
+    float: right;
+}
+
+.portalnav li
+{
+    border-left: 1px solid #fff;
+    float: left;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.portalnav li a, .portalnav li a:link, .portalnav li a:active, .portalnav li a:visited
+{
+    font: bold 1.22em/25px Arial, Helvetica, sans-serif;
+    background: transparent;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    padding: 0 9px;
+}
+
+#portalnav-one li:hover ul a, #portalnav-one li.sfHover ul a
+{
+    background: #565656;
+    color: #fff;
+}
+
+.portalnav ul
+{
+    background: #808084;
+    border-bottom: 1px solid #000;
+    list-style: none;
+    position: absolute;
+    top: -999em;
+    left: -1px;
+    margin: 0;
+}
+
+.portalnav li:hover ul, .portalnav li.sfHover ul
+{
+    top: 25px;
+}
+
+.portalnav ul li
+{
+    border: 0;
+    float: none;
+}
+
+.portalnav ul a
+{
+    border: 1px solid #000;
+    border-bottom: 0;
+    padding-right: 25px;
+    width: 135px;
+    /*white-space: nowrap;*/
+}
+
+.portalnav ul a:hover
+{
+    color: #000;
+    background-image: 0;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#82c9ef',endColorstr='#59ACD9',GradientType=0);
+    background: linear-gradient(top,#82c9ef0%,#59ACD9100%);
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.portalnav li a:hover, #portalnav-one li:hover a, #portalnav-one li.sfHover a, #portalnav-one li:hover ul a:hover, #portalnav-one li.sfHover ul a:hover
+{
+    background: #ccc;
+    color: #000;
+}

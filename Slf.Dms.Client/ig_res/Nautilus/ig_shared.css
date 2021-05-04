@@ -1,0 +1,105 @@
+.ig_NautilusControl
+{
+	background-color:White;
+	font-size:11px;
+	font-family: tahoma;
+	cursor:default;
+	color:Black;
+}
+
+
+.ig_NautilusItem
+{
+	background-color:White;
+	font-size:11px;
+	font-family: tahoma;
+	padding-left:1px;
+}
+
+
+.ig_NautilusButton
+{
+	cursor:hand;
+}
+
+
+.ig_NautilusButtonHover
+{
+}
+
+
+.ig_NautilusButtonPressed
+{
+}
+
+
+.ig_NautilusButtonDisabled
+{
+}
+
+
+.ig_NautilusHover
+{
+}
+
+
+.ig_NautilusSelected
+{
+}
+
+
+.ig_NautilusDisabled
+{
+}
+
+
+.ig_NautilusHeader
+{
+}
+
+
+.ig_NautilusFooter
+{
+}
+
+
+.ig_NautilusEditWithButtons
+{
+}
+
+
+.ig_NautilusEdit
+{
+}
+
+
+.ig_NautilusEditInContainer
+{
+}
+
+
+.ig_NautilusAlt
+{
+	border-top:solid 1px #E3EFFF;
+	border-right:solid 0px #FFFFFF;
+	border-bottom:solid 1px #E3EFFF;
+	border-left:solid 0px #FFFFFF;
+}
+
+
+.ig_NautilusDropDown
+{
+}
+
+
+.ig_NautilusEditSelected
+{
+}
+
+
+Body
+{
+	cursor:default;
+}
+
+

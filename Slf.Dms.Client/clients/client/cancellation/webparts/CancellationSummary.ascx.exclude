@@ -1,0 +1,305 @@
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="CancellationSummary.ascx.vb" Inherits="Clients_client_cancellation_webparts_CancellationSummary" %>
+<link href="<%= ResolveUrl("~/css/default.css") %>" type="text/css" rel="stylesheet" />
+<link href="<%= ResolveUrl("~/css/grid.css") %>" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function OpenDocument(path) {
+        window.open(path);
+        return false;
+    }
+</script>
+<asp:UpdatePanel ID="updSummary" runat="server">
+    <ContentTemplate> 
+    <%--<ajaxToolkit:ToolkitScriptManager ID="smCancel" runat="server">
+    </ajaxToolkit:ToolkitScriptManager>--%>
+        <table runat="server" id="tblBody" style="font-family: tahoma; font-size: 11px; width:650px;
+                height: 100%;" border="0" cellpadding="0" cellspacing="15"> 
+            <tr>
+                <td colspan="2" class="acc-header">
+                    Cancellation Information
+                </td>                                   
+            </tr>
+            <tr>
+                <td>
+                    <table style="border-right-color:Blue;">
+                        <tr>
+                            <td>
+                                SDA Balance :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblSDA" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                PFO Balance :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblPFO" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Funds On Hold :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblFunds" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Available SDA :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblAvailSDA" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Delivery Fee :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblDelFee" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                Reason For Cancellation :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblReason" runat="server"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Reason Details :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblReasonDetails" runat="server"/>
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td>
+                                PayableTo:
+                            </td>
+                            <td>
+                                <asp:Label ID="lblPayableTo" runat="server"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblRequestText" runat="server"/>
+                            </td>
+                            <td>
+                                <asp:Label ID="lblRequest" runat="server"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total Refund Amount :
+                            </td>
+                            <td>
+                                <asp:Label ID="lblRefundAmt" Font-Bold="true" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr id="trChooseRefund" runat="server" style="display:none;">
+                <td colspan="2">
+                    <ajaxToolkit:TabContainer ID="tabFeedetails" runat="server" ScrollBars="Auto"
+                        Width="70%" ActiveTabIndex="0" CssClass="tabContainer">
+                        <ajaxToolkit:TabPanel ID="tabRetainer" runat="server">
+                            <HeaderTemplate>
+                                Retainer Fee Details
+                            </HeaderTemplate>                                            
+                            <ContentTemplate>
+                                <asp:GridView ID="gvRetainer" runat="server" AutoGenerateColumns="false" 
+                                        AllowPaging="false" AllowSorting="false" CssClass="datatable" CellPadding="0" BorderWidth="0px"
+                                        PageSize="4" Width="60%" GridLines="None"  >
+                                        <EmptyDataTemplate>
+                                            <div> No Retainer Fees Listed.</div>
+                                        </EmptyDataTemplate>
+                                        <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" Height="30px" HorizontalAlign="Center" Font-Italic="true" />   
+                                    <Columns>                                                                    
+                                        <asp:BoundField DataField="AccountName" HeaderText="Account" SortExpression="AccountName">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />                                                    
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="AccountStatus" HeaderText="Status" SortExpression="AccountStatus">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                        </asp:BoundField>                                                
+                                        <asp:BoundField DataField="TransactionDate" DataFormatString="{0:d}" HeaderText="Date"
+                                            SortExpression="TransactionDate">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Amount" DataFormatString="{0:c}" HeaderText="Original&nbsp;Amount" SortExpression="Amount">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                        </asp:BoundField>                                                                    
+                                    </Columns>
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <RowStyle CssClass="row" />
+                                    <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                    <PagerStyle CssClass="pagerstyle" />
+                                </asp:GridView>  
+                                <input type="hidden" runat="server" id="hdnTotalRetainer" value="0"/>  
+                                <br />   
+                                <br />      
+                            </ContentTemplate>                                            
+                        </ajaxToolkit:TabPanel>  
+                        <ajaxToolkit:TabPanel ID="tabMaint" runat="server">
+                            <HeaderTemplate>
+                                Maintenance Fee Details
+                            </HeaderTemplate>                                            
+                            <ContentTemplate>
+                                <asp:GridView ID="gvMaintFee" runat="server" AutoGenerateColumns="false" 
+                                        AllowPaging="false" Width="60%" AllowSorting="false" CssClass="datatable" CellPadding="0" BorderWidth="0px"
+                                        PageSize="4" GridLines="None" Height="150px" >
+                                        <EmptyDataTemplate>
+                                            <div> No Maintenance Fees Listed.</div>
+                                        </EmptyDataTemplate>
+                                        <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" Height="30px" HorizontalAlign="Center" Font-Italic="true" />   
+                                    <Columns>                                                                                                       
+                                        <asp:BoundField DataField="TransactionDate" DataFormatString="{0:d}" HeaderText="Date"
+                                            SortExpression="TransactionDate">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />                                                    
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Amount" DataFormatString="{0:c}" HeaderText="Original&nbsp;Amount" SortExpression="Amount">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                        </asp:BoundField>                                                                    
+                                    </Columns>
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <RowStyle CssClass="row" />
+                                    <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                    <PagerStyle CssClass="pagerstyle" />
+                                </asp:GridView>   
+                                <br />
+                                <br />
+                            </ContentTemplate>                                            
+                        </ajaxToolkit:TabPanel> 
+                        <ajaxToolkit:TabPanel ID="tabOther" runat="server">
+                            <HeaderTemplate>
+                                Other Fee Details
+                            </HeaderTemplate>                                            
+                            <ContentTemplate>
+                                <asp:GridView ID="gvOtherFee" runat="server" AutoGenerateColumns="false" 
+                                        AllowPaging="False" AllowSorting="False" CssClass="datatable" CellPadding="0" BorderWidth="0px"
+                                        PageSize="4" Width="60%" GridLines="None" >
+                                        <EmptyDataTemplate>
+                                            <div> No Fees Listed.</div>
+                                        </EmptyDataTemplate>
+                                        <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" Height="30px" HorizontalAlign="Center" Font-Italic="true" />   
+                                    <Columns>                                                                 
+                                        <asp:BoundField DataField="TransactionDate" DataFormatString="{0:d}" HeaderText="Date"
+                                            SortExpression="TransactionDate">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />                                                    
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Amount" DataFormatString="{0:c}" HeaderText="Amount" SortExpression="Amount">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                        </asp:BoundField> 
+                                        <asp:BoundField DataField="DisplayName" HeaderText="Name" SortExpression="DisplayName">
+                                            <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                            <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                        </asp:BoundField>                                                                    
+                                    </Columns>
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <RowStyle CssClass="row" />
+                                    <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                    <PagerStyle CssClass="pagerstyle" />
+                                </asp:GridView>  
+                                <br />   
+                                <br />      
+                            </ContentTemplate>                                            
+                        </ajaxToolkit:TabPanel>                 
+                    </ajaxToolkit:TabContainer>                                        
+                </td>                                    
+            </tr>
+            <tr id="dvRule" runat="server" style="display:none;">
+                <td colspan="2">
+                    <asp:GridView ID="gvRules" runat="server" AutoGenerateColumns="false" AllowPaging="false" AllowSorting="false"
+                         CssClass="datatable" CellPadding="0" BorderWidth="1px" 
+                        PageSize="4" GridLines="None" Width="80%" EmptyDataText="No Rules." BorderColor="Black" BorderStyle="Solid">
+                        <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Center" Font-Italic="true" />
+                        <Columns>                            
+                            <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ClientID" HeaderText="ClientID" ReadOnly="True" SortExpression="ClientID"
+                                Visible="False" />
+                            <asp:BoundField DataField="BankName" HeaderText="Bank Name" SortExpression="BankName">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="BankRoutingNumber" HeaderText="Bank Routing #" 
+                                SortExpression="BankRoutingNumber">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="BankAccountNumber" HeaderText="Bank Acct #" 
+                                SortExpression="BankAccountNumber">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="StartDate" DataFormatString="{0:d}" HeaderText="Start Date"
+                                SortExpression="StartDate">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="EndDate" DataFormatString="{0:d}" HeaderText="End Date"
+                                SortExpression="EndDate">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="DepositDay" HeaderText="Dep Day" SortExpression="DepositDay">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="DepositAmount" DataFormatString="{0:c}" HeaderText="Dep Amt"
+                                SortExpression="DepositAmount">
+                                <HeaderStyle CssClass="headItem5" Wrap="false" HorizontalAlign="Right" />
+                                <ItemStyle CssClass="listItem" Wrap="false" HorizontalAlign="Right" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="BankType" HeaderText="Bank Type" SortExpression="BankType">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="InitialDraftYN" HeaderText="Initial Draft" 
+                                SortExpression="InitialDraftYN">
+                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="created" HeaderText="created" ReadOnly="True" SortExpression="created"
+                                Visible="False" />
+                        </Columns>
+                    </asp:GridView>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#EBEBEB; padding:5px" colspan="2">
+                    <table id="tblDocuments" runat="server">
+                    </table> 
+                </td>
+            </tr>
+        </table>       
+    </ContentTemplate>    
+</asp:UpdatePanel>

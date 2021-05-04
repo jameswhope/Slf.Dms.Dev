@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CheckCommissionPaid", "CheckCommissionPaid\CheckCommissionPaid.vbproj", "{672DAF7F-8773-443D-B72A-A92671219D3D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CheckCommPaidCon", "CheckCommPaidCon\CheckCommPaidCon.vbproj", "{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CheckCommPaidLib", "CheckCommPaidLib\CheckCommPaidLib.vbproj", "{946848C3-1275-423E-A966-92F4212265F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drg.Util.DataAccess", "..\Drg.Util.DataAccess\Drg.Util.DataAccess.csproj", "{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}"
+EndProject
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "DBScripts", "DBScripts\DBScripts.dbp", "{796493E8-631D-45AE-8D41-F4EB4FD39855}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://lex-dev-30:8080/
+		SccProjectUniqueName0 = ..\\Drg.Util.DataAccess\\Drg.Util.DataAccess.csproj
+		SccProjectName0 = ../Drg.Util.DataAccess
+		SccLocalPath0 = ..\\Drg.Util.DataAccess
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = CheckCommissionPaid\\CheckCommissionPaid.vbproj
+		SccProjectName2 = CheckCommissionPaid
+		SccLocalPath2 = CheckCommissionPaid
+		SccProjectUniqueName3 = CheckCommPaidCon\\CheckCommPaidCon.vbproj
+		SccProjectName3 = CheckCommPaidCon
+		SccLocalPath3 = CheckCommPaidCon
+		SccProjectUniqueName4 = CheckCommPaidLib\\CheckCommPaidLib.vbproj
+		SccProjectName4 = CheckCommPaidLib
+		SccLocalPath4 = CheckCommPaidLib
+		SccProjectUniqueName5 = DBScripts\\DBScripts.dbp
+		SccProjectName5 = DBScripts
+		SccLocalPath5 = DBScripts
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+		Website Only|Any CPU = Website Only|Any CPU
+		Website Only|x86 = Website Only|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Release|x86.ActiveCfg = Release|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Website Only|Any CPU.ActiveCfg = Release|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Website Only|Any CPU.Build.0 = Release|Any CPU
+		{672DAF7F-8773-443D-B72A-A92671219D3D}.Website Only|x86.ActiveCfg = Release|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Release|x86.ActiveCfg = Release|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Website Only|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Website Only|Any CPU.Build.0 = Release|Any CPU
+		{8BE24B20-2EEE-4FF0-B85C-A5966EE4E75F}.Website Only|x86.ActiveCfg = Release|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Release|x86.ActiveCfg = Release|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Website Only|Any CPU.ActiveCfg = Release|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Website Only|Any CPU.Build.0 = Release|Any CPU
+		{946848C3-1275-423E-A966-92F4212265F1}.Website Only|x86.ActiveCfg = Release|Any CPU
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Debug|x86.ActiveCfg = Debug|x86
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Debug|x86.Build.0 = Debug|x86
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Release|x86.ActiveCfg = Release|x86
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Release|x86.Build.0 = Release|x86
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Website Only|Any CPU.ActiveCfg = Website Only|Any CPU
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Website Only|Any CPU.Build.0 = Website Only|Any CPU
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Website Only|x86.ActiveCfg = Website Only|x86
+		{462FA7EF-E3CF-4A77-B9A8-38D0DF63E863}.Website Only|x86.Build.0 = Website Only|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

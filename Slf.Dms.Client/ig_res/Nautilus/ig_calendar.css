@@ -1,0 +1,96 @@
+.igcal_NautilusControl
+{
+	background-color:White;
+	background-position:top ;
+	background-image: url(images/header13.png);
+	border:solid 1px Silver;
+}
+
+
+.igcal_NautilusCalendar
+{
+}
+
+
+.igcal_NautilusDOW
+{
+	background-color:White;
+	font-weight:bold;
+	font-size:xx-small;
+	border-width:0px;
+	border-bottom:solid 1px LightGrey;
+	padding:5px 0px 0px 0px;
+}
+
+
+.igcal_NautilusDay
+{
+	background-color:White;
+	font-size:xx-small;
+	border-width:0px;
+}
+
+
+.igcal_NautilusNextPrev
+{
+	background-color:Transparent;
+}
+
+
+.igcal_NautilusFooter
+{
+	background-color:#F0F0F0;
+	background-position:right top ;
+	background-image: url(images/bg_top.gif);
+	padding:3px;
+	text-align:center;
+}
+
+
+.igcal_NautilusHeader
+{
+	background-color:Transparent;
+	font-weight:bold;
+	font-size:10px;
+	height: 16px;
+	color:White;
+}
+
+
+.igcal_NautilusDropDown
+{
+}
+
+
+.igcal_NautilusWeekendDay
+{
+}
+
+
+.igcal_NautilusOtherMonthDay
+{
+	color:#B3B3B3;
+}
+
+
+.igcal_NautilusWeekendDayMajor
+{
+}
+
+
+.igcal_NautilusTodayDay
+{
+	border:solid 1px #216CA3;
+}
+
+
+.igcal_NautilusSelectedDay
+{
+	background-color:#FF8A16;
+	background-image:none;
+	border-style:solid;
+	border-color:#969696;
+	color:White;
+}
+
+

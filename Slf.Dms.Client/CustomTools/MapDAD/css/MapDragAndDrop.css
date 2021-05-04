@@ -1,0 +1,57 @@
+﻿.HorizontalLine
+{
+	border-top: 1px solid #000000;
+	position: absolute;
+}
+
+.MapItem
+{
+	color: #000000;
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	height: 72px;
+	overflow: visible;
+	text-align: center;
+	width: 64px;
+	z-index: 2;
+}
+
+.MapItemDrop
+{
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 48px;
+	width: 64px;
+	z-index: 1;
+}
+
+.MapItemTitle
+{
+	background-color: #E5ECf9;
+	border: solid 1px #3366CC;
+	float: left;
+	height: 23px;
+	min-width: 64px;
+	overflow: visible;
+	text-align: center;
+}
+
+.MapItemTitleInput
+{
+	font-family: Tahoma;
+	font-size: 9px;
+	overflow: visible;
+}
+
+.ToolboxItem
+{
+	height: 48px;
+	width: 48px;
+}
+
+.VerticalLine
+{
+	border-left: 1px solid #000000;
+	position: absolute;
+}

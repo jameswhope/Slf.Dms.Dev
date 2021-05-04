@@ -1,0 +1,21 @@
+<License Version="1.0">
+  <Customer Name="Data Research Group" />
+  <Products>
+    <Product AssemblyName="AssistedSolutions.SlickUpload" Version="2.0" ExpirationDate="9999-12-31" Type="Commercial" Scope="Redistributable" />
+  </Products>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>ne80gv2Pvwg68vb/80/yIU3/8wQ=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>UEnJNsbMoPOZ2glX5ToqFNSWgZUxSJUr746kL7oJ6TlMKAOpPGC/9FKFVQi6jLLyfG4QT0/NmBgXR/ubi0c7AuIkXJXvtxg2TZMVF/ADMvXhus5/sIBStP+mhddHJT1fj7N1N4zK1m/JWphM/CKta+7ZLXIuhnFbtwLgYNTcdtE=</SignatureValue>
+  </Signature>
+</License>

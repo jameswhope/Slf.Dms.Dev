@@ -1,0 +1,24 @@
+﻿<p>
+	Mr./Mrs {{clientname}},
+</p>
+<p>
+	Thank you for taking the time to review and sign our Legal Service Agreement. It is important that you 
+	understand before our firm begins representation that you must first complete a verification call with 
+	our Compliance Department.
+</p>
+<p>
+	This call is to reiterate to you the services our firm provides, and must be completed within 3 business 
+	days following the receipt of this email. If you have not yet completed this call please contact us at 
+	{{phone}} immediately to complete the initial engagement process with our firm. Our normal business hours 
+	are M-F 7AM-5PM PST.
+</p>
+<p>
+	We look forward to speaking with you soon.
+</p>
+<p>
+	<br/>
+	Regards,<br/>
+	{{rep}}<br/>
+	{{company}}<br/>
+	Client Intake Department
+</p>

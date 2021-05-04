@@ -1,0 +1,133 @@
+.igtr_Control
+{
+	background-color:White;
+	border-style:solid;
+	border-width:1px;
+	cursor:default;
+	text-align:left;
+}
+
+
+.igtr_Control .igt_n
+{
+	padding:2px;
+}
+
+
+.igtr_Control .igt_p
+{
+}
+
+
+.igtr_Control .igt_r
+{
+}
+
+
+.igtr_Control li a, .igtr_Control li a visited
+{
+	font-size:11px;
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	color:Black;
+	vertical-align:middle;
+}
+
+
+.igtr_Control li a span
+{
+}
+
+
+.igtr_Control ul li img
+{
+	vertical-align:middle;
+}
+
+
+.igt_group
+{
+	margin-top:0px;
+	margin-left:0px;
+	padding-top:0px;
+	padding-left:0px;
+	list-style: none;
+}
+
+
+.igt_group li ul li
+{
+	margin-top:0px;
+	margin-left:20px;
+	padding-top:0px;
+	padding-left:0px;
+}
+
+
+li a visited
+{
+}
+
+
+.igtr_Hover
+{
+	text-decoration:underline;
+}
+
+
+.igtr_Selected
+{
+	background-color:Blue;
+	color:Yellow;
+}
+
+
+.igtr_NautilusControl
+{
+}
+
+
+.igtr_NautilusIsland
+{
+}
+
+
+.igtr_NautilusNode
+{
+}
+
+
+.igtr_NautilusEdit
+{
+}
+
+
+.igtr_NautilusRoot
+{
+}
+
+
+.igtr_NautilusHover
+{
+}
+
+
+.igtr_NautilusSelected
+{
+}
+
+
+.igtr_NautilusParent
+{
+}
+
+
+.igtr_NautilusLeaf
+{
+}
+
+
+.igtr_NautilusDisabled
+{
+}
+
+

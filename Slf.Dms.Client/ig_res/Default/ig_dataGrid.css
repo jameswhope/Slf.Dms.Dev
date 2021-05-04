@@ -1,0 +1,156 @@
+.igg_Control
+{
+	background-color:#F0F0F0;
+	background-repeat:repeat-x;
+	font-size:11px;
+	font-family: Verdana;
+	border:solid 1px #999999;
+}
+
+
+tbody.igg_Item tr td
+{
+	background-color:#FAFAFA;
+	border-top:solid 1px #D8D8D8;
+	padding:5px 8px 5px 8px;
+	text-align:left;
+	vertical-align:middle;
+	overflow:hidden;
+}
+
+
+tbody tr.igg_Alt td
+{
+	background-color:White;
+	padding:5px 8px 5px 8px;
+	text-align:left;
+	vertical-align:middle;
+}
+
+
+.igg_Header
+{
+	background-repeat:repeat-x;
+	background-image: url(images/igg_header.gif);
+	height: 40px;
+	color:White;
+}
+
+
+.igg_HeaderCaption
+{
+	padding-left:8px;
+	text-align:left;
+	overflow:hidden;
+}
+
+
+.igg_Footer
+{
+	background-color:White;
+	height: 20px;
+}
+
+
+.igg_FooterCaption
+{
+	overflow:hidden;
+}
+
+
+.igg_Pager
+{
+	background-color:#F0F0F0;
+	padding-top:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+	text-align:right;
+}
+
+
+.igg_PageLink
+{
+	padding-right:10px;
+	cursor:hand;
+	color:DimGray;
+	text-decoration:underline;
+}
+
+
+.igg_PageCurrent
+{
+	padding-right:10px;
+}
+
+
+.igg_EditCell
+{
+}
+
+
+.igg_ActiveRow
+{
+}
+
+
+.igg_ActiveColumn
+{
+}
+
+
+.igg_ScrollbarIntersection
+{
+}
+
+
+.igg_SelectedRowSelector
+{
+}
+
+
+.igg_SelectedRowSelectorImage
+{
+}
+
+
+.igg_SelectedHeader
+{
+}
+
+
+tbody tr td.igg_ActiveCell
+{
+}
+
+
+.igg_ActiveRowSelectorImage
+{
+}
+
+
+.igg_RowSelector
+{
+	padding-top:1px;
+	width: 35px;
+	color:Black;
+	vertical-align:middle;
+}
+
+
+.igg_HeaderRowSelector
+{
+}
+
+
+.igg_FooterRowSelector
+{
+}
+
+
+tbody tr td.igg_SelectedCell
+{
+	background-color:DimGray;
+	color:White;
+}
+
+

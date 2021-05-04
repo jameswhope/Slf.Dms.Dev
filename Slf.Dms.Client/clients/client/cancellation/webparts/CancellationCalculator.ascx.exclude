@@ -1,0 +1,288 @@
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="CancellationCalculator.ascx.vb" Inherits="Clients_client_cancellation_webparts_CancellationCalculator" %>
+
+<style type="text/css">        
+    .textBox-label
+    {
+        border-style:none;
+        width:150px;
+    }
+</style>
+<script type="text/javascript" src="<%= ResolveUrl("~/jscript/onlydigits.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~\jscript\validation\display.js") %>"></script>
+<script type="text/javascript">
+    function MakeReadOnly(reload){
+        document.getElementById("<%= lblClientFirstName.ClientID %>").readOnly = true;
+        document.getElementById("<%= lblClientLastName.ClientID %>").readOnly = true;
+        document.getElementById("<%= lblStreet.ClientID %>").readOnly = true;
+        document.getElementById("<%= lblStreet2.ClientID %>").readOnly = true;
+        document.getElementById("<%= lblCity.ClientID %>").readOnly = true;
+        document.getElementById("<%= ddlState.ClientID %>").disabled = true;
+        document.getElementById("<%= lblZip.ClientID %>").readOnly = true;
+        document.getElementById("<%= lblEmail.ClientID %>").readOnly = true;
+        document.getElementById("<%= lblTelNumber.ClientID %>").readOnly = true;
+        document.getElementById("<%= lblFaxNumber.ClientID %>").readOnly = true;
+        document.getElementById("<%= dvSave.ClientID %>").style.display = "none";
+        document.getElementById("<%= dvEdit.ClientID %>").style.display = "inline";       
+        
+    }
+    
+    function MakeReadable(){
+        document.getElementById("<%= lblClientFirstName.ClientID %>").readOnly = false;
+        document.getElementById("<%= lblClientLastName.ClientID %>").readOnly = false;
+        document.getElementById("<%= lblStreet.ClientID %>").readOnly = false;
+        document.getElementById("<%= lblStreet2.ClientID %>").readOnly = false;
+        document.getElementById("<%= lblCity.ClientID %>").readOnly = false;
+        document.getElementById("<%= ddlState.ClientID %>").disabled = false;
+        document.getElementById("<%= lblZip.ClientID %>").readOnly = false;
+        document.getElementById("<%= lblEmail.ClientID %>").readOnly = false;
+        document.getElementById("<%= lblTelNumber.ClientID %>").readOnly = false;
+        document.getElementById("<%= lblFaxNumber.ClientID %>").readOnly = false;
+        document.getElementById("<%= dvSave.ClientID %>").style.display = "inline";
+        document.getElementById("<%= dvEdit.ClientID %>").style.display = "none";
+        
+    }
+    function VerifyData(){
+        
+        var lblEmail =  document.getElementById("<%= lblEmail.ClientID %>");
+        var telNumber =  document.getElementById("<%= lblTelNumber.ClientID %>");
+        var faxNumber =  document.getElementById("<%= lblFaxNumber.ClientID %>");
+        var clientName =  document.getElementById("<%= lblClientFirstName.ClientID %>");
+        var LastName =  document.getElementById("<%= lblClientLastName.ClientID %>");
+        var city =  document.getElementById("<%= lblCity.ClientID %>");
+        var street =  document.getElementById("<%= lblStreet.ClientID %>");
+        
+        RemoveBorder(lblEmail);
+        RemoveBorder(telNumber);
+        RemoveBorder(faxNumber);
+        RemoveBorder(clientName);
+        RemoveBorder(city);
+        RemoveBorder(street);
+        
+        if (trim(clientName.value) == ""){
+            AddBorder(clientName);
+            return false;
+        }
+        
+        if (trim(LastName.value) == ""){
+            AddBorder(LastName);
+            return false;
+        }
+        
+        if (trim(city.value) == ""){
+            AddBorder(city);
+            return false;
+        }
+        
+        if (trim(street.value) == ""){
+            AddBorder(street);
+            return false;
+        }
+        
+        if (trim(telNumber.value) != ""){
+            if (trim(telNumber.value).length < 10 || trim(telNumber.value).length > 13)
+            {
+                AddBorder(telNumber);
+                return false;
+            }
+        }
+        
+        if (trim(faxNumber.value) != ""){
+            if (trim(faxNumber.value).length < 10 || trim(faxNumber.value).length > 13)
+            {
+                AddBorder(faxNumber);
+                return false;
+            }
+        }
+        
+        if (lblEmail.value != ""){
+        var strFromEmail = lblEmail.value.replace(',',';').split(";");
+        for(i=0;i<strFromEmail.length;i++)
+        {
+            if(strFromEmail[i]!="")
+            {
+                if (!RegexValidate(trim(strFromEmail[i]), "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")) {
+                    AddBorder(lblEmail);
+                    return false;
+                }
+            }
+        }
+        }
+        
+        document.getElementById("<%= hdnFirstName.ClientID %>").value = clientName.value;
+        document.getElementById("<%= hdnLastName.ClientID %>").value = LastName.value;
+        document.getElementById("<%= hdnStreet.ClientID %>").value = street.value;
+        document.getElementById("<%= hdnStreet2.ClientID %>").value = document.getElementById("<%= lblStreet2.ClientID %>").value;
+        document.getElementById("<%= hdnCity.ClientID %>").value = city.value;
+        document.getElementById("<%= hdnState.ClientID %>").value = document.getElementById("<%= ddlState.ClientID %>").value;
+        document.getElementById("<%= hdnZip.ClientID %>").value = document.getElementById("<%= lblZip.ClientID %>").value;
+        document.getElementById("<%= hdnHomePhone.ClientID %>").value = telNumber.value;
+        document.getElementById("<%= hdnFax.ClientID %>").value = faxNumber.value;
+        document.getElementById("<%= hdnEmail.ClientID %>").value = lblEmail.value;
+        
+        <%=Page.ClientScript.GetPostBackEventReference(lnkSaveAddress, Nothing) %>;
+    }
+    function RegexValidate(Value, Pattern) {
+            //check to see if supposed to validate value
+            if (Pattern != null && Pattern.length > 0) {
+                var re = new RegExp(Pattern);
+
+                return Value.match(re);
+            }
+            else {
+                return false;
+            }
+    }
+
+    function trim(stringToTrim) {
+        return stringToTrim.replace(/^\s+|\s+$/g, "");
+    }
+</script>
+<asp:UpdatePanel ID="updAccountSummary" runat="server">
+    <ContentTemplate>    
+        <table style="width: 100%; color: rgb(120,120,120); font-size: 11; font-family: Verdana, Arial, Helvetica"
+                            cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td valign="top" colspan="2">
+                    <asp:LinkButton CssClass="lnk" Style="color: rgb(80,80,80); font-family: tahoma;
+                        font-size: medium;" runat="server" ID="lnkName"></asp:LinkButton>
+                    &nbsp; -
+                    <asp:Label runat="server" Style="color: rgb(160,80,80); font-family: tahoma; font-size: medium;"
+                        ID="lblCompany"></asp:Label>
+                    &nbsp; - <asp:Label runat="server" Style="color: rgb(80,80,80); font-family: tahoma; font-size: 
+                                        medium;" ID="lblAccountNumber"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:175px;">
+                    <asp:Label runat="server" ID="lblSSN" Visible="false"></asp:Label>                                    
+                    Status:&nbsp;                                    
+                    <asp:Label ID="lnkStatus" runat="server"></asp:Label>
+                    <br />Hardship:&nbsp;
+                    <asp:Label ID="lblHardship" runat="server"></asp:Label>
+                    <br />
+                    <asp:Label runat="server" ID="lblAddress"></asp:Label>&nbsp;&nbsp;<a class="lnk" id="lnkViewAddress" runat="server">Edit</a>
+                    <br />
+                    <asp:Label runat="server" ID="lblPhone"></asp:Label>
+                    <br />                                    
+                    <asp:Label runat="server" ID="lblFax"></asp:Label>
+                    <br />
+                    <asp:Label runat="server" ID="lblEmailAddress"></asp:Label>
+                </td>
+                <td align="left">
+                    <asp:Label runat="server" ID="lblCoApp" Font-Bold="true"></asp:Label>
+                    <br />
+                    <asp:Label runat="server" ID="lblCoAppAddress"></asp:Label>
+                    <br />
+                    <asp:Label runat="server" ID="lblCoAppTel"></asp:Label>
+                    <br />                                    
+                    <asp:Label runat="server" ID="lblCoAppFax"></asp:Label>
+                    <br />
+                    <asp:Label runat="server" ID="lblCoAppEmail"></asp:Label>
+                </td>
+            </tr>            
+            <tr>
+                <td>
+                    <asp:Panel ID="pnlAddress" runat="server" BackColor="#FFFFCC" Style="display: none;width: 350px;">
+                        <div>
+                            <table style="border-width:1px;border-style:solid;border-color:Black;">
+                                <tr>
+                                    <td class="acc-content" style="background-color: #3376AB;">
+                                        Verify Address
+                                    </td>                                   
+                                </tr>
+                                <tr>                                                    
+                                    <td align="right">
+                                        <div id="dvSave" runat="server" style="display:none;">
+                                            <a style="color: black" class="lnk" href="#" onclick="javascript:MakeReadOnly(1);">
+                                                <img id="imgCancel" style="margin-left: 6px;" runat="server" src="~/images/16x16_Cancel.png"
+                                                    border="0" align="Middle" />Cancel</a>   
+                                            <a style="color: black" class="lnk" href="#" onclick="javascript:return VerifyData();">
+                                                <img id="imgSave" style="margin-left: 6px;" runat="server" src="~/images/16x16_Save.png"
+                                                    border="0" align="Middle" />Save</a>    
+                                        </div>
+                                        <div id="dvEdit" runat="server" >
+                                            <a style="color: black" class="lnk" href="#" onclick="javascript:MakeReadable();" >
+                                                <img id="imgEdit" style="margin-left: 6px;" runat="server" src="~/images/Edit.png"
+                                                    border="0" align="Middle" />Edit</a>   
+                                        </div>        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        First&nbsp;Name:&nbsp;<asp:TextBox ID="lblClientFirstName" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                    </td>                                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Last&nbsp;Name:&nbsp;<asp:TextBox ID="lblClientLastName" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                    </td>                                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Street1:&nbsp;<asp:TextBox ID="lblStreet" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                    </td>                                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Street2:&nbsp;<asp:TextBox ID="lblStreet2" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                    </td>                                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:TextBox ID="lblCity" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                        <asp:DropDownList ID="ddlState" runat="server" Enabled="false" width="50px"/>
+                                        <asp:TextBox ID="lblZip" runat="server" CssClass="textBox-label" MaxLength = "5" ReadOnly="true"/>
+                                    </td>                                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tel#:&nbsp;<asp:TextBox ID="lblTelNumber" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        Fax#:&nbsp;<asp:TextBox ID="lblFaxNumber" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        Email:&nbsp;<asp:TextBox ID="lblEmail" runat="server" CssClass="textBox-label" ReadOnly="true"/>
+                                    </td>
+                                </tr>                                                    
+                            </table>
+                            
+                            <div style="padding: 10px; text-align: center; background-color: lightgray">
+                                <a class="lnk" onclick="AjaxControlToolkit.PopupControlBehavior.__VisiblePopup.hidePopup(); return false;"
+                                title="close">Close</a>
+                            </div>
+                        </div>
+                    </asp:Panel>     
+                    <ajaxToolkit:PopupControlExtender ID="pceAddress" runat="server" TargetControlID="lnkViewAddress"
+                        PopupControlID="pnlAddress" CommitProperty="value" Position="Bottom" CommitScript="e.value" />
+                    <br />    
+                </td>
+            </tr>
+        </table>
+        
+        <asp:SqlDataSource ID="dsDeposit" runat="server" ConnectionString="<%$ AppSettings:connectionstring %>"
+            ProviderName="System.Data.SqlClient" SelectCommand="select * from tblRegister where ClientId = @clientId and EntryTypeId =3 and Void is null and Bounce is null"
+            SelectCommandType="Text">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="" Name="clientId" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    <asp:HiddenField ID="hdnFirstName" runat="server"/>
+    <asp:LinkButton runat="server" ID="lnkSaveAddress" />    
+    <asp:HiddenField ID="hdnLastName" runat="server"/>
+    <asp:HiddenField ID="hdnStreet" runat="server"/>
+    <asp:HiddenField ID="hdnStreet2" runat="server"/>
+    <asp:HiddenField ID="hdnClientId" runat="server"/>
+    <asp:HiddenField ID="hdnCity" runat="server"/>
+    <asp:HiddenField ID="hdnState" runat="server"/>
+    <asp:HiddenField ID="hdnZip" runat="server"/>
+    <asp:HiddenField ID="hdnHomePhone" runat="server"/>
+    <asp:HiddenField ID="hdnFax" runat="server"/>
+    <asp:HiddenField ID="hdnEmail" runat="server"/>               
+    </ContentTemplate>
+</asp:UpdatePanel> 
+    

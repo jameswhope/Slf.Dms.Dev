@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3" PrintWidth="15825" DocumentName="ActiveReports Document" ScriptLang="C#" CodeFile="report_clients_depositdaysago.vb">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0; " />
+    <Style Name="Heading1" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 16pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading2" Value="font-family: Times New Roman; font-style: italic; font-variant: inherit; font-weight: bold; font-size: 14pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading3" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 13pt; font-size-adjust: inherit; font-stretch: inherit; " />
+  </StyleSheet>
+  <Sections>
+    <Section Type="ReportHeader" Name="ReportHeader" Height="450" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label16" MOD="4" Left="90" Top="0" Width="6300" Height="270" Caption="Query Results - Deposit Days Ago" Style="ddo-char-set: 0; text-align: left; font-weight: bold; font-size: 9.75pt; " />
+    </Section>
+    <Section Type="PageHeader" Name="PageHeader" Height="540" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label1" MOD="4" Left="4410" Top="90" Width="990" Height="270" Caption="Acct. #" />
+      <Control Type="AR.Label" Name="Label4" MOD="4" Left="2160" Top="90" Width="2250" Height="270" Caption="Client Name" />
+      <Control Type="AR.Label" Name="Label5" MOD="4" Left="5400" Top="90" Width="1620" Height="270" Caption="Status" Style="text-align: left; " />
+      <Control Type="AR.Line" Name="Line1" MOD="4" X1="0" Y1="450" X2="16020" Y2="450" LineWeight="3" />
+      <Control Type="AR.Label" Name="Label6" MOD="4" Left="7020" Top="90" Width="810" Height="270" Caption="Method" Style="text-align: left; " />
+      <Control Type="AR.Label" Name="Label7" MOD="4" Left="7830" Top="90" Width="540" Height="270" Caption="Day" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label8" MOD="4" Left="8370" Top="90" Width="1350" Height="270" Caption="Amount" Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label9" MOD="4" Left="9720" Top="90" Width="990" Height="270" Caption="Days Ago" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label10" MOD="4" Left="10710" Top="90" Width="1350" Height="270" Caption="Date" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label12" MOD="4" Left="12060" Top="90" Width="1260" Height="270" Caption="Amount" Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label13" MOD="4" Left="13320" Top="90" Width="720" Height="270" Caption="V" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label14" MOD="4" Left="14760" Top="90" Width="900" Height="270" Caption="ACH" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label" MOD="4" Left="14040" Top="90" Width="720" Height="270" Caption="B" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label2" MOD="4" Left="90" Top="90" Width="2070" Height="270" Caption="Agency" />
+    </Section>
+    <Section Type="Detail" Name="Detail" Height="464" BackColor="16777215" KeepTogether="1" CanShrink="0">
+      <Control Type="AR.Field" Name="AccountNumber" DataField="AccountNumber" MOD="4" Left="4410" Top="90" Width="990" Height="270" Text="AccountNumber" CanGrow="0" />
+      <Control Type="AR.Field" Name="ClientName" DataField="ClientName" MOD="4" Left="2160" Top="90" Width="2250" Height="270" Text="ClientName" CanGrow="0" />
+      <Control Type="AR.Field" Name="ClientStatusName" DataField="ClientStatusName" MOD="4" Left="5400" Top="90" Width="1620" Height="270" Text="ClientStatusName" OutputFormat="" CanGrow="0" Style="text-align: left; " />
+      <Control Type="AR.Line" Name="Separator" MOD="4" X1="0" Y1="450" X2="16200" Y2="450" LineColor="13882323" />
+      <Control Type="AR.Field" Name="DepositMethod" DataField="DepositMethod" MOD="4" Left="7020" Top="90" Width="810" Height="270" Text="DepositMethod" CanGrow="0" />
+      <Control Type="AR.Field" Name="DepositAmount" DataField="DepositAmount" MOD="4" Left="8370" Top="90" Width="1350" Height="270" Text="DepositAmount" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="DaysAgo" DataField="DaysAgo" MOD="4" Left="9720" Top="90" Width="990" Height="270" Text="DaysAgo" OutputFormat="#,##0.00" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="TransactionDate" DataField="TransactionDate" MOD="4" Left="10710" Top="90" Width="1350" Height="270" Text="TransactionDate" OutputFormat="MM/dd/yyyy" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="DepositDay" DataField="DepositDay" MOD="4" Left="7830" Top="90" Width="540" Height="270" Text="DepositDay" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="txtAmount" DataField="Amount" MOD="4" Left="12060" Top="90" Width="1260" Height="270" Text="txtAmount" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="Void" DataField="Void" MOD="4" Left="13320" Top="90" Width="720" Height="270" Text="" OutputFormat="" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="ACH" DataField="ACH" MOD="4" Left="14760" Top="90" Width="990" Height="270" Text="" OutputFormat="" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="Bounce" DataField="Bounce" MOD="4" Left="14040" Top="90" Width="720" Height="270" Text="" OutputFormat="" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="AgencyName" DataField="AgencyName" MOD="4" Left="90" Top="90" Width="2070" Height="270" Text="AgencyName" CanGrow="0" />
+    </Section>
+    <Section Type="PageFooter" Name="PageFooter" Height="630" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Field" Name="Date" DataField="=System.DateTime.Now" MOD="4" Left="11700" Top="270" Width="4050" Height="270" Text="Date" OutputFormat="ddd MMM d, yyyy hh:mm tt" Style="color: DarkGray; text-align: right; " />
+      <Control Type="AR.Field" Name="PN" Visible="0" MOD="4" Left="2880" Top="270" Width="360" Height="270" Text="#" OutputFormat="" Style="color: DarkGray; text-align: center; " SummaryType="4" SummaryRunning="2" />
+      <Control Type="AR.Field" Name="PT" Visible="0" MOD="4" Left="3330" Top="270" Width="360" Height="270" Text="##" OutputFormat="" Style="color: DarkGray; text-align: center; " SummaryType="4" />
+      <Control Type="AR.Label" Name="PageNumbers" MOD="4" Left="0" Top="270" Width="2790" Height="270" Caption="PageNumbers" Style="color: DarkGray; " />
+    </Section>
+    <Section Type="ReportFooter" Name="ReportFooter" Height="435" BackStyle="1" BackColor="15790320" KeepTogether="1" CanShrink="0">
+      <Control Type="AR.Field" Name="TextBox8" DataField="Amount" MOD="4" Left="11250" Top="90" Width="2070" Height="270" Text="SumAmount" OutputFormat="$#,##0.00" Style="text-align: right; font-weight: bold; font-style: normal; font-size: 10pt; " SummaryType="1" SummaryRunning="2" SummaryDistinct="Amount" />
+      <Control Type="AR.Field" Name="TextBox10" DataField="DepositAmount" MOD="4" Left="8370" Top="90" Width="1350" Height="270" Text="SumDepAmount" OutputFormat="$#,##0.00" Style="text-align: right; font-weight: bold; font-style: normal; font-size: 10pt; " SummaryType="1" SummaryRunning="2" SummaryDistinct="DepositAmount" />
+    </Section>
+  </Sections>
+  <PageSettings />
+</ActiveReportsLayout>

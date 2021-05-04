@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+    <TU_Report>
+      <transaction_control id="TU4R">
+        <version_switch code="0">TU40 version 0</version_switch>
+        <country_code code="1">United States</country_code>
+        <language_indicator code="1">English</language_indicator>
+        <user_reference/>
+        <market>16</market>
+        <submarket>17</submarket>
+        <industry_code>P</industry_code>
+        <member_code>01754201</member_code>
+        <trans_date fmt="CCYYMMDD">20190807</trans_date>
+        <trans_time fmt="HHNNSS">152147</trans_time>
+      </transaction_control>
+      <consumer_data id="CD01">
+        <customer_identifier_qualifier>05</customer_identifier_qualifier>
+        <customer_identifier>HART SOFTWARE</customer_identifier>
+        <password>**masked by vendor**</password>
+      </consumer_data>
+      <bureau_product_header id="PH01" code="07000">Credit Report</bureau_product_header>
+      <subject_segments id="SH01" num="1">
+        <subject_header id="SH01">
+          <subject_id code="1">First subject</subject_id>
+          <file_number>01</file_number>
+          <file_hit code="Y">Regular hit on file -- all files are returned</file_hit>
+          <ssn_match_ind code="05">Exact match between SSN on input and SSN on file</ssn_match_ind>
+          <consumer_statement_ind code="N">No consumer statement on file</consumer_statement_ind>
+          <bur_market_file_control>12</bur_market_file_control>
+          <bur_submarket_file_control>LA</bur_submarket_file_control>
+          <suppression_ind code="N">Credit data not suppressed</suppression_ind>
+          <infile_since_date>19800101</infile_since_date>
+        </subject_header>
+        <name_information id="NM01" type="1">
+          <source_indicator code="F">Name that appears in the returned file</source_indicator>
+          <name_indicator code="1">Primary name</name_indicator>
+          <lname>HOPE</lname>
+          <fname>DORENE</fname>
+          <mname>S</mname>
+          <prefix/>
+          <suffix/>
+        </name_information>
+        <personal_information id="PI01">
+          <source_indicator code="F">Data that appears on the TransUnion database</source_indicator>
+          <ssn>560547416</ssn>
+          <dob>19390616</dob>
+          <age/>
+          <gender code=""/>
+        </personal_information>
+        <address_information id="AD01">
+          <source_indicator code="F">Address that appears on the database</source_indicator>
+          <addr_qualifier code="1">Personal</addr_qualifier>
+          <house_number>402</house_number>
+          <predirectional/>
+          <street_name>ROCKEFELLER</street_name>
+          <postdirectional/>
+          <street_type/>
+          <apt_unit_number>303</apt_unit_number>
+          <city>IRVINE</city>
+          <state>CA</state>
+          <zip>92612</zip>
+          <date_reported>20150102</date_reported>
+        </address_information>
+        <address_information id="AD01">
+          <source_indicator code="F">Address that appears on the database</source_indicator>
+          <addr_qualifier code="1">Personal</addr_qualifier>
+          <house_number>16342</house_number>
+          <predirectional/>
+          <street_name>SUNDANCER</street_name>
+          <postdirectional/>
+          <street_type>LN</street_type>
+          <apt_unit_number/>
+          <city>HUNTINGTON BEACH</city>
+          <state>CA</state>
+          <zip>92649</zip>
+          <date_reported>20070126</date_reported>
+        </address_information>
+        <address_information id="AD01">
+          <source_indicator code="F">Address that appears on the database</source_indicator>
+          <addr_qualifier code="1">Personal</addr_qualifier>
+          <house_number>42</house_number>
+          <predirectional/>
+          <street_name>MARSEILLE</street_name>
+          <postdirectional/>
+          <street_type/>
+          <apt_unit_number/>
+          <city>LAGUNA NIGUEL</city>
+          <state>CA</state>
+          <zip>92677</zip>
+          <date_reported/>
+        </address_information>
+        <employment_segments id="EM01" product="07000">
+          <employment_information id="EM01">
+            <employer_name>RETIRED</employer_name>
+            <source_indicator code="F"/>
+            <occupation>HAIRSTYLIST</occupation>
+            <date_hired fmt="CCYYMMDD">19860901</date_hired>
+            <date_separated fmt="CCYYMMDD"/>
+            <date_verified_or_reported fmt="CCYYMMDD">20160930</date_verified_or_reported>
+            <date_verified_or_reported_code code="V">Date Verified is displayed</date_verified_or_reported_code>
+            <income/>
+            <pay_basis code=""/>
+          </employment_information>
+        </employment_segments>
+        <employment_segments id="EM01" product="07000">
+          <employment_information id="EM01">
+            <employer_name>GLOBAL INFO SYSTEM</employer_name>
+            <source_indicator code="F"/>
+            <occupation>MNGR</occupation>
+            <date_hired fmt="CCYYMMDD">19981201</date_hired>
+            <date_separated fmt="CCYYMMDD"/>
+            <date_verified_or_reported fmt="CCYYMMDD">20081214</date_verified_or_reported>
+            <date_verified_or_reported_code code="V">Date Verified is displayed</date_verified_or_reported_code>
+            <income/>
+            <pay_basis code=""/>
+          </employment_information>
+        </employment_segments>
+        <credit_summary id="SM01">
+          <reporting_period code="1">Total history</reporting_period>
+          <public_records>000</public_records>
+          <collections>000</collections>
+          <negative_trades>006</negative_trades>
+          <trades_with_any_historical_negative>001</trades_with_any_historical_negative>
+          <occurrence_of_historical_negative>002</occurrence_of_historical_negative>
+          <trades>019</trades>
+          <revolving_and_check_credit_trades>013</revolving_and_check_credit_trades>
+          <installments>005</installments>
+          <mortgages>000</mortgages>
+          <open_accounts>001</open_accounts>
+          <inquiries>000</inquiries>
+        </credit_summary>
+        <credit_summary_description id="SD01">
+          <summary_type code="R">Revolving or check credit account</summary_type>
+          <high_credit>000031306</high_credit>
+          <credit_limit>000031330</credit_limit>
+          <balance>000021387</balance>
+          <amount_past_due>000000000</amount_past_due>
+          <monthly_payment>000000517</monthly_payment>
+          <percent_credit_available>016</percent_credit_available>
+        </credit_summary_description>
+        <credit_summary_description id="SD01">
+          <summary_type code="B">Closed with balance</summary_type>
+          <high_credit/>
+          <credit_limit/>
+          <balance>000021547</balance>
+          <amount_past_due>000014916</amount_past_due>
+          <monthly_payment>000000093</monthly_payment>
+          <percent_credit_available/>
+        </credit_summary_description>
+        <credit_summary_description id="SD01">
+          <summary_type code="T">Totals</summary_type>
+          <high_credit>000031306</high_credit>
+          <credit_limit>000031330</credit_limit>
+          <balance>000042934</balance>
+          <amount_past_due>000014916</amount_past_due>
+          <monthly_payment>000000610</monthly_payment>
+          <percent_credit_available/>
+        </credit_summary_description>
+        <trade_segments id="TR01" product="07000">
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>01597029</member_code>
+            <subscriber_name>BK OF AMER</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>5490350573119760</account_number>
+            <account_designator code="I">Individual account</account_designator>
+            <date_opened fmt="CCYYMMDD">20020321</date_opened>
+            <date_verified fmt="CCYYMMDD">20190722</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20180831</date_closed>
+            <date_closed_indicator code="F">Account was closed because of charge-off or repossession</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180625</date_of_last_activity>
+            <current_manner_of_payment code="09">Charged off as bad debt</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000006570</balance>
+            <high_credit>000010122</high_credit>
+            <credit_limit>000006700</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code="CBC">Account closed by consumer</remarks_code>
+            <amount_past_due>000006570</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD"/>
+            <payment_pattern start_date=""/>
+            <number_months_reviewed>00</number_months_reviewed>
+            <times_30_days_late/>
+            <times_60_days_late/>
+            <times_90_days_late/>
+            <historical_counters_verification_indicator code=""/>
+          </trade>
+          <trade id="TR01">
+            <industry_code>F</industry_code>
+            <member_code>09992639</member_code>
+            <subscriber_name>SYNCB/CARECR</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>6019181843430368</account_number>
+            <account_designator code="X">Consumer deceased</account_designator>
+            <date_opened fmt="CCYYMMDD">20080213</date_opened>
+            <date_verified fmt="CCYYMMDD">20190722</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20180723</date_closed>
+            <date_closed_indicator code="F">Account was closed because of charge-off or repossession</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180626</date_of_last_activity>
+            <current_manner_of_payment code="09">Charged off as bad debt</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000002334</balance>
+            <high_credit>000003899</high_credit>
+            <credit_limit>000003400</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CH">Charge Account</loan_type>
+            <remarks_code code="DEC">Deceased</remarks_code>
+            <amount_past_due>000000238</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD"/>
+            <payment_pattern start_date=""/>
+            <number_months_reviewed>00</number_months_reviewed>
+            <times_30_days_late/>
+            <times_60_days_late/>
+            <times_90_days_late/>
+            <historical_counters_verification_indicator code=""/>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>06331059</member_code>
+            <subscriber_name>BANKAMERICA</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>4400661316843751</account_number>
+            <account_designator code="I">Individual account</account_designator>
+            <date_opened fmt="CCYYMMDD">20021016</date_opened>
+            <date_verified fmt="CCYYMMDD">20190706</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20180831</date_closed>
+            <date_closed_indicator code="F">Account was closed because of charge-off or repossession</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180709</date_of_last_activity>
+            <current_manner_of_payment code="09">Charged off as bad debt</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000001949</balance>
+            <high_credit>000002239</high_credit>
+            <credit_limit>000002000</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code="CBC">Account closed by consumer</remarks_code>
+            <amount_past_due>000001949</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD"/>
+            <payment_pattern start_date=""/>
+            <number_months_reviewed>00</number_months_reviewed>
+            <times_30_days_late/>
+            <times_60_days_late/>
+            <times_90_days_late/>
+            <historical_counters_verification_indicator code=""/>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>01DTV001</member_code>
+            <subscriber_name>CAPITAL ONE</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>5458004540085105</account_number>
+            <account_designator code="X">Consumer deceased</account_designator>
+            <date_opened fmt="CCYYMMDD">20001130</date_opened>
+            <date_verified fmt="CCYYMMDD">20180902</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20180902</date_closed>
+            <date_closed_indicator code="F">Account was closed because of charge-off or repossession</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180604</date_of_last_activity>
+            <current_manner_of_payment code="09">Charged off as bad debt</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000003070</balance>
+            <high_credit>000006241</high_credit>
+            <credit_limit>000003100</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code="DEC">Deceased</remarks_code>
+            <amount_past_due>000003070</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD"/>
+            <payment_pattern start_date=""/>
+            <number_months_reviewed>00</number_months_reviewed>
+            <times_30_days_late/>
+            <times_60_days_late/>
+            <times_90_days_late/>
+            <historical_counters_verification_indicator code=""/>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>01DTV001</member_code>
+            <subscriber_name>CAPITAL ONE</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>4147099670696069</account_number>
+            <account_designator code="X">Consumer deceased</account_designator>
+            <date_opened fmt="CCYYMMDD">19970529</date_opened>
+            <date_verified fmt="CCYYMMDD">20180902</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20180902</date_closed>
+            <date_closed_indicator code="F">Account was closed because of charge-off or repossession</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180530</date_of_last_activity>
+            <current_manner_of_payment code="09">Charged off as bad debt</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000002941</balance>
+            <high_credit>000003910</high_credit>
+            <credit_limit>000003700</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code="DEC">Deceased</remarks_code>
+            <amount_past_due>000002941</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD"/>
+            <payment_pattern start_date=""/>
+            <number_months_reviewed>00</number_months_reviewed>
+            <times_30_days_late/>
+            <times_60_days_late/>
+            <times_90_days_late/>
+            <historical_counters_verification_indicator code=""/>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>026QK004</member_code>
+            <subscriber_name>JPMCB CARD</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>4262905102273336</account_number>
+            <account_designator code="X">Consumer deceased</account_designator>
+            <date_opened fmt="CCYYMMDD">20030203</date_opened>
+            <date_verified fmt="CCYYMMDD">20180926</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20180905</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180703</date_of_last_activity>
+            <current_manner_of_payment code="02">30 days past due</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000004683</balance>
+            <high_credit>000006421</high_credit>
+            <credit_limit>000004900</credit_limit>
+            <terms_duration frequency="">MIN</terms_duration>
+            <terms_frequency code=""/>
+            <amount_of_payment>000000093</amount_of_payment>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code="DEC">Deceased</remarks_code>
+            <amount_past_due>000000148</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20180826</payment_pattern_start_date>
+            <payment_pattern start_date="20180826">111111111111111111111111111111111111111121121111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>02</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>09616003</member_code>
+            <subscriber_name>DISCOVERBANK</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>6011000500800069</account_number>
+            <account_designator code="A">Authorized account</account_designator>
+            <date_opened fmt="CCYYMMDD">20021227</date_opened>
+            <date_verified fmt="CCYYMMDD">20190721</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD"/>
+            <date_closed_indicator code=""/>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20190627</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000015397</balance>
+            <high_credit>000016083</high_credit>
+            <credit_limit>000016400</credit_limit>
+            <terms_duration frequency="">MIN</terms_duration>
+            <terms_frequency code=""/>
+            <amount_of_payment>000000334</amount_of_payment>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code=""/>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20190621</payment_pattern_start_date>
+            <payment_pattern start_date="20190621">111111111111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>064DB002</member_code>
+            <subscriber_name>CITI</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>5466160125827475</account_number>
+            <account_designator code="A">Authorized account</account_designator>
+            <date_opened fmt="CCYYMMDD">20030417</date_opened>
+            <date_verified fmt="CCYYMMDD">20190716</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD"/>
+            <date_closed_indicator code=""/>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20190626</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000003223</balance>
+            <high_credit>000004825</high_credit>
+            <credit_limit>000004600</credit_limit>
+            <terms_duration frequency="">MIN</terms_duration>
+            <terms_frequency code=""/>
+            <amount_of_payment>000000106</amount_of_payment>
+            <collateral/>
+            <loan_type code="FX">Flexible Spending Credit Card</loan_type>
+            <remarks_code code=""/>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20190616</payment_pattern_start_date>
+            <payment_pattern start_date="20190616">111111111111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>064DB002</member_code>
+            <subscriber_name>CITI</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>5424180236303829</account_number>
+            <account_designator code="A">Authorized account</account_designator>
+            <date_opened fmt="CCYYMMDD">19900101</date_opened>
+            <date_verified fmt="CCYYMMDD">20190715</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD"/>
+            <date_closed_indicator code=""/>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20190626</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000002767</balance>
+            <high_credit>000004298</high_credit>
+            <credit_limit>000004330</credit_limit>
+            <terms_duration frequency="">MIN</terms_duration>
+            <terms_frequency code=""/>
+            <amount_of_payment>000000077</amount_of_payment>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code=""/>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20190615</payment_pattern_start_date>
+            <payment_pattern start_date="20190615">111111111111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>021WB001</member_code>
+            <subscriber_name>AMEX</subscriber_name>
+            <account_type code="O">Open account</account_type>
+            <account_number>3499905165273993</account_number>
+            <account_designator code="T">Account relationship terminated</account_designator>
+            <date_opened fmt="CCYYMMDD">19850305</date_opened>
+            <date_verified fmt="CCYYMMDD">20190619</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20190605</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD"/>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000000000</high_credit>
+            <credit_limit/>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code=""/>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20190519</payment_pattern_start_date>
+            <payment_pattern start_date="20190519">1111111111111111X1111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>F</industry_code>
+            <member_code>0117Y003</member_code>
+            <subscriber_name>MB FIN SVCS</subscriber_name>
+            <account_type code="I">Installment account</account_type>
+            <account_number>5000235080001</account_number>
+            <account_designator code="C">Joint account</account_designator>
+            <date_opened fmt="CCYYMMDD">20161001</date_opened>
+            <date_verified fmt="CCYYMMDD">20180906</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20180906</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180906</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000030996</high_credit>
+            <credit_limit/>
+            <terms_duration frequency="M">048</terms_duration>
+            <terms_frequency code="M">Monthly</terms_frequency>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="AL">Auto Lease</loan_type>
+            <remarks_code code="CLO">Closed</remarks_code>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20180806</payment_pattern_start_date>
+            <payment_pattern start_date="20180806">1111111111111111111111</payment_pattern>
+            <number_months_reviewed>22</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>01DTV001</member_code>
+            <subscriber_name>CAPITAL ONE</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>5178058272941967</account_number>
+            <account_designator code="T">Account relationship terminated</account_designator>
+            <date_opened fmt="CCYYMMDD">19970903</date_opened>
+            <date_verified fmt="CCYYMMDD">20180717</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD"/>
+            <date_closed_indicator code=""/>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180712</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000003956</high_credit>
+            <credit_limit>000004000</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code=""/>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20180617</payment_pattern_start_date>
+            <payment_pattern start_date="20180617">111111111111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>01DTV001</member_code>
+            <subscriber_name>CAPITAL ONE</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>5178059782531769</account_number>
+            <account_designator code="T">Account relationship terminated</account_designator>
+            <date_opened fmt="CCYYMMDD">20020620</date_opened>
+            <date_verified fmt="CCYYMMDD">20180717</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD"/>
+            <date_closed_indicator code=""/>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20180712</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000002144</high_credit>
+            <credit_limit>000002000</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code=""/>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20180617</payment_pattern_start_date>
+            <payment_pattern start_date="20180617">111111111111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>0402D088</member_code>
+            <subscriber_name>JPMCB AUTO</subscriber_name>
+            <account_type code="I">Installment account</account_type>
+            <account_number>10594461</account_number>
+            <account_designator code="C">Joint account</account_designator>
+            <date_opened fmt="CCYYMMDD">20130623</date_opened>
+            <date_verified fmt="CCYYMMDD">20161020</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20161020</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20161020</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000028156</high_credit>
+            <credit_limit/>
+            <terms_duration frequency="M">042</terms_duration>
+            <terms_frequency code="M">Monthly</terms_frequency>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="AL">Auto Lease</loan_type>
+            <remarks_code code="CLO">Closed</remarks_code>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20160920</payment_pattern_start_date>
+            <payment_pattern start_date="20160920">1111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>40</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>D</industry_code>
+            <member_code>02A5T001</member_code>
+            <subscriber_name>DSNB MACYS</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>4453757698430</account_number>
+            <account_designator code="I">Individual account</account_designator>
+            <date_opened fmt="CCYYMMDD">20120119</date_opened>
+            <date_verified fmt="CCYYMMDD">20150824</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20150824</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20150814</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000001603</high_credit>
+            <credit_limit>000001570</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CH">Charge Account</loan_type>
+            <remarks_code code="ACT">Account closed due to transfer</remarks_code>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20150724</payment_pattern_start_date>
+            <payment_pattern start_date="20150724">1111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>31</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>F</industry_code>
+            <member_code>0117Y005</member_code>
+            <subscriber_name>MB FIN SVCS</subscriber_name>
+            <account_type code="I">Installment account</account_type>
+            <account_number>7003235950</account_number>
+            <account_designator code="C">Joint account</account_designator>
+            <date_opened fmt="CCYYMMDD">20110924</date_opened>
+            <date_verified fmt="CCYYMMDD">20150601</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20150601</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20150721</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000040479</high_credit>
+            <credit_limit/>
+            <terms_duration frequency="M">051</terms_duration>
+            <terms_frequency code="M">Monthly</terms_frequency>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="AL">Auto Lease</loan_type>
+            <remarks_code code="CLO">Closed</remarks_code>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20150501</payment_pattern_start_date>
+            <payment_pattern start_date="20150501">11111111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>44</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>F</industry_code>
+            <member_code>0117Y005</member_code>
+            <subscriber_name>MB FIN SVCS</subscriber_name>
+            <account_type code="I">Installment account</account_type>
+            <account_number>7003235543</account_number>
+            <account_designator code="C">Joint account</account_designator>
+            <date_opened fmt="CCYYMMDD">20110924</date_opened>
+            <date_verified fmt="CCYYMMDD">20130705</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20130705</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20130705</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000038436</high_credit>
+            <credit_limit/>
+            <terms_duration frequency="M">048</terms_duration>
+            <terms_frequency code="M">Monthly</terms_frequency>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="AL">Auto Lease</loan_type>
+            <remarks_code code="CLO">Closed</remarks_code>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20130605</payment_pattern_start_date>
+            <payment_pattern start_date="20130605">1111111111111111111111</payment_pattern>
+            <number_months_reviewed>22</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>B</industry_code>
+            <member_code>026QK001</member_code>
+            <subscriber_name>JPMCB CARD</subscriber_name>
+            <account_type code="R">Revolving account</account_type>
+            <account_number>4559540800813000</account_number>
+            <account_designator code="I">Individual account</account_designator>
+            <date_opened fmt="CCYYMMDD">20010809</date_opened>
+            <date_verified fmt="CCYYMMDD">20120725</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20120625</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD">20120525</date_paid_out>
+            <date_of_last_activity fmt="CCYYMMDD">20120525</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000004223</high_credit>
+            <credit_limit>000003775</credit_limit>
+            <terms_duration frequency=""/>
+            <terms_frequency code=""/>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="CC">Credit Card</loan_type>
+            <remarks_code code="CBG">Account closed by credit grantor</remarks_code>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20120625</payment_pattern_start_date>
+            <payment_pattern start_date="20120625">111111111111111111111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>48</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+          <trade id="TR01">
+            <industry_code>F</industry_code>
+            <member_code>0117Y003</member_code>
+            <subscriber_name>MB FIN SVCS</subscriber_name>
+            <account_type code="I">Installment account</account_type>
+            <account_number>1017567979</account_number>
+            <account_designator code="C">Joint account</account_designator>
+            <date_opened fmt="CCYYMMDD">20081214</date_opened>
+            <date_verified fmt="CCYYMMDD">20111003</date_verified>
+            <trade_verification_indicator code="A">Automated account</trade_verification_indicator>
+            <date_closed fmt="CCYYMMDD">20111003</date_closed>
+            <date_closed_indicator code="C">Account was closed normally</date_closed_indicator>
+            <date_paid_out fmt="CCYYMMDD"/>
+            <date_of_last_activity fmt="CCYYMMDD">20111003</date_of_last_activity>
+            <current_manner_of_payment code="01">Paid or paying as agreed</current_manner_of_payment>
+            <currency code="1">United States currency</currency>
+            <balance>000000000</balance>
+            <high_credit>000039363</high_credit>
+            <credit_limit/>
+            <terms_duration frequency="M">066</terms_duration>
+            <terms_frequency code="M">Monthly</terms_frequency>
+            <amount_of_payment/>
+            <collateral/>
+            <loan_type code="AU">Automobile</loan_type>
+            <remarks_code code="CLO">Closed</remarks_code>
+            <amount_past_due>000000000</amount_past_due>
+            <number_payments_past_due>00</number_payments_past_due>
+            <max_delinquency_amount date_del=""/>
+            <max_delinquency_date fmt="CCYYMMDD"/>
+            <max_delinquency_MOP/>
+            <payment_pattern_start_date fmt="CCYYMMDD">20110903</payment_pattern_start_date>
+            <payment_pattern start_date="20110903">XX11111111111111111111111111111111</payment_pattern>
+            <number_months_reviewed>34</number_months_reviewed>
+            <times_30_days_late>00</times_30_days_late>
+            <times_60_days_late>00</times_60_days_late>
+            <times_90_days_late>00</times_90_days_late>
+            <historical_counters_verification_indicator code="2">Historical counters were calculated</historical_counters_verification_indicator>
+          </trade>
+        </trade_segments>
+        <creditor_contact_information_segments id="AO01" product="07500">
+          <product_information id="AO01" product="07500">
+            <product code="07500">Creditor Contact Information [LOOK]</product>
+            <product_status code="01">Requested product delivered</product_status>
+            <search_status code=""/>
+          </product_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="FA"/>
+            <member_code>0117Y003</member_code>
+            <subscriber_name>MB FIN SVCS</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>P.O. BOX 961</address1>
+            <address2/>
+            <city>ROANOKE</city>
+            <state>TX</state>
+            <zip_code>76262</zip_code>
+          </subscriber_address>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="FA"/>
+            <member_code>0117Y005</member_code>
+            <subscriber_name>MB FIN SVCS</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>P.O. BOX 961</address1>
+            <address2/>
+            <city>ROANOKE</city>
+            <state>TX</state>
+            <zip_code>76262</zip_code>
+          </subscriber_address>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>01597029</member_code>
+            <subscriber_name>BK OF AMER</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>PO BOX 982238</address1>
+            <address2/>
+            <city>EL PASO</city>
+            <state>TX</state>
+            <zip_code>79998</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>4212110</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>01DTV001</member_code>
+            <subscriber_name>CAPITAL ONE</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>PO BOX 30281</address1>
+            <address2/>
+            <city>SALT LAKE CITY</city>
+            <state>UT</state>
+            <zip_code>84130</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>9557070</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>021WB001</member_code>
+            <subscriber_name>AMEX</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>P.O. BOX 981537</address1>
+            <address2/>
+            <city>EL PASO</city>
+            <state>TX</state>
+            <zip_code>79998</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>8742717</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>026QK001</member_code>
+            <subscriber_name>JPMCB CARD</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>PO BOX 15369</address1>
+            <address2/>
+            <city>WILMINGTON</city>
+            <state>DE</state>
+            <zip_code>19850</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>9452000</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>026QK004</member_code>
+            <subscriber_name>JPMCB CARD</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>PO BOX 15369</address1>
+            <address2/>
+            <city>WILMINGTON</city>
+            <state>DE</state>
+            <zip_code>19850</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>9452000</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="DC"/>
+            <member_code>02A5T001</member_code>
+            <subscriber_name>DSNB MACYS</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>PO BOX 8218</address1>
+            <address2/>
+            <city>MASON</city>
+            <state>OH</state>
+            <zip_code>45040</zip_code>
+          </subscriber_address>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>0402D088</member_code>
+            <subscriber_name>JPMCB AUTO</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>P.O. BOX 901003</address1>
+            <address2>CREDIT BUREAU DISPUTE PROCESSG</address2>
+            <city>FORT WORTH</city>
+            <state>TX</state>
+            <zip_code>76101</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>3366675</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>06331059</member_code>
+            <subscriber_name>BANKAMERICA</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>PO BOX 982238</address1>
+            <address2/>
+            <city>EL PASO</city>
+            <state>TX</state>
+            <zip_code>79998</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>4212110</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>064DB002</member_code>
+            <subscriber_name>CITI</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>PO BOX 6217</address1>
+            <address2/>
+            <city>SIOUX FALLS</city>
+            <state>SD</state>
+            <zip_code>57117</zip_code>
+          </subscriber_address>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="BC"/>
+            <member_code>09616003</member_code>
+            <subscriber_name>DISCOVERBANK</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>POB 15316</address1>
+            <address2/>
+            <city>WILMINGTON</city>
+            <state>DE</state>
+            <zip_code>19850</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>800</area_code>
+            <telephone_number>3472683</telephone_number>
+            <extension/>
+          </phone_information>
+          <creditor_contact_information id="LK01">
+            <segment_decoded code="TR">Trade</segment_decoded>
+            <bureau_market>00</bureau_market>
+            <bureau_submarket>00</bureau_submarket>
+            <industry_code code="FZ"/>
+            <member_code>09992639</member_code>
+            <subscriber_name>SYNCB/CARECR</subscriber_name>
+            <method_of_contact code=""/>
+          </creditor_contact_information>
+          <subscriber_address id="SA01">
+            <address1>C/O PO BOX 965036</address1>
+            <address2/>
+            <city>ORLANDO</city>
+            <state>FL</state>
+            <zip_code>32896</zip_code>
+          </subscriber_address>
+          <phone_information id="PN01">
+            <source_indicator code="F">Data that appears in the returned file</source_indicator>
+            <phone_qualifier code="4">Reporting credit grantor</phone_qualifier>
+            <phone_type code="09">Undefined</phone_type>
+            <availability_ind code=""/>
+            <area_code>866</area_code>
+            <telephone_number>3968254</telephone_number>
+            <extension/>
+          </phone_information>
+        </creditor_contact_information_segments>
+        <scoring_segments id="AO01" product="00P02">
+          <product_information id="AO01" product="00P02">
+            <product code="00P02">00P02</product>
+            <product_status code="01">Requested product delivered</product_status>
+            <search_status code=""/>
+          </product_information>
+          <scoring id="SC01">
+            <product_code code="00P02">FICO CLASSIC 04</product_code>
+            <sign>+</sign>
+            <score/>
+            <indicator_flag code="2">File not scored because subject is deceased</indicator_flag>
+            <derogatory_alert_flag code=""/>
+            <factor1 code=""/>
+            <factor2 code=""/>
+            <factor3 code=""/>
+            <factor4 code=""/>
+            <score_card_indicator/>
+          </scoring>
+        </scoring_segments>
+      </subject_segments>
+      <transaction_ending id="ENDS">
+        <segments_returned>069</segments_returned>
+      </transaction_ending>
+      <tcfadd>
+        <html_encrypt>DQogICAgPEhUTUxfUmVwb3J0IGZtdF90eXBlPSIxIj48IVtDREFUQVs8aHRtbD4NCjxoZWFkPg0KPHNjcmlwdCBsYW5ndWFnZT0iamF2YXNjcmlwdCI+ICBmdW5jdGlvbiB0b2dnbGVWaXNpYmlsaXR5KHVzZUlEKSB7ICAgICB2YXIgdG1wID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQodXNlSUQpOyAgICAgdmFyIGRoZWFkZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnVFU0MF9BUk1fU0QnKTsgICAgIHZhciBzaGVhZGVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ1RVNDBfQVJNX1NTJyk7ICAgICBpZiAodG1wKSB7ICAgICAgICBpZiAodG1wLnN0eWxlLmRpc3BsYXk9PSJibG9jayIpIHRtcC5zdHlsZS5kaXNwbGF5PSJub25lIjsgICAgICAgIGVsc2UgdG1wLnN0eWxlLmRpc3BsYXk9ImJsb2NrIjsgICAgIH0gICAgIGlmIChkaGVhZGVyKSB7ICAgICAgIGlmIChkaGVhZGVyLnN0eWxlLmRpc3BsYXk9PSJibG9jayIpIGRoZWFkZXIuc3R5bGUuZGlzcGxheT0ibm9uZSI7ICAgICBlbHNlIGRoZWFkZXIuc3R5bGUuZGlzcGxheT0iYmxvY2siOyAgICAgfSAgICAgaWYgKHNoZWFkZXIpIHsgICAgICAgaWYgKHNoZWFkZXIuc3R5bGUuZGlzcGxheT09ImJsb2NrIikgc2hlYWRlci5zdHlsZS5kaXNwbGF5PSJub25lIjsgICAgIGVsc2Ugc2hlYWRlci5zdHlsZS5kaXNwbGF5PSJibG9jayI7ICAgICB9ICB9ICA8L3NjcmlwdD4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCEtLQ0KDQogLnNwYWNlZCB7Zm9udC1mYW1pbHk6IGFyaWFsOyBmb250LXNpemU6IDEycHQ7IGxldHRlci1zcGFjaW5nOiAzcHh9DQogUC5UUnBhZCB7Zm9udC1mYW1pbHk6IG1vbm9zcGFjZTsgZm9udC1zaXplOiAxMHB0OyBwYWRkaW5nLXRvcDogMC4wNWNtOyBwYWRkaW5nLWJvdHRvbTogMC4wNWNtOyBwYWRkaW5nLWxlZnQ6IDAuMjVjbTsgcGFkZGluZy1yaWdodDogMC4yNWNtOyBsZXR0ZXItc3BhY2luZzogLTFweH0NClRIIHtmb250LWZhbWlseTogYXJpYWw7IGZvbnQtc2l6ZTogOXB0fSBQIHtmb250LWZhbWlseTogYXJpYWw7IGZvbnQtc2l6ZTogOXB0OyBwYWRkaW5nLXRvcDogMC4wNWNtOyBwYWRkaW5nLWJvdHRvbTogMC4wNWNtOyBwYWRkaW5nLWxlZnQ6IDAuMDVjbTsgcGFkZGluZy1yaWdodDogMC4wNWNtfQ0KIFAucGlwYWQge2ZvbnQtZmFtaWx5IDogYXJpYWw7IGZvbnQtc2l6ZTogOXB0OyBwYWRkaW5nLXJpZ2h0OiAwLjA1Y207IHBhZGRpbmctdG9wOiAwLjA1Y207IHBhZGRpbmctYm90dG9tOiAwLjA1Y219DQogVEQge2ZvbnQtZmFtaWx5OiBhcmlhbDsgZm9udC1zaXplOiA5cHQ7IHBhZGRpbmctdG9wOiAwLjA1Y207IHBhZGRpbmctYm90dG9tOiAwLjA1Y207IHBhZGRpbmctbGVmdDogMC4wNWNtOyBwYWRkaW5nLXJpZ2h0OiAwLjA1Y219DQogLm1vbm8ge2ZvbnQtZmFtaWx5OiAnQ291cmllciBOZXcnLG1vbm9zcGFjZTsgZm9udC1zaXplOiAxMHB0fQ0KIC5wYWdlYnJlYWsge3BhZ2UtYnJlYWstYWZ0ZXI6IGFsd2F5c30NCiAgIC0tPjwvc3R5bGU+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPiA8IS0tDQogLmdvb2Rtb3Age2JhY2tncm91bmQtY29sb3I6ICNGRkZGRkZ9DQogLmJhZG1vcCB7YmFja2dyb3VuZC1jb2xvcjogbGlnaHRwaW5rfQ0KIC5hbGVydCB7YmFja2dyb3VuZC1jb2xvcjpsaWdodHNhbG1vbn0NCiAuc2VwYXJhdG9yIHtiYWNrZ3JvdW5kLWNvbG9yOiNGRkZGQ0M7IGZvbnQtd2VpZ2h0OmJvbGR9DQogLS0+IDwvc3R5bGU+DQo8L2hlYWQ+DQo8Ym9keT4NCjwhLS1UVV9SRVBPUlQtLT4NCjwhLS1GQUQ9OC83LzIwMTktLT4NCjwhLS1SRVBPUlRfMDcwMDAtLT4NCjxhIG5hbWU9InR1cmVwb3J0Ij48L2E+DQo8cD5UUkFOUyBVTklPTiBSRVBPUlQ8L3A+DQoNCjxwPkV4YWN0IE1hdGNoIGJldHdlZW4gU1NOIG9uIGlucHV0IGFuZCBTU04gb24gZmlsZS4gPC9wPg0KPCEtLVBJMTEtLT4NCjx0YWJsZSBib3JkZXIgV0lEVEg9IjEwMCUiIENFTExQQURESU5HPTAgQ0VMTFNQQUNJTkc9MD4NCjx0cj48dGggY2xhc3M9c3BhY2VkIENPTFNQQU49MyBBTElHTj1DRU5URVIgQkdDT0xPUj0iI0MwQzBDMCI+UGVyc29uYWwgSW5mb3JtYXRpb24gU2luY2UgMS8xLzE5ODAgRkFEIDgvNy8yMDE5PC90aD48L3RyPg0KPHRyPjx0aD48YnIvPjwvdGg+PHRoPjxici8+PC90aD48dGg+PHA+UmVwb3J0ZWQ8L3A+PC90aD48L3RyPg0KPHRyPjx0ZCB3aWR0aD0iMTUlIiB2YWxpZ249YmFzZWxpbmUgYWxpZ249cmlnaHQ+PHAgY2xhc3M9cGlwYWQ+PGI+DQpOYW1lDQo8YnIvPg0KU1NODQo8YnIvPg0KQWRkcmVzcw0KPGJyLz4NCkFkZHJlc3MNCjxici8+DQpBZGRyZXNzDQo8YnIvPg0KPC9iPjwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBub3dyYXA+PHA+DQogJm5ic3A7IEhPUEUsIERPUkVORSBTDQo8YnIvPg0KICZuYnNwOyA1NjAtNTQtNzQxNiZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyA8Yj5ET0I6IDwvYj4wNi8xNi8xOTM5DQo8YnIvPg0KICZuYnNwOyA0MDIsIFJPQ0tFRkVMTEVSLCAzMDMsIElSVklORSwgQ0EsIDkyNjEyDQo8YnIvPg0KICZuYnNwOyAxNjM0MiwgU1VOREFOQ0VSLCBMTiwgSFVOVElOR1RPTiBCRUFDSCwgQ0EsIDkyNjQ5DQo8YnIvPg0KICZuYnNwOyA0MiwgTUFSU0VJTExFLCBMQUdVTkEgTklHVUVMLCBDQSwgOTI2NzcNCjwvcD48L3RkPg0KPHRkIHdpZHRoPSIxNSUiIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+DQoNCjxici8+DQoNCjxici8+DQoxLzIvMjAxNQ0KPGJyLz4NCjEvMjYvMjAwNw0KPGJyLz4NCiZuYnNwOw0KPC9wPjwvdGQ+PC90cj4NCjwvdGFibGU+DQo8YnIvPg0KPCEtLS9QSTExLS0+DQo8dGFibGUgYm9yZGVyIFdJRFRIPSIxMDAlIiBDRUxMUEFERElORz0wIENFTExTUEFDSU5HPTA+DQo8dHI+PHRoIGNsYXNzPXNwYWNlZCBDT0xTUEFOPTUgQUxJR049Q0VOVEVSIEJHQ09MT1I9IiNDMEMwQzAiPkVtcGxveW1lbnQ8L3RoPjwvdHI+DQo8dHI+PHRkPjxici8+PC90ZD48dGQ+PGJyLz48L3RkPg0KPHRoIHZhbGlnbj1iYXNlbGluZSB3aWR0aD0iMTIlIj48cCBhbGlnbj1jZW50ZXI+RGF0ZSBIaXJlZDwvcD48L3RoPg0KPHRoIHZhbGlnbj1iYXNlbGluZSB3aWR0aD0iMTIlIj48cCBhbGlnbj1jZW50ZXI+RGF0ZSBTZXBhcmF0ZWQ8L3A+PC90aD4NCjx0aCB2YWxpZ249YmFzZWxpbmUgd2lkdGg9IjIyJSI+PHAgYWxpZ249Y2VudGVyPiZuYnNwOzwvcD48L3RoPg0KPC90cj4NCjx0cj48dGQgd2lkdGg9IjEyJSIgdmFsaWduPWJhc2VsaW5lPjxwIGFsaWduPXJpZ2h0PjxiPkVtcGxveWVyIDwvYj48L3A+PC90ZD48dGQgd2lkdGg9IjQyJSIgdmFsaWduPWJhc2VsaW5lPjxwPiZuYnNwOyBSRVRJUkVEPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+OS8xLzE5ODY8L3A+PC90ZD48dGQ+PGJyLz48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPlZlcmlmaWVkIDkvMzAvMjAxNjwvcD48L3RkPjwvdHI+PHRyPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249cmlnaHQ+PHA+PGI+T2NjdXBhdGlvbiA8L2I+PC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZT48cD4mbmJzcDsgSEFJUlNUWUxJU1Q8L3A+PC90ZD48dGQ+PGJyLz48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkPjxici8+PC90ZD48L3RyPg0KPHRyPjx0ZCB3aWR0aD0iMTIlIiB2YWxpZ249YmFzZWxpbmU+PHAgYWxpZ249cmlnaHQ+PGI+RW1wbG95ZXIgPC9iPjwvcD48L3RkPjx0ZCB3aWR0aD0iNDIlIiB2YWxpZ249YmFzZWxpbmU+PHA+Jm5ic3A7IEdMT0JBTCBJTkZPIFNZU1RFTTwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjEyLzEvMTk5ODwvcD48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+VmVyaWZpZWQgMTIvMTQvMjAwODwvcD48L3RkPjwvdHI+PHRyPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249cmlnaHQ+PHA+PGI+T2NjdXBhdGlvbiA8L2I+PC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZT48cD4mbmJzcDsgTU5HUjwvcD48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkPjxici8+PC90ZD48dGQ+PGJyLz48L3RkPjwvdHI+DQo8L3RhYmxlPg0KPGJyLz4NCjwhLS1TUEVDSUFMVVNFLS0+DQo8IS0tQU8wMS0tPg0KPHRhYmxlIGJvcmRlciBSVUxFUz1DT0xTIENFTExQQURESU5HPTAgV0lEVEg9IjEwMCUiIENFTExTUEFDSU5HPTA+DQo8dHI+PHRoIGNsYXNzPXNwYWNlZCBDT0xTUEFOPTEgQUxJR049Q0VOVEVSIEJHQ09MT1I9IiNDMEMwQzAiPkFkZC1PbiBQcm9kdWN0cyBTdW1tYXJ5PC90aD48L3RyPg0KPHRyPg0KPHRkIHZhbGlnbj1iYXNlbGluZT48cD4NCiAmbmJzcDsgPGI+UHJvZHVjdDogPC9iPkNyZWRpdG9yIENvbnRhY3QgSW5mb3JtYXRpb24gW0xPT0tdDQo8YnIvPg0KICZuYnNwOyA8Yj5TdGF0dXM6IDwvYj5SZXF1ZXN0ZWQgcHJvZHVjdCBkZWxpdmVyZWQNCjxici8+DQogJm5ic3A7ICZuYnNwOw0KPGJyLz4NCiAmbmJzcDsgPGI+UHJvZHVjdDogPC9iPlNjb3JlIE1vZGVsIC0gRklDTyBDTEFTU0lDIDA0DQo8YnIvPg0KICZuYnNwOyA8Yj5TdGF0dXM6IDwvYj5SZXF1ZXN0ZWQgcHJvZHVjdCBkZWxpdmVyZWQNCjxici8+DQogJm5ic3A7ICZuYnNwOw0KPC9wPjwvdGQ+DQo8L3RyPg0KPC90YWJsZT4NCjxici8+DQo8IS0tL0FPMDEtLT4NCjwhLS1TQ09SSU5HLS0+DQo8IS0tU0MxMS0tPg0KPGEgbmFtZT0idHVzY29yZTEiPjwvYT4NCjx0YWJsZSBib3JkZXIgUlVMRVM9Q09MUyBDRUxMUEFERElORz0wIFdJRFRIPSIxMDAlIiBDRUxMU1BBQ0lORz0wPg0KPHRyPjx0aCBjbGFzcz1zcGFjZWQgQ09MU1BBTj0yIEFMSUdOPUNFTlRFUiBCR0NPTE9SPSIjQzBDMEMwIj5TY29yaW5nPC90aD48L3RyPg0KPHRyPjx0ZD48cCBzdHlsZT0iZm9udC1mYW1pbHk6IGFyaWFsOyBmb250LXNpemU6IDlwdCI+DQombmJzcDsmbmJzcDsmbmJzcDsgPGI+U2NvcmUgTW9kZWw6ICZuYnNwOyA8L2I+RklDTyBDTEFTU0lDIDA0Jm5ic3A7Jm5ic3A7ICBOT1QgU0NPUkVEOiBGSUxFIE5PVCBTQ09SRUQgQkVDQVVTRSBTVUJKRUNUIElTIERFQ0VBU0VEDQo8L3A+PC90ZD4NCjx0ZCB3aWR0aD02NSB2YWxpZ249Ym90dG9tIGFsaWduPWNlbnRlciBjbGFzcz1hbGVydD48dGFibGU+PHRyPjx0ZD48cCBzdHlsZT0iZm9udC1mYW1pbHk6IGFyaWFsOyBmb250LXNpemU6IDEwcHQiPg0KJm5ic3A7DQo8L3A+PC90ZD48L3RyPjwvdGFibGU+DQogPC90ZD4NCjwvdHI+DQo8L3RhYmxlPg0KPGJyLz4NCjwhLS0vU0MxMS0tPg0KPHRhYmxlIGJvcmRlciBSVUxFUz1DT0xTIENFTExQQURESU5HPTAgV0lEVEg9IjEwMCUiIENFTExTUEFDSU5HPTA+DQo8dHI+PHRoIGNsYXNzPXNwYWNlZCBDT0xTUEFOPTEgQUxJR049Q0VOVEVSIEJHQ09MT1I9IiNDMEMwQzAiPkNyZWRpdCBTdW1tYXJ5IEZyb20gMS8xLzE5ODAgVG8gOC83LzIwMTk8L3RoPjwvdHI+DQogPHRyPg0KICA8dGQ+DQogICAgPHRhYmxlIHdpZHRoPSIxMDAlIiBjZWxscGFkZGluZz0wIGNlbGxzcGFjaW5nPTA+DQogICAgIDx0cj4NCiAgICAgICA8dGQgd2lkdGg9IjE1JSIgbm93cmFwPjxwPlB1YmxpYyBSZWNvcmRzPC9wPjwvdGQ+DQogICAgICAgPHRkIHdpZHRoPSI1JSI+PHA+MDwvcD48L3RkPg0KICAgICAgIDx0ZCB3aWR0aD0iMTUlIiBub3dyYXA+PHA+Q29sbGVjdGlvbnM8L3A+PC90ZD4NCiAgICAgICA8dGQgd2lkdGg9IjUlIj48cD4wPC9wPjwvdGQ+DQogICAgICAgPHRkIHdpZHRoPSIxNSUiIG5vd3JhcD48cD5OZWdhdGl2ZSBUcmFkZXM8L3A+PC90ZD4NCiAgICAgICA8dGQgd2lkdGg9IjUlIj48cD42PC9wPjwvdGQ+DQogICAgICAgPHRkPiZuYnNwOzwvdGQ+DQogICAgIDwvdHI+DQogICAgIDx0cj4NCiAgICAgICA8dGQgd2lkdGg9IjE1JSIgbm93cmFwPjxwPkhpc3QgTmVnIFRyYWRlczwvcD48L3RkPg0KICAgICAgIDx0ZCB3aWR0aD0iNSUiPjxwPjE8L3A+PC90ZD4NCiAgICAgICA8dGQgd2lkdGg9IjE1JSIgbm93cmFwPjxwPiMgVHJhZGVzPC9wPjwvdGQ+DQogICAgICAgPHRkIHdpZHRoPSI1JSI+PHA+MTk8L3A+PC90ZD4NCiAgICAgICA8dGQgd2lkdGg9IjE1JSIgbm93cmFwPjxwPlJldm9sdmluZzwvcD48L3RkPg0KICAgICAgIDx0ZCB3aWR0aD0iNSUiPjxwPjEzPC9wPjwvdGQ+DQogICAgICAgPHRkPiZuYnNwOzwvdGQ+DQogICAgIDwvdHI+DQogICAgIDx0cj4NCiAgICAgICA8dGQgd2lkdGg9IjE1JSIgbm93cmFwPjxwPkhpc3QgTmVnIE9jY3VycjwvcD48L3RkPg0KICAgICAgIDx0ZCB3aWR0aD0iNSUiPjxwPjI8L3A+PC90ZD4NCiAgICAgICA8dGQgd2lkdGg9IjE1JSIgbm93cmFwPjxwPkluc3RhbGxtZW50PC9wPjwvdGQ+DQogICAgICAgPHRkIHdpZHRoPSI1JSI+PHA+NTwvcD48L3RkPg0KICAgICAgIDx0ZCB3aWR0aD0iMTUlIiBub3dyYXA+PHA+TW9ydGdhZ2U8L3A+PC90ZD4NCiAgICAgICA8dGQgd2lkdGg9IjUlIj48cD4wPC9wPjwvdGQ+DQogICAgICAgPHRkPiZuYnNwOzwvdGQ+DQogICAgIDwvdHI+DQogICAgIDx0cj4NCiAgICAgICA8dGQgd2lkdGg9IjE1JSIgbm93cmFwPjxwPk9wZW4gVHJhZGVzPC9wPjwvdGQ+DQogICAgICAgPHRkIHdpZHRoPSI1JSI+PHA+MTwvcD48L3RkPg0KICAgICAgIDx0ZCB3aWR0aD0iMTUlIiBub3dyYXA+PHA+SW5xdWlyaWVzPC9wPjwvdGQ+DQogICAgICAgPHRkIHdpZHRoPSI1JSI+PHA+MDwvcD48L3RkPg0KICAgICAgIDx0ZCBjb2xzcGFuPTQ+Jm5ic3A7PC90ZD4NCiAgICAgPC90cj4NCiAgICA8L3RhYmxlPg0KICA8L3RkPg0KIDwvdHI+DQogPHRyPg0KICA8dGQ+DQogICAgPHRhYmxlIHdpZHRoPSIxMDAlIiBjZWxscGFkZGluZz0wIGNlbGxzcGFjaW5nPTA+DQogICAgIDx0cj4NCiAgICAgICA8dGQgYWxpZ249bGVmdCB3aWR0aD0iMTAlIj48cD48Yj48dT5UeXBlPC91PjwvYj48L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+PGI+PHU+SGlnaDwvdT48L2I+PC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPXJpZ2h0PjxwPjxiPjx1PkxpbWl0PC91PjwvYj48L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+PGI+PHU+QmFsYW5jZTwvdT48L2I+PC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPXJpZ2h0IG5vd3JhcD48cD48Yj48dT5QYXN0IER1ZTwvdT48L2I+PC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPXJpZ2h0PjxwPjxiPjx1PlBheW1lbnQ8L3U+PC9iPjwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1jZW50ZXI+PHA+PGI+PHU+JUF2YWlsPC91PjwvYj48L3A+PC90ZD4NCiAgICAgPC90cj4NCiAgICAgPHRyPg0KICAgICAgIDx0ZCBhbGlnbj1sZWZ0IHdpZHRoPSIxMCUiPjxwPlJldm9sdmluZzwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1yaWdodD48cD4kMzEsMzA2PC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPXJpZ2h0PjxwPiQzMSwzMzA8L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+JDIxLDM4NzwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1yaWdodD48cD4kMDwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1yaWdodD48cD4kNTE3PC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPWNlbnRlcj48cD4gMTYlPC9wPjwvdGQ+DQogICAgIDwvdHI+DQogICAgIDx0cj4NCiAgICAgICA8dGQgYWxpZ249bGVmdCB3aWR0aD0iMTAlIj48cD5DbG9zZWQ8L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+JDA8L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+JDA8L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+JDIxLDU0NzwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1yaWdodD48cD4kMTQsOTE2PC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPXJpZ2h0PjxwPiQ5MzwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1jZW50ZXI+PHA+LTwvcD48L3RkPg0KICAgICA8L3RyPg0KICAgICA8dHI+DQogICAgICAgPHRkIGFsaWduPWxlZnQgd2lkdGg9IjEwJSI+PHA+VG90YWxzPC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPXJpZ2h0PjxwPiQzMSwzMDY8L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+JDMxLDMzMDwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1yaWdodD48cD4kNDIsOTM0PC9wPjwvdGQ+DQogICAgICAgPHRkIGFsaWduPXJpZ2h0PjxwPiQxNCw5MTY8L3A+PC90ZD4NCiAgICAgICA8dGQgYWxpZ249cmlnaHQ+PHA+JDYxMDwvcD48L3RkPg0KICAgICAgIDx0ZCBhbGlnbj1jZW50ZXI+PHA+LTwvcD48L3RkPg0KICAgICA8L3RyPg0KICAgIDwvdGFibGU+DQogIDwvdGQ+DQogPC90cj4NCjwvdGFibGU+DQo8YnIvPg0KPCEtLVRSQURFTElORVMtLT4NCjwhLS1UUjExLS0+DQo8YSBuYW1lPSJ0dXRyYWRlcyI+PC9hPg0KPCEtLVRSMTFfUi0tPg0KPHRhYmxlIGJvcmRlciBXSURUSD0iMTAwJSIgQ0VMTFBBRERJTkc9MCBDRUxMU1BBQ0lORz0wPg0KPHRyPjx0aCBjbGFzcz1zcGFjZWQgQ09MU1BBTj05IEFMSUdOPUNFTlRFUiBCR0NPTE9SPSIjQzBDMEMwIj5SZXZvbHZpbmcgQWNjb3VudHMNCjwvdGg+PC90cj4NCjx0cj48dGQgQ09MU1BBTj0iNCI+PGJyLz48L3RkPjx0aCBDT0xTUEFOPSIzIj48cD5DdXJyZW50IFN0YXR1czwvcD48L3RoPg0KPHRoIHdpZHRoPSIxMzUiPjxwPkhpc3QgU3RhdHVzPC9wPjwvdGg+PHRkPjxici8+PC90ZD48L3RyPg0KPHRyPjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5BY2MgTmFtZS9BZGRyZXNzPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+UnB0ZDxici8+RExBPGJyLz5FQ09BPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+T3BlbmVkPGJyLz5DbHNkL1BEPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+SGlnaDxici8+TGltaXQ8L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5QbXQ8YnIvPlRlcm08L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD4kQmFsPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+JFBhc3QgRHVlPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSIgd2lkdGg9IjEzNSIgYWxpZ249ImxlZnQiPjxwIHN0eWxlPSJ3b3JkLXNwYWNpbmc6IDVweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij5EYXRlIE10aHMgMzAgNjAgOTA8L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5SYXRpbmc8L3A+PC90aD48L3RyPg0KPHRyIGNsYXNzPWJhZG1vcD48dGQgdmFsaWduPWJhc2VsaW5lPjxwPkJLIE9GIEFNRVIgIDxici8+NTQ5MDM1MDU3MzExOTc2MDxici8+PGI+U3Vic2NyaWJlcjombmJzcDs8L2I+QiZuYnNwOzAxNTk3MDI5PGJyLz48Yj5Mb2FuJm5ic3A7VHlwZTombmJzcDs8L2I+Q3JlZGl0IENhcmQ8YnIvPjxiPlJlbWFya3M6IDwvYj5BY2NvdW50IGNsb3NlZCBieSBjb25zdW1lcjxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQTyZuYnNwO0JPWCZuYnNwOzk4MjIzODxici8+DQombmJzcDsmbmJzcDsmbmJzcDtFTCZuYnNwO1BBU08mbmJzcDtUWCZuYnNwOzc5OTk4PGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwOyg4MDApJm5ic3A7NDIxLTIxMTANCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA3LzE5QTxici8+MDYvMTg8YnIvPkk8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjAzLzAyPGJyLz4wOC8xOEY8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjEwLjFLPGJyLz42NzAwPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4mbmJzcDsgPGJyLz4gPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD42NTcwPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD42NTcwPC9wPjwvdGQ+DQo8dGQgd2lkdGg9IjEzNSIgdmFsaWduPSJiYXNlbGluZSI+PHAgc3R5bGU9ImZvbnQtZmFtaWx5OiAnQ291cmllciBOZXcnLG1vbm9zcGFjZTsgd29yZC1zcGFjaW5nOiAxcHg7IG5vd3JhcDsgbWFyZ2luLWxlZnQ6IDJweCI+Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7IDxici8+DQo8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPlI5PC9wPjwvdGQ+PC90cj4NCjx0ciBjbGFzcz1iYWRtb3A+PHRkIHZhbGlnbj1iYXNlbGluZT48cD5TWU5DQi9DQVJFQ1I8YnIvPjYwMTkxODE4NDM0MzAzNjg8YnIvPjxiPlN1YnNjcmliZXI6Jm5ic3A7PC9iPkYmbmJzcDswOTk5MjYzOTxici8+PGI+TG9hbiZuYnNwO1R5cGU6Jm5ic3A7PC9iPkNoYXJnZSBBY2NvdW50PGJyLz48Yj5SZW1hcmtzOiA8L2I+RGVjZWFzZWQ8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7Qy9PJm5ic3A7UE8mbmJzcDtCT1gmbmJzcDs5NjUwMzY8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7T1JMQU5ETyZuYnNwO0ZMJm5ic3A7MzI4OTY8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7KDg2NikmbmJzcDszOTYtODI1NA0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDcvMTlBPGJyLz4wNi8xODxici8+WDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDIvMDg8YnIvPjA3LzE4RjwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Mzg5OTxici8+MzQwMDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Jm5ic3A7IDxici8+IDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MjMzNDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MjM4PC9wPjwvdGQ+DQo8dGQgd2lkdGg9IjEzNSIgdmFsaWduPSJiYXNlbGluZSI+PHAgc3R5bGU9ImZvbnQtZmFtaWx5OiAnQ291cmllciBOZXcnLG1vbm9zcGFjZTsgd29yZC1zcGFjaW5nOiAxcHg7IG5vd3JhcDsgbWFyZ2luLWxlZnQ6IDJweCI+Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7IDxici8+DQo8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPlI5PC9wPjwvdGQ+PC90cj4NCjx0ciBjbGFzcz1iYWRtb3A+PHRkIHZhbGlnbj1iYXNlbGluZT48cD5CQU5LQU1FUklDQSA8YnIvPjQ0MDA2NjEzMTY4NDM3NTE8YnIvPjxiPlN1YnNjcmliZXI6Jm5ic3A7PC9iPkImbmJzcDswNjMzMTA1OTxici8+PGI+TG9hbiZuYnNwO1R5cGU6Jm5ic3A7PC9iPkNyZWRpdCBDYXJkPGJyLz48Yj5SZW1hcmtzOiA8L2I+QWNjb3VudCBjbG9zZWQgYnkgY29uc3VtZXI8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UE8mbmJzcDtCT1gmbmJzcDs5ODIyMzg8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7RUwmbmJzcDtQQVNPJm5ic3A7VFgmbmJzcDs3OTk5ODxici8+DQombmJzcDsmbmJzcDsmbmJzcDsoODAwKSZuYnNwOzQyMS0yMTEwDQo8L3A+PC90ZD48dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4wNy8xOUE8YnIvPjA3LzE4PGJyLz5JPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4xMC8wMjxici8+MDgvMThGPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4yMjM5PGJyLz4yMDAwPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4mbmJzcDsgPGJyLz4gPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4xOTQ5PC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4xOTQ5PC9wPjwvdGQ+DQo8dGQgd2lkdGg9IjEzNSIgdmFsaWduPSJiYXNlbGluZSI+PHAgc3R5bGU9ImZvbnQtZmFtaWx5OiAnQ291cmllciBOZXcnLG1vbm9zcGFjZTsgd29yZC1zcGFjaW5nOiAxcHg7IG5vd3JhcDsgbWFyZ2luLWxlZnQ6IDJweCI+Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7IDxici8+DQo8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPlI5PC9wPjwvdGQ+PC90cj4NCjx0ciBjbGFzcz1iYWRtb3A+PHRkIHZhbGlnbj1iYXNlbGluZT48cD5DQVBJVEFMIE9ORSA8YnIvPjU0NTgwMDQ1NDAwODUxMDU8YnIvPjxiPlN1YnNjcmliZXI6Jm5ic3A7PC9iPkImbmJzcDswMURUVjAwMTxici8+PGI+TG9hbiZuYnNwO1R5cGU6Jm5ic3A7PC9iPkNyZWRpdCBDYXJkPGJyLz48Yj5SZW1hcmtzOiA8L2I+RGVjZWFzZWQ8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UE8mbmJzcDtCT1gmbmJzcDszMDI4MTxici8+DQombmJzcDsmbmJzcDsmbmJzcDtTQUxUJm5ic3A7TEFLRSZuYnNwO0NJVFkmbmJzcDtVVCZuYnNwOzg0MTMwPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwOyg4MDApJm5ic3A7OTU1LTcwNzANCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA5LzE4QTxici8+MDYvMTg8YnIvPlg8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjExLzAwPGJyLz4wOS8xOEY8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjYyNDE8YnIvPjMxMDA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPiZuYnNwOyA8YnIvPiA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjMwNzA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjMwNzA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4mbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsgPGJyLz4NCjwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Ujk8L3A+PC90ZD48L3RyPg0KPHRyIGNsYXNzPWJhZG1vcD48dGQgdmFsaWduPWJhc2VsaW5lPjxwPkNBUElUQUwgT05FIDxici8+NDE0NzA5OTY3MDY5NjA2OTxici8+PGI+U3Vic2NyaWJlcjombmJzcDs8L2I+QiZuYnNwOzAxRFRWMDAxPGJyLz48Yj5Mb2FuJm5ic3A7VHlwZTombmJzcDs8L2I+Q3JlZGl0IENhcmQ8YnIvPjxiPlJlbWFya3M6IDwvYj5EZWNlYXNlZDxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQTyZuYnNwO0JPWCZuYnNwOzMwMjgxPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1NBTFQmbmJzcDtMQUtFJm5ic3A7Q0lUWSZuYnNwO1VUJm5ic3A7ODQxMzA8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7KDgwMCkmbmJzcDs5NTUtNzA3MA0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDkvMThBPGJyLz4wNS8xODxici8+WDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDUvOTc8YnIvPjA5LzE4RjwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MzkxMDxici8+MzcwMDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Jm5ic3A7IDxici8+IDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Mjk0MTwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Mjk0MTwvcD48L3RkPg0KPHRkIHdpZHRoPSIxMzUiIHZhbGlnbj0iYmFzZWxpbmUiPjxwIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgTmV3Jyxtb25vc3BhY2U7IHdvcmQtc3BhY2luZzogMXB4OyBub3dyYXA7IG1hcmdpbi1sZWZ0OiAycHgiPiZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyA8YnIvPg0KPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD5SOTwvcD48L3RkPjwvdHI+DQo8dHIgY2xhc3M9YmFkbW9wPjx0ZCB2YWxpZ249YmFzZWxpbmU+PHA+SlBNQ0IgQ0FSRCAgPGJyLz40MjYyOTA1MTAyMjczMzM2PGJyLz48Yj5TdWJzY3JpYmVyOiZuYnNwOzwvYj5CJm5ic3A7MDI2UUswMDQ8YnIvPjxiPkxvYW4mbmJzcDtUeXBlOiZuYnNwOzwvYj5DcmVkaXQgQ2FyZDxici8+PGI+UmVtYXJrczogPC9iPkRlY2Vhc2VkPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1BPJm5ic3A7Qk9YJm5ic3A7MTUzNjk8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7V0lMTUlOR1RPTiZuYnNwO0RFJm5ic3A7MTk4NTA8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7KDgwMCkmbmJzcDs5NDUtMjAwMA0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDkvMThBPGJyLz4wNy8xODxici8+WDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDIvMDM8YnIvPjA5LzE4QzwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+NjQyMTxici8+NDkwMDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+OTM8YnIvPk1JTiA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjQ2ODM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjE0ODwvcD48L3RkPg0KPHRkIHdpZHRoPSIxMzUiIHZhbGlnbj0iYmFzZWxpbmUiPjxwIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgTmV3Jyxtb25vc3BhY2U7IHdvcmQtc3BhY2luZzogMXB4OyBub3dyYXA7IG1hcmdpbi1sZWZ0OiAycHgiPjA4LzE4IDQ4IDAyIDAwIDAwPGJyIC8+DQoxMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPGJyLz4xMTExMjExMjExMTE8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPlIyPC9wPjwvdGQ+PC90cj4NCjx0cj48dGQgdmFsaWduPWJhc2VsaW5lPjxwPkRJU0NPVkVSQkFOSzxici8+NjAxMTAwMDUwMDgwMDA2OTxici8+PGI+U3Vic2NyaWJlcjombmJzcDs8L2I+QiZuYnNwOzA5NjE2MDAzPGJyLz48Yj5Mb2FuJm5ic3A7VHlwZTombmJzcDs8L2I+Q3JlZGl0IENhcmQ8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UE9CJm5ic3A7MTUzMTY8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7V0lMTUlOR1RPTiZuYnNwO0RFJm5ic3A7MTk4NTA8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7KDgwMCkmbmJzcDszNDctMjY4Mw0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDcvMTlBPGJyLz4wNi8xOTxici8+QTwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MTIvMDI8YnIvPiZuYnNwOyA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjE2LjBLPGJyLz4xNi40SzwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+PGI+MzM0PC9iPjxici8+TUlOIDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MTUuM0s8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wNi8xOSA0OCAwMCAwMCAwMDxiciAvPg0KMTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD5SMTwvcD48L3RkPjwvdHI+DQo8dHI+PHRkIHZhbGlnbj1iYXNlbGluZT48cD5DSVRJICAgICAgICA8YnIvPjU0NjYxNjAxMjU4Mjc0NzU8YnIvPjxiPlN1YnNjcmliZXI6Jm5ic3A7PC9iPkImbmJzcDswNjREQjAwMjxici8+PGI+TG9hbiZuYnNwO1R5cGU6Jm5ic3A7PC9iPkZsZXhpYmxlIFNwZW5kaW5nIENyZWRpdCBDYXJkPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1BPJm5ic3A7Qk9YJm5ic3A7NjIxNzxici8+DQombmJzcDsmbmJzcDsmbmJzcDtTSU9VWCZuYnNwO0ZBTExTJm5ic3A7U0QmbmJzcDs1NzExNzxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQaG9uZSMmbmJzcDtub3QmbmJzcDtwcm92aWRlZA0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDcvMTlBPGJyLz4wNi8xOTxici8+QTwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDQvMDM8YnIvPiZuYnNwOyA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjQ4MjU8YnIvPjQ2MDA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjxiPjEwNjwvYj48YnIvPk1JTiA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjMyMjM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wNi8xOSA0OCAwMCAwMCAwMDxiciAvPg0KMTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD5SMTwvcD48L3RkPjwvdHI+DQo8dHI+PHRkIHZhbGlnbj1iYXNlbGluZT48cD5DSVRJICAgICAgICA8YnIvPjU0MjQxODAyMzYzMDM4Mjk8YnIvPjxiPlN1YnNjcmliZXI6Jm5ic3A7PC9iPkImbmJzcDswNjREQjAwMjxici8+PGI+TG9hbiZuYnNwO1R5cGU6Jm5ic3A7PC9iPkNyZWRpdCBDYXJkPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1BPJm5ic3A7Qk9YJm5ic3A7NjIxNzxici8+DQombmJzcDsmbmJzcDsmbmJzcDtTSU9VWCZuYnNwO0ZBTExTJm5ic3A7U0QmbmJzcDs1NzExNzxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQaG9uZSMmbmJzcDtub3QmbmJzcDtwcm92aWRlZA0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDcvMTlBPGJyLz4wNi8xOTxici8+QTwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDEvOTA8YnIvPiZuYnNwOyA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjQyOTg8YnIvPjQzMzA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjxiPjc3PC9iPjxici8+TUlOIDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Mjc2NzwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDwvcD48L3RkPg0KPHRkIHdpZHRoPSIxMzUiIHZhbGlnbj0iYmFzZWxpbmUiPjxwIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgTmV3Jyxtb25vc3BhY2U7IHdvcmQtc3BhY2luZzogMXB4OyBub3dyYXA7IG1hcmdpbi1sZWZ0OiAycHgiPjA2LzE5IDQ4IDAwIDAwIDAwPGJyIC8+DQoxMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPlIxPC9wPjwvdGQ+PC90cj4NCjx0cj48dGQgdmFsaWduPWJhc2VsaW5lPjxwPkNBUElUQUwgT05FIDxici8+NTE3ODA1ODI3Mjk0MTk2Nzxici8+PGI+U3Vic2NyaWJlcjombmJzcDs8L2I+QiZuYnNwOzAxRFRWMDAxPGJyLz48Yj5Mb2FuJm5ic3A7VHlwZTombmJzcDs8L2I+Q3JlZGl0IENhcmQ8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UE8mbmJzcDtCT1gmbmJzcDszMDI4MTxici8+DQombmJzcDsmbmJzcDsmbmJzcDtTQUxUJm5ic3A7TEFLRSZuYnNwO0NJVFkmbmJzcDtVVCZuYnNwOzg0MTMwPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwOyg4MDApJm5ic3A7OTU1LTcwNzANCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA3LzE4QTxici8+MDcvMTg8YnIvPlQ8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA5Lzk3PGJyLz4mbmJzcDsgPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4zOTU2PGJyLz40MDAwPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4mbmJzcDsgPGJyLz4gPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4wPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4wPC9wPjwvdGQ+DQo8dGQgd2lkdGg9IjEzNSIgdmFsaWduPSJiYXNlbGluZSI+PHAgc3R5bGU9ImZvbnQtZmFtaWx5OiAnQ291cmllciBOZXcnLG1vbm9zcGFjZTsgd29yZC1zcGFjaW5nOiAxcHg7IG5vd3JhcDsgbWFyZ2luLWxlZnQ6IDJweCI+MDYvMTggNDggMDAgMDAgMDA8YnIgLz4NCjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+UjE8L3A+PC90ZD48L3RyPg0KPHRyPjx0ZCB2YWxpZ249YmFzZWxpbmU+PHA+Q0FQSVRBTCBPTkUgPGJyLz41MTc4MDU5NzgyNTMxNzY5PGJyLz48Yj5TdWJzY3JpYmVyOiZuYnNwOzwvYj5CJm5ic3A7MDFEVFYwMDE8YnIvPjxiPkxvYW4mbmJzcDtUeXBlOiZuYnNwOzwvYj5DcmVkaXQgQ2FyZDxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQTyZuYnNwO0JPWCZuYnNwOzMwMjgxPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1NBTFQmbmJzcDtMQUtFJm5ic3A7Q0lUWSZuYnNwO1VUJm5ic3A7ODQxMzA8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7KDgwMCkmbmJzcDs5NTUtNzA3MA0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDcvMThBPGJyLz4wNy8xODxici8+VDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDYvMDI8YnIvPiZuYnNwOyA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjIxNDQ8YnIvPjIwMDA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPiZuYnNwOyA8YnIvPiA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wNi8xOCA0OCAwMCAwMCAwMDxiciAvPg0KMTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD5SMTwvcD48L3RkPjwvdHI+DQo8dHI+PHRkIHZhbGlnbj1iYXNlbGluZT48cD5EU05CIE1BQ1lTICA8YnIvPjQ0NTM3NTc2OTg0MzA8YnIvPjxiPlN1YnNjcmliZXI6Jm5ic3A7PC9iPkQmbmJzcDswMkE1VDAwMTxici8+PGI+TG9hbiZuYnNwO1R5cGU6Jm5ic3A7PC9iPkNoYXJnZSBBY2NvdW50PGJyLz48Yj5SZW1hcmtzOiA8L2I+QWNjb3VudCBjbG9zZWQgZHVlIHRvIHRyYW5zZmVyPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1BPJm5ic3A7Qk9YJm5ic3A7ODIxODxici8+DQombmJzcDsmbmJzcDsmbmJzcDtNQVNPTiZuYnNwO09IJm5ic3A7NDUwNDA8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UGhvbmUjJm5ic3A7bm90Jm5ic3A7cHJvdmlkZWQNCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA4LzE1QTxici8+MDgvMTU8YnIvPkk8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjAxLzEyPGJyLz4wOC8xNUM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjE2MDM8YnIvPjE1NzA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPiZuYnNwOyA8YnIvPiA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wNy8xNSAzMSAwMCAwMCAwMDxiciAvPg0KMTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTE8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPlIxPC9wPjwvdGQ+PC90cj4NCjx0cj48dGQgdmFsaWduPWJhc2VsaW5lPjxwPkpQTUNCIENBUkQgIDxici8+NDU1OTU0MDgwMDgxMzAwMDxici8+PGI+U3Vic2NyaWJlcjombmJzcDs8L2I+QiZuYnNwOzAyNlFLMDAxPGJyLz48Yj5Mb2FuJm5ic3A7VHlwZTombmJzcDs8L2I+Q3JlZGl0IENhcmQ8YnIvPjxiPlJlbWFya3M6IDwvYj5BY2NvdW50IGNsb3NlZCBieSBjcmVkaXQgZ3JhbnRvcjxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQTyZuYnNwO0JPWCZuYnNwOzE1MzY5PGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1dJTE1JTkdUT04mbmJzcDtERSZuYnNwOzE5ODUwPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwOyg4MDApJm5ic3A7OTQ1LTIwMDANCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA3LzEyQTxici8+MDUvMTI8YnIvPkk8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA4LzAxPGJyLz4wNi8xMkM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjQyMjM8YnIvPjM3NzU8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPiZuYnNwOyA8YnIvPiA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wNi8xMiA0OCAwMCAwMCAwMDxiciAvPg0KMTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD5SMTwvcD48L3RkPjwvdHI+DQo8dHI+DQo8dGQ+PHAgc3R5bGU9ImZvbnQtc2l6ZTogMTFwdCI+DQombmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsgPGI+UmV2b2x2aW5nIFRvdGFsczwvYj4NCjwvcD48L3RkPg0KPHRkPjxici8+PC90ZD48dGQ+PGJyLz48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkIGFsaWduPWNlbnRlcj48cCBzdHlsZT0iZm9udC1zaXplOiAxMXB0Ij48Yj4NCiQ1MTc8L2I+PC9wPjwvdGQ+DQo8dGQgYWxpZ249Y2VudGVyPjxwIHN0eWxlPSJmb250LXNpemU6IDExcHQiPjxiPg0KJDQyLDkzNDwvYj48L3A+PC90ZD48dGQ+PGJyLz48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkPjxici8+PC90ZD4NCjwvdHI+DQo8L3RhYmxlPg0KPGJyLz4NCjwhLS0vVFIxMV9SLS0+DQo8IS0tVFIxMV9PLS0+DQo8dGFibGUgYm9yZGVyIFdJRFRIPSIxMDAlIiBDRUxMUEFERElORz0wIENFTExTUEFDSU5HPTA+DQo8dHI+PHRoIGNsYXNzPXNwYWNlZCBDT0xTUEFOPTkgQUxJR049Q0VOVEVSIEJHQ09MT1I9IiNDMEMwQzAiPk9wZW4gQWNjb3VudHMNCjwvdGg+PC90cj4NCjx0cj48dGQgQ09MU1BBTj0iNCI+PGJyLz48L3RkPjx0aCBDT0xTUEFOPSIzIj48cD5DdXJyZW50IFN0YXR1czwvcD48L3RoPg0KPHRoIHdpZHRoPSIxMzUiPjxwPkhpc3QgU3RhdHVzPC9wPjwvdGg+PHRkPjxici8+PC90ZD48L3RyPg0KPHRyPjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5BY2MgTmFtZS9BZGRyZXNzPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+UnB0ZDxici8+RExBPGJyLz5FQ09BPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+T3BlbmVkPGJyLz5DbHNkL1BEPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+SGlnaDxici8+TGltaXQ8L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5QbXQ8YnIvPlRlcm08L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD4kQmFsPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+JFBhc3QgRHVlPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSIgd2lkdGg9IjEzNSIgYWxpZ249ImxlZnQiPjxwIHN0eWxlPSJ3b3JkLXNwYWNpbmc6IDVweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij5EYXRlIE10aHMgMzAgNjAgOTA8L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5SYXRpbmc8L3A+PC90aD48L3RyPg0KPHRyPjx0ZCB2YWxpZ249YmFzZWxpbmU+PHA+QU1FWCAgICAgICAgPGJyLz4zNDk5OTA1MTY1MjczOTkzPGJyLz48Yj5TdWJzY3JpYmVyOiZuYnNwOzwvYj5CJm5ic3A7MDIxV0IwMDE8YnIvPjxiPkxvYW4mbmJzcDtUeXBlOiZuYnNwOzwvYj5DcmVkaXQgQ2FyZDxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQLk8uJm5ic3A7Qk9YJm5ic3A7OTgxNTM3PGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO0VMJm5ic3A7UEFTTyZuYnNwO1RYJm5ic3A7Nzk5OTg8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7KDgwMCkmbmJzcDs4NzQtMjcxNw0KPC9wPjwvdGQ+PHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDYvMTlBPGJyLz48YnIvPlQ8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjAzLzg1PGJyLz4wNi8xOUM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8YnIvPiZuYnNwOyA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPiZuYnNwOyA8YnIvPiA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wNS8xOSA0OCAwMCAwMCAwMDxiciAvPg0KMTExMTExMTExMTExPGJyLz4xMTExWDExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD5PMTwvcD48L3RkPjwvdHI+DQo8dHI+DQo8dGQ+PHAgc3R5bGU9ImZvbnQtc2l6ZTogMTFwdCI+DQombmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsgPGI+T3BlbiBBY2NvdW50IFRvdGFsczwvYj4NCjwvcD48L3RkPg0KPHRkPjxici8+PC90ZD48dGQ+PGJyLz48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkIGFsaWduPWNlbnRlcj48cCBzdHlsZT0iZm9udC1zaXplOiAxMXB0Ij48Yj4NCiQwPC9iPjwvcD48L3RkPg0KPHRkIGFsaWduPWNlbnRlcj48cCBzdHlsZT0iZm9udC1zaXplOiAxMXB0Ij48Yj4NCiQwPC9iPjwvcD48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkPjxici8+PC90ZD48dGQ+PGJyLz48L3RkPg0KPC90cj4NCjwvdGFibGU+DQo8YnIvPg0KPCEtLS9UUjExX08tLT4NCjwhLS1UUjExX0ktLT4NCjx0YWJsZSBib3JkZXIgV0lEVEg9IjEwMCUiIENFTExQQURESU5HPTAgQ0VMTFNQQUNJTkc9MD4NCjx0cj48dGggY2xhc3M9c3BhY2VkIENPTFNQQU49OSBBTElHTj1DRU5URVIgQkdDT0xPUj0iI0MwQzBDMCI+SW5zdGFsbG1lbnQgQWNjb3VudHMNCjwvdGg+PC90cj4NCjx0cj48dGQgQ09MU1BBTj0iNCI+PGJyLz48L3RkPjx0aCBDT0xTUEFOPSIzIj48cD5DdXJyZW50IFN0YXR1czwvcD48L3RoPg0KPHRoIHdpZHRoPSIxMzUiPjxwPkhpc3QgU3RhdHVzPC9wPjwvdGg+PHRkPjxici8+PC90ZD48L3RyPg0KPHRyPjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5BY2MgTmFtZS9BZGRyZXNzPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+UnB0ZDxici8+RExBPGJyLz5FQ09BPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+T3BlbmVkPGJyLz5DbHNkL1BEPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+SGlnaDxici8+TGltaXQ8L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5QbXQ8YnIvPlRlcm08L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD4kQmFsPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSI+PHA+JFBhc3QgRHVlPC9wPjwvdGg+DQo8dGggdmFsaWduPSJiYXNlbGluZSIgd2lkdGg9IjEzNSIgYWxpZ249ImxlZnQiPjxwIHN0eWxlPSJ3b3JkLXNwYWNpbmc6IDVweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij5EYXRlIE10aHMgMzAgNjAgOTA8L3A+PC90aD4NCjx0aCB2YWxpZ249ImJhc2VsaW5lIj48cD5SYXRpbmc8L3A+PC90aD48L3RyPg0KPHRyPjx0ZCB2YWxpZ249YmFzZWxpbmU+PHA+TUIgRklOIFNWQ1MgPGJyLz41MDAwMjM1MDgwMDAxPGJyLz48Yj5TdWJzY3JpYmVyOiZuYnNwOzwvYj5GJm5ic3A7MDExN1kwMDM8YnIvPjxiPkxvYW4mbmJzcDtUeXBlOiZuYnNwOzwvYj5BdXRvIExlYXNlPGJyLz48Yj5SZW1hcmtzOiA8L2I+Q2xvc2VkPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1AuTy4mbmJzcDtCT1gmbmJzcDs5NjE8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7Uk9BTk9LRSZuYnNwO1RYJm5ic3A7NzYyNjI8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UGhvbmUjJm5ic3A7bm90Jm5ic3A7cHJvdmlkZWQNCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA5LzE4QTxici8+MDkvMTg8YnIvPkM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjEwLzE2PGJyLz4wOS8xOEM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjMwLjlLPGJyLz4mbmJzcDsgPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4mbmJzcDsgPGJyLz4wNDhNTzwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDwvcD48L3RkPg0KPHRkIHdpZHRoPSIxMzUiIHZhbGlnbj0iYmFzZWxpbmUiPjxwIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgTmV3Jyxtb25vc3BhY2U7IHdvcmQtc3BhY2luZzogMXB4OyBub3dyYXA7IG1hcmdpbi1sZWZ0OiAycHgiPjA4LzE4IDIyIDAwIDAwIDAwPGJyIC8+DQoxMTExMTExMTExMTE8YnIvPjExMTExMTExMTE8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPkkxPC9wPjwvdGQ+PC90cj4NCjx0cj48dGQgdmFsaWduPWJhc2VsaW5lPjxwPkpQTUNCIEFVVE8gIDxici8+MTA1OTQ0NjE8YnIvPjxiPlN1YnNjcmliZXI6Jm5ic3A7PC9iPkImbmJzcDswNDAyRDA4ODxici8+PGI+TG9hbiZuYnNwO1R5cGU6Jm5ic3A7PC9iPkF1dG8gTGVhc2U8YnIvPjxiPlJlbWFya3M6IDwvYj5DbG9zZWQ8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UC5PLiZuYnNwO0JPWCZuYnNwOzkwMTAwMzxici8+DQombmJzcDsmbmJzcDsmbmJzcDtDUkVESVQmbmJzcDtCVVJFQVUmbmJzcDtESVNQVVRFJm5ic3A7UFJPQ0VTU0c8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7Rk9SVCZuYnNwO1dPUlRIJm5ic3A7VFgmbmJzcDs3NjEwMTxici8+DQombmJzcDsmbmJzcDsmbmJzcDsoODAwKSZuYnNwOzMzNi02Njc1DQo8L3A+PC90ZD48dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4xMC8xNkE8YnIvPjEwLzE2PGJyLz5DPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4wNi8xMzxici8+MTAvMTZDPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4yOC4xSzxici8+Jm5ic3A7IDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Jm5ic3A7IDxici8+MDQyTU88L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wOS8xNiA0MCAwMCAwMCAwMDxiciAvPg0KMTExMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+STE8L3A+PC90ZD48L3RyPg0KPHRyPjx0ZCB2YWxpZ249YmFzZWxpbmU+PHA+TUIgRklOIFNWQ1MgPGJyLz43MDAzMjM1OTUwPGJyLz48Yj5TdWJzY3JpYmVyOiZuYnNwOzwvYj5GJm5ic3A7MDExN1kwMDU8YnIvPjxiPkxvYW4mbmJzcDtUeXBlOiZuYnNwOzwvYj5BdXRvIExlYXNlPGJyLz48Yj5SZW1hcmtzOiA8L2I+Q2xvc2VkPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1AuTy4mbmJzcDtCT1gmbmJzcDs5NjE8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7Uk9BTk9LRSZuYnNwO1RYJm5ic3A7NzYyNjI8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UGhvbmUjJm5ic3A7bm90Jm5ic3A7cHJvdmlkZWQNCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA2LzE1QTxici8+MDcvMTU8YnIvPkM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA5LzExPGJyLz4wNi8xNUM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjQwLjRLPGJyLz4mbmJzcDsgPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4mbmJzcDsgPGJyLz4wNTFNTzwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDwvcD48L3RkPg0KPHRkIHdpZHRoPSIxMzUiIHZhbGlnbj0iYmFzZWxpbmUiPjxwIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgTmV3Jyxtb25vc3BhY2U7IHdvcmQtc3BhY2luZzogMXB4OyBub3dyYXA7IG1hcmdpbi1sZWZ0OiAycHgiPjA1LzE1IDQ0IDAwIDAwIDAwPGJyIC8+DQoxMTExMTExMTExMTE8YnIvPjExMTExMTExMTExMTxici8+MTExMTExMTExMTExPGJyLz4xMTExMTExMTwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+STE8L3A+PC90ZD48L3RyPg0KPHRyPjx0ZCB2YWxpZ249YmFzZWxpbmU+PHA+TUIgRklOIFNWQ1MgPGJyLz43MDAzMjM1NTQzPGJyLz48Yj5TdWJzY3JpYmVyOiZuYnNwOzwvYj5GJm5ic3A7MDExN1kwMDU8YnIvPjxiPkxvYW4mbmJzcDtUeXBlOiZuYnNwOzwvYj5BdXRvIExlYXNlPGJyLz48Yj5SZW1hcmtzOiA8L2I+Q2xvc2VkPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1AuTy4mbmJzcDtCT1gmbmJzcDs5NjE8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7Uk9BTk9LRSZuYnNwO1RYJm5ic3A7NzYyNjI8YnIvPg0KJm5ic3A7Jm5ic3A7Jm5ic3A7UGhvbmUjJm5ic3A7bm90Jm5ic3A7cHJvdmlkZWQNCjwvcD48L3RkPjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA3LzEzQTxici8+MDcvMTM8YnIvPkM8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA5LzExPGJyLz4wNy8xM0M8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjM4LjRLPGJyLz4mbmJzcDsgPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4mbmJzcDsgPGJyLz4wNDhNTzwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+MDwvcD48L3RkPg0KPHRkIHdpZHRoPSIxMzUiIHZhbGlnbj0iYmFzZWxpbmUiPjxwIHN0eWxlPSJmb250LWZhbWlseTogJ0NvdXJpZXIgTmV3Jyxtb25vc3BhY2U7IHdvcmQtc3BhY2luZzogMXB4OyBub3dyYXA7IG1hcmdpbi1sZWZ0OiAycHgiPjA2LzEzIDIyIDAwIDAwIDAwPGJyIC8+DQoxMTExMTExMTExMTE8YnIvPjExMTExMTExMTE8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPkkxPC9wPjwvdGQ+PC90cj4NCjx0cj48dGQgdmFsaWduPWJhc2VsaW5lPjxwPk1CIEZJTiBTVkNTIDxici8+MTAxNzU2Nzk3OTxici8+PGI+U3Vic2NyaWJlcjombmJzcDs8L2I+RiZuYnNwOzAxMTdZMDAzPGJyLz48Yj5Mb2FuJm5ic3A7VHlwZTombmJzcDs8L2I+QXV0b21vYmlsZTxici8+PGI+UmVtYXJrczogPC9iPkNsb3NlZDxici8+DQombmJzcDsmbmJzcDsmbmJzcDtQLk8uJm5ic3A7Qk9YJm5ic3A7OTYxPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1JPQU5PS0UmbmJzcDtUWCZuYnNwOzc2MjYyPGJyLz4NCiZuYnNwOyZuYnNwOyZuYnNwO1Bob25lIyZuYnNwO25vdCZuYnNwO3Byb3ZpZGVkDQo8L3A+PC90ZD48dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4xMC8xMUE8YnIvPjEwLzExPGJyLz5DPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4xMi8wODxici8+MTAvMTFDPC9wPjwvdGQ+DQo8dGQgdmFsaWduPWJhc2VsaW5lIGFsaWduPWNlbnRlcj48cD4zOS4zSzxici8+Jm5ic3A7IDwvcD48L3RkPg0KPHRkIHZhbGlnbj1iYXNlbGluZSBhbGlnbj1jZW50ZXI+PHA+Jm5ic3A7IDxici8+MDY2TU88L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPjA8L3A+PC90ZD4NCjx0ZCB3aWR0aD0iMTM1IiB2YWxpZ249ImJhc2VsaW5lIj48cCBzdHlsZT0iZm9udC1mYW1pbHk6ICdDb3VyaWVyIE5ldycsbW9ub3NwYWNlOyB3b3JkLXNwYWNpbmc6IDFweDsgbm93cmFwOyBtYXJnaW4tbGVmdDogMnB4Ij4wOS8xMSAzNCAwMCAwMCAwMDxiciAvPg0KWFgxMTExMTExMTExPGJyLz4xMTExMTExMTExMTE8YnIvPjExMTExMTExMTE8L3A+PC90ZD4NCjx0ZCB2YWxpZ249YmFzZWxpbmUgYWxpZ249Y2VudGVyPjxwPkkxPC9wPjwvdGQ+PC90cj4NCjx0cj4NCjx0ZD48cCBzdHlsZT0iZm9udC1zaXplOiAxMXB0Ij4NCiZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyA8Yj5JbnN0YWxsbWVudCBUb3RhbHM8L2I+DQo8L3A+PC90ZD4NCjx0ZD48YnIvPjwvdGQ+PHRkPjxici8+PC90ZD48dGQ+PGJyLz48L3RkPjx0ZCBhbGlnbj1jZW50ZXI+PHAgc3R5bGU9ImZvbnQtc2l6ZTogMTFwdCI+PGI+DQokMDwvYj48L3A+PC90ZD4NCjx0ZCBhbGlnbj1jZW50ZXI+PHAgc3R5bGU9ImZvbnQtc2l6ZTogMTFwdCI+PGI+DQokMDwvYj48L3A+PC90ZD48dGQ+PGJyLz48L3RkPjx0ZD48YnIvPjwvdGQ+PHRkPjxici8+PC90ZD4NCjwvdHI+DQo8L3RhYmxlPg0KPGJyLz4NCjwhLS0vVFIxMV9JLS0+DQo8IS0tL1RSMTEtLT4NCjxwIHN0eWxlPSJmb250LWZhbWlseTogYXJpYWw7IGZvbnQtc2l6ZTogOXB0OyB0ZXh0LWluZGVudDogLTFlbTsgbWFyZ2luLWxlZnQ6IDFlbSI+PGI+U2VydmljZWQgQnk6PC9iPjxiciAvPlRSQU5TVU5JT048YnIgLz4yIEJBTERXSU4gUExBQ0UsIFAuTy4gQk9YIDEwMDA8YnIgLz5DSEVTVEVSLCBQQSAxOTAyMjxiciAvPjgwMC04ODgtNDIxMzxiciAvPmh0dHA6Ly93d3cudHJhbnN1bmlvbi5jb208YnIgLz48L3A+DQoNCjxwPkVORCBPRiBSRVBPUlQgLSBUUkFOUyBVTklPTiAtIDgvNy8yMDE5LCAxNToyMTo0NyBDVDwvcD4NCjwhLS0vUkVQT1JUX0NSRURJVC0tPg0KPCEtLS9UVV9SRVBPUlQtLT4NCjwvYm9keT4NCjwvaHRtbD5dXT4NCiAgICA8L0hUTUxfUmVwb3J0Pg0KICA=</html_encrypt>
+      </tcfadd>
+    </TU_Report>
+  

@@ -1,0 +1,100 @@
+﻿Imports System
+Imports System.IO
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.Collections.Generic
+Imports System.Data
+Imports System.Data.SqlClient
+Imports Drg.Util.DataAccess
+Imports Drg.Util.DataHelpers
+Partial Class Clients_client_cancellation_popup_ManagerApproval
+    Inherits System.Web.UI.Page
+
+#Region "Declaration"
+    Public _ClientId As Integer = 0
+    Public _MatterId As Integer = 0
+    Public UserID As Integer = 0
+#End Region
+
+#Region "Events"
+    ''' <summary>
+    ''' Loads the content of the page
+    ''' </summary>    
+    ''' <remarks>sid is the settlementId</remarks>
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        UserID = DataHelper.Nz_int(Page.User.Identity.Name)
+        If Session("UserID") Is Nothing Then
+            Session("UserID") = UserID
+        End If
+
+        If Not Request.QueryString("id") Is Nothing Then
+            _ClientId = Integer.Parse(Request.QueryString("id"))
+        End If
+
+        If Not Request.QueryString("mid") Is Nothing Then
+            _MatterId = Request.QueryString("mid")
+        End If
+    End Sub
+
+    Protected Sub lnkSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSave.Click
+        Dim UserName As String = txtManager.Text
+        Dim Password As String = DataHelper.GenerateSHAHash(txtAuthCode.Text)
+        dvError.Style.Item("display") = "none"
+        tdError.InnerText = ""
+
+        Dim serverCode = DataHelper.FieldLookup("tblUser", "Password", "UserName='" & UserName & "'")
+        Dim ManagerId As Integer = CInt(DataHelper.FieldLookup("tblUser", "UserId", "UserName='" & UserName & "'"))
+
+        If String.IsNullOrEmpty(serverCode) Then
+            dvError.Style.Item("display") = "inline"
+            tdError.InnerText = "Enter a Valid UserName"
+            Exit Sub
+        End If
+
+        If Not PermissionHelperLite.HasPermission(ManagerId, "Settlement Processing-Payments Override") Then
+            dvError.Style.Item("display") = "inline"
+            tdError.InnerText = "You do not have permission to authorize. Please contact your Manager."
+            Exit Sub
+        End If
+
+        If Not serverCode.Equals(Password) Then
+            dvError.Style.Item("display") = "inline"
+            tdError.InnerText = "The confirmation code is incorrect."
+            Exit Sub
+        End If
+
+        Dim _CancelId As Integer = DataHelper.FieldLookupIDs("tblCancellation", "CancellationId", "IsDeleted = 0 and MatterId = " & _MatterId)(0)
+
+        Using cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+            cmd.Connection.Open()
+            cmd.CommandText = "Update tblCancellation set ApprovedBy = " & ManagerId & " , ApprovedDate = '" & DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff") & "' where CancellationId = " & _CancelId
+            cmd.CommandType = CommandType.Text
+            cmd.ExecuteNonQuery()
+            cmd.Connection.Close()
+        End Using
+
+        Dim Note As String = UserHelper.GetName(ManagerId) & " approved to refund more than 3 Maintenance Fees for the cancellation of " & ClientHelper.GetDefaultPersonName(_ClientId)
+        Dim outputParam As IDataParameter
+        Using cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+            cmd.Connection.Open()
+            cmd.CommandText = "stp_InsertNoteForSettlementMatter"
+            cmd.CommandType = CommandType.StoredProcedure
+            DatabaseHelper.AddParameter(cmd, "ClientId", _ClientId)
+            DatabaseHelper.AddParameter(cmd, "MatterId", _MatterId)
+            DatabaseHelper.AddParameter(cmd, "CreatedBy", UserID)
+            DatabaseHelper.AddParameter(cmd, "Note", Note)
+            outputParam = DatabaseHelper.CreateAndAddParamater(cmd, "ReturnNoteId", DbType.Int32)
+            outputParam.Direction = ParameterDirection.Output
+            cmd.ExecuteNonQuery()
+            cmd.Connection.Close()
+        End Using
+
+        ClientScript.RegisterClientScriptBlock(GetType(Page), "FeeAdjustments", "<script> window.onload = function() { CloseCancelManagerApproval(); } </script>")
+
+    End Sub
+
+#End Region
+
+
+
+End Class

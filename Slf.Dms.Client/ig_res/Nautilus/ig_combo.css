@@ -1,0 +1,135 @@
+.igcmb_NautilusControl
+{
+	background-position:right top ;
+	background-image: url(images/bg_top.gif);
+	border:solid 1px #4E79A3;
+}
+
+
+.igcmb_NautilusEditWithButtons
+{
+	border:solid 1px #A7A6AA;
+	cursor:hand;
+}
+
+
+.igcmb_NautilusPagerArea
+{
+	background-image:none;
+	border-width:0px;
+	padding-top:10px;
+	padding-right:20px;
+	padding-bottom:10px;
+	width: 22px;
+}
+
+
+.igcmb_NautilusPageCurrent
+{
+	background-repeat:no-repeat;
+	background-image: url(images/pagebutton.png);
+	font-weight:bold;
+	margin-right:10px;
+	padding:3px 6px 5px 5px;
+	color:White;
+}
+
+
+.igcmb_NautilusPageLink
+{
+	margin-right:10px;
+	color:#2F3660;
+}
+
+
+.igcmb_NautilusItem
+{
+	background-position:right top ;
+	border-width:0px;
+	border-top:dotted 1px #A7A6AA;
+	height: 20px;
+	color:#000;
+}
+
+
+.igcmb_NautilusAlt
+{
+	background-image:none;
+	border-top-color:#A7A6AA;
+}
+
+
+.igcmb_NautilusHeader
+{
+	/*background-position:top ;
+	background-image: url(images/background.png);*/
+	border-width:0px;
+	height: 25px;
+	color:#006699;
+	text-align:left;
+}
+
+
+.igcmb_NautilusFooter
+{
+	background-image: url(images/fadetop1.png);
+}
+
+
+.igcmb_NautilusLabel
+{
+	border-right:solid 1px Gainsboro;
+	border-top-width:1px;
+	border-top-color:#E1E1E1;
+	height: 28px;
+	text-align:left;
+}
+
+
+.igcmb_NautilusSelected
+{
+	background-color:#D3DACB;
+	background-repeat:repeat-x;
+	background-position:bottom ;
+	background-image: url(images/normalgreen3.png);
+	color:#223E6E;
+}
+
+
+.igcmb_NautilusEditSelected
+{
+	background-color:White;
+	font-size:x-small;
+	font-family: Verdana;
+	border:solid 1px Transparent;
+	padding-top:7px;
+	text-align:left;
+	vertical-align:middle;
+}
+
+
+.igcmb_NautilusActiveBorderTopBottom
+{
+}
+
+
+.igcmb_NautilusActiveBorderLeft
+{
+}
+
+
+.igcmb_NautilusActiveBorderRight
+{
+}
+
+
+.igcmb_NautilusFilterDropDown
+{
+}
+
+
+.igcmb_NautilusFilterOperandDropDown
+{
+}
+
+

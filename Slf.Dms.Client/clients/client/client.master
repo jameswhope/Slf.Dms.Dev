@@ -1,0 +1,310 @@
+<%@ Master Language="VB" MasterPageFile="~/Site.master" CodeFile="client.master.vb" Inherits="clients_client" %>
+<%@ Register TagPrefix="drg" TagName="ToolBarComms" Src="~/clients/client/toolbarcomms.ascx" %>
+
+<asp:Content ID="cntMenu" ContentPlaceHolderID="cphMenu" runat="server">
+<ajaxToolkit:ToolkitScriptManager ID="smApplicant" runat="server">
+        <Scripts>
+            <asp:ScriptReference Path="~/jscript/rgbcolor.js" />
+            <asp:ScriptReference Path="~/jscript/controls/grid.js" />
+        </Scripts>
+    </ajaxToolkit:ToolkitScriptManager>
+<asp:Panel ID="pnlMenu" runat="server">
+    <table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false">
+        <tr>
+            <td><img runat="server" width="8" height="1" src="~/images/spacer.gif" /></td>
+            <td nowrap="true">
+                <a runat="server" class="menuButton" href="~/clients">
+                    <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_person_home.png" />Clients Home</a></td>
+            <td style="width: 100%;">&nbsp;</td>
+            <asp:PlaceHolder ID="phComms" runat="server">
+                <drg:ToolBarComms id="ucComms" runat="server"></drg:ToolBarComms>
+                <td class="menuSeparator">|</td>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="pnlSearch" runat="server">
+            <td nowrap="true">
+                <a runat="server" class="menuButton" href="~/search.aspx">
+                    <img runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_search.png" />Search</a></td>
+            </asp:PlaceHolder>
+            <td><img runat="server" width="8" height="28" src="~/images/spacer.gif" /></td>
+        </tr>
+    </table>
+</asp:Panel>
+</asp:Content>
+
+<asp:Content ID="cntBody" ContentPlaceHolderID="cphBody" Runat="Server">
+<asp:Panel ID="pnlBody" runat="server">
+<script type="text/javascript" src="<%= ResolveUrl("~/jscript/ajax.js")%>"></script>
+    
+<script type="text/javascript">
+    function sideTab_OnMouseOver(obj)
+    {
+        obj.style.color = "rgb(90,90,90)";
+        obj.style.backgroundColor = "rgb(240,245,251)";
+    }
+    function sideTab_OnMouseOut(obj)
+    {
+        obj.style.color = "";
+        obj.style.backgroundColor = "";
+    }
+    function Record_AddCall()
+    {
+        window.location = "<%= ResolveUrl("~/clients/client/communication/phonecall.aspx") %>?a=a&id=<%= DataClientId %>&t=c";
+    }
+    function Record_Email()
+    {
+    }
+    function Record_AddNote()
+    {
+        window.location = "<%= ResolveUrl("~/clients/client/communication/note.aspx") %>?a=a&id=<%= DataClientId %>&t=c";
+    }
+    function ShowScanning(scanUrl){
+        var frm = document.getElementById('<%= frmScan.ClientID%>')
+        frm.src = scanUrl;
+    
+        var modalPopupBehavior = $find('mpeScanningPopBehavior');
+        modalPopupBehavior.show();
+    }
+     function closePopup() {
+        var modalPopupBehavior = $find('mpeScanningPopBehavior');
+        modalPopupBehavior.hide();
+    }
+    function startScan(){
+        var frm = document.getElementById('<%= frmScan.ClientID%>')
+        window.frames['frameScanner'].ScanDocument();
+    }
+    function startSave(){
+        var frm = document.getElementById('<%= frmScan.ClientID%>')
+        window.frames['frameScanner'].SaveDocument();
+    }
+</script>
+    <table style="width: 100%; height: 100%;" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td style="width: 200; background-color: rgb(214,231,243);padding-top: 35px;" valign="top" align="right">
+            <%--<div style="padding-right:5">
+                <pu:PopupLink runat="server" ID="pulQuickInfo" For="puClientInfo" Action="show">
+                    <div class="lnk" ><img style="margin-right:5;" runat="server" src="~/images/16x16_user.png" border="0" align="absmiddle"/>Quick Info</div>
+                </pu:PopupLink>
+                <pu:PopupControl id="puClientInfo" runat="server" AjaxHandlerURL="~/PopupHandler.ashx" 
+                    AllowDocking="true" OpenEffect="fade" BodyOpacity="80" AllowMove="true" AllowResize="false" 
+                    RememberPosition="true" Mode="Window" MemoryObject="Session" TransSpeed="10" ShowRollup="False"
+                    TitleOpacity="75" InitiallyVisible="false" TitleStyle="font-size:11px" BodyStyle="font-size:11px" BodyWidth="200" BodyHeight="100">
+                    <TitleTemplate>
+                        Quick Info
+                    </TitleTemplate>
+                    <BodyTemplate>
+                    <table style="font-size:11px;width:100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <b><%=strName%></b>
+                            </td>
+                            <td>
+                                <%=strAccountNumber%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <%=strAddress%>
+                            </td>
+                        </tr>
+                        <tr><td style="font-size:3px">&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="2">
+                                <%=strSSN%>
+                            </td>
+                        </tr>
+                        <tr><td style="font-size:3px">&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="2">
+                                SDA Bal:  <span style="color:<%=strSDAColor%>"><%=strSDABalance%></span>
+                            </td>
+                        </tr>
+                        <tr><td style="font-size:3px">&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="2">
+                                <%=strStatus%>
+                            </td>
+                        </tr>
+                    </table>
+                    </BodyTemplate>    
+                </pu:PopupControl>
+                 </div>
+                    <div style="font-size:5px">&nbsp;</div>--%>
+                <table style="font-family: tahoma; font-size: 11px; width: 100%;" cellpadding="0" cellspacing="0" border="0">
+                    <tr id="trTabOverview" runat="server">
+                        <td id="tdTabOverview" runat="server">
+                            <table id="tblTabOverview" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;">
+                                        <img id="imgTabOverview" runat="server" /></td>
+                                    <td style="width:100%;">Overview</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trTabApplicants" runat="server">
+                        <td id="tdTabApplicants" runat="server">
+                            <table id="tblTabApplicants" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;">
+                                        <img id="imgTabApplicants" runat="server" /></td>
+                                    <td style="width:100%;">Applicants</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trTabFinances" runat="server">
+                        <td id="tdTabFinances" runat="server">
+                            <table id="tblTabFinances" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;"><img id="imgTabFinances" runat="server" /></td>
+                                    <td style="width:100%;">Finances</td>
+                                </tr>
+                                <tr><td class="sideTabTdSel" colspan="2"><a id="lnkTabRegister" class="sideTabLnkUns" runat="server">Transaction Register</a></td></tr>
+                                <tr><td class="sideTabTdSel" colspan="2"><a id="lnkTabByType" class="sideTabLnkUns" runat="server">Transactions By Type</a></td></tr>
+                                <tr><td class="sideTabTdSel" colspan="2"><a id="lnkTabAch" class="sideTabLnkUns" runat="server">ACH & Fee Structure</a></td></tr>
+                                <tr><td class="sideTabTdSel" colspan="2"><a id="lnkTabSDA" class="sideTabLnkUns" runat="server">SDA Structure</a></td></tr>
+                                <tr><td class="sideTabTdSel" colspan="2"><a id="lnkTabAnalysis" class="sideTabLnkUns" runat="server">Analysis & Statistics</a></td></tr>
+                                <tr><td colspan="2" style="padding:0 0 0 0;"><img width="1" height="10" border="0" src="~/images/spacer.gif" runat="server"/></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trTabCreditors" runat="server">
+                        <td id="tdTabCreditors" runat="server">
+                            <table id="tblTabCreditors" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;"><img id="imgTabCreditors" runat="server" /></td>
+                                    <td style="width:100%;">Creditors</td>
+                                </tr>
+                                <tr><td class="sideTabTdSel" colspan="2"><a id="lnkTabAccounts" class="sideTabLnkSel" runat="server">Account Breakdown</a></td></tr>
+                                <tr><td class="sideTabTdSel" colspan="2"><a id="lnkTabMediation" class="sideTabLnkUns" runat="server">Negotiation Preparation</a></td></tr>
+                                <tr><td colspan="2" style="padding:0 0 0 0;"><img width="1" height="10" border="0" src="~/images/spacer.gif" runat="server"/></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trTabCommunication" runat="server">
+                        <td id="tdTabCommunication" runat="server">
+                            <table id="tblTabCommunication" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;">
+                                        <img id="imgTabCommunication" runat="server" /></td>
+                                    <td style="width:100%;">Communication</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trTabDocs" runat="server">
+                        <td id="tdTabDocs" runat="server">
+                            <table id="tblTabDocs" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;">
+                                        <img id="imgTabDocs" runat="server" /></td>
+                                    <td style="width:100%;">Documents</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trTabReports" runat="server">
+                        <td id="tdTabReports" runat="server">
+                            <table id="tblTabReports" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;">
+                                        <img id="imgTabReports" runat="server" /></td>
+                                    <td style="width:100%;">Reports</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: solid 1px white;padding: 20 20 0 20;">
+                            <asp:Panel runat="server" ID="pnlRollupViews">
+                                <table class="sideRollupTable" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <td class="sideRollupCellHeader">Views</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sideRollupCellBody">
+                                            <table id="tblRollupViews" runat="server" class="sideRollupCellBodyTable" cellpadding="0" cellspacing="7" border="0"></table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="height:20px;">&nbsp;</div>
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="pnlRollupCommonTasks">
+                                <table class="sideRollupTable" cellpadding="0" cellspacing="0" border="0">
+                                    <tr><td class="sideRollupCellHeader">Common Tasks</td></tr>
+                                    <tr>
+                                        <td class="sideRollupCellBody">
+                                            <table id="tblRollupCommonTasks" runat="server" class="sideRollupCellBodyTable" cellpadding="0" cellspacing="7" border="0">
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="height:20px;">&nbsp;</div>
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="pnlRollupRelatedLinks">
+                                <table class="sideRollupTable" cellpadding="" cellspacing="0" border="0">
+                                    <tr>
+                                        <td class="sideRollupCellHeader">Related Links</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="tdRollupRelatedLinks" runat="server" class="sideRollupCellBody">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                </table>
+                <img width="200" height="1" runat="server" src="~/images/spacer.gif" border="0" />
+            </td>
+            <td valign="top">
+                <asp:contentplaceholder id="cphBody" runat="server"></asp:contentplaceholder>
+            </td>
+        </tr>
+    </table>
+    <asp:Button ID="btnDummyScanningBtn" runat="server" Style="display: none;" />
+    <ajaxToolkit:ModalPopupExtender ID="mpeScanning" BehaviorID="mpeScanningPopBehavior"
+        runat="server" BackgroundCssClass="ModalBackgroundScanning" PopupControlID="pnlScanningPop"
+        PopupDragHandleControlID="pnlDrag" TargetControlID="btnDummyScanningBtn" Y="30"
+        CancelControlID="lnkCancel">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel ID="pnlScanningPop" runat="server" CssClass="ModalPopupScanning" Style="display: none">
+        <asp:Panel ID="pnlDrag" runat="server" Style="display: block;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td align="left" style="padding-left: 10px; background-color: #4791C5; color: #fff;">
+                        <asp:Label ID="lblHdr" runat="server" ForeColor="white" CssClass="entry2" Font-Size="12pt"
+                            Text="Scanning Wizard" />
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+        <asp:Panel ID="pnlPopContent" runat="server" Style="text-align: left; display: block;
+            vertical-align: top;" CssClass="entry2">
+            <div class="entry2" style="padding: 5px; padding-right: 15px;">
+                <div id="dvScan" runat="server" style="height: 475px; z-index: 51; visibility: visible;
+                    background-color: Transparent;">
+                    <iframe id="frmScan" name="frameScanner" runat="server" src="" style="width: 100%;
+                        height: 100%;" frameborder="0" />
+                </div>
+            </div>
+            <table class="entry" border="0" style="background-color: #DCDCDC; border-top: solid 1px #3D3D3D;">
+                <tr valign="middle">
+                    <td>
+                        <div class="entry" style="text-align: right; padding-right: 3px; height: 25px; vertical-align: middle;">
+                            <asp:Button ID="btnScan" runat="server" Text="Scan Document" CssClass="fakeButtonStyle"
+                                OnClientClick="startScan();return false;" />
+                            <asp:Button ID="btnSave" runat="server" Text="Save Document" CssClass="fakeButtonStyle"
+                                OnClientClick="startSave();return false;" />
+                            <asp:Button ID="lnkCancel" runat="server" Text="Close" CssClass="fakeButtonStyle" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+    </asp:Panel>
+
+</asp:Panel> 
+</asp:Content>

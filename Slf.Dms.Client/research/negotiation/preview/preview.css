@@ -1,0 +1,275 @@
+﻿    .modalBackground 
+        {
+            background-color:Gray;
+            filter:alpha(opacity=70);
+            opacity:0.7;
+        }
+    .modalPopup 
+        {
+            background-color: white;
+            border-width:1px;
+            border-style:ridge;
+            border-color:Gray;
+            padding:0px;
+            width:40%;
+        } 
+        .PanelDragHeader
+        {
+         background-image: url(ajax/grid_bg.png);
+        background-repeat:repeat-x;
+         color:White;
+         text-align: center;
+         cursor:hand;
+        }
+        .PanelHeader 
+        {
+            border: 1px solid #2F4F4F;
+            color: white;
+            background-image: url(ajax/grid_bg.png);
+            background-repeat:repeat-x;
+            font-family: tahoma;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .PanelContent{background-color: #D3DEEF;border: 1px dashed #2F4F4F;	border-top: none;padding: 5px;padding-top: 10px;}
+        .ListSearchExtenderPrompt
+        {
+	        font-style:italic;
+	        color:Gray;
+	        background-color:white;
+        }
+        .actionButton
+        {
+            /*padding-top: 10px;
+            padding-bottom: 3px;*/
+            padding-right:3px;
+            font-family: Tahoma;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 3px 2px 3px 2px;
+            color:#1080BF;
+        }
+         .actionButton:hover
+        {
+            color:#1080BF;
+            border-bottom:solid 1px #1080BF; 
+        }
+        
+        .GridPagerStyle
+        {
+            font-family:Tahoma;
+            color:#444444;
+            background-color:#e5e5e5;
+            font-size:x-small;
+            text-align:right;
+            text-decoration:none;
+        }
+        .GridPagerStyle a
+        {
+            font-family:Tahoma;
+            color:#444444;
+            background-color:#e5e5e5;
+            font-size:x-small;
+            text-align:right; 
+            text-decoration:none;
+        }
+        .GridPagerStyle a:hover
+        {
+            font-family:Tahoma;
+            color:#e5e5e5;
+            background-color:#444444;
+            font-size:x-small;
+            text-align:right; 
+            text-decoration:none;
+        }
+        .GridPagerStyle select
+        {
+        font-family:Tahoma;font-size:x-small;
+        }
+       
+        .GridHeaderStyle
+        {
+            height:30px;
+            text-align:center;
+            font-family:Tahoma;
+            font-size:8pt;
+            background: url(ajax/grid_bg.png);
+            color:#1080BF;
+        }
+        .GridHeaderStyle a
+        {
+            display:block;
+            font-family:Tahoma;
+            font-size:8pt;
+            text-decoration:none;
+            color:#1080BF; 
+            font-weight:lighter
+        }
+
+        .GridRowStyle
+        {
+        font-family:Tahoma;
+        font-size:x-small;
+        background-color: #E1F1F1;
+        }
+        .GridAlternatingRowStyle
+        {
+            background-color:#F2FCFD;
+            font-family:Tahoma;
+            font-size:x-small;
+        }
+
+        .GridRowStyle td, .GridAlternatingRowStyle td {font-family:Tahoma;font-size:x-small;padding: 4px;}
+/*no width */
+.widthlessbox {
+			margin: 0 25%; /* NO WIDTH! Opens up a world of possibilities! */
+			background: url(ajax/box.png) no-repeat bottom right;
+			font-size: 100%;
+		}
+
+
+/* set the image to use and establish the lower-right position */ 
+.cssbox, .cssbox_body, .cssbox_head, .cssbox_head h2 {
+    background: transparent url(ajax/box.png) no-repeat bottom right; 
+} 
+.cssbox { 
+    width: 335px !important; /* intended total box width - padding-right(next) */
+    width: 320px; /* IE Win = width - padding */
+    padding-right: 15px; /* the gap on the right edge of the image (not content padding) */
+    margin: 5px; /* use to position the box */ 
+} 
+
+/* set the top-right image */ 
+.cssbox_head { 
+    background-position: top right; margin-right: -15px; /* pull the right image over on top of border */
+    padding-right: 40px; /* right-image-gap + right-inside padding */ 
+} 
+
+/* set the top-left image */ 
+.cssbox_head h3 { 
+    background-position: top left; 
+    margin: 0; /* reset main site styles*/ 
+    border: 0; /* ditto */ 
+    padding: 9px 0 15px 40px; /* padding-left = image gap + interior padding ... no padding-right */ 
+    height: 30px !important; height: 1%; /* IE Holly Hack */ 
+    font-family:tahoma;
+    font-size:10pt;
+    color:#1080BF;
+} 
+
+/* set the lower-left corner image */ 
+.cssbox_body 
+{
+    background-position: bottom left; 
+    margin-right: 10px; /* interior-padding right */ 
+    padding: 5px 0 15px 10px; /* mirror .cssbox_head right/left */ 
+} 
+
+
+    .GridTableStyle{width: 100%;background-color:white;padding:20px;}
+    .GridHeaderCell{font-size:16pt;color:White;text-align: center; background: url(ajax/grid_bg.png);} 
+    .GridCellHdr{font-family:Tahoma; width:50%;text-align:right;font-size:10pt;background-color:#B5D7EA;border:solid 1px steelblue}
+    .GridCellText{font-family:Tahoma;display:block;text-align:left;font-size:10pt;}
+    .GridCellTextList{font-family:Tahoma;text-align:right;font-size:10pt;}
+    
+      
+    .GridCellMoney{font-family:Tahoma;text-align:right;font-size:10pt;border:solid 1px steelblue}
+    .GridCellList{font-family:Tahoma;text-align:center;font-size:10pt;background-color:#B5D7EA}
+    .moneyText{font-family:Tahoma;text-align:right;width:85px;font-size:10pt;}
+    
+    .MyCalendar .ajax__calendar_header {height:20px;width:100%;background-color:#b0c4de}
+    .MyCalendar .ajax__calendar_today {cursor:pointer;padding-top:3px; background-color:#b0c4de}
+    .MyCalendar .ajax__calendar_container {border:1px solid #646464;background-color: white;color: black;}
+    .MyCalendar .ajax__calendar_other .ajax__calendar_day,
+    .MyCalendar .ajax__calendar_other .ajax__calendar_year {color: gray;}
+    .MyCalendar .ajax__calendar_hover .ajax__calendar_day,
+    .MyCalendar .ajax__calendar_hover .ajax__calendar_month,
+    .MyCalendar .ajax__calendar_hover .ajax__calendar_year {color: black;}
+    .MyCalendar .ajax__calendar_active .ajax__calendar_day,
+    .MyCalendar .ajax__calendar_active .ajax__calendar_month,
+    .MyCalendar .ajax__calendar_active .ajax__calendar_year  {color: black;font-weight:bold;background-color:#b0c4de;}
+
+     /* ajax__tab_ie-theme theme */
+    .myTab .ajax__tab_header 
+    {
+        padding-left:5px;
+    }
+    .myTab .ajax__tab_header .ajax__tab_tab
+    {
+        margin-right:0px;
+        background:url(ajax/tab_unselected.gif);
+        width:116px;
+        padding:9px 0px 3px 0px;
+        text-align:center;    
+        color:#006699;
+        font-family:tahoma;
+        font-size:13px;
+        display:block;
+    }
+    .myTab .ajax__tab_active .ajax__tab_tab 
+    {
+        padding:6px 0px 3px 0px;
+        background:url(ajax/tab_selected.gif);
+    }
+    .myTab .ajax__tab_body 
+    {
+        background:url(ajax/tab_body.png);
+        font-size:10px;
+        font-family:tahoma;
+        height:296px;
+        width:95%;
+    }
+    .myTab .ajax__tab_body div
+    {
+         padding:8px;
+    }
+
+  
+/* list builder styles */
+.tablestyle{border:solid 1px gray;font-family:tahoma;margin:10px 0pt 15px;font-size: 8pt;border-color: #CDCDCD;width:850px;color: #3D3D3D;}
+.tablestyle td, .tablestyle th{border-color: #CDCDCD;}
+.sortascheaderstyle{text-align:center;padding-left: 20px;font-family:Tahoma;font-size:x-small;background-image: url(ajax/sort_asc.gif);background-color: #8dbdd8;background-repeat: no-repeat;background-position: center left;}
+.sortdescheaderstyle{text-align:center;padding-left: 20px;font-family:Tahoma;font-size:x-small;background-image: url(ajax/sort_desc.gif);background-color: #8dbdd8;background-repeat: no-repeat;background-position: center left;} 
+
+.SelectTblHdr{font-family:tahoma;font-size:smaller;background: url(ajax/hdr_bg.png);background-repeat:repeat-x;color:#FFF;font-weight:bold;}
+.gotopage{font-size:x-small;width:20px;}
+.GridLinkButton{font-family:Tahoma;font-size:smaller;text-decoration: none; color: DarkGray;}
+
+.collapsePanel {background-color:white;overflow:hidden;}
+.collapsePanelHeader{width:100%;height:30px;background: url(ajax/hdr_bg.png);background-repeat:repeat-x;color:#FFF;font-weight:bold;}
+
+.groupRow{color:white;background-color:steelblue;}
+
+.popupMenu {position:absolute;visibility:hidden;background-color:#F5F7F8;opacity:.9;filter: alpha(opacity=90);}
+.popupHover {background-image:url(images/header-opened.png);background-repeat:repeat-x;background-position:left top;background-color:#F5F7F8;}
+
+.AjaxProgressMessage
+{
+      background-color: #FFFFFF;
+      border: solid 1px #000000;
+      filter: progid:DXImageTransform.Microsoft.shadow(color=black,strength=5,direction=135);
+      font-family: Tahoma;
+      font-size: 12px;
+      font-weight: bold;
+      left: 50%;
+      padding: 10px 20px 10px 10px;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      vertical-align: middle;
+      z-index: 9999;
+}
+
+.AjaxProgressMessage img
+{
+      margin-right: 5px;
+}
+
+
+.accordionHeader {border: 1px solid #2F4F4F;color: white;background-color: #2E4d7B;font-family: tahoma, Sans-Serif;font-size: 12px;font-weight: bold;padding: 5px;margin-top: 5px;cursor: pointer;}
+.accordionHeaderSelected{border: 1px solid #2F4F4F;color: white;background-color: #5078B3;font-family: tahoma;font-size: 12px;font-weight: bold;padding: 5px;margin-top: 5px;cursor: pointer;}
+.accordionContent{background-color: #D3DEEF;border: 1px dashed #2F4F4F;	border-top: none;padding: 5px;padding-top: 10px;}
+   
+/* end list builder styles */

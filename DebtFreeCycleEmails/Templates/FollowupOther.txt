@@ -1,0 +1,85 @@
+﻿<div>
+    <p>
+        Dear {{clientname}},
+    </p>
+    <p>
+        As mentioned previously, we want to keep you up-to-date on what is happening with your client 
+        file in our office, and we think the first step is helping you understand what to expect in 
+        the coming months.  Please remember that you are at the beginning of a journey.  You are 
+        currently building funds to pay your retainer and in a few months you will begin to build 
+        the balance in your Settlement Deposit Account (SDA).  While we will be taking offers from 
+        your creditors from the beginning, we cannot actively negotiate your debt until we have 
+        roughly 10% of any debt in your SDA.  This is the case because we cannot counteroffer or 
+        accept offers with no funds.
+    </p>
+    <p>
+        That said, you should be receiving calls from the firm in the near future to review settlement 
+        offers, and as mentioned above, it is important that you return our calls as soon as possible 
+        as some offers are only good for 24-48 hours.  As soon as your creditor accepts payment, we 
+        will send you a finalized settlement kit which includes copies of the settlement letter and 
+        the payment sent to your creditor, so that you can begin to take the steps to update your credit 
+        report of settled accounts. <u>This is a good feeling!</u>
+    </p>
+    <p>
+		As soon as you’re done paying the performance-based settlement fee, the cycle starts all over 
+		again, and we’ll be calling you shortly with more settlement offers!
+    </p>
+    <p>
+		Again, thank you for taking the time to review this email.  Please keep an eye out for more 
+		informative emails from the firm.  We will do our best to keep you posted by email as it’s less 
+		intrusive on your time.  As always, feel free to call into Client Services to get updates as 
+		often as you desire.
+    </p>
+    <p>
+        Kindest Regards,
+    </p>
+    <p>
+        {{company}}</p>
+    <br />
+    <p>
+        FOR YOUR REFERENCE:<br />
+        <b>If you have any questions or concerns regarding your representation</b>, please call
+        our firm’s Client Services Department at <b>{{clientservicesphone}}</b>. A representative of the firm will be happy to assist you Monday-Friday
+        7:00AM to 5:00PM, Pacific Time.
+        <br />
+        <br />
+        <b>If any collectors contact you by phone</b>, please read the script from the telephone
+        response card included in your welcome package and direct the collector to call
+        <b>{{creditorservicesphone}}</b> to put them in touch with someone
+        at our firm who can assist them.
+        <br />
+        <br />
+        <b>If you receive any notices or statements from your creditors, please fax to {{clientservicesfax}}
+        or mail to {{companyaddress}}.</b>
+    </p>
+</div>
+<hr>
+<div style="text-align: center">
+    IMPORTANT NOTES</div>
+<p>
+    THE SEQUENCE IN WHICH YOUR DEBTS ARE SETTLED, AS WELL AS THE AMOUNT AND FREQUENCY
+    OF YOUR DEPOSITS IS CRITICAL TO THE EFFORTS TO SETTLE THE ACCOUNTS. IN GENERAL,
+    THE MORE YOU ARE ABLE TO DEPOSIT, THE SOONER WE CAN SEEK SUCCESSFUL SETTLEMENTS
+    OF THE ACCOUNTS. SINCE THE MONTHLY SERVICE FEE STOPS ON AN ACCOUNT ONCE IT IS SETTLED
+    AND CONTINGENCY FEES DUE HAVE BEEN PAID, YOU MAY BE ABLE TO REDUCE THE AMOUNT OF
+    MONTHLY SERVICE FEES YOU PAY BY ENABLING US TO NEGOTIATE SUCCESSFUL SETTLEMENTS
+    SOONER. WHILE OTHER FACTORS WE CANNOT CONTROL (SUCH AS WHAT SETTLEMENT A CREDITOR
+    MAY ACCEPT, AND WHEN THEY ACCEPT IT) WILL AFFECT HOW SOON YOUR ACCOUNTS ARE SETTLED,
+    YOUR DEPOSIT AMOUNTS WILL BE AN IMPORTANT FACTOR IN YOUR SUCCESS.</p>
+<p>
+    CONFIDENTIALITY NOTICE: This e-mail transmission, and any documents, files or previous
+    e-mail messages attached to it, may contain confidential information that is legally
+    privileged. If you are not the intended recipient, or a person responsible for delivering
+    it to the intended recipient, you are hereby notified that any disclosure, copying,
+    distribution or use of any of the information contained in or attached to this message
+    is STRICTLY PROHIBITED. If you have received this transmission in error, please
+    immediately notify us by reply e-mail, and destroy the original transmission and
+    its attachments without reading them or saving them to disk. Thank you.</p>
+<p>
+    IRS CIRCULAR 230 NOTICE: To ensure compliance with requirements imposed by the IRS,
+    we inform you that any U.S. tax advice contained in this communication (or in any
+    attachment) is not intended or written to be used, and cannot be used, for the purpose
+    of (i) avoiding penalties under the Internal Revenue Code or (ii) promoting, marketing
+    or recommending to another party any transaction or matter addressed in this communication
+    (or in any attachment).</p>
+<hr>

@@ -1,0 +1,193 @@
+.igdv_NautilusControl
+{
+	border:solid 1px DarkGray;
+}
+
+
+.igdv_NautilusCaptionHeader
+{
+	background-color:#FAFAFA;
+	background-repeat:repeat-x;
+	background-position:right top ;
+	background-image: url(images/header_hover.gif);
+	font-weight:bold;
+	font-size:8pt;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 24px;
+	color:Black;
+	text-align:center;
+}
+
+
+.igdv_NautilusDayHeader
+{
+	background-position:top ;
+	background-image: url(images/header11.png);
+	font-size:8pt;
+	font-family: Arial, Helvetica, sans-serif;
+	border:solid 1px #F4F4F4;
+	border-right-color:#999999;
+	padding-left:2px;
+	height: 20px;
+	white-space: nowrap;
+	color:White;
+	text-align:center;
+	vertical-align:middle;
+}
+
+
+.igdv_NautilusNonWorkingTimeSlot
+{
+	background-color:#E6EDF7;
+	border-right:solid 1px #999999;
+	border-bottom:solid 1px #D5E1F1;
+	height: 20px;
+}
+
+
+.igdv_NautilusWorkingTimeSlot
+{
+	background-color:White;
+	border-right:solid 1px #999999;
+	border-bottom:solid 1px #E6EDF7;
+	height: 20px;
+}
+
+
+.igdv_NautilusAllDayEventArea
+{
+	background-color:#FAFAFA;
+}
+
+
+.igdv_NautilusAllDayEvent
+{
+	background-color:WhiteSmoke;
+	font-size:8pt;
+	font-family: Tahoma,Verdana;
+	border-width:1px;
+	border-color:#6EDF73;
+	padding-left:3px;
+	height: 25px;
+	white-space: nowrap;
+	text-align:center;
+}
+
+
+.igdv_NautilusAppointment
+{
+	background-color:White;
+	font-size:8pt;
+	font-family: Tahoma,Verdana;
+	border:solid 1px #999999;
+}
+
+
+.igdv_NautilusActivityEdge
+{
+	font-size:1px;
+	height: 4px;
+	cursor:n-resize;
+}
+
+
+.igdv_NautilusActivityEdgeLeft
+{
+	font-size:2px;
+	width: 6px;
+	cursor:move;
+}
+
+
+.igdv_NautilusTodayHeader
+{
+	background-color:Black;
+	background-repeat:repeat-x;
+	background-position:top ;
+	background-image: url(images/header11.png);
+	border-width:0px;
+	height: 25px;
+	color:White;
+}
+
+
+.igdv_NautilusTimeSlotLabel
+{
+	background-color:White;
+	font-size:16pt;
+	font-family: Arial, Helvetica, sans-serif;
+	border-right:solid 1px Silver;
+	border-bottom:solid 1px Silver;
+	width: 60px;
+	color:DimGray;
+	text-align:center;
+	vertical-align:top;
+}
+
+
+.igdv_NautilusTimeSlotLabelMinutes
+{
+	font-size:8pt;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.igdv_NautilusAllDayEventSelected
+{
+	background-color:#D0D0D0;
+	border-top-width:2px;
+	border-bottom-width:2px;
+}
+
+
+.igdv_NautilusAllDayEventAreaSelected
+{
+	background-color:White;
+}
+
+
+.igdv_NautilusActivityHover
+{
+	z-index: 10000;
+}
+
+
+.igdv_NautilusActivityEdgeBusy
+{
+	background-color:#E6EDF7;
+}
+
+
+.igdv_NautilusActivityEdgeTentative
+{
+	background-color:#90C0FF;
+}
+
+
+.igdv_NautilusActivityEdgeOutofOffice
+{
+	background-color:#900090;
+}
+
+
+.igdv_NautilusActivityEdgeFree
+{
+	background-color:#F0F0F0;
+}
+
+
+.igdv_NautilusNavigationButton
+{
+	background-color:Transparent;
+	border-width:0px;
+	width: 17px;
+	vertical-align:middle;
+}
+
+
+.igdv_NautilusSelectedAppointment
+{
+	z-index: 9999;
+}
+
+

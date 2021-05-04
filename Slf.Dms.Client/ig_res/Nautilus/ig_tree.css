@@ -1,0 +1,64 @@
+.igtr_NautilusControl
+{
+	border-width:0px;
+	color:Black;
+}
+
+
+.igtr_NautilusIsland
+{
+}
+
+
+.igtr_NautilusNode
+{
+	color:DimGray;
+}
+
+
+.igtr_NautilusParent
+{
+}
+
+
+.igtr_NautilusLeaf
+{
+	margin-top:0px;
+	margin-bottom:0px;
+	color:DimGray;
+}
+
+
+.igtr_NautilusEdit
+{
+}
+
+
+.igtr_NautilusRoot
+{
+	font-weight:bold;
+	color:#223E6E;
+}
+
+
+.igtr_NautilusHover
+{
+	cursor:hand;
+	color:#FF6600;
+	text-decoration:underline;
+}
+
+
+.igtr_NautilusSelected
+{
+	font-weight:bold;
+	color:#FF6600;
+}
+
+
+.igtr_NautilusDisabled
+{
+	color:#E1E1E1;
+}
+
+

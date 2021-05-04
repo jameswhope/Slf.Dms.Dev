@@ -1,0 +1,1 @@
+﻿Update DMS..tblProperty Set EnrollmentInflation = 0.00

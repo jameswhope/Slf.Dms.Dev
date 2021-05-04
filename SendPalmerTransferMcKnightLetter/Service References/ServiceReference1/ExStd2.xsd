@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schema.microbilt.com/messages/ExStd/v1_0" elementFormDefault="qualified" targetNamespace="http://schema.microbilt.com/messages/ExStd/v1_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://sdkstage.microbilt.com/WebServices/EX/ExStd.svc?xsd=xsd2" namespace="http://schema.microbilt.com/globals" />
+  <xs:complexType name="ExStdRq_Type">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q1:MsgRqHdr" />
+      <xs:element xmlns:q2="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q2:PersonInfo" />
+      <xs:element xmlns:q3="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q3:LoanRequestInfo" />
+      <xs:element xmlns:q4="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q4:Option" />
+      <xs:element xmlns:q5="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q5:Keyword" />
+      <xs:element xmlns:q6="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q6:ScoreCard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExStdRs_Type">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q7:MsgRsHdr" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Subject">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q8:RefNum" />
+            <xs:element xmlns:q9="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q9:FileDt" />
+            <xs:element xmlns:q10="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q10:LastActivityDt" />
+            <xs:element xmlns:q11="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q11:PersonInfo" />
+            <xs:element xmlns:q12="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q12:Alias" />
+            <xs:element xmlns:q13="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q13:ConsumerReferral" />
+            <xs:element xmlns:q14="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q14:Score" />
+            <xs:element xmlns:q15="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q15:Summary" />
+            <xs:element xmlns:q16="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q16:Liability" />
+            <xs:element xmlns:q17="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q17:Collection" />
+            <xs:element xmlns:q18="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q18:PublicRecord" />
+            <xs:element xmlns:q19="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q19:Inquiry" />
+            <xs:element xmlns:q20="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q20:Fraud" />
+            <xs:element xmlns:q21="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q21:ConsumerStatement" />
+            <xs:element xmlns:q22="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q22:Directory" />
+            <xs:element xmlns:q23="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="1" ref="q23:Decision" />
+            <xs:element xmlns:q24="http://schema.microbilt.com/globals" minOccurs="0" maxOccurs="unbounded" ref="q24:Message" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

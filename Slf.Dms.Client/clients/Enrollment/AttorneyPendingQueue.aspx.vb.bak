@@ -1,0 +1,71 @@
+﻿Imports System.Data
+Imports System.Data.SqlClient
+Imports Drg.Util.DataAccess
+Imports System.Collections.Generic
+
+
+Partial Class Clients_Enrollment_AttorneyPendingQueue
+    Inherits System.Web.UI.Page
+
+    Private _userid As Integer
+
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        _userid = DataHelper.Nz_int(Page.User.Identity.Name)
+
+        If Request.QueryString("mobile") = "1" Then
+            hdnNotab.Value = "1"
+        End If
+
+        If Not Page.IsPostBack Then
+            LoadClients()
+        End If
+    End Sub
+
+    Private Sub LoadClients()
+        Dim ds As New DataSet
+        Dim dv As DataView
+        Dim companyid As Integer = -1 'This can be a selectable value
+        ds = Me.GetPendingClients(companyid)
+        ds.Relations.Add("Relation1", ds.Tables(0).Columns("clientid"), ds.Tables(1).Columns("clientid"))
+        ds.Relations.Add("Hardship", ds.Tables(0).Columns("clientid"), ds.Tables(2).Columns("clientid"))
+        dv = ds.Tables(0).DefaultView
+        Accordion1.DataSource = dv
+        Accordion1.DataBind()
+        Accordion1.SelectedIndex = -1
+        hPending.InnerHtml = String.Format("Pending Clients (<font color='blue'>{0}</font>)", ds.Tables(0).Rows.Count)
+    End Sub
+
+    Private Function GetPendingClients(ByVal companyID As Integer) As DataSet
+        Dim params As New List(Of SqlParameter)
+        If companyID > 0 Then
+            params.Add(New SqlParameter("@companyid", companyID))
+        End If
+        params.Add(New SqlParameter("@userid", _userid))
+        Return SqlHelper.GetDataSet("stp_PendingClientsReport", CommandType.StoredProcedure, params.ToArray)
+    End Function
+
+    Public Function GetLSADocPath(ByVal clientID As Integer) As String
+        Dim params(0) As SqlParameter
+        Dim tbl As DataTable
+        Dim row As DataRow
+        Dim path As String = "#"
+        Dim server As String
+        Dim doc As String
+
+        params(0) = New SqlParameter("@clientid", clientID)
+
+        tbl = SqlHelper.GetDataTable("stp_GetLSADocInfo", CommandType.StoredProcedure, params)
+
+        If tbl.Rows.Count = 1 Then
+            row = tbl.Rows(0)
+            server = ConfigurationManager.AppSettings("ClientDocumentsVirtualDir").ToString
+            doc = row("accountnumber") & "_" & row("doctypeid") & "_" & row("docid") & "_" & row("datestring") & ".pdf"
+            path = server & "/" & row("accountnumber") & "/" & row("docfolder") & "/" & doc
+            'note: /docs is a virtual path to \\nas02\clientstorage
+        End If
+
+        Return path
+    End Function
+
+End Class

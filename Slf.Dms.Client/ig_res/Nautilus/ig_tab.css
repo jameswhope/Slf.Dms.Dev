@@ -1,0 +1,407 @@
+.igtab_NautilusControl
+{
+	background-repeat:repeat-x;
+	background-image: url(images/fadetop1.png);
+	border:solid 1px #D2D2D2;
+}
+
+
+.igtab_NautilusControl_Outer
+{
+	border-width:1px;
+	border-color:Transparent;
+	border-left-style:solid;
+}
+
+
+.igtab_NautilusDefaultTab_Top
+{
+	background-color:#455F8B;
+	background-image:none;
+	font-size:9pt;
+	font-family: Tahoma;
+	border:solid 1px #455F8B;
+	padding:2px 5px 2px 5px;
+	color:#D2D2D2;
+	text-align:center;
+}
+
+
+.igtab_NautilusDefaultTab_Top_Rounded
+{
+	background-color:#455F8B !important;
+	background-image:none;
+	font-size:10pt;
+	font-family: Tahoma;
+	border-style:solid;
+	border-width:0px;
+	border-bottom-color:#D2D2D2;
+	margin-top:10px;
+	padding:3px 10px 2px 10px;
+	height: 100%;
+	cursor:pointer;
+	color:#D2D2D2;
+	text-align:center;
+}
+
+
+.igtab_NautilusDefaultTab_Top_Edge
+{
+	background-position:right top ;
+	font-size:2px;
+	border-top-width:0px;
+	padding:0px;
+}
+
+
+.igtab_NautilusButton
+{
+}
+
+
+.igtab_NautilusDefaultTab_Bottom
+{
+	background-color:#455F8B;
+	background-position:bottom ;
+	background-image:none;
+	font-size:9pt;
+	font-family: Tahoma;
+	border:solid 1px #455F8B;
+	padding:2px 5px 2px 5px;
+	color:#D2D2D2;
+}
+
+
+.igtab_NautilusDefaultTab_Bottom_Rounded
+{
+	background-color:#455F8B !important;
+	background-repeat:no-repeat;
+	background-position:left bottom ;
+	background-image:none;
+	font-size:9pt;
+	font-family: Tahoma;
+	border:solid 1px #3698D4;
+	border-width:0px 0px 0px 0px;
+	padding:3px 5px 4px 7px;
+	height: 100%;
+	cursor:pointer;
+	color:#D2D2D2;
+}
+
+
+.igtab_NautilusDefaultTab_Bottom_Edge
+{
+	background-position:right bottom ;
+	font-size:2px;
+	padding:0px;
+}
+
+
+.igtab_NautilusDefaultTab_Left
+{
+	background-color:#455F8B;
+	background-image:none;
+	font-size:9pt;
+	font-family: Tahoma;
+	border:solid 1px #455F8B;
+	padding:5px 2px 5px 2px;
+	color:#D2D2D2;
+}
+
+
+.igtab_NautilusDefaultTab_Left_Rounded
+{
+	background-color:#455F8B !important;
+	background-repeat:no-repeat;
+	background-position:left top ;
+	background-image:none;
+	font-size:9pt;
+	font-family: Tahoma;
+	border-style:solid;
+	border-width:1px;
+	border-width:0px 0px 0px 0px;
+	border-right-color:#001060;
+	margin-top:0px;
+	margin-right:5px;
+	margin-bottom:0px;
+	padding:8px 0px 3px 4px;
+	cursor:pointer;
+	color:#1C4B82;
+}
+
+
+.igtab_NautilusDefaultTab_Left_Edge
+{
+	background-position:left bottom ;
+	font-size:2px;
+	padding:3px;
+}
+
+
+.igtab_NautilusDefaultTab_Right
+{
+	background-color:#455F8B;
+	background-position:right ;
+	background-image:none;
+	font-size:9pt;
+	font-family: Tahoma;
+	border:solid 1px #455F8B;
+	padding:5px 2px 5px 2px;
+	color:#D2D2D2;
+}
+
+
+.igtab_NautilusDefaultTab_Right_Rounded
+{
+	background-color:#455F8B !important;
+	background-repeat:no-repeat;
+	background-position:right top ;
+	background-image:none;
+	font-size:9pt;
+	font-family: Tahoma;
+	border-style:solid;
+	border-width:1px;
+	border-width:0px 0px 0px 0px;
+	border-left-color:#001060;
+	padding:8px 4px 3px 0px;
+	cursor:pointer;
+	color:#D2D2D2;
+}
+
+
+.igtab_NautilusDefaultTab_Right_Edge
+{
+	background-position:right bottom ;
+	font-size:2px;
+	padding:1px;
+}
+
+
+.igtab_NautilusButtonHover
+{
+}
+
+
+.igtab_NautilusButtonPressed
+{
+}
+
+
+.igtab_NautilusButtonDisabled
+{
+}
+
+
+.igtab_NautilusHoverTab_Top
+{
+	background-color:#9CA9BF;
+	background-image: url(images/tab_top_hover_f.gif);
+}
+
+
+.igtab_NautilusSeparator_Top
+{
+	background-color:#455F8B;
+	border-bottom:solid 0px #D2D2D2;
+	border-top-width:1px;
+	border-right-width:0px;
+	border-left-width:0px;
+}
+
+
+.igtab_NautilusHoverTab_Top_Rounded
+{
+	background-image: url(images/tab_top_hover.gif);
+	border-bottom:solid 0px #D2D2D2;
+	color:Black;
+}
+
+
+.igtab_NautilusHoverTab_Bottom
+{
+	background-color:#9CA9BF;
+	background-image: url(images/tab_bottom_hover_f.gif);
+}
+
+
+.igtab_NautilusSeparator_Bottom
+{
+	background-color:#455F8B;
+	border-width:0px;
+	border-top-style:solid;
+	border-top-color:#D2D2D2;
+}
+
+
+.igtab_NautilusHoverTab_Bottom_Rounded
+{
+	background-image: url(images/tab_bottom_hover.gif);
+	color:Black;
+}
+
+
+.igtab_NautilusHoverTab_Left
+{
+	background-color:#9CA9BF;
+	background-image: url(images/tab_left_hover_f.gif);
+}
+
+
+.igtab_NautilusSeparator_Left
+{
+	background-color:#455F8B;
+	border-right:solid 0px #D2D2D2;
+	border-top-width:0px;
+	border-bottom-width:0px;
+	border-left-width:0px;
+}
+
+
+.igtab_NautilusHoverTab_Left_Rounded
+{
+	background-image: url(images/tab_left_hover.gif);
+	color:Black;
+}
+
+
+.igtab_NautilusHoverTab_Right
+{
+	background-color:#9CA9BF;
+	background-image: url(images/tab_left_right_f.gif);
+}
+
+
+.igtab_NautilusSeparator_Right
+{
+	background-color:#455F8B;
+	border-left:solid 0px #D2D2D2;
+	border-top-width:0px;
+	border-right-width:0px;
+	border-bottom-width:0px;
+}
+
+
+.igtab_NautilusHoverTab_Right_Rounded
+{
+	background-image: url(images/tab_right_hover.gif);
+	color:Black;
+}
+
+
+.igtab_NautilusSelectedTab_Top
+{
+	background-color:#F0F0F0;
+	background-image:none;
+	border-bottom-width:0px;
+	border-bottom-color:#535353;
+	color:#455F8B;
+}
+
+
+.igtab_NautilusSelectedTab_Top_Rounded
+{
+	background-image: url(images/tab_top.gif);
+	color:#223E6E;
+}
+
+
+.igtab_NautilusSelectedTab_Bottom
+{
+	background-color:#F0F0F0;
+	background-image: url(images/tab_bottom_f.gif);
+	border-top-width:0px;
+	color:#455F8B;
+}
+
+
+.igtab_NautilusSelectedTab_Bottom_Rounded
+{
+	background-image: url(images/tab_bottom.gif);
+	cursor:default;
+	color:#223E6E;
+}
+
+
+.igtab_NautilusSelectedTab_Left
+{
+	background-color:#F0F0F0;
+	background-image:none;
+	border-right-width:0px;
+	color:#455F8B;
+}
+
+
+.igtab_NautilusSelectedTab_Left_Rounded
+{
+	background-image: url(images/tab_left.gif);
+	border-color:#535353;
+	cursor:default;
+	color:#223E6E;
+}
+
+
+.igtab_NautilusSelectedTab_Right
+{
+	background-color:#F0F0F0;
+	background-image: url(images/tab_right_f.gif);
+	border-left-width:0px;
+	color:#455F8B;
+}
+
+
+.igtab_NautilusSelectedTab_Right_Rounded
+{
+	background-image: url(images/tab_right.gif);
+	cursor:default;
+	color:#223E6E;
+}
+
+
+.igtab_NautilusDisabledTab_Top
+{
+	color:#597AB3;
+}
+
+
+.igtab_NautilusDisabledTab_Top_Rounded
+{
+	color:#597AB3;
+}
+
+
+.igtab_NautilusDisabledTab_Bottom
+{
+	color:#597AB3;
+}
+
+
+.igtab_NautilusDisabledTab_Bottom_Rounded
+{
+	color:#597AB3;
+}
+
+
+.igtab_NautilusDisabledTab_Left
+{
+	color:#597AB3;
+}
+
+
+.igtab_NautilusDisabledTab_Left_Rounded
+{
+	color:#597AB3;
+}
+
+
+.igtab_NautilusDisabledTab_Right
+{
+	color:#597AB3;
+}
+
+
+.igtab_NautilusDisabledTab_Right_Rounded
+{
+	color:#597AB3;
+}
+
+

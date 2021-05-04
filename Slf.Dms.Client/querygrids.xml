@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grids> 
+	<grid></grid>
+	<Grid 
+		id="research_reports_clients_mediation_mediatorreassignment_aspx.grdResults"
+		IconSrcURL = "~/images/16x16_person.png"
+		PageSize="30"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField = "LastName"
+		ClickOptions.Clickable = "True"
+		ClickOptions.KeyField="ClientID" 
+		ClickOptions.ClickableURL="~/clients/client/?id=$x$" 
+		AllowAction="True" 
+		grd.NoWrap="True"
+		Caching="False"
+		>
+		<Field caption="Acct No." datafield="AccountNumber" sortable="True" fieldtype="Text"></Field>
+		<Field caption="First Name" datafield="FirstName" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Last Name" datafield="LastName" sortable="True" fieldtype="Text"></Field>
+		<Field caption="SSN" datafield="SSN" sortable="True" fieldtype="Text"></Field>
+	</Grid>
+  <Grid
+		id="research_queries_financial_accounting_disbursementaccount1_aspx.grdResults"
+		IconSrcURL = "~/images/16x16_cheque.png"
+		PageSize="30"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField = "Created"
+		ClickOptions.Clickable = "True"
+		ClickOptions.KeyField="ClientID"
+    ClickOptions.KeyField2="RegisterID"
+		ClickOptions.ClickableURL="~/clients/client/finances/bytype/register.aspx?id=$x$&amp;rid=$y$"
+		AllowAction="False"
+		grd.NoWrap="True"
+		Caching="False"
+		>
+    <Field caption="Transaction No." datafield="RegisterId" sortable="True" fieldtype="Text"></Field>
+    <Field caption="Transaction Type" datafield="Type" sortable="True" fieldtype="Text"></Field>
+    <Field caption="Account Number" datafield="AccountNumber" sortable="True" fieldtype="Text"></Field>
+    <Field caption="Client Name" datafield="ClientName" sortable="True" fieldtype="Text"></Field>
+    <Field caption="Amount" datafield="Amount" sortable="True" fieldtype="Currency"></Field>
+    <Field caption="Date Created" datafield="Created" sortable="True" fieldtype="DateTime"></Field>
+    <Field caption="Voided" datafield="Voided" sortable="False" fieldtype="Boolean"></Field>
+    <Field caption="Date Voided" datafield="DateVoided" sortable="True" fieldtype="DateTime"></Field>
+    <Field caption="Settlement Attorney" datafield="Company" sortable="True" fieldtype="Text"></Field>
+	<Field caption="Trust Location" datafield="Trust" sortable="True" fieldtype="Text"></Field>
+  </Grid>
+	<Grid 
+		id="research_queries_financial_servicefees_remainingreceivables_aspx.grdResults" 
+		IconSrcURL = "~/images/16x16_cheque.png"
+		PageSize="20"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField = "HireDate"
+		ClickOptions.Clickable ="False"
+		grd.NoWrap="True"
+		
+		>
+		
+		<Field caption="Acct. No." datafield="AccountNumber" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Hire Date" datafield="HireDate" sortable="True" fieldtype="DateTime"></Field>
+		<Field caption="First Name" datafield="FirstName" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Last Name" datafield="LastName" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Fee Category" datafield="FeeCategory" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Last Dep." datafield="LastDepositDate" sortable="True" fieldtype="DateTime"></Field>
+		<Field caption="Orig Bal." datafield="OriginalBalance" sortable="True" fieldtype="Currency"></Field>
+		<Field caption="Tot Pmts." datafield="TotalPayments" sortable="True" fieldtype="Currency"></Field>
+		<Field caption="Rem Bal." datafield="RemainingBalance" sortable="True" fieldtype="Currency"></Field>
+		<Field caption="Rate" datafield="Rate" sortable="True" fieldtype="Percent"></Field>
+		<Field caption="Amount" datafield="RemainingReceivables" fieldtype="Currency"></Field>
+	</Grid>
+	<Grid 
+		id="research_queries_clients_duplicates_default_aspx.grdResults" 
+		IconSrcURL = "~/images/16x16_person.png"
+		PageSize="20"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField = "Created1"
+		ClickOptions.Clickable ="True"
+		ClickOptions.ClickableURL="~/clients/client/?id=$x$" 
+		ClickOptions.KeyField="ClientID1"
+		NoWrap="True"
+		AllowAction="True"
+		>
+
+		<Field caption="First Name" datafield="FirstName1" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Last Name" datafield="LastName1" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Account Number" datafield="AccountNumber1" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Created" datafield="Created1" sortable="True" fieldtype="DateTime"></Field>
+		<Field caption="Comms" datafield="Comms1" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Accts" datafield="Accts1" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Regs" datafield="Regs1" sortable="True" fieldtype="Text"></Field>
+		
+		<Field caption="First Name 2" datafield="FirstName2" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Last Name 2" datafield="LastName2" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Account Number" datafield="AccountNumber2" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Created" datafield="Created2" sortable="True" fieldtype="DateTime"></Field>
+		<Field caption="Comms" datafield="Comms2" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Accts" datafield="Accts2" sortable="True" fieldtype="Text"></Field>
+		<Field caption="Regs" datafield="Regs2" sortable="True" fieldtype="Text"></Field>
+	</Grid>
+</Grids>

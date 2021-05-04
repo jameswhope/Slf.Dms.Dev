@@ -1,0 +1,101 @@
+﻿
+.PanelDragHeader
+{
+ background-image: url(../usercontrol/images/grid_bg.png);
+background-repeat:repeat-x;
+ color:White;
+ text-align: center;
+ cursor:hand;
+}
+
+.PanelHeader 
+{
+    border: 1px solid #2F4F4F;
+    color: white;
+    background-image: url(../usercontrol/images/grid_bg.png);
+    background-repeat:repeat-x;
+    font-family: tahoma, Sans-Serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.PanelContent
+{
+	background-color: #D3DEEF;
+	border: 1px dashed #2F4F4F;	
+	border-top: none;padding: 5px;padding-top: 10px;
+}
+
+.GridHeaderStyle
+{
+    height:30px;
+    text-align:center;
+    font-family:Tahoma;
+    font-size:8pt;
+    background: url(../usercontrol/images/grid_bg.png);
+    color:#1080BF;
+}
+
+.cssbox, .cssbox_body, .cssbox_head, .cssbox_head h2 
+{
+    background: transparent url(../usercontrol/images/box.png) no-repeat bottom right; 
+} 
+
+.cssbox 
+{ 
+    width: 335px !important; /* intended total box width - padding-right(next) */
+    width: 320px; /* IE Win = width - padding */
+    padding-right: 15px; /* the gap on the right edge of the image (not content padding) */
+    margin: 5px; /* use to position the box */ 
+} 
+
+.cssbox_head 
+{ 
+    background-position: top right; margin-right: -15px; /* pull the right image over on top of border */
+    padding-right: 40px; /* right-image-gap + right-inside padding */ 
+} 
+
+.cssbox_head h3 
+{ 
+    background-position: top left; 
+    margin: 0; /* reset main site styles*/ 
+    border: 0; /* ditto */ 
+    padding: 9px 0 15px 40px; /* padding-left = image gap + interior padding ... no padding-right */ 
+    height: 30px !important; height: 1%; /* IE Holly Hack */ 
+    font-family:tahoma;
+    font-size:10pt;
+    color:#1080BF;
+} 
+
+.cssbox_body 
+{
+    background-position: bottom left; 
+    margin-right: 10px; /* interior-padding right */ 
+    padding: 5px 0 15px 10px; /* mirror .cssbox_head right/left */ 
+} 
+
+.AjaxProgressMessage
+{
+	background-color: #FFFFFF;
+	border: solid 1px #000000;
+	filter: progid:DXImageTransform.Microsoft.shadow(color=#000000, strength=5, direction=135);
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+	height: 50px;
+	left: expression(document.body.scrollLeft + Math.round(document.body.offsetWidth / 2) - 100);
+	padding: 10px 20px 10px 10px;
+	position: absolute;
+	text-align: center;
+	top: expression(document.body.scrollTop + Math.round(document.body.offsetHeight / 2) - 25);
+	vertical-align: middle;
+	width: 200px;
+	z-index: 9999;
+}
+
+.AjaxProgressMessage img
+{
+	margin-right: 5px;
+}

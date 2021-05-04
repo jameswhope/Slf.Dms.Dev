@@ -1,0 +1,206 @@
+﻿Imports System.Data.SqlClient
+Imports System.Data
+Imports Drg.Util.DataAccess
+Imports System.Collections.Generic
+Imports System.IO
+
+Partial Class Clients_client_cancellation_webparts_CancellationSummary
+    Inherits System.Web.UI.UserControl
+
+    Public Sub LoadCancellationSummary(ByVal MatterId As Integer)
+        Dim info = PendingCancelHelper.GetCancellationInformation(MatterId)
+
+        lblPFO.Text = FormatCurrency(info.PFO, 2)
+        lblSDA.Text = FormatCurrency(info.SDABalance, 2)
+
+        Dim params As New List(Of SqlParameter)
+        params.Add(New SqlParameter("@ClientID", SqlDbType.Int))
+        params.Item(0).Value = info.ClientID
+        Dim PaymentPlan As Double = SqlHelper.ExecuteScalar("stp_FundsOnHold", CommandType.StoredProcedure, params.ToArray)
+        info.FundsOnHold = info.FundsOnHold + PaymentPlan
+
+        lblFunds.Text = FormatCurrency(info.FundsOnHold, 2)
+        lblAvailSDA.Text = FormatCurrency(info.AvailableSDA, 2)
+        lblRefundAmt.Text = FormatCurrency(info.TotalRefund, 2)
+        lblReason.Text = info.CancellationReason
+        lblDelFee.Text = FormatCurrency(info.DeliveryFee, 2)
+
+        If info.PFO > 0 Then
+            lblPFO.ForeColor = System.Drawing.Color.Red
+        Else
+            lblPFO.ForeColor = System.Drawing.Color.Green
+        End If
+
+        If info.AvailableSDA < 0 Then
+            lblAvailSDA.ForeColor = System.Drawing.Color.Red
+        Else
+            lblAvailSDA.ForeColor = System.Drawing.Color.Green
+        End If
+
+        If Not String.IsNullOrEmpty(info.AgencyName) Then
+            lblReasonDetails.Text = info.AgencyName
+        ElseIf Not String.IsNullOrEmpty(info.AttorneyName) Then
+            lblReasonDetails.Text = info.AttorneyName & "<br />"
+            lblReasonDetails.Text += info.AttornetAddress & "<br />"
+            lblReasonDetails.Text += info.AttorneyCity & ", " & info.AttorneyState & ", " & info.AttorneyZipCode & "<br />"
+            lblReasonDetails.Text += info.AttorneyPhone & "<br />"
+            lblReasonDetails.Text += info.AttorneyEmail
+        End If
+
+        lblPayableTo.Text = info.PayableTo
+
+        If info.PFO > 0 Then
+            lblRequestText.Text = "Client Agreed To Pay Fee:"
+            lblRequest.Text = IIf(info.ClientAgreedToPay, "Yes", "No")
+
+            If info.ClientAgreedToPay Then
+                dvRule.Style.Item("display") = "inline"
+                LoadRulesInfo(info.ClientID)
+            End If
+        Else
+            lblRequestText.Text = "Client Requested Refund:"
+            lblRequest.Text = IIf(info.ClientRequestedRefund, "Yes", "No")
+
+            If info.ClientRequestedRefund Then
+                trChooseRefund.Style.Item("display") = "inline"
+                LoadRetainerFeeDetails(MatterId)
+                LoadMaintenanceFeeDetails(MatterId)
+                LoadOtherFeeDetails(MatterId)
+            End If
+        End If
+
+        BuildDocuments(MatterId, info.ClientID)
+    End Sub
+
+    Private Sub LoadRetainerFeeDetails(ByVal MatterId As Integer)
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = "select r.TransactionDate,(r.Amount * -1) As Amount, c.[Name] as AccountName, ast.Code As AccountStatus from tblCancellation_RefundInfo cl inner join tblRegister r on r.RegisterId = cl.RegisterId inner join tblAccount a ON a.AccountID = r.AccountId inner join tblCreditorInstance ci ON ci.CreditorInstanceId = a.CurrentCreditorInstanceId inner join tblCreditor c ON c.CreditorId = ci.CreditorId inner join tblAccountStatus ast ON ast.AccountStatusId = a.AccountStatusId where cl.MatterId = " & MatterId
+        Dim sqlDA As New SqlDataAdapter(cmd)
+        sqlDA.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvRetainer.DataSource = ds
+                    gvRetainer.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub LoadOtherFeeDetails(ByVal MatterId As Integer)
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.Text
+
+        cmd.CommandText = "select r.TransactionDate,(r.Amount * -1) As Amount, r.Description, r.RegisterId, e.DisplayName from tblCancellation_RefundInfo cl inner join tblRegister r on r.RegisterId = cl.RegisterId inner join tblEntryType e on e.EntryTypeId = cl.EntryTypeId where cl.MatterId = " & MatterId & " and cl.EntryTypeId not in (1,2)"
+
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvOtherFee.DataSource = ds
+                    gvOtherFee.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub LoadMaintenanceFeeDetails(ByVal MatterId As Integer)
+        Dim cmd As IDbCommand = ConnectionFactory.Create().CreateCommand()
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.Text
+
+        cmd.CommandText = "select r.TransactionDate,(r.Amount * -1) As Amount, r.Description, r.RegisterId from tblCancellation_RefundInfo cl inner join tblRegister r on r.RegisterId = cl.RegisterId where cl.MatterId = " & MatterId & " and cl.EntryTypeId = 1"
+
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvMaintFee.DataSource = ds
+                    gvMaintFee.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub LoadRulesInfo(ByVal ClientId As Integer)
+        Dim cmd As IDbCommand = ConnectionFactory.CreateCommand("stp_cancellation_getClientRulesAndAdhoc")
+        Dim ds As New DataSet
+        cmd.CommandType = CommandType.StoredProcedure
+
+        DatabaseHelper.AddParameter(cmd, "clientid", ClientId)
+        DatabaseHelper.AddParameter(cmd, "OnlyNotDeposited", 1)
+        DatabaseHelper.AddParameter(cmd, "OnlyCurrent", 0)
+        Dim sqlMaint As New SqlDataAdapter(cmd)
+        sqlMaint.Fill(ds)
+
+        If Not IsNothing(ds) Then
+            If ds.Tables.Count > 0 Then
+                If ds.Tables(0).Rows.Count > 0 Then
+                    gvRules.DataSource = ds
+                    gvRules.DataBind()
+                End If
+            End If
+        End If
+    End Sub
+    Private Sub BuildDocuments(ByVal _MatterId As Integer, ByVal _ClientId As Integer)
+        Dim acctNumber As String = DataHelper.FieldLookup("tblClient", "AccountNumber", "ClientID = " & _ClientId)
+        Dim root As String = "\\" & DataHelper.FieldLookup("tblClient", "StorageServer", "ClientID = " & _ClientId) + "\" & _
+            DataHelper.FieldLookup("tblClient", "StorageRoot", "ClientID = " & _ClientId) & "\" & _
+            acctNumber & "\" & "ClientDocs" & "\"
+
+        Dim DocList As DataTable
+        Dim newName As String
+        Dim fileName As String
+
+        DocList = LoadDoc(_MatterId, _ClientId)
+
+        Dim tr As New HtmlTableRow()
+        tr.Attributes.Add("class", "entry2")
+
+        If Not DocList Is Nothing AndAlso DocList.Rows.Count > 0 Then
+            For Each doc As DataRow In DocList.Rows
+
+                fileName = root & doc("FilePath")
+                If File.Exists(fileName) Then
+                    newName = LocalHelper.GetVirtualBasePath() & fileName.Substring(fileName.IndexOf("\", 2)).Replace("\", "/")
+
+                    Dim tdImage As New HtmlTableCell()
+                    Dim tdDocumentName As New HtmlTableCell()
+                    Dim imgDocument As New HtmlImage()
+
+                    tdImage.Attributes.Add("style", "text-align:center;width:20px;")
+                    imgDocument.Src = "~/images/16x16_pdf.png"
+                    imgDocument.Attributes.Add("style", "border:0px;height:16px;width:16px;")
+                    imgDocument.Alt = ""
+                    tdImage.Controls.Add(imgDocument)
+
+                    tdDocumentName.Attributes.Add("style", "cursor:hand;overflow-x:hidden;text-align:left;width:auto;")
+                    tdDocumentName.Attributes.Add("nowrap", "nowrap")
+                    tdDocumentName.Attributes.Add("onclick", "javascript:OpenDocument('" + newName + "');")
+                    tdDocumentName.InnerText = doc("DisplayName")
+
+                    tr.Controls.Add(tdImage)
+                    tr.Controls.Add(tdDocumentName)
+                End If
+            Next
+            If tr.Controls.Count > 0 Then
+                tblDocuments.Rows.Add(tr)
+                tblDocuments.Visible = True
+            End If
+
+        End If
+    End Sub
+    
+    Private Function LoadDoc(ByVal _MatterId As Integer, ByVal _ClientId As Integer) As DataTable
+        Dim cmdText As String = "SELECT c.AccountNumber + '_' + dr.DocTypeId + '_' + dr.DocId + '_' + dr.DateString + '.pdf' As FilePath, dt.DisplayName FROM tblDocRelation dr inner join tblClient c ON c.ClientId = dr.ClientId inner join tblDocumentType dt ON dt.TypeId = dr.DocTypeId WHERE RelationType = 'matter' and DeletedFlag = 0 and dr.ClientId = " & _ClientId & " and RelationId = " & _MatterId
+
+        Dim ds As DataTable = SqlHelper.GetDataTable(cmdText, CommandType.Text)
+
+        Return ds
+    End Function
+End Class

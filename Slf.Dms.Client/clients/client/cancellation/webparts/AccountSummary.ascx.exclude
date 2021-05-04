@@ -1,0 +1,127 @@
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="AccountSummary.ascx.vb" Inherits="Clients_client_cancellation_webparts_AccountSummary" %>
+
+<link href="<%= ResolveUrl("~/css/default.css") %>" type="text/css" rel="stylesheet" />
+<link href="<%= ResolveUrl("~/css/grid.css") %>" type="text/css" rel="stylesheet" />
+<asp:UpdatePanel ID="updAccountSummary" runat="server">
+    <ContentTemplate> 
+        <table runat="server" id="tblBody" style="font-family: tahoma; font-size: 11px; width: 100%;
+                height: 100%;" border="0" cellpadding="0" cellspacing="15"> 
+                <tr>
+                    <td>
+                        <asp:Label ID="lblAccount" runat="server" Font-Bold="true" Text="Accounts"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:GridView ID="gvSummary" runat="server" AllowSorting="True" AllowPaging="True" AutoGenerateColumns="False"
+                            GridLines="None" DataSourceID="dsSummary" CellPadding="0" BorderWidth="0px" PageSize="10" Width="100%">
+                            <HeaderStyle ForeColor="Black" />
+                            <EmptyDataTemplate>
+                                <div>
+                                    No records to display.</div>
+                            </EmptyDataTemplate>
+                            <Columns>
+                                <asp:BoundField DataField="CurrentCreditorName" HeaderText="Name" SortExpression="CurrentCreditorName">
+                                    <HeaderStyle HorizontalAlign="left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CurrentAccountNumber" HeaderText="Acct #" SortExpression="CurrentAccountNumber">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CurrentReferenceNumber" HeaderText="Ref #" SortExpression="CurrentReferenceNumber">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AccountStatusCode" HeaderText="Current Status" SortExpression="AccountStatusCode">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="PreviousStatusCode" HeaderText="Previous Status" SortExpression="PreviousStatusCode">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CurrentAmount" DataFormatString="{0:c}" HeaderText="Current Amt"
+                                    HtmlEncode="false" SortExpression="CurrentAmount">
+                                    <HeaderStyle HorizontalAlign="right" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Right" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="OriginalAmount" DataFormatString="{0:c}" HeaderText="Original Amt"
+                                    HtmlEncode="false" SortExpression="Original Amount">
+                                    <HeaderStyle HorizontalAlign="right" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Right" CssClass="listItem" />
+                                </asp:BoundField>
+                            </Columns>
+                            <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                            <PagerStyle CssClass="pagerstyle" />
+                        </asp:GridView>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>              
+                <tr>
+                    <td>
+                        <asp:Label ID="lblMatters" runat="server" Font-Bold="true" Text="Open Matters"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:GridView ID="gvMatter" runat="server" AllowSorting="True" AllowPaging="True" AutoGenerateColumns="False"
+                            GridLines="None" DataSourceID="dsMatter" CellPadding="0" BorderWidth="0px" PageSize="10" Width="100%">
+                            <HeaderStyle ForeColor="Black" />
+                            <EmptyDataTemplate>
+                                <div>
+                                    No records to display.</div>
+                            </EmptyDataTemplate>
+                            <Columns>
+                                <asp:BoundField DataField="MatterTypeCode" HeaderText="Matter" SortExpression="MatterTypeCode">
+                                    <HeaderStyle HorizontalAlign="left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="MatterId" HeaderText="Matter&nbsp;Number" SortExpression="MatterId">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="MatterDate" HeaderText="Matter&nbsp;Date" SortExpression="MatterDate" DataFormatString="{0:d}">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="MatterStatusCode" HeaderText="Matter Status" SortExpression="MatterStatusCode">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="MatterSubStatus" HeaderText="Matter Sub Status" SortExpression="MatterSubStatus">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CIAccountNumber" HeaderText="Creditor&nbsp;Account" SortExpression="CIAccountNumber">
+                                    <HeaderStyle HorizontalAlign="right" CssClass="headItem5" />
+                                    <ItemStyle HorizontalAlign="Right" CssClass="listItem" />
+                                </asp:BoundField>                
+                            </Columns>
+                            <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                            <PagerStyle CssClass="pagerstyle" />
+                        </asp:GridView>
+                    </td>
+                </tr>
+        </table>           
+        
+        <asp:SqlDataSource ID="dsSummary" runat="server" ConnectionString="<%$ AppSettings:connectionstring %>"
+            ProviderName="System.Data.SqlClient" SelectCommand="get_ClientAccountOverviewList"
+            SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="" Name="clientId" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>        
+        <asp:SqlDataSource ID="dsMatter" runat="server" ConnectionString="<%$ AppSettings:connectionstring %>"
+            ProviderName="System.Data.SqlClient" SelectCommand="stp_GetMattersClientId"
+            SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="" Name="clientId" Type="Int32" />
+                <asp:Parameter DefaultValue="1" Name="OpenOnly" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    </ContentTemplate>    
+</asp:UpdatePanel>

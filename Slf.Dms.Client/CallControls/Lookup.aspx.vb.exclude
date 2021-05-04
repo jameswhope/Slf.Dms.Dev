@@ -1,0 +1,165 @@
+﻿Imports ININ.IceLib.Directories
+Imports ININ.IceLib.Connection
+Imports System.Collections.ObjectModel
+Imports System.Collections.Generic
+Imports ININ.IceLib.People
+Imports System.Data
+
+
+Partial Class CallControls_Lookup
+    Inherits System.Web.UI.Page
+
+    Private _session As ININ.IceLib.Connection.Session
+    Private _directoryMan As DirectoriesManager
+    Private _userStatuses As UserStatusList
+    Private _peopleMan As PeopleManager
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        _session = Session("IceSession")
+        _peopleMan = Session("IcePeopleMan")
+
+        If Not IsPostBack Then
+            LogUseEvent()
+            LoadQueues()
+            If ddlWorkGroupQueues.Items.Count > 0 Then ddlWorkGroupQueues.SelectedIndex = 0
+            'Timer5.Enabled = True
+        End If
+    End Sub
+
+    Private Sub DisplayDirectory(ByVal WorkGroupName As String)
+        Dim lusers As New List(Of UserDetail)
+        If Not _session Is Nothing Then
+            Try
+                Dim w As New WorkgroupDetails(_peopleMan, WorkGroupName)
+                If Not w.IsWatching Then w.StartWatching(New String() {WorkgroupAttributes.ActiveMembers})
+                Dim users As ReadOnlyCollection(Of String) = w.ActiveMembers
+                Dim userStList As New UserStatusList(_peopleMan)
+                Dim user As UserDetail
+                For Each UserName As String In users
+                    user = New UserDetail(userStList.GetUserStatus(UserName))
+                    If Not lusers.Contains(user) Then lusers.Add(user)
+                Next
+            Catch ex As Exception
+                'ScriptManager.RegisterClientScriptBlock(Me.Page, GetType(Page), "ErrPerm", String.Format("alert('{0}');", ex.Message.Replace("'", "")), True)
+            End Try
+            Me.grdPhoneBook.DataSource = lusers
+            Me.grdPhoneBook.DataBind()
+        End If
+    End Sub
+
+
+    Protected Sub grdPhoneBook_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles grdPhoneBook.RowDataBound
+
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim user As UserDetail = CType(e.Row.DataItem, UserDetail)
+
+            Dim ctl As Label = e.Row.Cells(6).FindControl("lbStatus")
+            Dim img As Image = e.Row.Cells(6).FindControl("ImgStatus")
+            Dim lnk As LinkButton = e.Row.Cells(2).FindControl("lnkExt")
+            Dim lblTimeInStatus As Label = e.Row.Cells(7).FindControl("lblTimeInStatus")
+            Dim lblOnPhone As Label = e.Row.Cells(8).FindControl("lblOnPhone")
+            Dim lblLoggedIn As Label = e.Row.Cells(9).FindControl("lblLoggedIn")
+
+            If Not user Is Nothing Then
+                ctl.Text = user.Status.StatusMessageDetails.MessageText
+                img.ImageUrl = "file:\\\" & user.Status.StatusMessageDetails.IconFileName
+                lblOnPhone.Text = IIf(user.Status.OnPhone, "Yes", "")
+                If user.Status.StatusChangedHasValue Then
+                    Dim ts As TimeSpan = Now.Subtract(user.Status.StatusChanged)
+                    lblTimeInStatus.Text = String.Format("{0}d:{1:D2}:{2:D2}:{3:D2}", ts.Days, ts.Hours, ts.Minutes, ts.Seconds)
+                Else
+                    lblTimeInStatus.Text = ""
+                End If
+                lblLoggedIn.Text = IIf(user.Status.LoggedIn, "Yes", "No")
+            Else
+                img.ImageUrl = ""
+                ctl.Text = "Unknown"
+                lblOnPhone.Text = ""
+                lblTimeInStatus.Text = ""
+                lblLoggedIn.Text = ""
+            End If
+
+            'Set filter
+            If Me.txtLastName.Text.Trim.Length > 0 OrElse Me.txtFirstName.Text.Trim.Length > 0 OrElse Me.txtExtension.Text.Trim.Length > 0 OrElse Me.txtStatus.Text.Trim.Length > 0 Then
+                lblTimeInStatus.Text = e.Row.Cells(2).Text
+                e.Row.Visible = e.Row.Cells(0).Text.ToLower.StartsWith(Me.txtLastName.Text.Trim.ToLower) AndAlso e.Row.Cells(1).Text.ToLower.StartsWith(Me.txtFirstName.Text.Trim.ToLower) AndAlso lnk.Text.ToLower.StartsWith(Me.txtExtension.Text.Trim.ToLower) AndAlso ctl.Text.Trim.ToLower.StartsWith(Me.txtStatus.Text.Trim.ToLower)
+            End If
+        End If
+
+    End Sub
+
+    Protected Sub Timer5_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles Timer5.Tick
+        DisplayDirectory(Me.ddlWorkGroupQueues.SelectedValue)
+    End Sub
+
+    Private Sub LogUseEvent()
+        Dim uInfo As UserInfo = Session("IceUserInfo")
+        Try
+            CallControlsHelper.InsertCallEvent(Nothing, Nothing, "LookupOpened", uInfo.UserID)
+        Catch ex As Exception
+            LogException("[SM]LogLookup: " & ex.Message, uInfo)
+        End Try
+    End Sub
+
+    Private Sub LogException(ByVal Message As String, ByVal uInfo As UserInfo)
+        Try
+            CallControlsHelper.InsertCallMessageLog(Message, uInfo.UserID)
+        Catch ex As Exception
+            'Do nothing
+        End Try
+    End Sub
+
+    Private Sub LoadQueues()
+        Me.ddlWorkGroupQueues.DataSource = ConnectionContext.GetWorkGroupQueues()
+        Me.ddlWorkGroupQueues.DataTextField = "workgroup"
+        Me.ddlWorkGroupQueues.DataValueField = "workgroup"
+        Me.ddlWorkGroupQueues.DataBind()
+    End Sub
+
+    Private Function GetOneAvailableInQueue(ByVal WorkGroupName As String) As String
+        Dim count As Integer = 0
+        Dim w As New WorkgroupDetails(_peopleMan, WorkGroupName)
+        If Not w.IsWatching Then w.StartWatching(New String() {WorkgroupAttributes.ActiveMembers})
+        Dim users As ReadOnlyCollection(Of String) = w.ActiveMembers
+        Dim userStList As New UserStatusList(_peopleMan)
+        Dim userStat As UserStatus
+        Dim usersAv As New List(Of String)
+        For Each UserName As String In users
+            userStat = userStList.GetUserStatus(UserName)
+            If (userStat.LoggedIn AndAlso Not userStat.OnPhone AndAlso userStat.StatusMessageDetails.MessageText.ToLower.Contains("available")) Then
+                usersAv.Add(UserName)
+            End If
+        Next
+
+        If usersAv.Count > 0 Then
+            Dim index As Integer = CInt(Int(usersAv.Count * Rnd()))
+            index = CInt(Int(usersAv.Count * Rnd()))
+            Return usersAv.Item(index)
+        End If
+
+        Return ""
+    End Function
+
+    Private Sub TransferToAvailable(ByVal WorkGroupName As String)
+        Dim username As String = GetOneAvailableInQueue(WorkGroupName)
+        If username.Trim.Length > 0 Then
+            ScriptManager.RegisterClientScriptBlock(Me.Page, GetType(Page), "ExprTransfer", String.Format("CloseDialog('{0}', 'transfer');", ConnectionContext.GetUserExtension(username)), True)
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me.Page, GetType(Page), "NoAvailableTransfers", "alert('No one is available to accept calls in that group');", True)
+        End If
+    End Sub
+
+    Protected Sub ddlWorkGroupQueues_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlWorkGroupQueues.SelectedIndexChanged
+        DisplayDirectory(ddlWorkGroupQueues.SelectedValue)
+        Me.updContact.Update()
+    End Sub
+
+    Protected Sub ImgExpTrans_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles ImgExpTrans.Click
+        Try
+            TransferToAvailable(Me.ddlWorkGroupQueues.SelectedValue)
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me.Page, GetType(Page), "ErrPerm", String.Format("alert('{0}');", ex.Message.Replace("'", "")), True)
+        End Try
+    End Sub
+
+End Class

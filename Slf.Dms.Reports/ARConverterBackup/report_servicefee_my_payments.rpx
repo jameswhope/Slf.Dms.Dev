@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3" PrintWidth="15825" DocumentName="ActiveReports Document" ScriptLang="C#" CodeFile="report_servicefee_my_payments.vb">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0; " />
+    <Style Name="Heading1" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 16pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading2" Value="font-family: Times New Roman; font-style: italic; font-variant: inherit; font-weight: bold; font-size: 14pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading3" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 13pt; font-size-adjust: inherit; font-stretch: inherit; " />
+  </StyleSheet>
+  <Sections>
+    <Section Type="ReportHeader" Name="ReportHeader" Height="450" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label16" MOD="4" Left="90" Top="0" Width="6300" Height="270" Caption="Service Fee Payments:" Style="ddo-char-set: 0; text-align: left; font-weight: bold; font-size: 9.75pt; " />
+    </Section>
+    <Section Type="PageHeader" Name="PageHeader" Height="0" BackColor="16777215" CanShrink="0" />
+    <Section Type="GroupHeader" Name="sortofPageHeader" Height="390" RepeatStyle="4" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label1" MOD="4" Left="90" Top="0" Width="990" Height="270" Caption="Acct. #" />
+      <Control Type="AR.Label" Name="Label2" MOD="4" Left="1080" Top="0" Width="1260" Height="270" Caption="Hire Date" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label4" MOD="4" Left="2340" Top="0" Width="1530" Height="270" Caption="First Name" />
+      <Control Type="AR.Label" Name="Label5" MOD="4" Left="3870" Top="0" Width="1620" Height="270" Caption="Last Name" Style="text-align: left; " />
+      <Control Type="AR.Line" Name="Line1" MOD="4" X1="0" Y1="360" X2="16200" Y2="360" LineWeight="3" />
+      <Control Type="AR.Label" Name="Label6" MOD="4" Left="5490" Top="0" Width="1710" Height="270" Caption="Fee Category" Style="text-align: left; " />
+      <Control Type="AR.Label" Name="Label7" MOD="4" Left="7200" Top="0" Width="810" Height="270" Caption="Setl No." Style="text-align: left; " />
+      <Control Type="AR.Label" Name="Label8" MOD="4" Left="8010" Top="0" Width="1350" Height="270" Caption="Orig Bal." Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label9" MOD="4" Left="9360" Top="0" Width="1350" Height="270" Caption="Beg Bal." Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label10" MOD="4" Left="10710" Top="0" Width="1350" Height="270" Caption="Pmt Amt." Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label12" MOD="4" Left="12060" Top="0" Width="1260" Height="270" Caption="End Bal." Style="text-align: right; " />
+      <Control Type="AR.Label" Name="Label13" MOD="4" Left="13320" Top="0" Width="1080" Height="270" Caption="Rate" Style="text-align: center; " />
+      <Control Type="AR.Label" Name="Label14" MOD="4" Left="14400" Top="0" Width="1350" Height="270" Caption="Amount" Style="text-align: right; " />
+    </Section>
+    <Section Type="Detail" Name="Detail" Height="480" BackColor="16777215" KeepTogether="1" CanShrink="0">
+      <Control Type="AR.Field" Name="AccountNumber" DataField="AccountNumber" MOD="4" Left="90" Top="90" Width="990" Height="270" Text="AccountNumber" CanGrow="0" />
+      <Control Type="AR.Field" Name="HireDate" DataField="HireDate" MOD="4" Left="1080" Top="90" Width="1260" Height="270" Text="HireDate" OutputFormat="MMM d, yy" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="FirstName" DataField="FirstName" MOD="4" Left="2340" Top="90" Width="1530" Height="270" Text="FirstName" CanGrow="0" />
+      <Control Type="AR.Field" Name="LastName" DataField="LastName" MOD="4" Left="3870" Top="90" Width="1620" Height="270" Text="LastName" OutputFormat="" CanGrow="0" Style="text-align: left; " />
+      <Control Type="AR.Line" Name="Separator" MOD="4" X1="0" Y1="450" X2="16200" Y2="450" LineColor="13882323" />
+      <Control Type="AR.Field" Name="FeeCategory" DataField="FeeCategory" MOD="4" Left="5490" Top="90" Width="1710" Height="270" Text="FeeCategory" CanGrow="0" />
+      <Control Type="AR.Field" Name="OriginalBalance" DataField="OriginalBalance" MOD="4" Left="8010" Top="90" Width="1350" Height="270" Text="OriginalBalance" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="BeginningBalance" DataField="BeginningBalance" MOD="4" Left="9360" Top="90" Width="1350" Height="270" Text="BeginningBalance" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="PaymentAmount" DataField="PaymentAmount" MOD="4" Left="10710" Top="90" Width="1350" Height="270" Text="PaymentAmount" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="color: #009F00; text-align: right; " />
+      <Control Type="AR.Field" Name="SettlementNumber" DataField="SettlementNumber" MOD="4" Left="7200" Top="90" Width="810" Height="270" Text="SettlementNumber" CanGrow="0" />
+      <Control Type="AR.Field" Name="EndingBalance" DataField="EndingBalance" MOD="4" Left="12060" Top="90" Width="1260" Height="270" Text="EndingBalance" OutputFormat="$#,##0.00" CanGrow="0" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="Rate" DataField="Rate" MOD="4" Left="13320" Top="90" Width="1080" Height="270" Text="Rate" OutputFormat="0.00%" CanGrow="0" Style="text-align: center; " />
+      <Control Type="AR.Field" Name="Amount" DataField="Amount" MOD="4" Left="14400" Top="90" Width="1350" Height="270" Text="Amount" OutputFormat="$#,##0.00;($#,##0.00)" CanGrow="0" Style="text-align: right; " />
+    </Section>
+    <Section Type="GroupFooter" Name="sortofPageFooter" Height="0" BackColor="16777215" CanShrink="0" />
+    <Section Type="PageFooter" Name="PageFooter" Height="630" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Field" Name="Date" DataField="=System.DateTime.Now" MOD="4" Left="11700" Top="270" Width="4050" Height="270" Text="Date" OutputFormat="ddd MMM d, yyyy hh:mm tt" Style="color: DarkGray; text-align: right; " />
+      <Control Type="AR.Field" Name="PN" Visible="0" MOD="4" Left="2880" Top="270" Width="360" Height="270" Text="#" OutputFormat="" Style="color: DarkGray; text-align: center; " SummaryType="4" SummaryRunning="2" />
+      <Control Type="AR.Field" Name="PT" Visible="0" MOD="4" Left="3330" Top="270" Width="360" Height="270" Text="##" OutputFormat="" Style="color: DarkGray; text-align: center; " SummaryType="4" />
+      <Control Type="AR.Label" Name="PageNumbers" MOD="4" Left="0" Top="270" Width="2790" Height="270" Caption="PageNumbers" Style="color: DarkGray; " />
+    </Section>
+    <Section Type="ReportFooter" Name="ReportFooter" Height="419" BackStyle="1" BackColor="15790320" KeepTogether="1" CanShrink="0">
+      <Control Type="AR.Field" Name="CountCommPayId" DataField="CommPayId" MOD="4" Left="720" Top="90" Width="2160" Height="270" Text="CountCommPayId" OutputFormat="#,##0" Style="font-weight: bold; " SummaryType="1" SummaryFunc="2" SummaryRunning="2" SummaryDistinct="CommPayId" />
+      <Control Type="AR.Label" Name="Label11" MOD="4" Left="90" Top="90" Width="630" Height="270" Caption="Total:" Style="font-weight: bold; " />
+      <Control Type="AR.Field" Name="SumAmount" DataField="Amount" MOD="4" Left="13680" Top="90" Width="2070" Height="270" Text="SumAmount" OutputFormat="$#,##0.00" Style="text-align: right; font-weight: bold; " SummaryType="1" SummaryRunning="2" SummaryDistinct="Amount" />
+      <Control Type="AR.Field" Name="TextBox" MOD="4" Left="9720" Top="90" Width="3960" Height="270" Text="Service Fee Payments Total:" OutputFormat="" Style="text-align: right; font-weight: bold; " />
+    </Section>
+  </Sections>
+  <PageSettings />
+</ActiveReportsLayout>

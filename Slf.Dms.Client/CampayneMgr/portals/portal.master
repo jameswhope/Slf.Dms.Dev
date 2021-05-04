@@ -1,0 +1,112 @@
+﻿<%@ Master Language="VB" CodeFile="portal.master.vb" Inherits="portals_portal" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="act" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="~/css/identifyle.css" rel="stylesheet" type="text/css" />
+    <link href="portal.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.19/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" />
+    <link type="text/css" href="~/jquery/css/toast/jquery.toastmessage.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <act:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePageMethods="true">
+        <Scripts>
+            <asp:ScriptReference Path="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.2.min.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.19/jquery-ui.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/jquery.toastmessage.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/highcharts.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/table2CSV.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/campayne.js" ScriptMode="Release" />
+            <asp:ScriptReference Path="~/jquery/json2.js" ScriptMode="Release" />
+        </Scripts>
+    </act:ToolkitScriptManager>
+    <div id="wrapper">
+        <div id="Div1" is="divShowWelcome" runat="server" style="padding: 5px;">
+            <table style="width: 100%">
+                <tr>
+                    <td align="left">
+                        <img id="Img1" src="~/images/campaynemgr-logo-sm.png" alt="Campayne Mgr" runat="server" />
+                    </td>
+                    <td align="right">
+                        <div id="divWelcome" runat="server" style="padding: 5px;" />
+                    </td>
+                    <td style="width: 50px">
+                        (<asp:LinkButton ID="lnkLogout" runat="server" Text="Logout" Style="color: Blue" />)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="header">
+            <div class="ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-widget-header ">
+                <div class="portlet-header">
+                        <asp:ContentPlaceHolder ID="cphPortalMenu" runat="server">
+                        </asp:ContentPlaceHolder>
+                    <%--<table cellpadding="0" cellspacing="0" border="0" width="100%" id="mnuAdmin" runat="server"
+                        style="display: none;">
+                        <tr>
+                            <td style="width: 150">
+                                <h1>
+                                    Admin Portal</h1>
+                            </td>
+                            <td align="right" style="padding-right: 50px;">
+                                <ul class="nav" id="Ul3">
+                                    <li><a id="A6" runat="server" href="affiliate/default.aspx" style="z-index: 1000!important">
+                                        Affiliate</a>
+                                        <ul class="nav" id="Ul4" style="text-align: left;">
+                                            <li><a id="A7" runat="server" href="affiliate/summary.aspx" style="z-index: 1000!important">
+                                                <img src='<%=resolveurl("images/summary.gif") %>' alt="Home" style="border: none;" />Summary</a></li>
+                                            <li><a id="A8" runat="server" href="affiliate/offers.aspx" style="z-index: 1000!important">
+                                                <img src='<%=resolveurl("../images/24x24_offers.png") %>' alt="Offers" style="border: none;" />Offers</a></li>
+                                            <li><a id="A9" runat="server" href="affiliate/reports.aspx" style="z-index: 1000!important">
+                                                <img src='<%=resolveurl("../images/24x24_report.png") %>' alt="Reports" style="border: none;" />Reports</a></li>
+                                                <li><a id="A16" runat="server" href="affiliate/download.aspx" style="z-index: 1000!important">
+                                                <img src='<%=resolveurl("../images/24x24_report.png") %>' alt="Reports" style="border: none;" />Downloads</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a id="A10" runat="server" href="~/portals/buyer/default.aspx" style="z-index: 1000!important">
+                                        Buyer</a>
+                                        <ul class="nav" id="Ul5" style="text-align: left;">
+                                            <li><a id="A11" runat="server" href="~/portals/buyer/summary.aspx" style="z-index: 1000!important">
+                                                <img src='<%=resolveurl("images/summary.gif") %>' alt="Home" style="border: none;" />Summary</a></li>
+                                            <li><a id="A12" runat="server" href="~/portals/buyer/leads.aspx" style="z-index: 1000!important">
+                                                <img src='<%=resolveurl("../images/24x24_People.png") %>' alt="Leads" style="border: none;" />
+                                                Leads</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a id="A13" runat="server" href="advertiser/default.aspx" style="z-index: 1000!important">
+                                        Advertiser</a>
+                                        <ul class="nav" id="Ul6" style="text-align: left;">
+                                            <li><a id="A14" runat="server" href="advertiser/summary.aspx" style="z-index: 1000!important">
+                                                <img src='<%=resolveurl("images/summary.gif") %>' alt="Home" style="border: none;" />Summary</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>--%>
+                </div>
+            </div>
+        </div>
+        <div>
+            <!-- content goes here -->
+            <div>
+                <asp:UpdatePanel ID="upPortal" runat="server">
+                    <ContentTemplate>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </div>
+    </div>
+    <asp:HiddenField ID="hdnUserTypeID" runat="server" />
+    <asp:LinkButton ID="lnkRefresh" runat="server" />
+    </form>
+</body>
+</html>

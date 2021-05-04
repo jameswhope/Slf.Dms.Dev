@@ -1,0 +1,57 @@
+.igpnl_NautilusControl
+{
+	/*border:solid 1px #A7A6AA;*/
+}
+
+
+.igpnl_NautilusPanel
+{
+	background-color:rgb(240,245,251);
+	cursor:default;
+}
+
+
+.igpnl_NautilusPanel table tr td
+{
+	font-family: Tahoma;
+	font-size:11px;
+}
+
+.igpnl_NautilusHeaderExpanded
+{
+	background-position:top ;
+	background-image: url(../../images/menuback.png);
+	font-size: 13px;
+	font-family: Tahoma;
+	margin-top:3px;
+	margin-bottom:3px;
+	margin-left:0px;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-left:10px;
+	cursor:hand;
+	color:#006699;
+}
+
+
+.igpnl_NautilusHeaderCollapsed
+{
+}
+
+
+.igpnl_NautilusHeaderHover
+{
+	background-position:top ;
+	background-image: url(images/header_hover.gif);
+}
+
+
+.igpnl_NautilusGroupBoxControl
+{
+	background-position:bottom ;
+	background-image: url(images/activingbg.jpg);
+	border:solid 1px #A7A6AA;
+	cursor:default;
+}
+
+

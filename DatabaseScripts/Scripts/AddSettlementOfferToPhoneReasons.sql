@@ -1,0 +1,1 @@
+﻿insert into tblPhoneCallReasons (CallReasonID, [Value], SortOrder, Created, CreatedBy) VALUES (12, 'Settlement Offer', 12, getdate(), 493) 

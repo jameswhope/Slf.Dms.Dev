@@ -1,0 +1,29 @@
+﻿<p>
+	{{date}}<br/>
+	{{client_name}}
+</p>
+<p style='text-align:center; color:red'>
+	Important Non-Representation Notice
+</p>
+<p>
+	Thank you for your inquiry to our firm. We are sorry that we are unable to assist you at this time.  We 
+	are not representing you as your attorney, and no attorney-client representation has been established. 
+	We do recommend that you seek legal counsel, as soon as possible, to advise you regarding any of your 
+	current issues. We wish you great success in your future. 
+</p>
+<p>
+	<br/>
+	Very truly yours,
+	<br/>
+	<br/>
+	{{contact}}<br/>
+	{{company}}<br/>
+	Phone: {{phone}}
+</p>
+<p style='font-size:x-small'>
+	The information contained in this transmission may contain privileged and confidential information. It 
+	is intended only for the use of the person(s) named above. If you are not the intended recipient, you 
+	are hereby notified that any review, dissemination, distribution or duplication of this communication 
+	is strictly prohibited. If you are not the intended recipient, please destroy all copies of the 
+	original message.
+</p>

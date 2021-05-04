@@ -1,0 +1,17 @@
+DatabaseScripts\Projects\CheckSite\Tables\AddClearFieldsRegisterPayment.sql
+DatabaseScripts\Projects\CheckSite\Tables\AddFlagTo_tblTrust.sql
+DatabaseScripts\Projects\CheckSite\Tables\Create_tblWCFLogs.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblCommBatchTransfer.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblNachaCabinet.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblNachaFile.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblNachaRegister.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblNachaRegister2.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblProcessingReport.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblProcessingReportDetail.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblProcessingReportState.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblProcessingReportStateGroup.sql
+DatabaseScripts\Projects\CheckSite\Tables\tblStoreRequestLog.sql
+DatabaseScripts\Projects\CheckSite\Scripts\InsertChecksiteProcessingUser.sql
+DatabaseScripts\Projects\CheckSite\Scripts\InsertLexxiomClearingAccts.sql
+DatabaseScripts\Projects\CheckSite\Scripts\NewEntryTypes.sql
+DatabaseScripts\Projects\CheckSite\Procs\stp_InsertShadowCommission.sql

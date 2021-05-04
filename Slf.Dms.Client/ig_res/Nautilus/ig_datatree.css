@@ -1,0 +1,83 @@
+.igdt_NautilusControl {
+	background-color:Transparent;
+	border-width:0px;
+	color:#000000;
+}
+
+.igdt_NautilusControl .igt_n {
+	font-size: xx-small;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding-left: 5px;
+	cursor:hand;
+	line-height: 20px;
+}
+
+.igdt_NautilusControl .igt_p {
+	cursor:hand;
+	line-height: 20px;
+}
+
+.igdt_NautilusControl .igt_r {
+	font-weight:bold;
+	color:#223E6E;
+	line-height: 20px;
+}
+
+.igdt_NautilusControl li a, .igdt_NautilusControl li a:visited {
+  font-size: 11px;
+  color: #696969;
+  text-decoration: none; 
+  vertical-align: middle;  
+}
+
+.igdt_NautilusControl li a span { }
+
+.igdt_NautilusControl ul li img {	
+	vertical-align: middle;
+}
+
+.igdt_NautilusControl .igdt_NautilusHover {
+	cursor:hand;
+	color:#FF6600;
+	text-decoration:underline;
+}
+
+.igdt_NautilusControl .igdt_NautilusSelected {
+	font-weight:bold;
+	color: #FF6600;
+	text-decoration:underline;
+}
+
+/* //////////////////// GROUP STYLES //////////////////// */
+.igt_group {
+	list-style :none;	
+	margin-left: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.igt_group li ul li {
+	white-space:nowrap;
+	margin-left: 0px;
+	padding-left: 20px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.igt_connectGroup {
+	list-style :none;	
+	margin-left: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.igt_connectGroup li ul li {
+	white-space :nowrap;
+	margin-left: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+/* //////////////////// GROUP STYLES //////////////////// */

@@ -1,0 +1,90 @@
+﻿body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #7B351C;
+	font-family: Helvetica, "Lucida Grande", Verdana, Arial, sans-serif;
+	font-size: 14px;
+	color: #FFF;
+}
+a {
+	color: #FFF;
+}
+img {
+	border-width: 0px;
+}
+input {
+	width: 260px;
+	background-color: #FFF;
+	font-size: 18px;
+	margin: 10px 0px 0px 0px;
+}
+.center {
+	text-align: center;
+}
+.fontSmall {
+	font-size: 12px;
+}
+.bold {
+	font-weight: bold;
+}
+
+/* GLOBAL FLICK CONTAINER */
+#container {
+	width: 320px;
+	min-height: 180px;
+}
+
+/* ALL FLICK DIVs */
+#container div {
+	display: none;
+	position: absolute;
+	top: 10px;
+	left: 490px;
+	width: 280px;
+	height: 180px;
+	padding: 10px;
+	background-color: #AD4A2A;
+	-webkit-border-radius: 5px;
+}
+
+/* IPHONE ANIMATION API CLASSES */
+.divRtC {
+	-webkit-animation-name: 'RtC';
+	-webkit-animation-duration: 1s;
+}
+.divCtL {
+	-webkit-animation-name: 'CtL';
+	-webkit-animation-duration: 1s;
+}
+.divLtC {
+	-webkit-animation-name: 'LtC';
+	-webkit-animation-duration: 1s;
+}
+.divCtR {
+	-webkit-animation-name: 'CtR';
+	-webkit-animation-duration: 1s;
+}
+@-webkit-keyframes 'RtC' {
+	from { left: 490px; }
+	to { left: 10px; }
+}
+@-webkit-keyframes 'CtL' {
+	from { left: 10px; }
+	to { left: -490px; }
+}
+@-webkit-keyframes 'LtC' {
+	from { left: -490px; }
+	to { left: 10px; }
+}
+@-webkit-keyframes 'CtR' {
+	from { left: 10px; }
+	to { left: 490px; }
+}
+
+/* THE DEBUG RESULTS */
+#debug {
+	position: absolute;
+	top: 220px;
+	left: 10px;
+	width: 300px;
+}

@@ -1,0 +1,9 @@
+﻿DatabaseScripts\Projects\AgentReports\Scripts\insertRecipienttype.sql
+DatabaseScripts\Projects\AgentReports\Tables\tblCommRecGroup.sql
+DatabaseScripts\Projects\AgentReports\Tables\tblUserAgencyAccess.sql
+DatabaseScripts\Projects\AgentReports\Tables\tblUserCommRecAccess.sql
+DatabaseScripts\Projects\AgentReports\Scripts\AddAgencyCommRecColumns.sql
+DatabaseScripts\Projects\AgentReports\Tables\insertCommRecGroup.sql
+DatabaseScripts\Projects\AgentReports\Scripts\updateCommRecGroupId.sql
+DatabaseScripts\Projects\AgentReports\Scripts\CreateUserPermissions.sql
+

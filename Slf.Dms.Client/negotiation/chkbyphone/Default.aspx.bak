@@ -1,0 +1,96 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/negotiation/Negotiation.master" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="negotiation_chkbyphone_Default" %>
+<%@ MasterType TypeName="negotiation_Negotiation" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphBody" Runat="Server">
+<script type="text/javascript">
+    function popupPhoneInfo(Id, chk) {
+       showModalDialog('<%= ResolveUrl("~/processing/popups/PhoneProcessing.aspx") %>?type=' + status + '&sid=' + Id + '&chk=' + chk, new Array(window, "ReloadChecks"), 'status:off;help:off;dialogWidth:650px;dialogHeight:460px');
+    }
+    
+    function ReloadChecks() {
+        <%=Page.ClientScript.GetPostBackEventReference(btnReloadCheckByPhone,Nothing) %>;
+    }
+</script>
+
+    <asp:UpdatePanel ID="upChkByTel" runat="server">
+        <ContentTemplate>
+            <div id="holder" style="width: 98%; padding: 10px; text-align: left;">
+                <div id="divPhoneProcessBox" runat="server" class="ibox nego">
+                    <h1 id="hChecks" runat="server">
+                        Checks By Phone Processing
+                    </h1>
+                    <div id="dvPhoneProcessing" class="collapsable" style="display: block">
+                        <asp:GridView ID="gvPhoneProcessing" runat="server" AutoGenerateColumns="false" AllowPaging="True"
+                            AllowSorting="True" CssClass="entry2" CellPadding="3" BorderWidth="0px" PageSize="50"
+                            GridLines="None" Width="100%" DataSourceID="dsPhoneProcessing">
+                            <AlternatingRowStyle BackColor="White" />
+                            <RowStyle CssClass="row" />
+                            <Columns>
+                                <asp:BoundField DataField="DueDate" SortExpression="DueDate" HeaderText="Due&nbsp;Date"
+                                    DataFormatString="{0:MM/dd/yyyy}">
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="negname" HeaderText="Negotiator" SortExpression="negname">
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Firm" HeaderText="Firm" SortExpression="Firm">
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="accountnumber" HeaderText="Acct #">
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="clientname" HeaderText="Client" SortExpression="clientname">
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="creditorname" HeaderText="Creditor" SortExpression="creditorname">
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Amount" HeaderText="Check&nbsp;Amount" DataFormatString="{0:c}"
+                                    SortExpression="Amount">
+                                    <ItemStyle HorizontalAlign="Right" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Right" CssClass="headItem5" />
+                                </asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <input type="hidden" id="hdnChkPhoneMatterId" runat="server" value='<%#DataBinder.Eval(Container.DataItem, "MatterId")%>' />
+                                        <input type="hidden" id="hdnPhoneCheck" runat="server" value='<%#DataBinder.Eval(Container.DataItem, "CheckNumber")%>' />
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                </asp:TemplateField>
+                            </Columns>
+                            <EmptyDataTemplate>
+                                <asp:Panel runat="server" ID="pnlNoChecksPhone" Style="text-align: center; font-style: italic;
+                                    padding: 10 5 5 5;">
+                                    You have no Checks to Process By Phone</asp:Panel>
+                            </EmptyDataTemplate>
+                            <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                            <PagerStyle CssClass="pagerstyle" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="dsPhoneProcessing" ConnectionString="<%$ AppSettings:connectionstring %>"
+                            runat="server" ProviderName="System.Data.SqlClient" SelectCommand="stp_GetCheckByPhoneProcessing"
+                            SelectCommandType="StoredProcedure">
+                            <SelectParameters>
+                                <asp:Parameter Name="userid" DefaultValue="-1" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+                    </div>
+                    <input type="hidden" runat="server" id="hdnChecksByPhone" />
+                </div>
+                <div id="updateChkByTelDiv" style="display: none; height: 40px; width: 40px">
+                    <asp:Image ID="imgLoading" runat="server" ImageUrl="~/images/loading.gif" />
+                </div>
+            </div>
+            <asp:LinkButton ID="btnReloadCheckByPhone" runat="server"></asp:LinkButton>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
+    
+    
+</asp:Content>
+

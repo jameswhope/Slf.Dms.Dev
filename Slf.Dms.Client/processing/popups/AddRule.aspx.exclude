@@ -1,0 +1,351 @@
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="AddRule.aspx.vb" Inherits="processing_popups_AddRule" %>
+<%@ Register Assembly="AssistedSolutions.WebControls.InputMask" Namespace="AssistedSolutions.WebControls" TagPrefix="cc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Add Rule</title>
+</head>
+<body style="background-image:url(<%= ResolveUrl("~/images/back.bmp") %>); background-position:left top; background-repeat:repeat-x;">
+    <style type="text/css">
+        .entrycell {  }
+        .entrytitlecell { width:85; }
+    </style>
+    
+    <form id="frmMain" runat="server">
+        <script type="text/javascript" src="<%= ResolveUrl("~/jscript/functoids/date.js") %>"></script>
+        <script type="text/javascript" src="<%= ResolveUrl("~/jscript/validation/isvalid.js") %>"></script>
+        <script type="text/javascript" src="<%= ResolveUrl("~/jscript/validation/display.js") %>"></script>
+        <script type="text/javascript" src="<%= ResolveUrl("~/jscript/validation/allow.js") %>"></script>
+        <script type="text/javascript" src="<%= ResolveUrl("~/jscript/onlydigits.js") %>"></script>
+        
+        <script type="text/javascript">
+            var txtStartDate = null;
+            var txtEndDate = null;
+            var txtBankName = null;
+            var txtBankRoutingNumber = null;
+            var txtBankAccountNumber = null;
+            var ddlDepositDay = null;
+            var txtDepositAmount = null;
+            var Inputs = null;
+            
+            function Record_Save()
+            {
+                if (Record_RequiredExist())
+                {
+                    HideMessage();
+                    
+                    <%= ClientScript.GetPostBackEventReference(lnkSave, Nothing) %>;
+                }
+            }
+            
+	        function ShowMessage(Value)
+	        {
+	            var dvError = document.getElementById('<%=dvError.ClientID %>');
+	            var tdError = document.getElementById('<%=tdError.ClientID %>');
+	            
+	            if (dvError.style.display != 'inline')
+	            {
+	                window.resizeBy(0, 64);
+	            }
+	            
+	            dvError.style.display = 'inline';
+	            tdError.innerHTML = Value;
+	        }
+        	
+	        function HideMessage()
+	        {
+	            var dvError = document.getElementById('<%=dvError.ClientID %>');
+	            var tdError = document.getElementById('<%=tdError.ClientID %>');
+	            
+	            if (dvError.style.display != 'none')
+	            {
+	                window.resizeBy(0, -64);
+	            }
+	            
+	            tdError.innerHTML = '';
+	            dvError.style.display = 'none';
+	        }
+	        
+	        function LoadControls()
+	        {
+	            if (txtStartDate == null)
+	            {
+	                txtStartDate = document.getElementById('<%= txtStartDate.ClientID() %>');
+                    txtEndDate = document.getElementById('<%= txtEndDate.ClientID() %>');
+                    txtBankName = document.getElementById('<%= txtBankName.ClientID() %>');
+                    txtBankRoutingNumber = document.getElementById('<%= txtBankRoutingNumber.ClientID() %>');
+                    txtBankAccountNumber = document.getElementById('<%= txtBankAccountNumber.ClientID() %>');
+                    ddlDepositDay = document.getElementById('<%= ddlDepositDay.ClientID() %>');
+                    txtDepositAmount = document.getElementById('<%= txtDepositAmount.ClientID() %>');
+                    
+                    Inputs = new Array();
+                    Inputs.push(txtStartDate);
+                    Inputs.push(txtEndDate);
+                    Inputs.push(txtBankName);
+                    Inputs.push(txtBankRoutingNumber);
+                    Inputs.push(txtBankAccountNumber);
+                    Inputs.push(ddlDepositDay);
+                    Inputs.push(txtDepositAmount);
+	            }
+	        }
+	        
+            function Record_RequiredExist()
+            {
+                LoadControls();
+                
+                for (i = 0; i < Inputs.length; i++)
+                {
+                    RemoveBorder(Inputs[i]);
+                }
+                
+                for (i = 0; i < Inputs.length; i++)
+                {
+                    var Input = Inputs[i];
+                    
+                    var Caption = Input.getAttribute('caption');
+                    var Required = Input.getAttribute('required');
+                    var Validate = Input.getAttribute('validate');
+                    
+                    if (Required == null)
+                        Required = 'false';
+                    
+                    if (Required.toLowerCase() == 'true')
+                    {
+                        if (Input.tagName.toLowerCase() == 'select')
+                        {
+                            if (Input.selectedIndex == -1 || Input.options[Input.selectedIndex].value <= 0)
+                            {
+	                            ShowMessage('The ' + Caption + ' field is required.');
+	                            AddBorder(Input);
+	                            
+                                return false;
+                            }
+                        }
+                        else if (Input.tagName.toLowerCase() == 'input')
+                        {
+                            if (Input.type == 'text')
+                            {
+                                if (Input.value.length == 0)
+                                {
+	                                ShowMessage('The ' + Caption + ' field is required.');
+	                                AddBorder(Input);
+	                                
+                                    return false;
+                                }
+                            }
+                            else if (Input.type == 'checkbox')
+                            {
+                            }
+                        }
+                    }
+                    
+                    if (Input.tagName.toLowerCase() == 'input' && Input.value.length > 0 && Validate.length > 0)
+                    {
+                        if (!(eval(Validate)))
+                        {
+                            ShowMessage('The value you entered for ' + Caption + ' is invalid.');
+                            AddBorder(Input);
+                            
+                            return false;
+                        }
+                    }
+                }
+                
+                HideMessage();
+                
+	            return true;
+            }
+            
+            function SetToNow(obj)
+            {
+                var str = Functoid_Date_GetNow('/', false);
+                var parts = str.split('/');
+                obj.value = parts[0] + '/' + parts[2];
+            }
+            
+            function IsValidDateTimeMY(str)
+            {
+                var parts = str.split('/');
+                
+                return IsValidDateTime(parts[0] + '/01/' + parts[1]);
+            }
+        </script>
+        
+        <table runat="server" id="tblBody" style="font-family:tahoma;font-size:11px;width:100%;" border="0" cellpadding="0" cellspacing="15">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="vertical-align:top;width:48%;">
+                                <table style="width:100%;" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td style="width:100%;">
+                                            <table style="width:100%;" border="0" cellpadding="5" cellspacing="0">
+                                                <tr>
+                                                    <td style="background-color:#f1f1f1;width:100%;">General Information</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table style="font-family:tahoma;font-size:11px;width:100%;" border="0" cellpadding="0" cellspacing="5">
+                                                            <tr>
+                                                                <td class="entrytitlecell">Start Date:</td>
+                                                                <td><cc1:InputMask validate="IsValidDateTimeMY(Input.value);" caption="Start Date" required="true" TabIndex="18" cssclass="entry" ID="txtStartDate" runat="server" mask="nn/nnnn"></cc1:InputMask></td>
+                                                                <td style="width:55;"><a class="lnk" runat="server" id="lnkSetToNowStart" href="#" onclick="javascript:SetToNow(this.parentElement.previousSibling.childNodes(0));">Set To Now</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="entrytitlecell">End Date:</td>
+                                                                <td><cc1:InputMask validate="IsValidDateTimeMY(Input.value);" caption="End Date" required="true" TabIndex="18" cssclass="entry" ID="txtEndDate" runat="server" mask="nn/nnnn"></cc1:InputMask></td>
+                                                                <td style="width:55;"><a class="lnk" runat="server" id="lnkSetToNowEnd" href="#" onclick="javascript:SetToNow(this.parentElement.previousSibling.childNodes(0));">Set To Now</a></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:100%;">
+                                            <table style="width:100%;" border="0" cellpadding="5" cellspacing="0">
+                                                <tr>
+                                                    <td style="background-color:#f1f1f1;width:100%;">Collection Information</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:100%;">
+                                                        <table style="table-layout:fixed;font-family:tahoma;font-size:11px;width:100%;" border="0" cellpadding="0" cellspacing="5">
+                                                            <tr>
+                                                                <td class="entrytitlecell">Deposit Day:</td>
+                                                                <td><asp:DropDownList class="entry" id="ddlDepositDay" runat="server" style="font-size:11px">
+                                                                        <asp:ListItem value="1" text="Day 1"></asp:ListItem>
+                                                                        <asp:ListItem value="2" text="Day 2"></asp:ListItem>
+                                                                        <asp:ListItem value="3" text="Day 3"></asp:ListItem>
+                                                                        <asp:ListItem value="4" text="Day 4"></asp:ListItem>
+                                                                        <asp:ListItem value="5" text="Day 5"></asp:ListItem>
+                                                                        <asp:ListItem value="6" text="Day 6"></asp:ListItem>
+                                                                        <asp:ListItem value="7" text="Day 7"></asp:ListItem>
+                                                                        <asp:ListItem value="8" text="Day 8"></asp:ListItem>
+                                                                        <asp:ListItem value="9" text="Day 9"></asp:ListItem>
+                                                                        <asp:ListItem value="10" text="Day 10"></asp:ListItem>
+                                                                        <asp:ListItem value="11" text="Day 11"></asp:ListItem>
+                                                                        <asp:ListItem value="12" text="Day 12"></asp:ListItem>
+                                                                        <asp:ListItem value="13" text="Day 13"></asp:ListItem>
+                                                                        <asp:ListItem value="14" text="Day 14"></asp:ListItem>
+                                                                        <asp:ListItem value="15" text="Day 15"></asp:ListItem>
+                                                                        <asp:ListItem value="16" text="Day 16"></asp:ListItem>
+                                                                        <asp:ListItem value="17" text="Day 17"></asp:ListItem>
+                                                                        <asp:ListItem value="18" text="Day 18"></asp:ListItem>
+                                                                        <asp:ListItem value="19" text="Day 19"></asp:ListItem>
+                                                                        <asp:ListItem value="20" text="Day 20"></asp:ListItem>
+                                                                        <asp:ListItem value="21" text="Day 21"></asp:ListItem>
+                                                                        <asp:ListItem value="22" text="Day 22"></asp:ListItem>
+                                                                        <asp:ListItem value="23" text="Day 23"></asp:ListItem>
+                                                                        <asp:ListItem value="24" text="Day 24"></asp:ListItem>
+                                                                        <asp:ListItem value="25" text="Day 25"></asp:ListItem>
+                                                                        <asp:ListItem value="26" text="Day 26"></asp:ListItem>
+                                                                        <asp:ListItem value="27" text="Day 27"></asp:ListItem>
+                                                                        <asp:ListItem value="28" text="Day 28"></asp:ListItem>
+                                                                        <asp:ListItem value="29" text="Day 29"></asp:ListItem>
+                                                                        <asp:ListItem value="30" text="Day 30"></asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="entrytitlecell">Deposit Amount:</td>
+                                                                <td><asp:textbox maxlength="50" validate="IsValidNumberFloat(Input.value, false, Input);" caption="Deposit Amount" required="true" TabIndex="17" cssclass="entry" ID="txtDepositAmount" Width="95%" runat="server" onkeypress="return onlyDigits(event);"></asp:textbox></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="entrytitlecell" style="height:35;">&nbsp;</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:4%;">
+                                &nbsp;
+                            </td>
+                            <td style="vertical-align:top;width:48%;">
+                                <table style="width:100%;" border="0" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <td style="background-color:#f1f1f1;width:100%;">Bank Information</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table style="table-layout:fixed;font-family:tahoma;font-size:11px;width:100%;" border="0" cellpadding="0" cellspacing="5">
+                                                <tr>
+                                                    <td class="entrytitlecell">Bank Name:</td>
+                                                    <td><asp:textbox maxlength="255" validate="" caption="Bank Name" required="true" TabIndex="5" cssclass="entry" Width="95%" ID="txtBankName" runat="server"></asp:textbox></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="entrytitlecell">Routing Number:</td>
+                                                    <td><asp:textbox maxlength="9" validate="IsValidTextLength(Input.value, 9, 9);" caption="Bank Routing Number" required="true" TabIndex="5" cssclass="entry" Width="95%" ID="txtBankRoutingNumber" runat="server"></asp:textbox></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="entrytitlecell">Account Number:</td>
+                                                    <td><asp:textbox maxlength="255" validate="" caption="Bank Account Number" required="true" TabIndex="5" cssclass="entry" Width="95%" ID="txtBankAccountNumber" runat="server"></asp:textbox></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="entrytitlecell">Account Type:</td>
+                                                    <td>
+                                                        <asp:DropDownList class="entry" id="cboBankType" runat="server" style="font-size:11px">
+                                                            <asp:ListItem value="0" text=""></asp:ListItem>
+                                                            <asp:ListItem value="C" text="Checking"></asp:ListItem>
+                                                            <asp:ListItem value="S" text="Savings"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height:40;border-top:solid 2px #CCCCCC;padding-left:10px;padding-right:10px;padding-top:5px;" valign="top">
+                    <table style="height:100%;font-family:tahoma;font-size:11px;width:100%;" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <a TabIndex="6" style="color:black" class="lnk" href="javascript:window.close();">
+                                    <img id="Img2" style="margin-right:6px;" runat="server" src="~/images/16x16_back.png" border="0" align="absMiddle"/>
+                                    Cancel and Close
+                                </a>
+                            </td>
+                            <td align="right">
+                                <a TabIndex="7" style="color:black"  class="lnk" href="#" onclick="Record_Save();return false;">
+                                    Add Deposit
+                                    <img id="Img3" style="margin-left:6px;" runat="server" src="~/images/16x16_forward.png" border="0" align="absMiddle"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div runat="server" id="dvError" style="display:none;vertical-align:bottom;">
+                        <table style="BORDER-RIGHT: #969696 1px solid; BORDER-TOP: #969696 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #969696 1px solid; COLOR: red; BORDER-BOTTOM: #969696 1px solid; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: #ffffda" cellspacing="10" cellpadding="0" width="100%" border="0">
+		                    <tr>
+			                    <td valign="top" style="width:20;">
+			                        <img runat="server" src="~/images/message.png" align="absmiddle" border="0">
+			                    </td>
+			                    <td runat="server" id="tdError">
+			                    </td>
+		                    </tr>
+	                    </table>
+	                </div>
+                </td>
+            </tr>
+        </table>
+        
+        <asp:LinkButton runat="server" ID="lnkSave" />
+    </form>
+</body>
+</html>

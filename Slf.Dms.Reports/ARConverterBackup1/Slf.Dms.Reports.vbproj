@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{580E8EF5-933B-4C97-ADD1-EA2724DAF300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Slf.Dms.Reports</RootNamespace>
+    <AssemblyName>Slf.Dms.Reports</AssemblyName>
+    <MyType>Windows</MyType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Slf.Dms.Reports.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Slf.Dms.Reports.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Website Only|AnyCPU' ">
+    <OutputPath>bin\Website Only\</OutputPath>
+    <NoWarn>42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <NoWarn>42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Website Only|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Website Only\</OutputPath>
+    <NoWarn>42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Drg.Util.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Slf.Dms.Client\Bin\Drg.Util.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Drg.Util.DataHelpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Slf.Dms.Client\Bin\Drg.Util.DataHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Drg.Util.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Slf.Dms.Client\Bin\Drg.Util.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Chart, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Design.Win, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Document, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Image, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Export.Rdf, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Viewer.Win, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="checkstoprint.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="checkstoprintreal.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="checktoprint.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="clearingaccounttransactions.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="creditorletter.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="creditorlettercopy.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="informationsheet.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="query_clients_agency.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="query_commission_batchpayments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="query_servicefee_all_payments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="query_servicefee_byagency_payments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="query_servicefee_my_payments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="query_servicefee_remainingreceivables.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_clients_accountsoverpercentage.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_clients_accountsoverpercentage_bycreditor.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_clients_depositdaysago.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_commission_batchpayments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_servicefee_agency.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_servicefee_agency_charges.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_servicefee_agency_payments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_servicefee_all_payments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="report_servicefee_my.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_servicefee_my_charges.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="report_servicefee_my_payments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="welcomecallletter.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="welcomecoverletter.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="welcomeletter.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="checkstoprint.resx">
+      <DependentUpon>checkstoprint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="checkstoprintreal.resx">
+      <DependentUpon>checkstoprintreal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="checktoprint.resx">
+      <DependentUpon>checktoprint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clearingaccounttransactions.resx">
+      <DependentUpon>clearingaccounttransactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="creditorletter.resx">
+      <DependentUpon>creditorletter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="creditorlettercopy.resx">
+      <DependentUpon>creditorlettercopy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="informationsheet.resx">
+      <DependentUpon>informationsheet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="welcomeletter.resx">
+      <DependentUpon>welcomeletter.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="query_clients_agency.resx">
+      <DependentUpon>query_clients_agency.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="query_commission_batchpayments.resx">
+      <DependentUpon>query_commission_batchpayments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="query_servicefee_all_payments.resx">
+      <DependentUpon>query_servicefee_all_payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="query_servicefee_byagency_payments.resx">
+      <DependentUpon>query_servicefee_byagency_payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="query_servicefee_my_payments.resx">
+      <DependentUpon>query_servicefee_my_payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="query_servicefee_remainingreceivables.resx">
+      <DependentUpon>query_servicefee_remainingreceivables.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_clients_accountsoverpercentage.resx">
+      <DependentUpon>report_clients_accountsoverpercentage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_clients_accountsoverpercentage_bycreditor.resx">
+      <DependentUpon>report_clients_accountsoverpercentage_bycreditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_clients_depositdaysago.resx">
+      <DependentUpon>report_clients_depositdaysago.vb</DependentUpon>
+    </EmbeddedResource>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <EmbeddedResource Include="report_commission_batchpayments.resx">
+      <DependentUpon>report_commission_batchpayments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_servicefee_agency.resx">
+      <DependentUpon>report_servicefee_agency.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_servicefee_agency_charges.resx">
+      <DependentUpon>report_servicefee_agency_charges.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_servicefee_agency_payments.resx">
+      <DependentUpon>report_servicefee_agency_payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_servicefee_all_payments.resx">
+      <DependentUpon>report_servicefee_all_payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_servicefee_my.resx">
+      <DependentUpon>report_servicefee_my.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_servicefee_my_charges.resx">
+      <DependentUpon>report_servicefee_my_charges.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report_servicefee_my_payments.resx">
+      <DependentUpon>report_servicefee_my_payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="welcomecallletter.resx">
+      <DependentUpon>welcomecallletter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="welcomecoverletter.resx">
+      <DependentUpon>welcomecoverletter.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1 @@
+﻿ alter table tbldocrelation add BackupFlag bit null

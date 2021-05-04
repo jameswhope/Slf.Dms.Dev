@@ -1,0 +1,1 @@
+﻿ALTER TABLE tblHarassmentClient Add DocumentID varchar(500) null  

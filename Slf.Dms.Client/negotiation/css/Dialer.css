@@ -1,0 +1,103 @@
+﻿.pnHeader
+{
+    background-color: #D3DEEF;
+    border-bottom: solid 1px white;
+    cursor: hand;
+}
+.pnHeader div
+{
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline;
+    margin-left: 5px;
+    padding-top: 5px;
+}
+.pnHeader span
+{
+    color: black;
+    font-style: italic;
+}
+.accordionHeader
+{
+    background-color: #D3DEEF;
+    color: black;
+    cursor: hand;
+    height: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 5px;
+    border-bottom: solid 1px white;
+    padding-top: 5px;
+    font-family: Verdana;
+    background-image: url('../../images/expand.png');
+    background-position:right center; 
+    background-repeat:no-repeat;  
+}
+.accordionHeaderSelected
+{
+    background-color: #D3DEEF;
+    color: #2D0000;
+    cursor: hand;
+    height: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 5px;
+    border-bottom: solid 1px white;
+    padding-top: 5px;
+    font-family: Verdana;
+    background-image: url('../../images/collapse.png');
+    background-position:right center; 
+    background-repeat:no-repeat;  
+}
+.accordionContent
+{
+    padding: 2px 2px 2px 2px;
+    border: solid 1px #D3DEEF;
+}
+.thCall
+{
+    text-align: left;
+    white-space: nowrap;
+}
+.tdLabel
+{
+    font-weight: bold;
+}
+.tdSep
+{
+    width: 10;
+    background-image: url('../../images/dot.png');
+    background-repeat: repeat-y;
+    background-position: center top;
+}
+.gridviewHeader
+{
+    font-weight: bold;
+    background-color: #C0C0C0;
+}
+.subitemHeader
+{
+    font-weight: bold;
+}
+.subitem
+{
+    font-weight: normal;
+}
+.gridviewItem
+{
+    font-weight: normal;
+    height: 20px;
+}
+.tdHSep
+{
+    height: 10;
+    background-image: url('../images/dot.png');
+    background-repeat: repeat-x;
+    background-position: left center;
+}
+.btn
+{
+    font-family: Tahoma;
+    font-size: 10px;
+}

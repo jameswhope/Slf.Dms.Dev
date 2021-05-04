@@ -1,0 +1,186 @@
+.igdw_NautilusControl
+{
+	background-color:Transparent;
+	font-size:12px;
+	font-family: Arial;
+	border-width:0px;
+	margin-bottom:73px;
+}
+
+
+.igdw_NautilusHeaderArea
+{
+	font-weight:bold;
+	border-width:0px;
+	height: 30px;
+	cursor:default;
+	color:White;
+	vertical-align:baseline;
+}
+
+
+.igdw_NautilusBodyContent
+{
+	background-color:White;
+	border:solid 0px #999999;
+}
+
+
+.igdw_NautilusHeaderButton
+{
+	margin:0px 8px 0px 0px;
+	cursor:pointer;
+}
+
+
+.igdw_NautilusHeaderCaption
+{
+	margin-top:16px;
+	margin-left:6px;
+	padding-top:10px;
+	color:White;
+	vertical-align:middle;
+}
+
+
+.igdw_NautilusHeaderButtonArea
+{
+	width: 120px;
+	vertical-align:middle;
+}
+
+
+.igdw_NautilusHeaderImage
+{
+	cursor:default;
+}
+
+
+.igdw_NautilusModalBackground
+{
+	background-color:White;
+	filter: alpha(opacity : 50);
+	opacity: 0.5;
+	z-index: 99999;
+}
+
+
+.igdw_NautilusResizingHandle
+{
+	cursor:se-resize;
+}
+
+
+/* used only when header visible */
+.igdw_NautilusHeaderCornerLeft
+{
+	background-position:top left ;
+	background-image: url(./images/igdw_topleft.gif);
+	font-size:1px;
+	width: 4px;
+}
+
+
+/* used only when header visible */
+.igdw_NautilusHeaderContent
+{
+	background-image: url(./images/igdw_top.gif);
+	padding-top:7px;
+	vertical-align:top;
+}
+
+
+/* used only when header visible */
+.igdw_NautilusHeaderCornerRight
+{
+	background-position:top right ;
+	background-image: url(./images/igdw_topright.gif);
+	font-size:1px;
+	width: 4px;
+}
+
+
+/* used only when header hidden */
+.igdw_NautilusBodyCornerTopLeft
+{
+	background-position:top left ;
+	background-image: url(./images/igdw_toplefthidden.gif);
+	font-size:1px;
+	height: 13px;
+	width: 4px;
+}
+
+
+/* used only when header hidden */
+.igdw_NautilusBodyEdgeTop
+{
+	background-image: url(./images/igdw_tophidden.gif);
+	font-size:1px;
+	height: 13px;
+}
+
+
+/* used only when header hidden */
+.igdw_NautilusBodyCornerTopRight
+{
+	background-position:top right ;
+	background-image: url(./images/igdw_toprighthidden.gif);
+	font-size:1px;
+	height: 13px;
+	width: 4px;
+}
+
+
+.igdw_NautilusBodyEdgeLeft
+{
+	background-position:top left ;
+	background-image: url(./images/igdw_edgeleft.gif);
+	font-size:1px;
+	width: 4px;
+}
+
+
+.igdw_NautilusBodyEdgeRight
+{
+	background-position:top right ;
+	background-image: url(./images/igdw_edgeright.gif);
+	font-size:1px;
+	width: 4px;
+}
+
+
+.igdw_NautilusBodyCornerBottomLeft
+{
+	background-position:bottom left ;
+	background-image: url(./images/igdw_bottomleft.gif);
+	font-size:1px;
+	width: 4px;
+	height: 13px;
+}
+
+
+.igdw_NautilusBodyContentArea
+{
+	vertical-align:top;
+}
+
+
+.igdw_NautilusBodyCornerBottomRight
+{
+	background-position:bottom right ;
+	background-image: url(./images/igdw_bottomright.gif);
+	font-size:1px;
+	width: 4px;
+	height: 13px;
+}
+
+
+.igdw_NautilusBodyEdgeBottom
+{
+	background-position:bottom ;
+	background-image: url(./images/igdw_bottom.gif);
+	font-size:1px;
+	height: 13px;
+}
+
+

@@ -1,0 +1,88 @@
+<%@ Master Language="VB" MasterPageFile="~/Site.Master" CodeFile="negotiation.master.vb" Inherits="negotiation" %>
+<style type="text/css">
+    .headItem5
+    {
+        background-color: #DCDCDC;
+        border-bottom: solid 1px #d3d3d3;
+        font-weight: normal;
+        color: Black;
+        font-size: 11px;
+        font-family: tahoma;
+    }
+    .headItem5 a
+    {
+        text-decoration: none;
+        display: block;
+        color: Black;
+        font-weight: 200;
+    }
+    .listItem
+    {
+        cursor: pointer;
+        border-bottom: solid 1px #d3d3d3;
+    }
+    .entry
+    {
+        font-family: tahoma;
+        font-size: 11px;
+        width: 100%;
+    }
+    .entry2
+    {
+        font-family: tahoma;
+        font-size: 11px;
+    }
+</style>
+<asp:Content ID="cntMenu" ContentPlaceHolderID="cphMenu" Runat="Server">
+<asp:ScriptManager ID="ScriptManager1" AsyncPostBackTimeout="300000" runat="server" EnablePageMethods="true" EnablePartialRendering="true">
+</asp:ScriptManager>
+
+<asp:Panel ID="pnlMenu" runat="server">
+    <table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false" >
+        <tr>
+            <td>
+                <img width="8" height="1" src="~/images/spacer.gif" alt="" /></td>
+            <td nowrap="true">
+                <a runat="server" class="menuButton" href="~/research/default.aspx">
+                    <img alt="" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_admin.png" />Research Home</a></td>
+            <asp:PlaceHolder ID="pnlStructure" runat="server">
+            <td class="menuSeparator">|</td>
+            <td nowrap="true">
+                <a runat="server" class="menuButton" href="~/research/negotiation/structure/default.aspx">
+                    <img alt="" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_usersecurity.png" />Setup Pods</a></td>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="pnlCriteria" runat="server">
+            <td class="menuSeparator">|</td>
+            <td nowrap="true">
+                <a runat="server" class="menuButton" href="~/research/negotiation/master/default.aspx">
+                    <img alt="" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_tools.png" />Master Criteria</a></td>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="pnlAssignment" runat="server">
+            <td class="menuSeparator">|</td>
+            <td nowrap="true">
+                <a runat="server" class="menuButton" href="~/research/negotiation/assignment/default.aspx">
+                    <img alt="" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_user_new.png" />Assign Criteria</a></td>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="pnlPreview" runat="server">
+            <td class="menuSeparator">|</td>
+            <td nowrap="true">
+                <a runat="server" class="menuButton" href="~/research/negotiation/preview/default.aspx">
+                    <img alt="" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_table.png" />Preview</a></td>
+            </asp:PlaceHolder>
+            <td style="width:100%;">&nbsp;</td>
+        </tr>
+    </table>
+</asp:Panel>
+</asp:Content>
+
+<asp:Content ID="cntBody" ContentPlaceHolderID="cphBody" Runat="Server">
+<asp:Panel ID="pnlBody" runat="server">
+    <asp:ContentPlaceHolder id="cphBody" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Panel>
+</asp:Content>

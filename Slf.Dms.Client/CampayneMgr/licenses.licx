@@ -1,0 +1,6 @@
+Infragistics.WebUI.Misc.WebPanel, Infragistics2.WebUI.Misc.v8.2, Version=8.2.20082.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb
+GrapeCity.ActiveReports.SectionReport, GrapeCity.ActiveReports, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff
+GrapeCity.ActiveReports.PageReport, GrapeCity.ActiveReports, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff
+GrapeCity.ActiveReports.Viewer.Win.Viewer, GrapeCity.ActiveReports.Viewer.Win, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff
+GrapeCity.ActiveReports.Viewer.Wpf.Viewer, GrapeCity.ActiveReports.Viewer.Wpf, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff
+GrapeCity.ActiveReports.Export.Pdf.Section.PdfExport, GrapeCity.ActiveReports.Export.Pdf, Version=13.0.15823.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff

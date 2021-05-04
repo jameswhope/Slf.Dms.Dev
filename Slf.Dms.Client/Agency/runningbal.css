@@ -1,0 +1,30 @@
+﻿.tdpaycb
+{
+	background-color:#FFFFE0;
+	border-bottom:dotted 1px #000000;
+}
+.balpos
+{
+	background-color:#E1E1E1;
+	border-bottom:dotted 1px #000000;
+}
+.balneg
+{
+	background-color:#E1E1E1;
+	color:red;
+	border-bottom:dotted 1px #000000;
+}
+.batched
+{
+	background-color:#C5E2F7;
+	color:#000000;
+	border-bottom:dotted 1px #000000;
+}
+.norm
+{
+	border-bottom:solid 1px #000000;
+}
+.hdr
+{
+	background-color:#CCCCCC;
+}

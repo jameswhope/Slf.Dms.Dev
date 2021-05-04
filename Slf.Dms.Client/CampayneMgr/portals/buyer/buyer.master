@@ -1,0 +1,33 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/portals/portal.master" AutoEventWireup="false"
+    CodeFile="buyer.master.vb" Inherits="portals_buyer_buyer" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <asp:ContentPlaceHolder ID="cphPortalHead" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphPortalMenu" runat="Server">
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" id="menuBuyer" runat="server"
+        style="display: block;">
+        <tr>
+            <td style="width: 150">
+                <h1>
+                    Buyer Portal</h1>
+            </td>
+            <td align="right">
+                <ul class="portalnav" id="portalnav-one"">
+                    <li><a id="A5" runat="server" href="default.aspx" style="z-index: 1000!important">
+                        <img src='<%=resolveurl("../../images/home.png") %>' alt="Home" style="border: none;" /></a></li>
+                    <li><a id="A1" runat="server" href="summary.aspx" style="z-index: 1000!important">
+                        Summary</a></li>
+                    <li><a id="A3" runat="server" href="leads.aspx" style="z-index: 1000!important">
+                        Leads</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <asp:HiddenField ID="hdnUserTypeID" runat="server" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:ContentPlaceHolder ID="cphPortalBody" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

@@ -1,0 +1,1087 @@
+<%@ Page Title="" Language="VB" MasterPageFile="~/Clients/client/client.master" AutoEventWireup="false"
+    CodeFile="Default.aspx.vb" Inherits="Clients_client_cancellation_Default" %>
+
+<%@ MasterType TypeName="clients_client" %>
+
+<%@ Register Src="~/Clients/client/cancellation/webparts/CancellationNotes.ascx" TagName="SettlementNotes"
+    TagPrefix="webPart" %>
+<%@ Register Src="~/Clients/client/cancellation/webparts/AccountSummary.ascx" TagName="ClientAccountSummary"
+    TagPrefix="webPart" %>
+<%@ Register Src="~/Clients/client/cancellation/webparts/CancellationCalculator.ascx" TagName="CancelCalculator"
+    TagPrefix="webPart" %>
+<%@ Register Src="~/Clients/client/MultipleDeposit.ascx" TagName="MultipleDeposit"
+    TagPrefix="uc1" %>
+<%@ Register Src="~/Clients/client/cancellation/webparts/CancellationSummary.ascx" TagName="CancelSummary"
+    TagPrefix="webPart" %>
+<%@ Register Assembly="obout_Flyout2_NET" Namespace="OboutInc.Flyout2" TagPrefix="cc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphBody" runat="Server">
+
+    <script type="text/javascript" src="<%= ResolveUrl("~/jscript/onlydigits.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveUrl("~\jscript\validation\display.js") %>"></script>
+    
+    <style type="text/css">
+        .chkBoxIndent input
+        {
+            margin-left: -20px;
+        }
+        .chkBoxIndent td
+        {
+            padding-left: 20px;
+        }
+        .acc-header, .acc-selected
+        {
+            background-color: #3376AB;
+            margin-bottom: 2px;
+            padding: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            height: 25px;
+            vertical-align: middle;
+        }        
+        .acc-content
+        {
+            margin-bottom: 2px;
+            padding: 2px;
+        }
+        .acc-selected, .acc-content
+        {
+            border: solid 1px #666666;
+        }
+        .modalBackgroundRpts
+        {
+            background-color: #808080;            
+        }
+        .modalPopupRpts
+        {
+            background-color: #F5FAFD;
+            border-width: 1px;
+            border-style: ridge;
+            border-color: Gray;
+            padding: 0px;
+            width: 70%;
+        }
+        .argumentSpan
+        {
+            width: 100%;
+            background-color: #3376AB;
+            color: White;
+            height: 25px;
+            font-size: 10pt;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .formLabel {
+	        float: left;
+	        text-align: right;
+	        margin-right: 15px;
+	        width: 100px;
+        }
+    </style>
+
+    <script type="text/javascript">
+ function Survey_Save(bSaveData)
+    {
+        if (bSaveData==1){
+            var ddlReason = document.getElementById("<%= ddlReason.ClientID %>");
+            var lblReasonName = document.getElementById("<%= txtReasonName.ClientID %>");
+            var rdPayTo = document.getElementById("<%= rdPayTo.ClientID %>");
+            var rdOther = document.getElementById("<%= rdOther.ClientID %>");
+            var txtPayable = document.getElementById("<%= txtPayable.ClientID %>");
+            var lblFeeOwed = document.getElementById("<%= lblFeeOwed.ClientID %>");
+            var rdAgree = document.getElementById("<%= radAgree.ClientID %>");
+            var rdDisagree = document.getElementById("<%= radDisagree.ClientID %>");
+            var rdAccept = document.getElementById("<%= radAccept.ClientID %>");
+            var rdReject = document.getElementById("<%= radReject.ClientID %>");
+            
+            HideMessage();
+            RemoveBorder(ddlReason);
+            RemoveBorder(lblReasonName);
+            RemoveBorder(rdPayTo);
+            RemoveBorder(rdOther);
+            RemoveBorder(txtPayable);
+            RemoveBorder(rdAgree);
+            RemoveBorder(rdDisagree);
+            RemoveBorder(rdAccept);
+            RemoveBorder(rdReject);
+            
+            if (ddlReason.value == "SL"){
+                ShowMessage("Please Select a reason for cancellation.")
+                AddBorder(ddlReason);
+                return false;
+            }
+            
+            if (ddlReason.value == "BK" || ddlReason.value == "RA" ||ddlReason.value == "SA" || ddlReason.value == "BKDR" || ddlReason.value == "FC"){
+                if (trim(lblReasonName.value) == ""){
+                    ShowMessage("Please Enter name.")
+                    AddBorder(lblReasonName);
+                    return false;
+                }
+            }
+            
+            if (!(rdOther.checked || rdPayTo.checked)){                
+                ShowMessage("Please Select a valid value for Payable To.")
+                AddBorder(rdPayTo);
+                AddBorder(rdOther);
+                return false;                
+            }
+            
+            if (rdOther.checked && trim(txtPayable.value) == ""){                
+                ShowMessage("Please Enter a value for Payable To")
+                AddBorder(txtPayable);
+                return false;                
+            }
+            
+            if (!isNaN(parseInt(lblFeeOwed.outerText.replace(",","").replace("$","")))){
+                if (parseInt(lblFeeOwed.outerText.replace(",","").replace("$","")) > 0){
+                    if (!(rdAgree.checked || rdDisagree.checked)){                
+                        ShowMessage("Please Select if the client agreed to pay the fee")
+                        AddBorder(rdAgree);
+                        AddBorder(rdDisagree);
+                        return false;                
+                    }
+                }
+                else{
+                    if (!(rdAccept.checked || rdReject.checked)){                
+                        ShowMessage("Please Select if the client requested a refund")
+                        AddBorder(rdAccept);
+                        AddBorder(rdReject);
+                        return false;                
+                    }
+                }
+            } 
+            
+            if (parseInt(document.getElementById("<%= hdnMaintFeeCount.ClientID %>").value) + parseInt(document.getElementById("<%= hdnOtherFeeCount.ClientID %>").value) > 3){
+                var r = showModalDialog('<%= ResolveUrl("~/util/pop/holder.aspx") %>?t=Manager Approval&id='+ <%=DataClientID %> +'&mid=' +<%=MatterId %> +'&p=<%= ResolveUrl("~/Clients/client/cancellation/popup/ManagerApproval.aspx") %>', window, 'status:off;help:off;dialogWidth:400px;dialogHeight:400px');
+                if(r != -1)
+                {
+                    <%= ClientScript.GetPostBackEventReference(lnkSave, Nothing) %>;
+                }  
+                
+            }
+            else{
+                <%= ClientScript.GetPostBackEventReference(lnkSave, Nothing) %>;
+            }
+            
+        }else{
+            <%= ClientScript.GetPostBackEventReference(lnkCancel, Nothing) %>;
+        }
+    }
+    function AdhocClick(aid){
+         var r= showModalDialog('<%= ResolveUrl("~/util/pop/holder.aspx") %>?t=Save Adhoc ACH&id='+ <%=DataClientId %> +'&ahachid='+ aid +'&p=<%= ResolveUrl("~/clients/client/cancellation/popup/AddAch.aspx") %>', window, 'status:off;help:off;dialogWidth:700px;dialogHeight:400px');
+    }
+    function RuleClick(aid){
+         var r= showModalDialog('<%= ResolveUrl("~/util/pop/holder.aspx") %>?t=Save Adhoc ACH&id='+ <%=DataClientId %> +'&ruleachid='+ aid +'&p=<%= ResolveUrl("~/clients/client/cancellation/popup/AddRule.aspx") %>', window, 'status:off;help:off;dialogWidth:700px;dialogHeight:400px');
+    }
+    function Record_AddAdHocACH()
+    {
+        var r= showModalDialog('<%= ResolveUrl("~/util/pop/holder.aspx") %>?t=Add Adhoc ACH&a=a&id='+ <%=DataClientId %> +'&p=<%= ResolveUrl("~/clients/client/cancellation/popup/AddAch.aspx") %>', window, 'status:off;help:off;dialogWidth:700px;dialogHeight:400px');
+    }
+    function Record_AddRuleACH()
+    {
+        var r= showModalDialog('<%= ResolveUrl("~/util/pop/holder.aspx") %>?t=Add Rule&a=a&id='+ <%=DataClientId %> +'&p=<%= ResolveUrl("~/clients/client/cancellation/popup/AddRule.aspx") %>', window, 'status:off;help:off;dialogWidth:700px;dialogHeight:400px');
+    }
+    function ChangeStatus(i) {
+        //dvReason
+        if (i == 1) {
+            document.getElementById("<%= dvACH.ClientID %>").style.display = "inline";
+            document.getElementById("<%= dvRule.ClientID %>").style.display = "inline";
+            document.getElementById("<%= dvAddRule.ClientID %>").style.display = "inline";
+
+        }
+        else {
+            document.getElementById("<%= dvACH.ClientID %>").style.display = "none";
+            document.getElementById("<%= dvRule.ClientID %>").style.display = "none";
+            document.getElementById("<%= dvAddRule.ClientID %>").style.display = "none";
+
+        }
+    }
+    function ShowRefund(i) {
+        var hdnRetainer = document.getElementById("<%= hdnTotalRetainer.ClientID %>");
+        var totalRefund = document.getElementById("<%= lblRefundAmt.ClientID %>");
+        var hdnRefund = document.getElementById("<%= hdnRefundAmt.ClientID %>");
+        var totalMaint = document.getElementById("<%= hdnTotalMaintRefund.ClientID %>");
+        var totalOther = document.getElementById("<%= hdnTotalOther.ClientID %>");
+        
+        //dvReason
+        if (i == 1) {
+            document.getElementById("<%= trChooseRefund.ClientID %>").style.display = "inline";
+            totalRefund.innerText = FormatNumber((parseFloat(hdnRefund.value) + parseFloat(hdnRetainer.value) + parseFloat(totalMaint.value) + parseFloat(totalOther.value)), true, 2);
+        }
+        else {
+            document.getElementById("<%= trChooseRefund.ClientID %>").style.display = "none";
+            totalRefund.innerText = FormatNumber(parseFloat(hdnRefund.value), true, 2);
+        }
+    }  
+ 
+    function ExcludeFeeAmount(amountToExclude, chkSelect){
+        var FeesOwedLabel = document.getElementById("<%=lblFeeOwed.ClientID %>");        
+        var totalAmount = parseFloat(FeesOwedLabel.innerText.replace("$","").replace(",",""));
+        
+        if (isNaN(totalAmount) == true){
+            totalAmount = parseFloat(FeesOwedLabel.innerText.replace("$","").replace(",","").replace("(","").replace(")",""));
+            if (isNaN(totalAmount) == false){
+                totalAmount = totalAmount;
+            }
+        }
+        
+        if (chkSelect.checked){
+            FeesOwedLabel.innerText = FormatNumber((totalAmount - amountToExclude), true, 2);
+        }
+        else{
+            FeesOwedLabel.innerText = FormatNumber((totalAmount + amountToExclude), true, 2);
+        }        
+    }
+    function ShowPayTo(showPanel){
+        if (showPanel == 1) {
+            document.getElementById("<%= trPayable.ClientID %>").style.display = "inline";
+        }
+        else {
+            document.getElementById("<%= trPayable.ClientID %>").style.display = "none";
+            document.getElementById("<%= txtPayable.ClientID %>").value = "";
+        }
+    }
+    function RefundMaintFee(amountToExclude, chkSelect){
+        var totalRefund = document.getElementById("<%= lblRefundAmt.ClientID %>");
+        var totalMaint = document.getElementById("<%= hdnTotalMaintRefund.ClientID %>");
+        var totalAmount = parseFloat(totalRefund.innerText.replace("$","").replace(",",""));
+        var maintFee = document.getElementById("<%= hdnMaintFeeCount.ClientID %>");
+        var MaintFeeCount = parseInt(maintFee.value);
+        
+        if (isNaN(totalAmount) == true){
+            totalAmount = parseFloat(totalRefund.innerText.replace("$","").replace(",","").replace("(","").replace(")",""));
+            if (isNaN(totalAmount) == false){
+                totalAmount = totalAmount;
+            }
+        }
+        
+        if (chkSelect.checked){
+            totalRefund.innerText = FormatNumber((totalAmount + amountToExclude), true, 2);
+            totalMaint.value = parseFloat(totalMaint.value) + amountToExclude;
+            MaintFeeCount = MaintFeeCount + 1;
+        }
+        else{
+            totalRefund.innerText = FormatNumber((totalAmount - amountToExclude), true, 2);
+            totalMaint.value = parseFloat(totalMaint.value) - amountToExclude;
+            if (MaintFeeCount > 0)  MaintFeeCount = MaintFeeCount - 1;
+        }   
+        
+        maintFee.value = MaintFeeCount;     
+    }     
+    function RefundOtherFee(amountToExclude, chkSelect){
+        var totalRefund = document.getElementById("<%= lblRefundAmt.ClientID %>");
+        var totalOther = document.getElementById("<%= hdnTotalOther.ClientID %>");
+        var totalAmount = parseFloat(totalRefund.innerText.replace("$","").replace(",",""));
+        var OtherFee = document.getElementById("<%= hdnOtherFeeCount.ClientID %>");
+        var feeCount = parseInt(OtherFee.value);
+        
+        if (isNaN(totalAmount) == true){
+            totalAmount = parseFloat(totalRefund.innerText.replace("$","").replace(",","").replace("(","").replace(")",""));
+            if (isNaN(totalAmount) == false){
+                totalAmount = totalAmount;
+            }
+        }
+        
+        if (chkSelect.checked){
+            totalRefund.innerText = FormatNumber((totalAmount + amountToExclude), true, 2);
+            totalOther.value = parseFloat(totalOther.value) + amountToExclude;
+            feeCount = feeCount + 1;
+        }
+        else{
+            totalRefund.innerText = FormatNumber((totalAmount - amountToExclude), true, 2);
+            totalOther.value = parseFloat(totalOther.value) - amountToExclude;
+            if (feeCount > 0)  feeCount = feeCount - 1;
+        }   
+        OtherFee.value = feeCount;     
+    }     
+    function EditMulti()
+    { 
+        var MTD = GetMTD();      
+        
+        
+        
+    } 
+    function OpenScanning(){
+        window.open('<%=ResolveUrl("~/clients/client/scanning.aspx") %>?id=<%=DataClientID %>&type=matter&rel=<%=MatterId %>', 'ScanDocument', 'left=0,top=0,width=' + screen.width + ',height=' + screen.height);
+    }
+    function trim(stringToTrim) {
+        return stringToTrim.replace(/^\s+|\s+$/g, "");
+    }
+    
+    function AddBorder(obj) {
+        obj.style.border = "solid 2px red";
+        obj.focus();
+    }
+    function RemoveBorder(obj) {
+        obj.style.cssText = obj.style.cssText.replace(/BORDER-TOP: red 2px solid;/g, '');
+        obj.style.cssText = obj.style.cssText.replace(/BORDER-LEFT: red 2px solid;/g, '');
+        obj.style.cssText = obj.style.cssText.replace(/BORDER-RIGHT: red 2px solid;/g, '');
+        obj.style.cssText = obj.style.cssText.replace(/BORDER-BOTTOM: red 2px solid;/g, '');
+    }
+
+    function ShowMessage(Value) {
+
+        var dvError = document.getElementById("<%= dvError.ClientID %>");
+        var tdError = document.getElementById("<%= tdError.ClientID %>");
+
+        dvError.style.display = "inline";
+        tdError.innerHTML = Value;
+    }
+    function HideMessage() {
+        var dvError = document.getElementById("<%= dvError.ClientID %>");
+        var tdError = document.getElementById("<%= tdError.ClientID %>");
+
+        tdError.innerHTML = "";
+        dvError.style.display = "none";
+    }
+    
+    </script>
+
+    <asp:UpdatePanel ID="upCancel" runat="server">
+        <ContentTemplate>            
+            <table runat="server" id="tblBody" style="font-family: tahoma; font-size: 11px; width: 100%;
+                height: 100%;" border="0" cellpadding="0" cellspacing="15"> 
+                <tr>
+                    <td style="color: #666666;">
+                        <a id="A1" runat="server" class="lnk" style="color: #666666;" href="~/clients">Clients</a>&nbsp;>&nbsp;<a
+                            id="lnkClient" runat="server" class="lnk" style="color: #666666;"></a>&nbsp;>&nbsp;Cancellation
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <ajaxToolkit:TabContainer ID="tabInfo" runat="server" 
+                            Width="98%" ActiveTabIndex="0" CssClass="tabContainer">
+                            <ajaxToolkit:TabPanel ID="tabCalc" runat="server">
+                                <HeaderTemplate>
+                                    Cancellation Information
+                                </HeaderTemplate>                                            
+                                <ContentTemplate>
+                                    <webPart:CancelCalculator ID="wpCalculator" runat="server" />
+                                </ContentTemplate>                                            
+                            </ajaxToolkit:TabPanel>  
+                            <ajaxToolkit:TabPanel ID="tabAcct" runat="server">
+                                <HeaderTemplate>
+                                    Account Summary
+                                </HeaderTemplate>                                            
+                                <ContentTemplate>
+                                    <webPart:ClientAccountSummary ID="AcctSummary" runat="server" />
+                                </ContentTemplate>                                            
+                            </ajaxToolkit:TabPanel>      
+                            <ajaxToolkit:TabPanel ID="tabDeposit" runat="server">
+                                <HeaderTemplate>
+                                    Deposit History
+                                </HeaderTemplate>                                            
+                                <ContentTemplate>
+                                    <asp:GridView ID="gvDeposit" runat="server" AllowSorting="False" AllowPaging="True" AutoGenerateColumns="False"
+                                        GridLines="None" DataSourceID="dsDeposit" CellPadding="0" BorderWidth="0px" PageSize="10" Width="100%">
+                                        <HeaderStyle ForeColor="Black" />
+                                        <EmptyDataTemplate>
+                                            <div>
+                                                No records to display.</div>
+                                        </EmptyDataTemplate>
+                                        <Columns>
+                                            <asp:BoundField DataField="TransactionDate" HeaderText="Transaction&nbsp;Date" DataFormatString="{0:d}">
+                                                <HeaderStyle HorizontalAlign="left" CssClass="headItem5" />
+                                                <ItemStyle HorizontalAlign="left" CssClass="listItem" />
+                                            </asp:BoundField>    
+                                            <asp:BoundField DataField="CheckNumber" HeaderText="Check&nbsp;Number" >
+                                                <HeaderStyle HorizontalAlign="left" CssClass="headItem5" />
+                                                <ItemStyle HorizontalAlign="left" CssClass="listItem" />
+                                            </asp:BoundField>                           
+                                            <asp:BoundField DataField="Amount" DataFormatString="{0:c}" HeaderText="Amount Deposited"
+                                                HtmlEncode="false" >
+                                                <HeaderStyle HorizontalAlign="right" CssClass="headItem5" />
+                                                <ItemStyle HorizontalAlign="Right" CssClass="listItem" />
+                                            </asp:BoundField>
+                                             <asp:BoundField DataField="Description" HeaderText="Description" >
+                                                <HeaderStyle HorizontalAlign="left" CssClass="headItem5" />
+                                                <ItemStyle HorizontalAlign="left" CssClass="listItem" />
+                                            </asp:BoundField>  
+                                            <asp:BoundField DataField="HoldBy" HeaderText="Hold&nbsp;Date" DataFormatString="{0:d}">
+                                                <HeaderStyle HorizontalAlign="Left" CssClass="headItem5" />
+                                                <ItemStyle HorizontalAlign="Left" CssClass="listItem" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Bounced">                                                                        
+                                                <ItemTemplate>
+                                                    <%#GetCheckBox(Eval("Bounce"))%>
+                                                </ItemTemplate>
+                                                <HeaderStyle HorizontalAlign="Center" CssClass="headItem5" />
+                                                <ItemStyle HorizontalAlign="Center" CssClass="listItem" />
+                                            </asp:TemplateField>  
+                                        </Columns>
+                                        <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                        <PagerStyle CssClass="pagerstyle" />
+                                    </asp:GridView>
+                                </ContentTemplate>                                            
+                            </ajaxToolkit:TabPanel>                
+                            <ajaxToolkit:TabPanel ID="tabNotes" runat="server">
+                                <HeaderTemplate>
+                                    Notes
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <webPart:SettlementNotes ID="cclNotes" runat="server" />
+                                </ContentTemplate>
+                            </ajaxToolkit:TabPanel>                                                      
+                        </ajaxToolkit:TabContainer>
+                    </td>
+                </tr>              
+                <tr>
+                    <td>
+                        <div id="dvNewCancel" runat="server" style="display:inline;">
+                            <table width="100%" style="border-style:solid;border-width:1px;border-color:Black;">
+                                <tr>
+                                    <td colspan="2">
+                                        <div runat="server" id="dvError" style="display: none;">
+                                            <table style="border-right: #969696 1px solid; border-top: #969696 1px solid; font-size: 11px;
+                                                border-left: #969696 1px solid; color: red; border-bottom: #969696 1px solid;
+                                                font-family: Tahoma; background-color: #ffffda" cellspacing="10" cellpadding="0"
+                                                width="400px" border="0">
+                                                <tr>
+                                                    <td valign="top" style="width: 20;">
+                                                        <img id="Img5" alt="" runat="server" src="~/images/message.png" align="absmiddle"
+                                                            border="0">
+                                                    </td>
+                                                    <td runat="server" id="tdError">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            &nbsp;
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="acc-header">
+                                        Cancellation Information
+                                    </td>                                   
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    SDA Balance :
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblSDABalance" runat="server" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                 <td>
+                                                    Fees Owed by the Client:
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblFeeOwed" runat="server" />
+                                                    <input type="hidden" ID="hdnFeeOwed" runat="server" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Funds On Hold :
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblFunds" runat="server" />
+                                                </td>
+                                            </tr>                                            
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                 <td>
+                                                    Available Funds in SDA :
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblSDA" runat="server" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Delivery Amount :
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblDelFee" Text="$15" runat="server"/>
+                                                </td>
+                                            </tr>                        
+                                            <tr id="trRefund" runat="server" style="display:none;">
+                                                 <td>
+                                                    Total Refund Amount :
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lblRefundAmt" Font-Bold="true" runat="server" />
+                                                    <input type="hidden" id="hdnRefundAmt" runat="server" />
+                                                </td>
+                                            </tr>                                          
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                        Reason For Cancellation :
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="ddlReason" AutoPostBack="true" runat="server"/>
+                                    </td>
+                                </tr>
+                                <tr id="trSubReason" runat="server" style="display:none;">
+                                     <td>
+                                        Sub Reason :
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="ddlSubReason" runat="server"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="dvReason1" runat="server" style="display:none;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lblReasonName" runat="server" />
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="txtReasonName" runat="server" CssClass="entry" Width="200px"/>
+                                                    </td>    
+                                                </tr>                                                                                    
+                                            </table>
+                                        </div>
+                                        <div id="dvReason2" runat="server" style="display:none;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lblAttPhone" Text="Attorney Phone:" runat="server" />
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="txtAttPhone" runat="server" CssClass="entry" Width="200px"/>
+                                                        <ajaxToolkit:MaskedEditExtender ID="meeNumber" runat="server" ClearMaskOnLostFocus="false"
+                                                            Mask="(999) 999-9999" MaskType="Number" PromptCharacter="#" TargetControlID="txtAttPhone">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                    </td>  
+                                                </tr> 
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lblAttEmail" Text="Attorney Email:" runat="server" />
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="txtAttEmail" runat="server" CssClass="entry" Width="200px"/>
+                                                    </td>  
+                                                </tr>     
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lblAttAddress" Text="Attorney Address:" runat="server" />
+                                                    </td>
+                                                    <td>
+                                                        Street:&nbsp;<asp:TextBox ID="txtAttStreet" runat="server" CssClass="entry" Width="150px"/><br />
+                                                        City:&nbsp;<asp:TextBox ID="txtAttCity" runat="server" CssClass="entry" Width="150px"/>&nbsp;
+                                                        State:&nbsp;<asp:DropDownList ID="ddlState" runat="server" width="50px"/>&nbsp;
+                                                        ZipCode:&nbsp;<asp:TextBox ID="txtAttZip" runat="server" MaxLength="5" CssClass="entry" Width="75px"/>
+                                                    </td>  
+                                                </tr>                                                                                       
+                                            </table>
+                                        </div>
+                                        <div id="dvReason3" runat="server" style="display:none;">
+                                            <table>  
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lblReasonText" runat="server" />
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="txtReason" runat="server" CssClass="entry" TextMode="MultiLine" Height="75px" Width="300px"/>
+                                                    </td>
+                                                </tr>                                      
+                                            </table>
+                                        </div>    
+                                </td>
+                                </tr>                                
+                                <tr id="trFundsAvailable" runat="server" style="display:none;">
+                                     <td>
+                                        Client Requested Refund :
+                                    </td>
+                                    <td>
+                                        <asp:RadioButton ID="radAccept" GroupName="radStatus" Text="Yes" runat="server" />
+                                        <asp:RadioButton ID="radReject" GroupName="radStatus" Text="No" runat="server"  />
+                                    </td>
+                                </tr>
+                                <tr id="trChooseRefund" runat="server" style="display:none;">
+                                    <td colspan="2">
+                                        <ajaxToolkit:TabContainer ID="tabFeedetails" runat="server" ScrollBars="Auto"
+                                            Width="70%" ActiveTabIndex="0" CssClass="tabContainer">
+                                            <ajaxToolkit:TabPanel ID="tabRetainer" runat="server">
+                                                <HeaderTemplate>
+                                                    Retainer Fee Details
+                                                </HeaderTemplate>                                            
+                                                <ContentTemplate>
+                                                    <asp:GridView ID="gvRetainer" runat="server" AutoGenerateColumns="false" 
+                                                            AllowPaging="True" AllowSorting="True" CssClass="datatable" CellPadding="0" BorderWidth="0px"
+                                                            PageSize="4" Width="60%" GridLines="None">
+                                                            <EmptyDataTemplate>
+                                                                <div> No Retainer Fees Listed.</div>
+                                                            </EmptyDataTemplate>
+                                                            <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" Height="30px" HorizontalAlign="Center" Font-Italic="true" />   
+                                                        <Columns>    
+                                                            <asp:TemplateField>                                                                        
+                                                                <ItemTemplate>
+                                                                    <input type="hidden" id="hdnRetainerId" runat="server" value='<%#DataBinder.Eval(Container.DataItem, "RegisterId")%>' />
+                                                                </ItemTemplate>
+                                                                <HeaderStyle HorizontalAlign="Center" CssClass="headItem5" />
+                                                                <ItemStyle HorizontalAlign="Center" CssClass="listItem" />
+                                                            </asp:TemplateField>                                                                  
+                                                            <asp:BoundField DataField="AccountName" HeaderText="Account" SortExpression="AccountName">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />                                                    
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="AccountStatus" HeaderText="Status" SortExpression="AccountStatus">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                            </asp:BoundField>                                                
+                                                            <asp:BoundField DataField="TransactionDate" DataFormatString="{0:d}" HeaderText="Date"
+                                                                SortExpression="TransactionDate">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Amount" DataFormatString="{0:c}" HeaderText="Original&nbsp;Amount" SortExpression="Amount">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                                            </asp:BoundField>                                                                    
+                                                        </Columns>
+                                                        <AlternatingRowStyle BackColor="White" />
+                                                        <RowStyle CssClass="row" />
+                                                        <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                                        <PagerStyle CssClass="pagerstyle" />
+                                                    </asp:GridView>  
+                                                    <input type="hidden" runat="server" id="hdnTotalRetainer" value="0"/>  
+                                                    <br />   
+                                                    <br />      
+                                                </ContentTemplate>                                            
+                                            </ajaxToolkit:TabPanel>  
+                                            <ajaxToolkit:TabPanel ID="tabMaint" runat="server">
+                                                <HeaderTemplate>
+                                                    Maintenance Fee Details
+                                                </HeaderTemplate>                                            
+                                                <ContentTemplate>
+                                                    <asp:GridView ID="gvMaintFee" runat="server" AutoGenerateColumns="false" 
+                                                            AllowPaging="False" Width="60%" AllowSorting="True" CssClass="datatable" CellPadding="0" BorderWidth="0px"
+                                                            PageSize="4" GridLines="None" Height="150px" >
+                                                            <EmptyDataTemplate>
+                                                                <div> No Maintenance Fees Listed.</div>
+                                                            </EmptyDataTemplate>
+                                                            <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" Height="30px" HorizontalAlign="Center" Font-Italic="true" />   
+                                                        <Columns> 
+                                                            <asp:TemplateField HeaderText="Void&nbsp;Fee">                                                                        
+                                                                <ItemTemplate>
+                                                                    <input type="checkbox" runat="server" id="chk_selectFee" />
+                                                                    <input type="hidden" id="hdnRegisterId" runat="server" value='<%#DataBinder.Eval(Container.DataItem, "RegisterId")%>' />
+                                                                </ItemTemplate>
+                                                                <HeaderStyle HorizontalAlign="Center" CssClass="headItem5" />
+                                                                <ItemStyle HorizontalAlign="Center" CssClass="listItem" />
+                                                            </asp:TemplateField>                                                                    
+                                                            <asp:BoundField DataField="TransactionDate" DataFormatString="{0:d}" HeaderText="Date"
+                                                                SortExpression="TransactionDate">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />                                                    
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Amount" DataFormatString="{0:c}" HeaderText="Original&nbsp;Amount" SortExpression="Amount">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                                            </asp:BoundField>                                                                    
+                                                        </Columns>
+                                                        <AlternatingRowStyle BackColor="White" />
+                                                        <RowStyle CssClass="row" />
+                                                        <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                                        <PagerStyle CssClass="pagerstyle" />
+                                                    </asp:GridView>   
+                                                    <br />
+                                                    <br />
+                                                </ContentTemplate>                                            
+                                            </ajaxToolkit:TabPanel>     
+                                            <ajaxToolkit:TabPanel ID="tabOther" runat="server">
+                                                <HeaderTemplate>
+                                                    Other Fee Details
+                                                </HeaderTemplate>                                            
+                                                <ContentTemplate>
+                                                    <asp:GridView ID="gvOtherFee" runat="server" AutoGenerateColumns="false" 
+                                                            AllowPaging="False" AllowSorting="False" CssClass="datatable" CellPadding="0" BorderWidth="0px"
+                                                            PageSize="4" Width="60%" GridLines="None" >
+                                                            <EmptyDataTemplate>
+                                                                <div> No Fees Listed.</div>
+                                                            </EmptyDataTemplate>
+                                                            <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" Height="30px" HorizontalAlign="Center" Font-Italic="true" />   
+                                                        <Columns>                                                                    
+                                                            <asp:TemplateField HeaderText="Void&nbsp;Fee">                                                                        
+                                                                <ItemTemplate>
+                                                                    <input type="checkbox" runat="server" id="chk_selectOtherFee" />
+                                                                    <input type="hidden" id="hdnOtherRegisterId" runat="server" value='<%#DataBinder.Eval(Container.DataItem, "RegisterId")%>' />
+                                                                    <input type="hidden" id="hdnEntryType" runat="server" value='<%#DataBinder.Eval(Container.DataItem, "EntryTypeId")%>' />
+                                                                </ItemTemplate>
+                                                                <HeaderStyle HorizontalAlign="Center" CssClass="headItem5" />
+                                                                <ItemStyle HorizontalAlign="Center" CssClass="listItem" />
+                                                            </asp:TemplateField>                                                                    
+                                                            <asp:BoundField DataField="TransactionDate" DataFormatString="{0:d}" HeaderText="Date"
+                                                                SortExpression="TransactionDate">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />                                                    
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Amount" DataFormatString="{0:c}" HeaderText="Amount" SortExpression="Amount">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                                            </asp:BoundField> 
+                                                            <asp:BoundField DataField="DisplayName" HeaderText="Name" SortExpression="DisplayName">
+                                                                <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                                                <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                                            </asp:BoundField>                                                                    
+                                                        </Columns>
+                                                        <AlternatingRowStyle BackColor="White" />
+                                                        <RowStyle CssClass="row" />
+                                                        <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                                        <PagerStyle CssClass="pagerstyle" />
+                                                    </asp:GridView>  
+                                                    <input type="hidden" runat="server" id="hdnTotalOther" value="0"/>  
+                                                    <br />   
+                                                    <br />      
+                                                </ContentTemplate>                                            
+                                            </ajaxToolkit:TabPanel>          
+                                        </ajaxToolkit:TabContainer>                                        
+                                    </td>                                    
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <asp:GridView ID="gvTransactions" runat="server" AutoGenerateColumns="false" 
+                                                AllowPaging="True" AllowSorting="True" CssClass="datatable" CellPadding="0" BorderWidth="1px"
+                                                PageSize="4" GridLines="None" Width="80%" BorderColor="Black" BorderStyle="Solid">
+                                                <EmptyDataTemplate>
+                                                    <div> No Fees Owed.</div>
+                                                </EmptyDataTemplate>
+                                                <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" Height="30px" HorizontalAlign="Center" Font-Italic="true" />   
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="Exclude&nbsp;Fee">                                                    
+                                                    <ItemTemplate>
+                                                        <input type="checkbox" runat="server" id="chk_selectRecord" />
+                                                    </ItemTemplate>
+                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headItem5" />
+                                                    <ItemStyle HorizontalAlign="Center" CssClass="listItem" />
+                                                </asp:TemplateField> 
+                                                <asp:BoundField DataField="Transaction Type" HeaderText="Type" SortExpression="Transaction Type">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />                                                    
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>                                                
+                                                <asp:BoundField DataField="Transaction Date" DataFormatString="{0:d}" HeaderText="Date"
+                                                    SortExpression="Transaction Date">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Original Amount" DataFormatString="{0:c}" HeaderText="Original&nbsp;Amount" SortExpression="Original Amount">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Amount Owed" DataFormatString="{0:c}" HeaderText="Amount&nbsp;Owed"
+                                                    SortExpression="Amount Owed">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Right" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Right" Wrap="false" />
+                                                </asp:BoundField>
+                                            </Columns>
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <RowStyle CssClass="row" />
+                                            <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                            <PagerStyle CssClass="pagerstyle" />
+                                        </asp:GridView>                                 
+                                    </td>
+                                </tr>
+                                <tr id="dvFeesOwed" runat="server" style="display:none;">
+                                    <td>
+                                        Client agreed to Pay Fees :
+                                    </td>
+                                    <td>
+                                        <asp:RadioButton ID="radAgree" GroupName="radAgreeStatus" Text="Yes" runat="server" />
+                                        <asp:RadioButton ID="radDisagree" GroupName="radAgreeStatus" Text="No" runat="server"  />
+                                    </td>
+                                </tr>    
+                                <%--<tr>
+                                    <td colspan="2" align="left" id="dvAddAdhoc" runat="server" style="display:none;">
+                                        <a href="#" class="lnk" id="lnkEditMulti" runat="server">
+                                            <img width="16" height="16" border="0" align="absmiddle" style="margin-top: 1px;
+                                            margin-right: 4px" src="<%=ResolveUrl("~/images/16x16_DataEntry.png") %>" />Edit Bank Information</a>&nbsp;&nbsp;
+                                        
+                                        <cc1:Flyout ID="Flyout1" runat="server" Align="LEFT" Position="BOTTOM_CENTER" CloseEvent="NONE" OpenEvent="ONCLICK">
+                                            <div style="width: 315px; border: solid 1px #70A8D1; background-color: #F0F5FB;">
+                                                <h1 class="entry" style="background-image: url(<%=ResolveUrl("~/images/menubacksmall.bmp") %>); background-repeat:repeat-x; margin:0; text-align:center; padding:5px; font-weight:normal;">Deposit Schedule</h1>
+                                                <uc1:MultipleDeposit ID="multipleDepositList" runat="server" />
+                                            </div>
+                                        </cc1:Flyout>
+                                    </td>
+                                </tr>  --%>                          
+                                <tr id="dvACH" runat="server" style="display:none;">
+                                    <td colspan="2">
+                                        <asp:GridView ID="gvACH" runat="server" AutoGenerateColumns="false" 
+                                            AllowPaging="True" AllowSorting="True" CssClass="datatable" CellPadding="0" BorderWidth="1px"
+                                            PageSize="4" GridLines="None" Width="80%" BorderColor="Black" BorderStyle="Solid">
+                                            <EmptyDataTemplate>
+                                                <div> No ACH Info.</div>
+                                            </EmptyDataTemplate>
+                                            <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Center" Font-Italic="true" />
+                                            <Columns>
+                                                <asp:BoundField DataField="BankName" HeaderText="Bank Name" SortExpression="BankName">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center"  Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="BankRoutingNumber" HeaderText="Bank Routing #" SortExpression="BankRoutingNumber">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center"  Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="BankAccountNumber" HeaderText="Bank Acct #" SortExpression="BankAccountNumber">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center"  Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="BankType" HeaderText="Bank Type" SortExpression="BankType">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center"  Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="DepositMethod" HeaderText="Dep Method" SortExpression="DepositMethod">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center"  Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="DepositDay" HeaderText="Dep Day" SortExpression="DepositDay">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center"  Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="DepositStartDate" DataFormatString="{0:d}" HeaderText="Dep Start Date"
+                                                    SortExpression="DepositStartDate">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center"  Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="DepositAmount" DataFormatString="{0:c}" HeaderText="Dep Amt"
+                                                    SortExpression="DepositAmount">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Right"  Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Right"  Wrap="false" />
+                                                </asp:BoundField>
+                                            </Columns>
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <RowStyle CssClass="row" />
+                                            <PagerSettings Mode="NumericFirstLast" Visible="true" />
+                                            <PagerStyle CssClass="pagerstyle" />
+                                        </asp:GridView>
+                                    </td>
+                                </tr>   
+                                <tr>
+                                    <td colspan="2" align="left" id="dvAddRule" runat="server" style="display:none;">
+                                        <a href="#" onclick="javascript:Record_AddAdHocACH();return false;" class="lnk" id="achAddButton" runat="server">
+                                            <img width="16" height="16" border="0" align="absmiddle" style="margin-top: 1px;
+                                            margin-right: 4px" src="<%=ResolveUrl("~/images/16x16_tools.png") %>" />Add Adhoc</a>&nbsp;&nbsp;
+                                        <a href="#" onclick="javascript:Record_AddRuleACH();return false;" class="lnk" id="addRule" runat="server">
+                                            <img width="16" height="16" border="0" align="absmiddle" style="margin-top: 1px;
+                                            margin-right: 4px" src="<%=ResolveUrl("~/images/16x16_tools.png") %>" />Add Rule</a>    
+                                    </td>
+                                </tr>                             
+                                <tr id="dvRule" runat="server" style="display:none;">
+                                    <td colspan="2">
+                                        <asp:GridView ID="gvRules" runat="server" AutoGenerateColumns="false" AllowPaging="True" AllowSorting="True"
+                                             CssClass="datatable" CellPadding="0" BorderWidth="1px" 
+                                            PageSize="4" GridLines="None" Width="80%" BorderColor="Black" BorderStyle="Solid">
+                                            <EmptyDataTemplate>
+                                                <div> No Rules.</div>
+                                            </EmptyDataTemplate>
+                                            <EmptyDataRowStyle BackColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Center" Font-Italic="true" />
+                                            <Columns>
+                                                <asp:TemplateField>                                                    
+                                                    <ItemTemplate>
+                                                        <input type="hidden" runat="server" id="hdnRuleId" value='<%#DataBinder.Eval(Container.DataItem, "FieldId")%>' />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="ClientID" HeaderText="ClientID" ReadOnly="True" SortExpression="ClientID"
+                                                    Visible="False" />
+                                                <asp:BoundField DataField="BankName" HeaderText="Bank Name" SortExpression="BankName">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="BankRoutingNumber" HeaderText="Bank Routing #" 
+                                                    SortExpression="BankRoutingNumber">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="BankAccountNumber" HeaderText="Bank Acct #" 
+                                                    SortExpression="BankAccountNumber">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="StartDate" DataFormatString="{0:d}" HeaderText="Start Date"
+                                                    SortExpression="StartDate">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="EndDate" DataFormatString="{0:d}" HeaderText="End Date"
+                                                    SortExpression="EndDate">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="DepositDay" HeaderText="Dep Day" SortExpression="DepositDay">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="DepositAmount" DataFormatString="{0:c}" HeaderText="Dep Amt"
+                                                    SortExpression="DepositAmount">
+                                                    <HeaderStyle CssClass="headItem5" Wrap="false" HorizontalAlign="Right" />
+                                                    <ItemStyle CssClass="listItem" Wrap="false" HorizontalAlign="Right" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="BankType" HeaderText="Bank Type" SortExpression="BankType">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="InitialDraftYN" HeaderText="Initial Draft" 
+                                                    SortExpression="InitialDraftYN">
+                                                    <HeaderStyle CssClass="headItem5" HorizontalAlign="Center" Wrap="false" />
+                                                    <ItemStyle CssClass="listItem" HorizontalAlign="Center" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="created" HeaderText="created" ReadOnly="True" SortExpression="created"
+                                                    Visible="False" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Delivery Method:
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="ddlDelivery" Width="100" runat="server" CssClass="entry">
+                                            <asp:ListItem Value="C" Text="Check" Selected="True"/>
+                                            <asp:ListItem Value="P" Text="Check By Phone"/>
+                                            <asp:ListItem Value="E" Text="Check By Email"/>
+                                        </asp:DropDownList>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Payable To:
+                                    </td>
+                                    <td>
+                                        <asp:RadioButton ID="rdPayTo" GroupName="radPayTo" Text="" runat="server" />
+                                        <asp:RadioButton ID="rdOther" GroupName="radPayTo" Text="Other" runat="server"  />
+                                    </td>
+                                </tr>
+                                <tr id="trPayable" runat="server" style="display:none;">
+                                    <td>
+                                        Enter PayableTo Information:
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtPayable" runat="server" CssClass="entry" Width="200px"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>               
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="trUpdate" runat="server" style="display:none;">
+                        <webPart:CancelSummary ID="cSummary" runat="server" />
+                    </td>
+                </tr>
+            </table>
+            
+            <div id="updateProgressDiv" style="display: none; height: 40px; width: 40px">
+                <asp:Image ID="imgLoading" runat="server" ImageUrl="~/images/loading.gif" />
+            </div>
+        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="lnkSave" EventName="click" />
+            <asp:AsyncPostBackTrigger ControlID="lnkPrintSurvey" EventName="click" />
+            <asp:AsyncPostBackTrigger ControlID="lnkPrintCheckRequest" EventName="click" />
+        </Triggers>
+    </asp:UpdatePanel>
+    <%--hidden buttons--%>
+    <asp:LinkButton runat="server" ID="lnkSave" />    
+    <asp:LinkButton runat="server" ID="lnkPrintSurvey" />    
+    <asp:LinkButton runat="server" ID="lnkPrintCheckRequest" />
+    <asp:LinkButton runat="server" ID="lnkCancel" />    
+    <asp:HiddenField runat="server" ID="hdnMaintFeeCount" />    
+    <asp:HiddenField runat="server" ID="hdnTotalMaintRefund" />    
+    <asp:HiddenField runat="server" ID="hdnOtherFeeCount" />    
+    
+    <asp:SqlDataSource ID="dsDeposit" runat="server" ConnectionString="<%$ AppSettings:connectionstring %>"
+            ProviderName="System.Data.SqlClient" SelectCommand="select TransactionDate, CheckNumber, [Description], Amount, (case when Bounce is null then 0 else 1 end) As Bounce,(case when Hold is not null and Hold < getdate() then null when [Clear] is not null then null else Hold end) As [HoldBy] from tblRegister where EntryTypeId = 3 and ClientId = @clientid and Void is null order by TransactionDate desc"
+            SelectCommandType="Text">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="" Name="clientId" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
+    <ajaxToolkit:UpdatePanelAnimationExtender ID="upaeCancel" BehaviorID="cancelAnimation"
+        runat="server" TargetControlID="upCancel">
+        <Animations>
+			<OnUpdating>
+				<Parallel duration="0">
+					<ScriptAction Script="onUpdating();" />  
+					<FadeOut minimumOpacity=".5" />
+				 </Parallel>
+			</OnUpdating>
+			<OnUpdated>
+				<Parallel duration="0">
+					<FadeIn minimumOpacity=".5" />
+					<ScriptAction Script="onUpdated();" /> 
+				</Parallel> 
+			</OnUpdated>
+        </Animations>
+    </ajaxToolkit:UpdatePanelAnimationExtender>
+
+    <script type="text/javascript">
+        function onUpdating() {
+            // get the update progress div
+            var updateProgressDiv = $get('updateProgressDiv');
+            // make it visible
+            updateProgressDiv.style.display = '';
+
+            //  get the gridview element
+            var gridView = $get("<%=tblBody.ClientID %>");
+
+            // get the bounds of both the gridview and the progress div
+            var gridViewBounds = Sys.UI.DomElement.getBounds(gridView);
+            var updateProgressDivBounds = Sys.UI.DomElement.getBounds(updateProgressDiv);
+
+            //    do the math to figure out where to position the element (the center of the gridview)
+            var x = gridViewBounds.x + Math.round(gridViewBounds.width / 2) - Math.round(updateProgressDivBounds.width / 2);
+            var y = gridViewBounds.y + Math.round(gridViewBounds.height / 2) - Math.round(updateProgressDivBounds.height / 2);
+
+            //    set the progress element to this position
+            Sys.UI.DomElement.setLocation(updateProgressDiv, x, y);
+        }
+
+        function onUpdated() {
+            // get the update progress div
+            var updateProgressDiv = $get('updateProgressDiv');
+            // make it invisible
+            updateProgressDiv.style.display = 'none';
+        }
+
+    </script>
+
+</asp:Content>

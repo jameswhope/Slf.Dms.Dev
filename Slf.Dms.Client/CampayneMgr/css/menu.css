@@ -1,0 +1,135 @@
+﻿/* File Created: March 14, 2012 */
+.menu
+{
+	width:100%;
+	position:relative;
+	float:right;
+	z-index:100;
+	font-family:arial, sans-serif;
+	/*padding-top:3px;*/
+}
+
+.menu ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+.menu ul ul
+{
+	font-size:12px;
+	visibility:hidden;
+	position:absolute;
+	height:0;
+	top:25px;
+	left:0;
+	width:149px;
+	border-top:1px solid #000;
+}
+
+.menu ul ul a
+{
+	font-size:12px;
+}
+
+.menu li
+{
+	float:right;
+	width:149px;
+	position:relative;
+}
+
+.menu a,.menu a:visited
+{
+	display:block;
+	font-size:14px;
+	text-decoration:none;
+	color:#fff;
+	width:138px;
+	height:25px;
+	background:#FFA12D;
+	padding-left:10px;
+	font-weight:700;
+}
+
+.menu ul ul a.drop,.menu ul ul a.drop:visited
+{
+	background:#fdf5ce url(../images/16x16_next.png) no-repeat 130px center;
+	font-size:12px;
+}
+
+.menu ul ul ul a,.menu ul ul ul a:visited
+{
+	background:#e2dfa8;
+	font-size:12px;
+}
+
+.menu ul ul ul a:hover
+{
+	background:#b2ab9b;
+	text-decoration:none;
+	font-size:12px;
+}
+
+.menu ul ul ul
+{
+	left:149px;
+	top:-25px;
+	width:149px;
+}
+
+.menu ul ul ul.left
+{
+	left:-149px;
+}
+
+.menu table
+{
+	position:absolute;
+	top:25px;
+	left:0;
+	border-collapse:collapse;
+}
+
+.menu ul ul a,.menu ul ul a:visited
+{
+	background:#e5e1d6;
+	color:#000;
+	height:auto;
+	line-height:1em;
+	width:128px;
+	border-width:0 1px 1px;
+	padding:5px 10px;
+}
+
+.menu ul li:hover ul,.menu ul a:hover ul
+{
+	visibility:visible;
+	font-size:12px;
+	text-decoration:none;
+}
+
+.menu ul :hover ul ul
+{
+	visibility:hidden;
+}
+
+.menu ul :hover ul :hover ul
+{
+	visibility:visible;
+	text-decoration:none;
+}
+
+.menu ul ul a.drop:hover,.menu ul ul :hover > a.drop
+{
+	background:#c9ba65 url(../images/16x16_next.png) no-repeat 130px center;
+	text-decoration:none;
+}
+
+.menu a:hover,.menu ul ul a:hover,.menu :hover > a,.menu ul ul :hover > a
+{
+	color:#c77405;
+	background:#fdf5ce;
+	text-decoration:none;
+}

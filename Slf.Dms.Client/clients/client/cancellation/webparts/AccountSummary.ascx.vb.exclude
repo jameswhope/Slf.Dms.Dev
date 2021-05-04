@@ -1,0 +1,23 @@
+﻿Imports System.Data
+Imports System.Linq
+Imports System.Collections.Generic
+Partial Class Clients_client_cancellation_webparts_AccountSummary
+    Inherits System.Web.UI.UserControl
+
+    Public Sub LoadAccounts(ByVal DataClientID As Integer)
+        dsSummary.SelectParameters("clientid").DefaultValue = DataClientID
+        dsSummary.DataBind()
+        gvSummary.DataBind()
+
+        lblAccount.Text += "(" & gvSummary.Rows.Count & ")"
+
+        dsMatter.SelectParameters("clientid").DefaultValue = DataClientID
+        dsMatter.DataBind()
+        gvMatter.DataBind()
+
+        lblMatters.Text += "(" & gvMatter.Rows.Count & ")"
+
+    End Sub
+    
+
+End Class

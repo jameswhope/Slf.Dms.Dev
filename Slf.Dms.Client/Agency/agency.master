@@ -1,0 +1,60 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="agency.master.vb"
+    Inherits="Agency_agency" %>
+
+
+<asp:Content ID="cntAgencyMenu" ContentPlaceHolderID="cphMenu" runat="Server">
+    <link href="css/agency.css" rel="stylesheet" type="text/css" />
+    <table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false">
+        <tr>
+            <td>
+                <img id="Img1" runat="server" width="8" height="1" src="~/images/spacer.gif" />
+            </td>
+            <td nowrap="true">
+                <a id="aDefault" runat="server" class="menuButton" href="Default.aspx">
+                    <img id="Img33" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_accounts.png" />Payment Dashboard</a>
+            </td>
+            <td class="menuSeparator">
+                |
+            </td>
+            <td nowrap="true">
+                <a id="aPaymentSummary" runat="server" class="menuButton" href="PaymentSummary.aspx">
+                    <img id="Img6" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_graph.png" />Payment Summary</a>
+            </td>
+            <td class="menuSeparator">
+                |
+            </td>
+            <td nowrap="true">
+                <a id="aComparison" runat="server" class="menuButton" href="Comparison.aspx">
+                    <img id="Img2" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_chart_bar.png" />Daily Comparison</a>
+            </td>
+             <td class="menuSeparator">
+                |
+            </td>
+            <td nowrap="true">
+                <a id="aRetention" runat="server" class="menuButton" href="client_retention.aspx">
+                    <img id="Img3" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_graph.png" />Client Retention</a>
+            </td>
+            <td style="width: 100%;" align="right">
+                Settlement Attorney:
+                <asp:DropDownList ID="ddlCompany" runat="server" AutoPostBack="true" CssClass="entry2">
+                </asp:DropDownList>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlUsers" runat="server" AutoPostBack="true" Visible="false" CssClass="entry2">
+                </asp:DropDownList>
+            </td>
+            <td>
+                <img id="Img4" runat="server" width="8" src="~/images/spacer.gif" />
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+<asp:Content ID="cntAgencyBody" ContentPlaceHolderID="cphBody" runat="Server">
+    <br />
+    <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server" />
+    <asp:ContentPlaceHolder ID="cphAgencyBody" runat="server" />
+</asp:Content>

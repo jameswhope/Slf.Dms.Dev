@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grids>
+	<Grid 
+		id="admin_users_default_aspx.grdActivities" 
+		Caption="Recent Activities" 
+		ShowTotal="False" 
+		ShowPrint="False" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~" 
+		ClickOptions.KeyField="NA" 
+		PageSize="14"
+		>
+		<Field datafield="UserName" caption="User" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+		<Field datafield="Activity" caption="Activity" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+		<Field datafield="Date" controlname="grdActivities.Date" caption="Date" fieldtype="DateTime" format="M/d/yy hh:mm" sortable="False" forcedwidth="70px" datatype="DateTime"></Field>
+	</Grid>
+	<Grid 
+		id="clients_client_default_aspx.grdCommunication_agency" 
+		Caption="Recent Communication" 
+		ShowTotal="False" 
+		ShowPrint="False" 
+		ClickOptions.Clickable="False" 
+		ClickOptions.ClickableURL="~" 
+		ClickOptions.KeyField="NA" 
+		Caching="False" 
+		PageSize="14"
+		>
+		<Field datafield="Date" caption="Date" fieldtype="DateTime" format="MMM dd, yy" sortable="False" forcedwidth="70px" datatype="DateTime"></Field>
+		<Field datafield="By" caption="By" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+		<Field datafield="Direction" caption="Direction" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+	</Grid>
+	<Grid 
+		id="clients_client_default_aspx.grdCommunication_my" 
+		Caption="My Recent Communication" 
+		ShowTotal="False" 
+		ShowPrint="False" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~" 
+		ClickOptions.KeyField="NA" 
+		Caching="False" 
+		PageSize="14"
+		>
+		<Field datafield="Date" caption="Date" fieldtype="DateTime" format="MMM dd, yy" sortable="False" forcedwidth="70px" datatype="DateTime"></Field>
+		<Field datafield="By" caption="By" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+		<Field datafield="Message" caption="Message" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+	</Grid>
+	<Grid 
+		id="clients_client_communication_default_aspx.grdCommunication_agency" 
+		Caption="All Communication" 
+		ShowTotal="True" 
+		ShowPrint="True" 
+		ClickOptions.Clickable="False" 
+		ClickOptions.ClickableURL="~" 
+		ClickOptions.KeyField="NA" 
+		Caching="False" 
+		PageSize="14"
+		>
+		<Field datafield="Date" caption="Date" fieldtype="DateTime" format="MMM dd, yy" sortable="False" forcedwidth="70px" datatype="DateTime"></Field>
+		<Field datafield="By" caption="By" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+		<Field datafield="Direction" caption="Direction" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+	</Grid>
+	<Grid 
+		id="clients_client_communication_default_aspx.grdCommunication_my" 
+		Caption="My Communication" 
+		ShowTotal="True" 
+		ShowPrint="True" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~" 
+		ClickOptions.KeyField="NA" 
+		Caching="False" 
+		PageSize="14"
+		>
+		<Field datafield="Date" caption="Date" fieldtype="DateTime" format="MMM dd, yy" sortable="False" forcedwidth="70px" datatype="DateTime"></Field>
+		<Field datafield="By" caption="By" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+		<Field datafield="Message" caption="Message" fieldtype="Text" sortable="False" datatype="VarChar"></Field>
+	</Grid>
+	<Grid 
+		id="admin_users_default_aspx.grdUsers" 
+		Caption="All Users" 
+		ShowTotal="True" 
+	    ShowPrint="True" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~/admin/users/user/?id=$x$" 
+		ClickOptions.KeyField="UserId" 
+		PageSize="14" 
+		IconSrcURL="~/images/16x16_user.png"
+		AddOptions.Allow="True"
+		AddOptions.Caption="Add New User"
+		AddOptions.URL="~/admin/users/user/?a=a"
+		AddOptions.IconSrcURL="~/images/16x16_user_new.png"
+		DeleteOptions.Allow="True"
+		DeleteOptions.ConfirmTitle="Delete Users"
+		DeleteOptions.ConfirmCaption="Are you sure you want to delete this selection of Users?"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField="UserName"
+		Caching="False"
+		>
+		<Field datafield="UserName" caption="User" sortable="True"></Field>
+		<Field datafield="FirstName" caption="First Name" sortable="True"></Field>
+		<Field datafield="LastName" caption="Last Name" sortable="True"></Field>
+		<Field datafield="EmailAddress" caption="Email Address" sortable="True"></Field>
+		<Field datafield="SuperUser" caption="SPU" sortable="True"></Field>
+		<Field datafield="Locked" caption="LCK" sortable="True"></Field>
+		<Field datafield="Temporary" caption="TMP" sortable="True"></Field>
+		<Field datafield="Created" caption="Created" format="MM/dd/yyyy" sortable="True"></Field>
+	</Grid>
+	<Grid 
+		id="admin_users_default_aspx.grdUserTypes" 
+		Caption="All User Types" 
+		ShowTotal="True" 
+		ShowPrint="True" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~/admin/users/usertype/?id=$x$" 
+		ClickOptions.KeyField="UserTypeId" 
+		PageSize="14" 
+		IconSrcURL="~/images/16x16_users.png"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField="Name"
+		>
+		<Field datafield="Name" caption="User Type" sortable="True"></Field>
+		<Field datafield="Users" caption="Members" sortable="True"></Field>
+		<Field datafield="ActiveUsers" caption="Active Members" sortable="True"></Field>
+	</Grid>
+	<Grid 
+		id="admin_users_default_aspx.grdGroups" 
+		Caption="All Groups" 
+		ShowTotal="True" 
+		ShowPrint="True" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~/admin/users/group/?id=$x$" 
+		ClickOptions.KeyField="UserGroupId" 
+		PageSize="14" 
+		IconSrcURL="~/images/16x16_users.png"
+		AddOptions.Allow="True"
+		AddOptions.Caption="Add New Group"
+		AddOptions.URL="~/admin/users/group/?a=a"
+		AddOptions.IconSrcURL="~/images/16x16_user_new.png"
+		DeleteOptions.Allow="True"
+		DeleteOptions.ConfirmTitle="Delete Groups"
+		DeleteOptions.ConfirmCaption="Are you sure you want to delete this selection of Groups?"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField="Name"
+		Caching="False"
+		>
+		<Field datafield="Name" caption="Group" sortable="True"></Field>
+		<Field datafield="Users" caption="Members" sortable="True"></Field>
+		<Field datafield="ActiveUsers" caption="Active Members" sortable="True"></Field>
+	</Grid>
+	<Grid 
+		id="admin_users_usertype_members_default_aspx.grdMembers" 
+		Caption="Members" 
+		ShowTotal="True" 
+		ShowPrint="True" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~/admin/users/user/?id=$x$" 
+		ClickOptions.KeyField="UserId" 
+		PageSize="14" 
+		IconSrcURL="~/images/16x16_user.png"
+		AddOptions.Allow="False"
+		DeleteOptions.Allow="False"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField="UserName"
+		Caching="False"
+	>
+		<Field datafield="UserName" caption="User" sortable="True"></Field>
+		<Field datafield="FirstName" caption="First Name" sortable="True"></Field>
+		<Field datafield="LastName" caption="Last Name" sortable="True"></Field>
+		<Field datafield="EmailAddress" caption="Email Address" sortable="True"></Field>
+		<Field datafield="SuperUser" caption="SPU" sortable="True"></Field>
+		<Field datafield="Locked" caption="LCK" sortable="True"></Field>
+		<Field datafield="Temporary" caption="TMP" sortable="True"></Field>
+		<Field datafield="Created" caption="Created" format="MM/dd/yyyy" sortable="True"></Field>
+	</Grid>
+	<Grid 
+	id="admin_users_group_members_default_aspx.grdMembers" 
+	Caption="Members" 
+	ShowTotal="True" 
+	ShowPrint="True" 
+	ClickOptions.Clickable="True" 
+	ClickOptions.ClickableURL="~/admin/users/user/?id=$x$" 
+	ClickOptions.KeyField="UserId" 
+	PageSize="14" 
+	IconSrcURL="~/images/16x16_user.png"
+	AddOptions.Allow="False"
+	DeleteOptions.Allow="False"
+	SortOptions.Allow="True"
+	SortOptions.DefaultSortField="UserName"
+	Caching="False"
+	>
+		<Field datafield="UserName" caption="User" sortable="True"></Field>
+		<Field datafield="FirstName" caption="First Name" sortable="True"></Field>
+		<Field datafield="LastName" caption="Last Name" sortable="True"></Field>
+		<Field datafield="EmailAddress" caption="Email Address" sortable="True"></Field>
+		<Field datafield="SuperUser" caption="SPU" sortable="True"></Field>
+		<Field datafield="Locked" caption="LCK" sortable="True"></Field>
+		<Field datafield="Temporary" caption="TMP" sortable="True"></Field>
+		<Field datafield="Created" caption="Created" format="MM/dd/yyyy" sortable="True"></Field>
+	</Grid>
+	<Grid 
+		id="default_aspx.grdClientsPendingReview" 
+		Caption="Clients Pending Review" 
+		ShowTotal="True" 
+		ShowTitle="False" 
+		ShowPrint="True" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~/clients/client/?id=$x$" 
+		ClickOptions.KeyField="ClientID" 
+		PageSize="4" 
+		IconSrcURL="~/images/16x16_person.png"
+		AddOptions.Allow="False"
+		DeleteOptions.Allow="False"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField="ClientName"
+		Caching="False"
+	>
+		<Field datafield="agencyname" caption="Agency" sortable="True"></Field>
+		<Field datafield="clientname" caption="Client" sortable="True"></Field>
+		<Field datafield="debttotal" caption="Debt Total" sortable="True"></Field>
+		<Field datafield="hiredate" caption="Hire Date" fieldtype="DateTime" format="M/d/yy" sortable="True"></Field>
+		<Field datafield="statuschanged" caption="Status Changed" fieldtype="DateTime" format="M/d/yy hh:mm" sortable="True"></Field>
+	</Grid>
+	<Grid 
+		id="default_aspx.grdClientsIncompleteData" 
+		Caption="Clients Rejected by DE" 
+		ShowTotal="True" 
+		ShowTitle="False" 
+		ShowPrint="True" 
+		ClickOptions.Clickable="True" 
+		ClickOptions.ClickableURL="~/clients/client/?id=$x$" 
+		ClickOptions.KeyField="ClientID" 
+		PageSize="4" 
+		IconSrcURL="~/images/16x16_person.png"
+		AddOptions.Allow="False"
+		DeleteOptions.Allow="False"
+		SortOptions.Allow="True"
+		SortOptions.DefaultSortField="lastName"
+		Caching="False"
+	>
+		<Field datafield="firstname" caption="First Name" sortable="True"></Field>
+		<Field datafield="lastname" caption="Last Name" sortable="True"></Field>
+		<Field datafield="debttotal" caption="Debt Total" sortable="True"></Field>
+		<Field datafield="hiredate" caption="Hire Date" sortable="True" fieldtype="DateTime" format="M/d/yy"></Field>
+		<Field datafield="statuschanged" caption="Status Changed" sortable="True" fieldtype="DateTime" format="M/d/yy hh:mm"></Field>
+	</Grid>	
+</Grids>

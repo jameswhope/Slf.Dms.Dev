@@ -1,0 +1,136 @@
+<%@ Master Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Processing.master.vb"
+    Inherits="processing_Processing2"  %>
+
+<%@ Register Assembly="obout_Flyout2_NET" Namespace="OboutInc.Flyout2" TagPrefix="cc1" %>
+<asp:Content ID="cntProcessingMenu" ContentPlaceHolderID="cphMenu" runat="Server">
+
+    <script language="javascript" type="text/javascript">
+        function MoveToNext(item, length) {
+            var nextItem;
+
+            if (GetCaretPosition() >= length && item.tabIndex) {
+                for (i = 0; i < document.all.length; i++) {
+                    if (document.all[i].tabIndex > item.tabIndex) {
+                        if (nextItem) {
+                            if (document.all[i].tabIndex < nextItem.tabIndex) {
+                                nextItem = document.all[i];
+                            }
+                        }
+                        else {
+                            nextItem = document.all[i];
+                        }
+
+                        if (nextItem.tabIndex == item.tabIndex + 1) {
+                            break;
+                        }
+                    }
+                }
+
+                if (nextItem) {
+                    nextItem.focus();
+                }
+            }
+        }
+
+        function GetCaretPosition() {
+            return Math.abs(document.selection.createRange().moveStart('character', -1000000));
+        }
+
+        function SetCaretPosition(obj, position) {
+            obj.focus();
+
+            var sel = document.selection.createRange();
+
+            sel.moveStart('character', -obj.value.length);
+
+            sel.moveStart('character', position);
+            sel.moveEnd('character', 0);
+            sel.select();
+        }
+
+        function SwapImage(obj) {
+            var src;
+
+            if (obj.children.length > 0) {
+                src = obj.children(0).src;
+                obj = obj.children(0);
+            }
+            else {
+                if (obj.src != null) {
+                    src = obj.src;
+                }
+                else {
+                    return;
+                }
+            }
+
+            if (src.indexOf('_off') == -1) {
+                obj.src = src.replace('_over', '_off');
+            }
+            else {
+                obj.src = src.replace('_off', '_over');
+            }
+        }
+
+        function FormatAsCurrency(obj) {
+            if (!obj.readOnly) {
+                obj.value = new Number(obj.value.replace(/[^(0-9\.)]/g, '')).localeFormat('c');
+            }
+        }
+
+        function SelectAll(obj) {
+            if (!obj.readOnly) {
+                obj.select();
+            }
+        }
+        function dyntog(a, thisimg) {
+            var imgMax = new Image(16, 16);
+            imgMax.src = "images/maximize_off.png";
+            var imgMin = new Image(16, 16);
+            imgMin.src = "images/minimize_off.png";
+
+            if (a.style.display == "none") {
+                a.style.display = "block";
+                thisimg.src = imgMin.src;
+                thisimg.title = "Click to Minimize the table";
+            }
+            else if (a.style.display == "block") {
+                a.style.display = "none";
+                thisimg.src = imgMax.src;
+                thisimg.title = "Click to Maximize the table";
+            }
+            return false;
+        }            
+    </script>
+
+    <table cellpadding="0" cellspacing="0" class="menuTable" onselectstart="return false">
+        <tr>
+            <td>
+                <img id="Img1" runat="server" width="8" height="1" src="~/images/spacer.gif" />
+            </td>
+            <td nowrap="true">
+                <a id="A1" runat="server" class="menuButton" href="~/?nophonebar=1">
+                    <img id="Img2" runat="server" align="absmiddle" border="0" class="menuButtonImage"
+                        src="~/images/16x16_web_home.png" />Home</a>
+            </td>
+            <td style="width: 100%">
+                &nbsp;
+            </td>
+            <td>
+                <img id="Img7" runat="server" width="8" src="~/images/spacer.gif" />
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+<asp:Content ID="cntProcessingBody" ContentPlaceHolderID="cphBody" runat="Server">
+    <link href="<%= ResolveUrl("~/processing/css/globalstyle.css")%>" rel="stylesheet" type="text/css" />
+    
+    <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+    </ajaxToolkit:ToolkitScriptManager>
+    <asp:UpdatePanel ID="updMain" runat="server">
+        <ContentTemplate>
+            <asp:ContentPlaceHolder ID="cphProcessingBody" runat="server">
+            </asp:ContentPlaceHolder>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>

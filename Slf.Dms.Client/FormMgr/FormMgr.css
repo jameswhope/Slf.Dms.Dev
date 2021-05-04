@@ -1,0 +1,100 @@
+﻿.headerbg
+{
+    background-color: #dcdcdc;
+    font-weight: normal;
+}
+.itemstyle
+{
+    line-height: 23px;
+    border-bottom: solid 1px #dcdcdc;
+    white-space:nowrap;
+}
+.itemstyle2
+{
+	line-height: 23px;
+    border-bottom: solid 1px #dcdcdc;
+    white-space:nowrap;
+	padding:0 15px 0 15px;
+}
+h2
+{
+	font-size:medium;
+	font-family:Tahoma;
+	font-weight:normal;
+	border-bottom:dotted 1px #cccccc;
+	padding:0 0 10px 0;
+}
+.grey 
+{
+	font-family:tahoma;
+	font-size:11px;
+	color:#666666;
+}
+.greylnk 
+{
+	cursor:pointer;
+	color:#666666;
+	font-family:tahoma;
+	font-size:11px;
+	text-decoration:none;
+}
+.greylnk:hover 
+{
+	text-decoration:underline;
+}
+.TaskBox
+{
+	border-bottom:solid 1px #8E9EAD;
+}
+.TaskBox h6
+{
+	float:left;
+	display:inline;
+	height:24px;
+	overflow:hidden;
+	background:url(../images/task_bg.png) no-repeat;
+	border-bottom:solid 1px #8E9EAD;
+}
+.TaskBox h6 span
+{
+	display:block;
+	height:24px;
+	text-indent:12px;
+	padding-top:5px;
+	padding-right:12px;
+	font:bold 11px tahoma;
+	color:White;
+	overflow:hidden;
+	background:url(../images/task_end.png) no-repeat 100% 0;
+}
+.TaskBox div.box
+{
+	border-left:solid 1px #8E9EAD;
+	border-right:solid 1px #8E9EAD;
+	background-color:#F0F5FB;
+	padding:5px 10px 5px 10px;
+	clear:both;
+}
+.TaskBox div.last
+{
+	padding:5px 10px 5px 10px;
+}
+.TaskBox div img
+{
+	vertical-align:middle;
+}
+.TaskBox h5
+{
+	float:left;
+	display:inline;
+	height:4px;
+	overflow:hidden;
+	background:url(../images/task_ftr.png) no-repeat;
+}
+.TaskBox h5 span
+{
+	display:block;
+	height:4px;
+	overflow:hidden;
+	background:url(../images/task_ftr_end.png) no-repeat 100% 0;
+}

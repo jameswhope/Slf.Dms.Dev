@@ -1,0 +1,89 @@
+﻿#login-header
+{
+	margin: 75px auto 0;
+	padding-bottom:5px;
+	width: 440px;
+	font-size:40px;
+	color:#333333;
+	font-family:Tahoma;
+}
+#login
+{
+	margin: 0 auto;
+	width: 407px;  
+	background:url(images/bg.png) repeat-x top left;
+	padding:20px;
+}
+#login td
+{
+	color:#ababab; /* #3399FF */
+	font-size:14px;
+	font-family:Tahoma;
+}
+#login input
+{
+	font-size:14px;
+	padding:5px;
+	font-family:Tahoma;
+}
+#login label
+{
+	color:#ababab;
+	font-size:12px;
+	font-family:Tahoma;
+}
+/*#login-header
+{
+	margin: 0 auto;
+	width:150px;
+	font-size:16px;
+	color:#3399FF;
+}*/
+#login-footer
+{
+	margin: 0 auto;
+	width:447px;
+	height:18px;
+	background:url(images/footer.png) repeat-x top left;
+}
+.login-error
+{
+	font-size:14px;
+	color:#B22222;
+}
+
+/* buttonX */
+a.buttonX
+{
+	color:#545454;
+	cursor:pointer;
+	text-decoration:none;
+	background:url(images/buttonX-end.png) no-repeat top right;
+	float:left;
+}
+a.buttonX span
+{
+	font-family:Tahoma;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:none;
+	margin: 0 15px 0 0;
+	padding: 10px 5px 14px 18px;
+	position:relative; /*To fix IE6 problem (not displaying)*/
+	float:left;
+	background:url(images/buttonX.png) no-repeat top left;
+}
+a.buttonX span img
+{
+	vertical-align:middle;
+}
+a:hover.buttonX
+{
+	background:url(images/buttonX-end.png) no-repeat right -42px;
+	text-decoration:none;
+}
+a:hover.buttonX span
+{
+	background:url(images/buttonX.png) no-repeat left -42px;
+	text-decoration:none;
+}

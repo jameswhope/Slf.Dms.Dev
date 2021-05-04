@@ -1,0 +1,218 @@
+.igtbl_NautilusControl
+{
+	background-position:right top ;
+	background-image: url(images/bg_top.gif);
+	border:solid 1px #4E79A3;
+}
+
+
+.igtbl_NautilusPagerArea
+{
+	background-image:none;
+	border-width:0px;
+	padding-top:10px;
+	padding-right:20px;
+	padding-bottom:10px;
+	width: 22px;
+}
+
+
+.igtbl_NautilusPageCurrent
+{
+	background-repeat:no-repeat;
+	background-image: url(images/pagebutton.png);
+	font-weight:bold;
+	margin-right:10px;
+	padding:3px 6px 5px 5px;
+	color:White;
+}
+
+
+.igtbl_NautilusPageLink
+{
+	margin-right:10px;
+	color:#2F3660;
+}
+
+
+.igtbl_NautilusGroupByBox
+{
+	background-position:right top ;
+	background-image: url(images/banner.png);
+	border-width:0px;
+	border-top-width:1px;
+	border-top-style:solid;
+	color:White;
+}
+
+
+.igtbl_NautilusAddNewBox
+{
+	background-position:right top ;
+	background-image: url(images/background.png);
+	border-width:0px;
+	border-top:solid 1px Gainsboro;
+}
+
+
+.igtbl_NautilusItem
+{
+	background-position:right top ;
+	border-width:0px;
+	border-top:solid 1px Gainsboro;
+	height: 30px;
+}
+
+
+.igtbl_NautilusFilterOperandButton
+{
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center ;
+	background-image: url(images/orangebutton1.png);
+	border-width:0px;
+	padding-top:8px;
+	width: 18px;
+	color:White;
+	vertical-align:middle;
+}
+
+
+.igtbl_NautilusAlt
+{
+	background-image:none;
+	border-top-color:Gainsboro;
+}
+
+
+.igtbl_NautilusEdit
+{
+	background-color:White;
+	font-size:x-small;
+	font-family: Verdana;
+	border:solid 1px Transparent;
+	padding-top:7px;
+	text-align:left;
+	vertical-align:middle;
+}
+
+
+.igtbl_NautilusButton
+{
+}
+
+
+.igtbl_NautilusFxdCell
+{
+}
+
+
+.igtbl_NautilusHeader
+{
+	background-position:top ;
+	background-image: url(images/header11.png);
+	border-width:0px;
+	height: 30px;
+	color:White;
+	text-align:left;
+}
+
+
+.igtbl_NautilusFooter
+{
+	background-image: url(images/fadetop1.png);
+}
+
+
+.igtbl_NautilusLabel
+{
+	background-color:WhiteSmoke;
+	background-image:none;
+	border-right:solid 1px Gainsboro;
+	border-top-width:1px;
+	border-top-color:#E1E1E1;
+	height: 28px;
+	text-align:left;
+}
+
+
+.igtbl_NautilusExpArea
+{
+	background-color:White;
+	background-image:none;
+	border-top:solid 1px #F0F0F0;
+	border-right-width:1px;
+}
+
+
+.igtbl_NautilusGrpItem
+{
+}
+
+
+.igtbl_NautilusFxdHeader
+{
+}
+
+
+.igtbl_NautilusGroupBandLabel
+{
+}
+
+
+.igtbl_NautilusFxdFooter
+{
+}
+
+
+.igtbl_NautilusDropDown
+{
+	background-color:#507DA6;
+	font-size:xx-small;
+	font-family: Verdana;
+	border:solid 1px LightGrey;
+	color:White;
+}
+
+
+.igtbl_NautilusDropDownSel
+{
+}
+
+
+.igtbl_NautilusSelected
+{
+	background-color:#D3DACB;
+	background-repeat:repeat-x;
+	background-position:bottom ;
+	background-image: url(images/normalgreen3.png);
+	font-weight:bold;
+	color:#223E6E;
+}
+
+
+.igtbl_NautilusActiveBorderTopBottom
+{
+}
+
+
+.igtbl_NautilusActiveBorderLeft
+{
+}
+
+
+.igtbl_NautilusActiveBorderRight
+{
+}
+
+
+.igtbl_NautilusFilterDropDown
+{
+}
+
+
+.igtbl_NautilusFilterOperandDropDown
+{
+}
+
+

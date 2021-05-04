@@ -1,0 +1,64 @@
+.igtb_NautilusControl
+{
+	background-color:#F0F0F0;
+	background-position:right top ;
+	background-image: url(images/header11.png);
+	border-right:solid 1px #223E6E;
+	border-bottom:solid 1px #223E6E;
+	border-left:solid 1px #223E6E;
+}
+
+
+.igtb_NautilusItem
+{
+	background-color:Transparent;
+}
+
+
+.igtb_NautilusButton
+{
+	background-color:Transparent;
+	border:solid 1px Transparent;
+	padding-left:4px;
+	color:White;
+}
+
+
+.igtb_NautilusButtonHover
+{
+	background-position:center center ;
+	background-image: url(images/header_hover.gif);
+	border:solid 1px #C3C3C3;
+	margin-top:15px;
+	color:Black;
+}
+
+
+.igtb_NautilusButtonPressed
+{
+	background-position:center center ;
+	background-image: url(images/header_hover.gif);
+	border:solid 1px #C3C3C3;
+	color:Black;
+}
+
+
+.igtb_NautilusLabel
+{
+	color:White;
+}
+
+
+.igtb_NautilusTextBox
+{
+	background-color:White;
+}
+
+
+.igtb_NautilusSeparator
+{
+	background-color:Transparent;
+	color:White;
+}
+
+

@@ -1,0 +1,574 @@
+/* Tags */
+
+* 
+{
+	margin: 0px;
+}
+
+html, body, form
+{
+	background-color: #FFFFFF;
+	height: 100%;
+	width: 100%;
+}
+
+input[type="text"]
+{
+	color: #006699;
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10px;
+	height: 12px;
+}
+
+select
+{
+	color: #006699;
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10px;
+	height: 18px;
+}
+
+td.headItem2 {background-color: rgb(220,220,220);}
+td.listItem2 {border-bottom: solid 1px #d3d3d3;}
+td.headItem3 {background-color: #f0f0f0;border-bottom: solid 1px #d3d3d3;}
+td.headItem4 {background-color: #d3d3d3;padding:4 3 3 3;border-bottom:solid 1px #b3b3b3;color:Black; font-size:11px; font-family:tahoma;} /*border-bottom:solid 1px rgb(112,168,209);}*/
+th.headItem5 {background-color: #DCDCDC;border-bottom: solid 1px #d3d3d3; font-weight:normal;color:Black; font-size:11px; font-family:tahoma;}
+th.headItem5 a{text-decoration:none;display:block;color:Black; font-weight:200;}    
+
+td.listItem4 {cursor:pointer;padding:4 3 3 3;border-bottom:solid 1px #d3d3d3;color:Black; font-size:11px; font-family:tahoma;}
+td.listItem5 {cursor:default;padding:5 10 5 10;border-bottom:dashed 1px #b1b1b1;color:black}
+td.listItem6 {cursor:pointer;padding:4 3 3 3;border-bottom:dashed 1px #c3c3c3; }
+td.listItem7 {cursor:pointer;padding:4 3 3 3;font-weight:bold;}
+
+/* IDs */
+
+.container
+{
+	position: relative;
+	min-height: 100%;
+	z-index: 10;
+}
+* html .container
+{
+	height: 100%;
+}
+.content
+{
+	clear: both;
+	height: auto;
+	margin-top: 0px;
+	margin-bottom: 15px;
+	width: 100%;
+	vertical-align: top;
+	font-family:Tahoma;
+	font-family:11px;
+	color:Black;	
+}
+.copyright
+{
+	position: relative;
+	margin: -16px auto 0 auto;
+	padding: 0px;
+	clear: both;
+	vertical-align: middle;
+	z-index: 101;
+	font-size: 8px;
+	background-color: #fff;
+	text-align: center;
+	color: #006699;
+	font-family: Tahoma, Verdana, Arial;
+}
+
+#widget
+{
+	background-color: #F4FAFC;
+	background-image: url(../images/boxbg.png);
+	border: 1px solid #BEDCE6;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#D0D0D0, strength=2, direction=135);
+	height: 131px;
+	left: 337px;
+	position: absolute;
+	top: 165px;
+	width: 406px;
+	z-index: 5;
+}
+
+#widgethead
+{
+	height: 20px;
+	left: 15px;
+	position: absolute;
+	top: 5px;
+	width: 175px;
+	z-index: 6;
+}
+
+
+/* Classes */
+
+.bar
+{
+	background-color: #1783BA;
+	color: #FFFFFF;
+	height: 25px;
+	width: 100%;
+}
+
+.barContents
+{
+	height: 19px;
+	width: 100%;
+}
+
+.barDate
+{
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10px;
+	font-weight: normal;
+	padding-right: 5px;
+}
+
+.header
+{
+	background-image: url(../images/headerbg.png);
+	background-repeat: repeat-x;
+	background-position:bottom;
+	height: 25px;
+	left: 0px;
+	right: 0%;
+	top: 0px;
+	font-family:Tahoma;
+	font-family:11px;
+	color:Black;	
+}
+
+.helpPanel
+{
+	border: 1px solid #BEDCE6;
+	filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#EAF6FC, endColorStr=#F6FBFD) progid:DXImageTransform.Microsoft.Shadow(color=#D0D0D0, strength=2, direction=135);
+	height: 16px;
+	padding: 2px;
+	position: absolute;
+	right: 0%;
+	top: 0%;
+	visibility: hidden;
+	width: 110px;
+	z-index: 99;
+}
+
+.links
+{
+	height: 25px;
+}
+
+.links a
+{
+	color: #0088AA;
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.links a:hover
+{
+	color: #0099FF;
+}
+
+.loadingDiv
+{
+	background-color: #E6E6F0;
+	display: none;
+	opacity: 0.5;
+	position: absolute;
+	text-align: center;
+	z-index: 9999;
+}
+
+.loadingImage
+{
+	border: 0px;
+	height: 35px;
+	vertical-align: middle;
+	width: 35px;
+}
+
+.widget_head
+{
+	font-size: 12px;
+	font-weight: bold;
+	color: #006699;
+	z-index: 10;
+}
+
+
+/* webpart styles*/
+
+.webPartHdrStyle
+{
+	background-image: url(../images/widget_headbg.png);
+	border-bottom: 1px solid #BEDCE6;
+	color: Black;
+    font-size: 12px;
+    font-weight: bold;
+    height: 23px;
+}
+
+.webPartStyle
+{
+	filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#EAF6FC, endColorStr=#F6FBFD);
+	vertical-align:top
+}
+
+.webpartgridhdrstyle
+{
+	font-weight: bold;
+	color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 11px;
+    height: 20px;
+}
+/* Paging */
+.GridviewPager td {font-family:tahoma;font-size:11px;}
+.GridviewPager a {cursor:pointer;color:rgb(50,112,163);font-family:tahoma;font-size:11px;text-decoration:none;}
+.GridviewPager a:hover {text-decoration:underline;}
+
+.webpartgridhdrstyle td
+{
+	color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 11px;
+    height: 30px;
+}
+
+.webpartgridhdrstyle a
+{
+	color: Black;
+    display: block;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.hdrsorttemplatestyle 
+{
+	color: Black;
+    display: block;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.webpartgridaltrowstyle
+{
+	color: #E0EEF7;
+}
+
+.webpartgridselectedrowstyle td
+{
+    color: #DD0000;
+}
+
+.AjaxProgressMessage
+{
+      font-family: Tahoma;
+      font-size: 12px;
+      font-weight: bold;
+      left: 38%;
+      padding: 10px 20px 10px 10px;
+      position: relative;
+      text-align: center;
+      top: 50%;
+      vertical-align: middle;
+      z-index: 9999;
+}
+
+.AjaxProgressMessage img
+{
+      margin-right: 5px;
+}
+
+.box
+{
+	line-height:15px;
+}
+
+.box td
+{
+	padding-left:5px;
+}
+
+.box input
+{
+    background-color: #FFFFFF;
+    border: solid 1px #BEDCE6;
+}
+
+.box input.label, .box table.label tr td input
+{
+	background-color: Transparent;
+	border: none;
+}
+
+.box input.ind
+{
+	text-indent: 1px;
+}
+
+.box input.cur
+{
+	text-align: right;
+}
+
+.box span
+{
+	line-height: 18px;
+	padding-left: 3px;
+	text-align: left;
+}
+
+.box div
+{
+	display: inline;
+	float: left;
+	margin: 0 auto;
+	padding-right: 3px;
+}
+
+/* custom control styles */
+.cellLeft
+{
+	text-align: left;
+}
+
+.cellRight
+{
+	text-align: right;
+}
+
+.clientHdrRow
+{
+	/*background-color: #F4F9FC;*/
+}
+
+.clientHdrContent
+{
+	/*background-color: #DFEDF6;*/
+}
+
+.formTextBoxOff
+{
+	border: none;
+	background: #F0F8FB;
+}
+
+.formTextBoxOn
+{
+	background: #F0F8FB;
+}
+
+
+.bulkcontent
+{
+	margin:10px;
+}
+
+.bulk
+{
+	width:75%;
+	margin-bottom:10px;
+}
+
+.bulklisttoolbar
+{
+	height:40px;
+	width:100%;
+	border-top:solid 1px #cccccc;
+	border-bottom:solid 1px #cccccc;
+	margin-top:10px;
+	padding:0;
+	border-collapse:collapse;
+	background-color:#f1f1f1;
+}
+.bulklisttoolbar table
+{
+	margin-left:10px;
+	margin-right:10px;
+}
+.bulklisttoolbar table label
+{
+	margin-right:10px;
+}
+.bulklisttoolbar .save
+{
+	margin-left:10px;
+}
+
+.bulklistgridview
+{
+	overflow:auto;
+}
+
+.ibox
+{
+	border: solid #A2CEE4 1px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#EAF6FC, endColorStr=#F6FBFD);
+	overflow:hidden;
+	margin-bottom: 5px;
+}
+.ibox h1
+{
+	font-size: 11px;
+	font-weight:bold;
+	color:#003366;
+	width:100%;
+	height:20px;
+	padding-top:5px;
+	padding-bottom:0px;
+	text-indent:3px;
+	float:left;
+	background-image:url(../images/widget_headbg.png);
+	background-repeat:repeat-x;
+	overflow:hidden;
+	margin-top:0;
+	margin-bottom:0;
+}
+
+.col1
+{
+	font-size: 12px;
+	font-weight:bold;
+	color:#003366;
+	float:left; 
+	display:inline-table;
+}
+.col2
+{
+	float: right; 
+	display: inline-table;
+	margin-right:5px;
+}
+
+.dropBlkColumn
+{
+    border: 1px solid transparent;
+    margin: 1px;
+}
+
+.dropBlkColumnHovered
+{
+    border-left: 2px dashed gray;
+    border-bottom: 0; 
+    border-top: 0;
+    border-right: 0;
+    margin: 1px;
+}
+
+.offerButton
+{
+	border: none 0;
+}
+
+.offerButtonHovered
+{
+	border: solid 1px #003366;
+}
+
+.popupButton 
+{
+    border: solid 1px #006699;
+    font-size: 8pt;
+    background-color: White;
+    color: #006699;
+}
+
+.popupButtonHovered
+{
+    border: solid 1px #006699;
+    font-size: 8pt;
+    background-color: #006699;
+    color: White;
+}
+
+.button
+{
+	float:left;
+	display:inline;
+	height:20px;
+	overflow:hidden;
+	background:url(../images/button-bg.png) no-repeat;
+}
+.button span
+{
+	display:block;
+	height:20px;
+	text-indent:12px;
+	padding-right:12px;
+	font:bold 11px/20px Arial, sans-serif;
+	cursor:pointer;
+	overflow:hidden;
+	background:url(../images/button-bgend.png) no-repeat 100% 0;
+}
+.button:hover
+{
+	background-position:0 100%;
+	text-decoration:none;
+}
+.button:hover span
+{
+	background-position:100% 100%;
+	color:#33D3FC;
+}
+.documentContent
+        {
+            margin-top: 5px;
+        }
+        .documentHeader
+        {
+            border-bottom: 1px solid #BEDCE6;
+            cursor: hand;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        .documentHeaderSelected
+        {
+            border-bottom: 1px solid #006699;
+            cursor: hand;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .headItem5
+        {
+            padding: 4px;
+        }
+        .listItem
+        {
+            padding: 4px;color:Black;font-family:Tahoma;font-size:11px;
+        }
+        .entryFormat
+        {
+            color:Black;font-family:Tahoma;font-size:11px;
+        }
+  .tabContainer .ajax__tab_body{border-bottom-style: none;border-left-style: none;border-right-style: none;border-top: 0px;font-size: 11px;font-family:tahoma;color:black;padding:0px;}
+/* header */
+.tabContainer .ajax__tab_header{background-image: url(~/images/tabTopBorder.png);background-position: 50% bottom;background-repeat: repeat-x;font-size: 11px;font-family:tahoma;color:black;white-space: nowrap;}
+/* tab */
+.tabContainer .ajax__tab_outer{background-image: url(~/images/subtab_off_right.png);background-position: right 50%;background-repeat: no-repeat;display: inline-block;height: 21px;font-size: 11px;font-family:tahoma;color:black;padding-right: 4px;}
+.tabContainer .ajax__tab_inner{background-image: url(~/images/subtab_off_left.png);background-repeat: no-repeat;display: inline-block;padding-left: 3px;font-size: 11px;font-family:tahoma;color:black;height: 21px;}
+.tabContainer .ajax__tab_tab{background-image: url(~/images/subtab_off_middle.png);background-repeat: repeat-x;cursor: pointer;display: inline-block;height: 21px;overflow: hidden;font-size: 11px;font-family:tahoma;color:black;margin: 0px;padding: 4px;text-align: center;}
+.tabContainer .ajax__tab_inner .ajax__tab_tab{margin: 0px;font-size: 11px;font-family:tahoma;color:black}
+/* tab hover */
+.tabContainer .ajax__tab_hover .ajax__tab_outer{background-image: url(~/images/subtab_over_right.png);background-position: right 50%;background-repeat: no-repeat;font-size: 11px;font-family:tahoma;color:black}
+.tabContainer .ajax__tab_hover .ajax__tab_inner{background-image: url(~/images/subtab_over_left.png);background-repeat: no-repeat;font-size: 11px;font-family:tahoma;color:black}
+.tabContainer .ajax__tab_hover .ajax__tab_tab{background-image: url(~/images/subtab_over_middle.png);background-repeat: repeat-x;margin: 0px;font-size: 11px;font-family:tahoma;color:black}
+/* active */
+.tabContainer .ajax__tab_active .ajax__tab_outer{background-image: url(~/images/subtab_on_right.png);background-position: right 50%;background-repeat: no-repeat;font-size: 11px;font-family:tahoma;color:black}
+.tabContainer .ajax__tab_active .ajax__tab_inner{background-image: url(~/images/subtab_on_left.png);background-repeat: no-repeat;font-size: 11px;font-family:tahoma;color:black}
+.tabContainer .ajax__tab_active .ajax__tab_tab{background-image: url(~/images/subtab_on_middle.png);background-repeat: repeat-x;margin: 0px;font-size: 11px;font-family:tahoma;color:black}
+
+.sideRollupTable {font-family:tahoma;font-size:11px;width:100%;background-color:rgb(240,245,251);color:Black;}
+.sideRollupCellHeader {border-top:solid 1px rgb(112,168,209);border-right:solid 1px rgb(112,168,209);border-left:solid 1px rgb(112,168,209);padding-left:8px;height:24px;background-image:url(../../images/menubacksmall.bmp);background-repeat:repeat-x;background-position:left top;font-family:tahoma;font-size:11px;color:Black;}
+.sideRollupCellBody {padding: 5 5 5 5;border-bottom:solid 1px rgb(112,168,209);border-left:solid 1px rgb(112,168,209);border-right:solid 1px rgb(112,168,209);font-family:tahoma;font-size:11px;color:Black;}
+.sideRollupCellBodyTable {font-family:tahoma;font-size:11px;width:100%;color:Black;}
+
+.spanHeader{width: 100%;background-color: #d3d3d3;padding: 3px; color:Black;font-size:11px;font-family:Tahoma;}

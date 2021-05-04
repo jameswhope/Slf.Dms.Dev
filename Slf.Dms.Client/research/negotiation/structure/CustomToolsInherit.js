@@ -1,0 +1,1 @@
+﻿Custom.UI.CustomTools.prototype._serverRoot = '../../..';

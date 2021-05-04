@@ -1,0 +1,549 @@
+﻿.entry {font-family:tahoma;font-size:11px;width:100%;}
+.entry2 {font-family:tahoma;font-size:11px;}
+
+/* START login page */
+
+.partTable {font-family:tahoma;font-size:11px;width:100%;}
+.partHeader {padding-left:8px;height:24px;background-image:url(../images/menubacksmall.bmp);background-repeat:repeat-x;background-position:left top;}
+.partHolder {border-top:solid 1px rgb(112,168,209);border-bottom:solid 1px rgb(112,168,209);border-left:solid 1px rgb(112,168,209);border-right:solid 1px rgb(112,168,209);background-color:rgb(240,245,251);}
+.partHolderBody {padding: 5 5 5 5;}
+
+/* END login page */
+
+.tabMainHolder {height:35px;}
+.tabMain {table-layout:fixed;height:30px;width:100%;color:white;font-size:9pt;font-family:tahoma;}
+.tabMainSel {font-weight:bold;padding-top:4px;background-color:rgb(71,145,197);border-top: solid 1px rgb(135,179,208);border-right: solid 1px rgb(12,82,128);border-left: solid 1px rgb(135,179,208);}
+.tabMainUns {padding-top:4px;background-color:rgb(51,118,171);border-top: solid 1px rgb(98,157,197);border-right: solid 1px rgb(12,82,128);border-left: solid 1px rgb(98,157,197);}
+.tabMid {table-layout:fixed;height:7px;width:100%;font-size:3px;}
+.tabMidSel {background-color:rgb(71,145,197);border-right: solid 1px rgb(12,82,128);border-left: solid 1px rgb(135,179,208);}
+.tabMidUns {background-color:rgb(51,118,171);border-right: solid 1px rgb(12,82,128);border-left: solid 1px rgb(98,157,197);}
+.tabMidLeft {background-color:rgb(51,118,171);border-top: solid 1px rgb(135,179,208);}
+.tabMidRight {background-color:rgb(51,118,171);border-top: solid 1px rgb(12,82,128);}
+.tabMidLeftUns {background-color:rgb(51,118,171);border-left: solid 1px rgb(51,118,171);border-right: solid 1px rgb(12,82,128);}
+.tabMidRightUns {background-color:rgb(51,118,171);border-right: solid 1px rgb(51,118,171);border-left: solid 1px rgb(98,157,197);}
+.tabBot {table-layout:fixed;height:3px;width:100%;background-color:rgb(71,145,197);}
+.tabBotSel {border-top:solid 1px rgb(71,145,197);}
+.tabBotUns {border-top:solid 1px rgb(135,179,208);}
+.tabBotUns {border-top:solid 1px rgb(135,179,208);}
+.tabTxtHolder {table-layout:fixed;height:17px;background-color:rgb(71,145,197);padding-bottom:3px;padding-right:10px;padding-left:10px;}
+.tabTxtTable {table-layout:fixed;font-family:tahoma;font-size:11px;color:white;}
+.tabHelp {font-family:tahoma;font-size:11px;font-weight:normal;color:black;padding-right:20px;}
+
+.menuTable {width:100%;height:26px;font-family:tahoma;font-size:11px;background-color:rgb(174,212,240);background-image:url(../images/menuback.png); background-repeat:repeat-x; background-position:left top;}
+
+.menuSeparator {font-size:11px;padding-top: 2px;padding-bottom: 3px;}
+.menuButton {height:22px;padding-top: 2px;padding-bottom: 3px;padding-right:3px;font-family: Tahoma;font-size: 11px;text-decoration: none;color: Black;margin: 3px 2px 3px 2px;}
+.menuButton:hover {margin: 1px 1px 1px 1px; background:rgb(232, 243, 255); border:solid 1px rgb(51, 102, 153); }
+.menuButtonImage {margin-left:2px;margin-right:4px;}
+
+.menuButtonSel {height:22px;padding-top: 2px;padding-bottom: 3px;padding-right:3px;font-family: Tahoma;font-size: 11px;text-decoration: none;color: Black;margin: 1px 1px 1px 1px;border:solid 1px rgb(51, 102, 153);background:rgb(232, 243, 255);}
+
+
+.gridButton {margin:1 1 0 1;height:20;padding:1 1 1 1;font-family:tahoma;font-size:11px;text-decoration:none;color:black;}
+.gridButton:hover { margin:0 0 0 0;background:rgb(193,210,238);border:solid 1px rgb(49,106,197); }
+.gridButtonImage {margin:0 2 0 2;}
+
+.gridButtonSel {margin:0 0 0 0;height:20;padding:1 1 1 1;font-family:tahoma;font-size:11px;text-decoration:none;color:black;border:solid 1px rgb(49,106,197);background:rgb(193,210,238);}
+.gridButtonSel:hover { margin:0 0 0 0;background:rgb(193,210,238);border:solid 1px rgb(49,106,197); }
+
+.lnk {cursor:pointer;color:rgb(50,112,163);font-family:tahoma;font-size:11px;text-decoration:none;}
+.lnk:hover {text-decoration:underline;}
+
+.tabBtnSel {color:white;text-decoration:none;}
+.tabBtnUns {color:white;text-decoration:none;}
+
+.cLEnrollHeader {padding:7 7 7 7;font-family:verdana;font-size:11px;background-color:#f1f1f1;font-weight:bold;}
+.cLEnrollSplitter {background-image:url(../images/dot.png);background-position:top center;background-repeat:repeat-y;}
+.cLEnrollApplicantHeaderItem {padding: 3 3 3 3;background-color:#d5d5d5;border-top:solid 1px #d3d3d3}
+.clEnrollApplicantListItem {padding: 2 3 2 3;border-bottom:solid 1px #d3d3d3;}
+
+.sideTabCellSel {border-top: solid 1px white; background-color: rgb(198,222,242);}
+.sideTabCellUns {border-top: solid 1px white; background-color: rgb(227,239,249);}
+.sideTabTableSel {cursor:default;font-family: tahoma; font-size: 11px; width: 100%;}
+.sideTabTableUns {cursor:pointer;font-family: tahoma; font-size: 11px; width: 100%; color: rgb(140,140,140);}
+.sideTabTrUns {display:none;}
+.sideTabTdSel {padding:0 0 0 45;}
+.sideTabLnkSel {cursor:default;padding-left:10;background-image:url(../images/bullet_6x6_square_orange.png);background-position:left center;background-repeat: no-repeat;color:black;font-family:tahoma;font-size:10px;text-decoration:none;}
+.sideTabLnkSel:hover {text-decoration:none;}
+.sideTabLnkUns {padding-left:10;color:rgb(50,112,163);font-family:tahoma;font-size:10px;text-decoration:none;}
+.sideTabLnkUns:hover {text-decoration:underline;}
+
+.sideRollupTable {font-family:tahoma;font-size:11px;width:100%;background-color:rgb(240,245,251);}
+.sideRollupCellHeader {border-top:solid 1px rgb(112,168,209);border-right:solid 1px rgb(112,168,209);border-left:solid 1px rgb(112,168,209);padding-left:8px;height:24px;background-image:url(../images/menubacksmall.bmp);background-repeat:repeat-x;background-position:left top;}
+.sideRollupCellBody {padding: 5 5 5 5;border-bottom:solid 1px rgb(112,168,209);border-left:solid 1px rgb(112,168,209);border-right:solid 1px rgb(112,168,209);}
+.sideRollupCellBodyTable {font-family:tahoma;font-size:11px;width:100%;}
+
+/* START properties grid */
+
+.pgHolder { overflow:auto; height:100%; }
+.pgHeaderTable { background-color:#e1e1e1; border-bottom:solid 1px rgb(170,170,170); font-size:11px; font-family:tahoma; width:100%; table-layout:fixed; border-collapse:collapse; }
+.pgHeaderName { font-weight:bold; padding: 5 0 5 5;}
+.pgHeaderValue { font-weight:bold; padding: 5 15 5 0;}
+.pgHeaderLastModified { font-weight:bold; padding: 5 0 5 0;width:120;}
+.pgHeaderLastModifiedBy { font-weight:bold; padding: 5 0 5 0;width:120;}
+.pgCategoryTable { font-size:11px; font-family:tahoma; width:100%; table-layout:fixed; border-collapse:collapse; }
+.pgCategoryHeaderHolder {background-color:#f1f1f1;}
+.pgCategoryHeader { border-bottom:solid 1px #d1d1d1; font-weight:normal; cursor:pointer; padding: 4 5 4 5; }
+.pgCategoryBody {}
+.pgDocumentTable { cursor:pointer; font-size:11px; font-family:tahoma; width:100%; table-layout:fixed; border-collapse:collapse; }
+.pgDocumentRowRootConnector { padding: 0 0 0 0; width:44; }
+.pgRowName { padding: 2 0 2 0;}
+.pgRowValue { padding: 2 15 2 0;color:rgb(0,129,0);}
+.pgRowLastModified { padding: 2 0 2 0;width:120;}
+.pgRowLastModifiedBy { padding: 2 0 2 0;width:120;}
+.pgImageFolder { margin-right:5px; }
+.pgImageFolderPlus { margin-right:8px; }
+.pgImageFolderMinus { margin-right:8px; }
+.pgImageFile { margin-right:5px; }
+.pgImageRootConnector {}
+
+/* END properties grid */
+
+td.headItem {cursor:default;background-color: rgb(220,220,220);}
+th.headItem {cursor:default;background-color: rgb(220,220,220);}
+td.listItem {cursor:pointer;border-bottom: solid 1px #d3d3d3;}
+
+table.list {font-size:11px;font-family:tahoma;font-weight:normal;}
+table.list tbody tr td {cursor:pointer;border-bottom: solid 1px #d3d3d3;font-weight:normal;}
+
+table.list tbody tr td.noBorder {cursor:pointer;border-bottom: none;font-weight:normal;}
+
+table.list thead tr th {cursor:default;background-color: rgb(220,220,220);font-weight:normal;}
+table.list tfoot tr td {cursor:default;background-color: rgb(220,220,220);font-weight:normal;}
+
+table.fixedlist {font-size:11px;font-family:tahoma;font-weight:normal;}
+table.fixedlist tbody tr td {cursor:default;font-weight:normal;}
+table.fixedlist thead tr th {cursor:default;background-color: rgb(220,220,220);font-weight:normal;}
+table.fixedlist tfoot tr td {cursor:default;background-color: rgb(220,220,220);font-weight:normal;}
+
+
+td.headItem2 {background-color: rgb(220,220,220);}
+td.listItem2 {border-bottom: solid 1px #d3d3d3;}
+td.headItem3 {background-color: #f0f0f0;border-bottom: solid 1px #d3d3d3;}
+td.headItem4 {background-color: #d3d3d3;padding:4 3 3 3;border-bottom:solid 1px #b3b3b3;} /*border-bottom:solid 1px rgb(112,168,209);}*/
+td.listItem4 {cursor:pointer;padding:4 3 3 3;border-bottom:solid 1px #d3d3d3;}
+td.listItem5 {cursor:default;padding:5 10 5 10;border-bottom:dashed 1px #b1b1b1;}
+td.listItem6 {cursor:pointer;padding:4 3 3 3;border-bottom:dashed 1px #c3c3c3;}
+td.listItem7 {cursor:pointer;padding:4 3 3 3;font-weight:bold;}
+
+/* START Stat Styles */
+
+th.StatHeadItemTop
+{	
+	padding:2 5 2 5;
+	position:relative; 
+	z-index:9999;
+	background-color:White;
+	top: expression(this.parentElement.parentElement.parentElement.parentElement.scrollTop);
+}
+th.StatHeadItem 
+{	
+	padding:2 5 2 5;
+	border-bottom:solid 1px rgb(112,168,209);
+	position:relative; 
+	z-index:9999;
+	background-color:White;
+	top: expression(this.parentElement.parentElement.parentElement.parentElement.scrollTop);
+}
+td.StatListItem 
+{
+	z-index:9998;
+	cursor:default;
+	padding: 2 5 3 5;
+}
+
+/* END Stat Styles */
+
+/* START RoadmapGridSmall */
+
+.rmgsTable { cursor:pointer;width:100%;font-family:tahoma;font-size:11;table-layout:fixed; }
+.rmgsHeaderStatus { padding: 5 5 5 5;background-color: rgb(220,220,220); }
+.rmgsHeaderCreated { padding: 5 5 5 5;width:55;background-color: rgb(220,220,220); }
+.rmgsRow {}
+.rmgsCellImage { padding: 0 0 0 5;width:15; }
+.rmgsCellStatus { padding: 0 0 0 2; }
+.rmgsCellStatusFirst { padding: 5 0 5 0; }
+.rmgsCellCreated { padding: 0 0 0 5;width:55; }
+.rmgsHolder { padding: 0 0 0 15; }
+.rmgsHolderFirst { padding: 0 0 0 0; }
+.rmgsImage {}
+
+/* END RoadmapGridSmall */
+
+/* START RoadmapGrid */
+
+.rmgTable { width:100%;font-family:tahoma;font-size:11;table-layout:fixed;border-collapse:collapse; }
+.rmgCellTable { width:100%;font-family:tahoma;font-size:11;table-layout:fixed;border-collapse:collapse; }
+.rmgCellNoteTable { background-color:rgb(255,255,234);width:100%;font-family:tahoma;font-size:11;table-layout:fixed;border-collapse:collapse; }
+.rmgCellTaskTable { background-color:rgb(243,250,237);width:100%;font-family:tahoma;font-size:11;table-layout:fixed;border-collapse:collapse; }
+.rmgCellTaskNoteTable { background-color:rgb(255,255,234);width:100%;font-family:tahoma;font-size:11;table-layout:fixed;border-collapse:collapse; }
+.rmgHeaderStatus { padding: 5 0 5 5;background-color: rgb(220,220,220);border-bottom: solid 1px #b3b3b3; }
+.rmgHeaderCreated { padding: 5 0 5 0;width:130;background-color: rgb(220,220,220);border-bottom: solid 1px #b3b3b3; }
+.rmgHeaderFacilitator { padding: 5 0 5 0;width:90;background-color: rgb(220,220,220);border-bottom: solid 1px #b3b3b3; }
+.rmgRow { }
+.rmgCell {border-bottom: solid 1px #d3d3d3;}
+.rmgCellFirst {padding-top: 5;padding-bottom: 5;border-bottom: solid 1px #d3d3d3;}
+.rmgCellStatus { padding-left:15; }
+.rmgCellCreated { width:130; }
+.rmgCellFacilitator { width:90; }
+.rmgCellNote {padding:10 0 10 30;}
+.rmgCellNoteImage {width:25;}
+.rmgCellNoteStatus { padding-left:5;}
+.rmgCellNoteCreated { width:133;}
+.rmgCellNoteFacilitator { width:92;}
+.rmgCellNoteSplitter {background-image:url(../images/dot2.png);background-position:center left;background-repeat:repeat-x;}
+.rmgCellTask {padding:10 0 10 30;}
+.rmgCellTaskAfterNotes {padding:0 0 10 25;}
+.rmgCellTaskImage {width:25;}
+.rmgCellTaskStatus { padding-left:5;}
+.rmgCellTaskResolved { width:100;}
+.rmgCellTaskResolvedDate {color:#a1a1a1;font-size:9;}
+.rmgCellTaskCreated { width:133;}
+.rmgCellTaskFacilitator { width:92;}
+.rmgCellTaskSplitter {background-image:url(../images/dot2.png);background-position:center left;background-repeat:repeat-x;}
+.rmgCellTaskNote {padding:10 0 0 25;background-color:white;}
+.rmgCellTaskNoteImageConnector {width:25;background-color:white;}
+.rmgCellTaskNoteImage {width:25;}
+.rmgCellTaskNoteStatus { padding-left:5;}
+.rmgCellTaskNoteCreated { width:133;}
+.rmgCellTaskNoteFacilitator { width:90;}
+.rmgCellTaskNoteSplitter {background-image:url(../images/dot2.png);background-position:center left;background-repeat:repeat-x;}
+.rmgHolder { padding: 0 0 0 20; }
+.rmgHolderFirst { padding: 0 0 0 0; }
+.rmgImage {margin-right:3;}
+
+/* END RoadmapGrid */
+
+/* START task calendar */
+
+.TCModeButton { color: black; text-decoration: none; font-family: Tahoma; font-size: 11px; }
+.TCModeButton:link { text-decoration: none }
+.TCModeButton:visited { text-decoration: none }
+.TCModeButton:active { text-decoration: none }
+.TCModeButton:hover { text-decoration: underline }
+
+.TCModeButtonSel { color: black; text-decoration: none; font-family: Tahoma; font-size: 11px; font-weight:bold; }
+.TCModeButtonSel:link { text-decoration: none }
+.TCModeButtonSel:visited { text-decoration: none }
+.TCModeButtonSel:active { text-decoration: none }
+.TCModeButtonSel:hover { color: black; text-decoration: none }
+
+.TCModeButtonImage { margin-right: 5px; }
+
+/* END task calendar */
+
+
+/* START xp tabs */
+
+.tabXPTable {width:100%;font-family:tahoma;font-size:11px;}
+.tabXPHolderUns {cursor:pointer;padding:0 1 0 1;border-bottom:solid 1px rgb(145,155,156);}
+.tabXPHolderSel {cursor:default;padding:0 0 0 0;}
+.tabXPHolderTableUns {cursor:pointer;height:18;background-image:url(../images/tab_xp_back_uns.bmp);background-repeat:repeat-x;background-position:right top;width:100%;font-family:tahoma;font-size:11px;}
+.tabXPHolderTableSel {cursor:default;height:24;width:100%;font-family:tahoma;font-size:11px;}
+.tabXPHolderBack {width:100%;border-bottom:solid 1px rgb(145,155,156);}
+
+.tabXPCellTopLeftUns {cursor:pointer;width:3;height:3;background-color:white;background-image:url(../images/tab_xp_topleft_uns.png);background-repeat:no-repeat;background-position:left top;}
+.tabXPCellTopUns {cursor:pointer;height:3;background-image:url(../images/tab_xp_top_uns.bmp);background-repeat:repeat-x;background-position:left top;}
+.tabXPCellTopRightUns {cursor:pointer;width:3;height:3;background-color:white;background-image:url(../images/tab_xp_topright_uns.png);background-repeat:no-repeat;background-position:right top;}
+
+.tabXPCellMidLeftUns {cursor:pointer;width:3;background-image:url(../images/tab_xp_left_uns.bmp);background-repeat:repeat-y;background-position:left top;}
+.tabXPCellMidUns {cursor:pointer;padding: 0 20 1 20;}
+.tabXPCellMidRightUns {cursor:pointer;width:3;background-image:url(../images/tab_xp_right_uns.bmp);background-repeat:repeat-y;background-position:right top;}
+
+.tabXPCellTopLeftSel {cursor:default;width:3;height:3;background-color:white;background-image:url(../images/tab_xp_topleft_sel.png);background-repeat:no-repeat;background-position:left top;}
+.tabXPCellTopSel {cursor:default;height:3;background-image:url(../images/tab_xp_top_sel.bmp);background-repeat:repeat-x;background-position:left top;}
+.tabXPCellTopRightSel {cursor:default;width:3;height:3;background-color:white;background-image:url(../images/tab_xp_topright_sel.png);background-repeat:no-repeat;background-position:right top;}
+
+.tabXPCellMidLeftSel {cursor:default;width:3;border-left:solid 1px rgb(145,155,156);}
+.tabXPCellMidSel {cursor:default;padding: 0 20 1 20;}
+.tabXPCellMidRightSel {cursor:default;width:3;border-right:solid 1px rgb(145,155,156);}
+
+.tabXPCellTopLeftHover {cursor:pointer;width:3;height:3;background-color:white;background-image:url(../images/tab_xp_topleft_sel.png);background-repeat:no-repeat;background-position:left top;}
+.tabXPCellTopHover {cursor:pointer;height:3;background-image:url(../images/tab_xp_top_sel.bmp);background-repeat:repeat-x;background-position:left top;}
+.tabXPCellTopRightHover {cursor:pointer;width:3;height:3;background-color:white;background-image:url(../images/tab_xp_topright_sel.png);background-repeat:no-repeat;background-position:right top;}
+
+.tabXPCellMidLeftHover {cursor:pointer;width:3;background-image:url(../images/tab_xp_left_uns.bmp);background-repeat:repeat-y;background-position:left top;}
+.tabXPCellMidHover {cursor:pointer;padding: 0 20 1 20;}
+.tabXPCellMidRightHover {cursor:pointer;width:3;background-image:url(../images/tab_xp_right_uns.bmp);background-repeat:repeat-y;background-position:right top;}
+
+.tabXPCellSel {border-top:solid 2px rgb(255,199,60);padding: 0 20 0 20;}
+
+/* END xp tabs */
+
+/* START doc grid for clients */
+
+.clientdocgrdTableFolders {table-layout:fixed;font-family:tahoma;font-size:11;width:100%;}
+.clientdocgrdTableFiles {table-layout:fixed;font-family:tahoma;font-size:11;width:100%;cursor:pointer;}
+.clientdocgrdCellFolder {cursor:pointer;border-bottom:solid 1px #d3d3d3;padding:3 3 3 8;}
+.clientdocgrdCellFolderBody {padding-left:22;}
+.clientdocgrdCellDocBody {padding-bottom:5;}
+.clientdocgrdCellRootEnd {width:49;}
+.clientdocgrdCellRootConnector {width:49;}
+.clientdocgrdCellName {}
+.clientdocgrdCellSize {padding-right:10;width:70;}
+.clientdocgrdCellType {width:95;}
+.clientdocgrdCellDate {padding-left:10;width:70;}
+.clientdocgrdImagePlus {margin-right:8;}
+.clientdocgrdImageMinus {margin-right:8;}
+.clientdocgrdImageFolder {margin-right:8;}
+.clientdocgrdImageIcon {margin-right:5;}
+.clientdocgrdImageRootEnd {margin-left:21;margin-right:3;}
+.clientdocgrdImageRootConnector {margin-left:21;margin-right:3;}
+
+/* END doc grid for clients */
+
+/* START reference tables grid */
+
+.trefTable {font-family:tahoma;font-size:11px;width:100%;}
+.trefHeaderCell {padding:4 4 4 4;cursor:default;background-color: rgb(220,220,220);}
+.trefHeaderCellRightOfLeft {padding:4 4 4 14;cursor:default;background-color: rgb(220,220,220);}
+.trefBodyCell {padding:4 4 4 4;cursor:pointer;border-bottom: solid 1px #d3d3d3;}
+.trefBodyCellRightOfLeft {padding:4 4 4 14;cursor:pointer;border-bottom: solid 1px #d3d3d3;}
+
+.srefTable {margin:0 15 15 0;float:left;font-family:tahoma;font-size:11px;width:300;}
+.srefHeaderCell {padding:5 5 5 5;background-color:#f1f1f1;}
+.srefEntryTitleCell {padding:0 5 0 5;width:100;height:21;}
+.srefEntryCell {padding:0 5 0 0;}
+.srefEntry {font-family:tahoma;font-size:11px;}
+
+/* END reference tables grid */
+
+/* START info boxes */
+
+.iboxDiv {filter:progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=5);width:100%;}
+.iboxTable {background-color:#f1f1f1;border:solid 1px #c3c3c3;font-family:tahoma;font-size:11px;width:100%;}
+.iboxTable2 {font-family:tahoma;font-size:11px;width:100%;}
+.iboxHeaderCell {color:rgb(0,0,200);font-weight:normal;}
+.iboxCloseCell {}
+.iboxMessageCell {padding-top:10;}
+
+.errorDiv {filter:progid:DXImageTransform.Microsoft.Shadow(color='#777777', Direction=135, Strength=5);width:100%;}
+.errorTable {background-color:#ffffda;border:solid 1px #969696;font-family:tahoma;font-size:11px;width:100%;color:red}
+.errorTable2 {font-family:tahoma;font-size:11px;width:100%;}
+.errorHeaderCell {color:rgb(0,0,200);font-weight:normal;}
+.errorCloseCell {}
+.errorMessageCell {padding-top:10;}
+
+/* END info boxes */
+
+/* START agency styles */
+
+table.data THEAD TD {  BORDER-TOP: #bbbbbb 1px solid; FONT-WEIGHT: bold; COLOR: #808080; BORDER-BOTTOM: #bbbbbb 1px solid; BACKGROUND-COLOR: #eeeeee }
+table.data TR.header {  BORDER-TOP: #bbbbbb 1px solid; FONT-WEIGHT: bold; COLOR: #808080; BORDER-BOTTOM: #bbbbbb 1px solid; BACKGROUND-COLOR: #eeeeee }
+table.data TBODY TD {  BORDER-TOP: #bbbbbb 1px solid; BORDER-BOTTOM: #bbbbbb 1px solid }
+table.data TBODY TR.alternate TD { BACKGROUND-COLOR: #fafafa }
+table.data TFOOT TD {  BORDER-TOP: #bbbbbb 1px solid; FONT-WEIGHT: bold; BORDER-BOTTOM: #bbbbbb 1px solid; BACKGROUND-COLOR: #eeeeee }
+TABLE.data { FONT-SIZE: smaller; BORDER-COLLAPSE: collapse }
+
+td.rowheader {border-right:#bbbbbb 1px solid; font-weight:bold;background-color:#fafafa;color:#808080}
+td.caption {font-weight:bold}
+
+/* END agency styles */
+
+.HeavyHeader
+{
+	WIDTH: 100%; HEIGHT: 26px;
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma; FONT-WEIGHT: bold; COLOR: white;
+	BACKGROUND-COLOR: rgb(180,180,180);
+}
+
+.GridViewItems
+{
+font-family:Tahoma;
+font-size:11;
+color:Black;
+}
+
+
+/* list builder styles */
+.tablestyle{border:solid 1px gray;font-family:tahoma;margin:10px 0pt 15px;font-size: 8pt;border-color: #CDCDCD;width:850px;color: #3D3D3D;}
+.tablestyle td, .tablestyle th{border-color: #CDCDCD;}
+.headerstyle {height:30px;text-align:center;font-family:Tahoma;font-size:8pt;background-image: url(../images/bg-menu-main.png);background-repeat:repeat-x;color:White;}  
+.headerstyle a{display:block;font-family:Tahoma;font-size:8pt;text-decoration:none;color:white; font-weight:lighter} 
+.rowstyle{font-family:Tahoma;font-size:x-small;background-color: #FFF;}
+.alternatingrowstyle{background-color:#CDCDCD;}
+.rowstyle td, .alternatingrowstyle td {font-family:Tahoma;font-size:8pt;padding: 4px;}
+.sortascheaderstyle{text-align:center;padding-left: 20px;font-family:Tahoma;font-size:x-small;background-image: url(../images/sort_asc.gif);background-color: #8dbdd8;background-repeat: no-repeat;background-position: center left;}
+.sortdescheaderstyle{text-align:center;padding-left: 20px;font-family:Tahoma;font-size:x-small;background-image: url(../images/sort_desc.gif);background-color: #8dbdd8;background-repeat: no-repeat;background-position: center left;} 
+
+
+.pagerstyle{font-family:Tahoma;color:#444444;background-color:#e5e5e5;font-size:x-small;text-align:right;text-decoration:none;} 
+.pagerstyle a{font-family:Tahoma;color:#444444;background-color:#e5e5e5;font-size:x-small;text-align:right; text-decoration:none;} 
+.pagerstyle a:hover{font-family:Tahoma;color:#e5e5e5;background-color:#444444;font-size:x-small;text-align:right; text-decoration:none;} 
+.pagerstyle select{font-family:Tahoma;font-size:x-small;}  
+
+.SelectTblHdr{font-family:tahoma;font-size:smaller;background-image: url(../images/bg-menu-main.png);background-repeat:repeat-x;color:#FFF;font-weight:bold;}
+.gotopage{font-size:x-small;width:20px;}
+.GridLinkButton{font-family:Tahoma;font-size:smaller;text-decoration: none; color: DarkGray;}
+
+.collapsePanel {background-color:white;overflow:hidden;}
+.collapsePanelHeader{width:100%;height:30px;background-image: url(../images/bg-menu-main.png);background-repeat:repeat-x;color:#FFF;font-weight:bold;}
+
+.groupRow{color:white;background-color:steelblue;}
+
+.popupMenu {position:absolute;visibility:hidden;background-color:#F5F7F8;opacity:.9;filter: alpha(opacity=90);}
+.popupHover {background-image:url(images/header-opened.png);background-repeat:repeat-x;background-position:left top;background-color:#F5F7F8;}
+
+.AjaxProgressMessage
+{
+      background-color: #FFFFFF;
+      border: solid 1px #000000;
+      filter: progid:DXImageTransform.Microsoft.shadow(color=black,strength=5,direction=135);
+      font-family: Tahoma;
+      font-size: 12px;
+      font-weight: bold;
+      left: 50%;
+      padding: 10px 20px 10px 10px;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      vertical-align: middle;
+      z-index: 9999;
+}
+
+.AjaxProgressMessage img
+{
+      margin-right: 5px;
+}
+
+
+.accordionHeader {border: 1px solid #2F4F4F;color: white;background-color: #2E4d7B;font-family: tahoma, Sans-Serif;font-size: 12px;font-weight: bold;padding: 5px;margin-top: 5px;cursor: pointer;}
+.accordionHeaderSelected{border: 1px solid #2F4F4F;color: white;background-color: #5078B3;font-family: tahoma, Sans-Serif;font-size: 12px;font-weight: bold;padding: 5px;margin-top: 5px;cursor: pointer;}
+.accordionContent{background-color: #D3DEEF;border: 1px dashed #2F4F4F;	border-top: none;padding: 5px;padding-top: 10px;}
+   
+/* end list builder styles */
+
+/*Ajax toolkit */
+.MyCalendar .ajax__calendar_header {height:20px;width:100%;background-color:lightsteelblue}
+.MyCalendar .ajax__calendar_today {cursor:pointer;padding-top:3px; background-color:lightsteelblue}
+
+
+.MyCalendar .ajax__calendar_container 
+{
+border:1px solid #646464;
+background-color: white;
+color: black;
+}
+.MyCalendar .ajax__calendar_other .ajax__calendar_day,
+.MyCalendar .ajax__calendar_other .ajax__calendar_year 
+{
+color: gray;
+}
+.MyCalendar .ajax__calendar_hover .ajax__calendar_day,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_month,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_year 
+{
+color: black;
+
+}
+.MyCalendar .ajax__calendar_active .ajax__calendar_day,
+.MyCalendar .ajax__calendar_active .ajax__calendar_month,
+.MyCalendar .ajax__calendar_active .ajax__calendar_year 
+{
+color: black;
+font-weight:bold;
+background-color:lightsteelblue;
+}
+.fixedHeader th
+{
+    overflow: hidden;
+    position: relative;
+    top: expression(this.parentNode.parentNode.parentNode.parentNode.parentNode.scrollTop-1);
+    text-align: LEFT;
+    table-layout: fixed;
+    background-color: #f0f0f0;
+    border-bottom: solid 1px #d3d3d3; 
+    font-weight:normal;
+    color:Black; 
+    font-size:11px; 
+    font-family:tahoma;
+}
+.fixedHeader td{font-family:tahoma;font-size:8.3pt;text-align: LEFT;}
+.modalBackgroundNeg {background-color:#808080;filter:alpha(opacity=70);opacity:0.7;}
+.modalPopupNeg {background-color: #F5FAFD;border-width:1px;border-style:ridge;border-color:Gray;padding:0px;width:60%;} 
+.spanHeader{width: 100%;background-color: #F1F1F1;padding: 3px;}
+
+.accordionHeader {border: 1px solid #2F4F4F;color: black;font-family: tahoma;font-size: 12px;font-weight: bold;padding: 5px;margin-top: 5px;cursor: pointer;}
+.accordionHeaderSelected{border: 1px solid #2F4F4F;color: black;font-family: tahoma;font-size: 12px;font-weight: bold;padding: 5px;margin-top: 5px;cursor: pointer;}
+.accordionContent{background-color: #D3DEEF;border: 1px dashed #2F4F4F;	border-top: none;padding: 5px;padding-top: 10px; width:98%}
+.accordionHeader, .accordionHeaderSelected{font-family: tahoma;font-size: 12px;padding: 3px;margin-top: 5px;border-bottom: 1px solid #A2CEE4;}
+.accordionHeader a, .accordionHeaderSelected a{color: #006699;font-weight: bold;text-decoration: none;}
+    
+/*CollapsiblePanel*/
+.collapsePanel {background-color:white;overflow:hidden;}
+.collapsePanelHeader{padding-top:5px;width:100%;height:30px;background-color:#DCDCDC;font-weight:bold;font-family:Tahoma;}
+
+/*Nice css boxes*/
+.info, .success, .warning, .error, .validation {
+border: 1px solid;
+margin: 10px 0px;
+padding:15px 10px 15px 50px;
+background-repeat: no-repeat;
+background-position: 10px center;
+}
+.info {
+color: #00529B;
+background-color: #BDE5F8;
+background-image: url('../images/info.png');
+}
+.success {
+color: #4F8A10;
+background-color: #DFF2BF;
+background-image:url('../images/success.png');
+}
+.warning {
+color: #9F6000;
+background-color: #FEEFB3;
+background-image: url('../images/warning.png');
+}
+.error {
+color: #D8000C;
+background-color: #FFBABA;
+background-image: url('../images/error.png');
+}
+.formViewRowStyle 
+{
+    font-family:tahoma;
+    font-size:11px;
+    color:#333333;
+}
+.formViewEditRowStyle 
+{
+    font-family:tahoma;
+    font-size:11px;
+    color:#333333;
+}
+/*end formview style*/
+
+/* Tabs */
+/* body */
+.tabContainer .ajax__tab_body{border-bottom-style: none;border-left-style: none;border-right-style: none;border-top: 0px;padding:0px;}
+/* header */
+.tabContainer .ajax__tab_header{background-image: url(../images/tabTopBorder.png);background-position: 50% bottom;background-repeat: repeat-x;font-size: 11px;font-family:tahoma;white-space: nowrap;}
+/* tab */
+.tabContainer .ajax__tab_outer{background-image: url(../images/subtab_off_right.png);background-position: right 50%;background-repeat: no-repeat;display: inline-block;height: 21px;padding-right: 4px;}
+.tabContainer .ajax__tab_inner{background-image: url(../images/subtab_off_left.png);background-repeat: no-repeat;display: inline-block;padding-left: 3px;height: 21px;}
+.tabContainer .ajax__tab_tab{background-image: url(../images/subtab_off_middle.png);background-repeat: repeat-x;cursor: pointer;display: inline-block;height: 21px;overflow: hidden;margin: 0px;padding: 4px;text-align: center;}
+.tabContainer .ajax__tab_inner .ajax__tab_tab{margin: 0px;}
+/* tab hover */
+.tabContainer .ajax__tab_hover .ajax__tab_outer{background-image: url(../images/subtab_over_right.png);background-position: right 50%;background-repeat: no-repeat;}
+.tabContainer .ajax__tab_hover .ajax__tab_inner{background-image: url(../images/subtab_over_left.png);background-repeat: no-repeat;}
+.tabContainer .ajax__tab_hover .ajax__tab_tab{background-image: url(../images/subtab_over_middle.png);background-repeat: repeat-x;margin: 0px;}
+/* active */
+.tabContainer .ajax__tab_active .ajax__tab_outer{background-image: url(../images/subtab_on_right.png);background-position: right 50%;background-repeat: no-repeat;}
+.tabContainer .ajax__tab_active .ajax__tab_inner{background-image: url(../images/subtab_on_left.png);background-repeat: no-repeat;}
+.tabContainer .ajax__tab_active .ajax__tab_tab{background-image: url(../images/subtab_on_middle.png);background-repeat: repeat-x;margin: 0px;}
+
+
+.Accordion_header{padding: 3px 5px 5px 20px;background-color: #e3eff9;border-top: solid 1px #fff;font-family: Tahoma;font-size: 11px;color: #8c8c8c;cursor: pointer;}
+.Accordion_header img{vertical-align: middle;border-style: none;margin-right: 8px;}
+.Accordion_headerSelected{padding: 3px 5px 5px 20px;background-color: #e3eff9;border-top: solid 1px #fff;font-family: Tahoma;font-size: 11px;color: #8c8c8c;cursor: pointer;}
+.Accordion_headerSelected img{vertical-align: middle;border-style: none;margin-right: 8px;}
+.Accordion_content{padding: 5px 10px 5px 20px;background-color: #c6def2;}
+.Accordion_content td{font-family: Tahoma;font-size: 11px;font-weight: normal;color: #000000;}
+ 
+ .RequiredFieldTable{border-right: red thin solid;border-top: red thin solid;border-left: red thin solid;border-bottom: red thin solid;}
+
+.callbar{font-family: Tahoma;font-size: 10px;border-bottom-style: inset;border-bottom-color: #CCCCCC;}
+.callbar div div table th{background-color: #c6def2;}
+ 

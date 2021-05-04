@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RichTextBox.RTF" xml:space="preserve">
+    <value>{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fnil\fcharset0 Microsoft Sans Serif;}}
+{\*\generator Riched20 5.40.11.2210;}\viewkind4\uc1\pard\lang1033\f0\fs22\tab Although we have attempted to reach you by phone on several occasions to provide the following information, we have been unsuccessful.  Therefore, we hope you will accept this letter as a welcome to our law firm. From this point forward please disregard any phone numbers you have used in the past and direct all questions and/or concerns to our Client Services Department at (\b 800) 914-4832\b0 . Also feel free to give us a call if you have any questions regarding the following:\par
+\b\fs20\par
+\pard\fi-360\li720\tx720\b0\f1\fs22\'b7\tab\f0 You should have already received our welcome packet.  Included in the welcome pack are: \par
+\pard\li720\b A welcome letter\b0\i\fs24 - \i0\fs22 this includes your account number with our firm. Please keep this number available when calling into our Client Services Department. \i\fs24  \i0\fs22 Our associates will need your account number to pull up any information regarding your account.\b  \par
+Information Sheet\b0 - Client contact information to be completed and returned in the envelope provided.\par
+\b Client Satisfaction Survey\b0 -a satisfaction survey to be completed and returned in the envelope provided.\par
+\b Online Client Services Instructions\b0 - Instructions on how to access your account online.\par
+\b Telephone Response Cards- \b0 a per-scripted response that should be given to any creditor that calls you.  No other information should be given.\b\par
+Collection Abuse Questionnaire\b0 - a questionnaire to be utilized once contact has been established with your creditors and a violation process has begun with them. \par
+\b Copies of Representation Letters\b0 - copy of letters that have been sent to each of the creditors, notifying them of our representation. Please verify that we have sent a letter to every creditor that you have hired us to negotiate with and that the account numbers listed on each letter are accurate.   Creditors may still call you up to three weeks after these letters have been sent.  This is normal for a transition period.  \par
+\pard\fi-360\li720\tx720\f1\'b7\tab\f0 After the three week transitional period the creditor should stop calling.  If the creditor continues to call, you should call the Client Services Department with the creditor\rquote s name, address and phone number.  A violation letter will be sent at this time. *The Creditor harassment questionnaire is used \b AFTER\b0  a violation letter has been sent.\par
+\pard\fi-360\li720\f1\fs24\'b7\tab\f0 S\fs22 tatements are sent out at the beginning of each month detailing your account and any activity.  This is the statement that should be used to send in your monthly commitment if you are mailing in a check or money order. Please write your account number clearly on your deposit.  If your deposit is taken electronically, please use this statement as a reminder that we will withdraw your funds on your chosen date\fs24 . \par
+\f1\fs22\'b7\tab\f0 You may continue to receive creditor billing statements and letters.  Once a month, please mail us any creditor statements or correspondence you have received to our California data entry address. (The Seideman Law Firm-P.O. Box 1800, Rancho Cucamonga, CA 91729-1800)\par
+\pard\fs24\par
+\pard\fi-360\li720\tx720\f1\fs22\'b7\tab\f0 Your deposit method and amount is marked below, please call us if this information is not correct or if you would like any changes.\par
+\pard\li720\b\fs48\u9633?\b0\fs22 Automatic Withdrawal in the amount of $_______ on the _______ of every month beginning on _______________. \b\fs20 (Your deposit will be directly taken out of your bank account)\par
+\fs48\u9633?\b0\fs22 Personal check\b  \b0 or money order to be mailed in the amount of $________ on the _______ of every month beginning __________. \b\fs20 (please mail all payments to\b0\fs24 :\b\fs20 The Seideman Law Firm- P.O. Box 830560 Birmingham, AL 35283-0560)\par
+\pard\fi720\b0\fs24\par
+\pard Again, if you have any questions regarding our representation, please feel free to call our Client Services Department at \b (800) 914-4832\b0 .  Our Associates are available to help you Monday- Friday 7am-6pm Pacific Standard Time.  If all of our representatives are on the other line and you decide that you cannot continue to hold, please leave a message so they can give you a call back at their first opportunity.  We look forward to serving you through your time with our firm. \par
+\par
+Regards,\par
+\par
+Verifications Department\par
+The Seideman Law Firm\par
+1-800-914-4163 \par
+\f2\fs17\par
+}
+</value>
+  </data>
+  <data name="RichTextBox.RTF" xml:space="preserve">
+    <value>{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fnil\fcharset0 Microsoft Sans Serif;}}
+{\*\generator Riched20 5.40.11.2210;}\viewkind4\uc1\pard\lang1033\f0\fs22\tab Although we have attempted to reach you by phone on several occasions to provide the following information, we have been unsuccessful.  Therefore, we hope you will accept this letter as a welcome to our law firm. From this point forward please disregard any phone numbers you have used in the past and direct all questions and/or concerns to our Client Services Department at (\b 800) 914-4832\b0 . Also feel free to give us a call if you have any questions regarding the following:\par
+\b\fs20\par
+\pard\fi-360\li720\tx720\b0\f1\fs22\'b7\tab\f0 You should have already received our welcome packet.  Included in the welcome pack are: \par
+\pard\li720\b A welcome letter\b0\i\fs24 - \i0\fs22 this includes your account number with our firm. Please keep this number available when calling into our Client Services Department. \i\fs24  \i0\fs22 Our associates will need your account number to pull up any information regarding your account.\b  \par
+Information Sheet\b0 - Client contact information to be completed and returned in the envelope provided.\par
+\b Client Satisfaction Survey\b0 -a satisfaction survey to be completed and returned in the envelope provided.\par
+\b Online Client Services Instructions\b0 - Instructions on how to access your account online.\par
+\b Telephone Response Cards- \b0 a per-scripted response that should be given to any creditor that calls you.  No other information should be given.\b\par
+Collection Abuse Questionnaire\b0 - a questionnaire to be utilized once contact has been established with your creditors and a violation process has begun with them. \par
+\b Copies of Representation Letters\b0 - copy of letters that have been sent to each of the creditors, notifying them of our representation. Please verify that we have sent a letter to every creditor that you have hired us to negotiate with and that the account numbers listed on each letter are accurate.   Creditors may still call you up to three weeks after these letters have been sent.  This is normal for a transition period.  \par
+\pard\fi-360\li720\tx720\f1\'b7\tab\f0 After the three week transitional period the creditor should stop calling.  If the creditor continues to call, you should call the Client Services Department with the creditor\rquote s name, address and phone number.  A violation letter will be sent at this time. *The Creditor harassment questionnaire is used \b AFTER\b0  a violation letter has been sent.\par
+\pard\fi-360\li720\f1\fs24\'b7\tab\f0 S\fs22 tatements are sent out at the beginning of each month detailing your account and any activity.  This is the statement that should be used to send in your monthly commitment if you are mailing in a check or money order. Please write your account number clearly on your deposit.  If your deposit is taken electronically, please use this statement as a reminder that we will withdraw your funds on your chosen date\fs24 . \par
+\f1\fs22\'b7\tab\f0 You may continue to receive creditor billing statements and letters.  Once a month, please mail us any creditor statements or correspondence you have received to our California data entry address. (The Seideman Law Firm-P.O. Box 1800, Rancho Cucamonga, CA 91729-1800)\par
+\pard\fs24\par
+\pard\fi-360\li720\tx720\f1\fs22\'b7\tab\f0 Your deposit method and amount is marked below, please call us if this information is not correct or if you would like any changes.\par
+\pard\li720\b\fs48\u9633?\b0\fs22 Automatic Withdrawal in the amount of $_______ on the _______ of every month beginning on _______________. \b\fs20 (Your deposit will be directly taken out of your bank account)\par
+\fs48\u9633?\b0\fs22 Personal check\b  \b0 or money order to be mailed in the amount of $________ on the _______ of every month beginning __________. \b\fs20 (please mail all payments to\b0\fs24 :\b\fs20 The Seideman Law Firm- P.O. Box 830560 Birmingham, AL 35283-0560)\par
+\pard\fi720\b0\fs24\par
+\pard Again, if you have any questions regarding our representation, please feel free to call our Client Services Department at \b (800) 914-4832\b0 .  Our Associates are available to help you Monday- Friday 7am-6pm Pacific Standard Time.  If all of our representatives are on the other line and you decide that you cannot continue to hold, please leave a message so they can give you a call back at their first opportunity.  We look forward to serving you through your time with our firm. \par
+\par
+Regards,\par
+\par
+Verifications Department\par
+The Seideman Law Firm\par
+1-800-914-4163 \par
+\f2\fs17\par
+}
+</value>
+  </data>
+  <metadata name="$this.ScriptEditorPositionForUndo" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <metadata name="$this.ScriptEditorPositionForRedo" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <data name="$this.StyleSheet" xml:space="preserve">
+    <value>font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0</value>
+  </data>
+</root>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

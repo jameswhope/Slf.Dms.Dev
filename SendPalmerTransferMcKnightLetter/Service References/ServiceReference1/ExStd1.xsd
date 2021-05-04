@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schema.microbilt.com/messages/" elementFormDefault="qualified" targetNamespace="http://schema.microbilt.com/messages/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://sdkstage.microbilt.com/WebServices/EX/ExStd.svc?xsd=xsd1" namespace="http://schema.microbilt.com/messages/ExStd/v1_0" />
+  <xs:element name="GetReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schema.microbilt.com/messages/ExStd/v1_0" minOccurs="0" maxOccurs="1" name="inquiry" type="q1:ExStdRq_Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schema.microbilt.com/messages/ExStd/v1_0" minOccurs="0" maxOccurs="1" name="GetReportResult" type="q2:ExStdRs_Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRawReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="guid" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRawReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetRawReportResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArchiveReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="guid" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArchiveReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schema.microbilt.com/messages/ExStd/v1_0" minOccurs="0" maxOccurs="1" name="GetArchiveReportResult" type="q3:ExStdRs_Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transform">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schema.microbilt.com/messages/ExStd/v1_0" minOccurs="0" maxOccurs="1" name="inquiry" type="q4:ExStdRq_Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransformResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="TransformResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Map">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="bureauResponse" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schema.microbilt.com/messages/ExStd/v1_0" minOccurs="0" maxOccurs="1" name="MapResult" type="q5:ExStdRs_Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

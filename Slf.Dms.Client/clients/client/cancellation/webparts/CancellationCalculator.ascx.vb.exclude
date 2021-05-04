@@ -1,0 +1,166 @@
+﻿Imports System.Data
+Imports Drg.Util.DataHelpers
+Imports Drg.Util.Helpers
+
+Partial Class Clients_client_cancellation_webparts_CancellationCalculator
+    Inherits System.Web.UI.UserControl
+    Private _ClientId As Integer
+    Public Sub LoadClientInfo(ByVal DataClientId As Integer)
+        hdnClientId.Value = DataClientId
+        ddlState.Items.Clear()
+        Using dt As DataTable = SharedFunctions.AsyncDB.executeDataTableAsync("select StateId, abbreviation from tblstate with(nolock) order by name", ConfigurationManager.AppSettings("connectionstring").ToString)
+            For Each state As DataRow In dt.Rows
+                Try
+                    ddlState.Items.Add(New ListItem(state("abbreviation").ToString, state("StateId").ToString))
+                Catch ex As Exception
+                    Continue For
+                End Try
+            Next
+        End Using
+
+        Dim sSQL As String = String.Format("stp_cancellation_getClientInfo {0}", DataClientId)
+        Dim sa As New Data.SqlClient.SqlDataAdapter(sSQL, ConfigurationManager.AppSettings("connectionstring").ToString)
+        Dim dtClient As New Data.DataTable
+        Try
+            sa.Fill(dtClient)
+
+            For Each dRow As DataRow In dtClient.Rows
+                If dRow.Item("Relationship").ToString().Equals("Prime") Then
+                    lnkName.Text = PersonHelper.GetName(dRow.Item("FirstName").ToString(), _
+                    dRow.Item("LastName").ToString(), dRow.Item("SSN").ToString(), _
+                    dRow.Item("EmailAddress").ToString())
+
+                    lblAddress.Text = PersonHelper.GetAddress(dRow.Item("Street").ToString(), _
+                        dRow.Item("Street2").ToString(), dRow.Item("City").ToString(), dRow.Item("Abbreviation").ToString(), _
+                        dRow.Item("ZipCode").ToString())
+
+                    If dRow.Item("SSN").ToString().Length > 0 Then
+                        lblSSN.Text = "SSN: " & StringHelper.PlaceInMask(dRow.Item("SSN").ToString(), "___-__-____", "_", StringHelper.Filter.NumericOnly) & "<br>"
+                    End If
+
+                    lnkStatus.Text = String.Format("<a href='" & ResolveUrl("~/Clients/client/roadmap.aspx") & "?id={0}' class='lnk'>{1}</a>", DataClientId, dRow.Item("ClientStatus").ToString())
+
+
+                    If dRow.Item("AccountNumber").ToString().Length > 0 Then
+                        lblAccountNumber.Text = dRow.Item("AccountNumber").ToString() & "<br>"
+                    End If
+
+                    If IsDate(dRow.Item("HardshipDate").ToString()) Then
+                        lblHardship.Text = String.Format("<a href='" & ResolveUrl("~/Clients/client/hardship/") & "?id={0}' class='lnk'>{1}</a>", DataClientId, Format(CDate(dRow.Item("HardshipDate").ToString()), "M/d/yyyy"))
+                    Else
+                        lblHardship.Text = String.Format("<a href='" & ResolveUrl("~/Clients/client/hardship/") & "?id={0}' class='lnk'>Not on file</a>", DataClientId)
+                    End If
+
+                    lblCompany.Text = dRow.Item("CompanyName").ToString()
+                    lblClientFirstName.Text = dRow.Item("FirstName").ToString()
+                    lblClientLastName.Text = dRow.Item("LastName").ToString()
+                    lblStreet.Text = dRow.Item("Street").ToString()
+                    lblStreet2.Text = dRow.Item("Street2").ToString()
+                    lblCity.Text = dRow.Item("City").ToString()
+                    ddlState.SelectedValue = ddlState.Items.FindByText(dRow.Item("Abbreviation").ToString()).Value
+                    lblZip.Text = dRow.Item("ZipCode").ToString()
+                    lblEmail.Text = dRow.Item("EmailAddress").ToString()
+                    If Not String.IsNullOrEmpty(dRow.Item("EmailAddress").ToString()) Then
+                        lblEmailAddress.Text = dRow.Item("EmailAddress").ToString() & "&nbsp;<img id=""imgEmail"" style=""margin-right:8px;"" border=""0"" runat=""server"" align=""absmiddle"" src=""" & ResolveUrl("~/images/16x16_Email.png") & """ alt=""Email""/>"
+                    End If
+                End If
+
+                If Not IsDBNull(dRow.Item("PhoneTypeId")) AndAlso dRow.Item("PhoneTypeId") = "27" AndAlso dRow.Item("Relationship") = "Prime" Then
+                    lblTelNumber.Text = dRow.Item("ClientPhone").ToString()
+                    lblPhone.Text = dRow.Item("ClientPhone").ToString() & "&nbsp;<img id=""imgPhone"" style=""margin-right:8px;"" border=""0"" runat=""server"" align=""absmiddle"" src=""" & ResolveUrl("~/images/16x16_Phone.png") & """ alt=""Home Phone"" />"
+                End If
+
+                If Not IsDBNull(dRow.Item("PhoneTypeId")) AndAlso dRow.Item("PhoneTypeId") = "29" AndAlso dRow.Item("Relationship") = "Prime" Then
+                    lblFaxNumber.Text = dRow.Item("ClientPhone").ToString()
+                    lblFax.Text = dRow.Item("ClientPhone").ToString() & "&nbsp;<img id=""imgFax"" style=""margin-right:8px;"" border=""0"" runat=""server"" align=""absmiddle"" src=""" & ResolveUrl("~/images/16x16_Phone2.png") & """ alt=""Fax""/>"
+                End If
+
+
+                If dRow.Item("RelationShip") <> "Prime" Then
+                    lblCoApp.Text = PersonHelper.GetName(dRow.Item("FirstName").ToString(), _
+                    dRow.Item("LastName").ToString(), dRow.Item("SSN").ToString(), _
+                    dRow.Item("EmailAddress").ToString())
+
+                    lblCoAppAddress.Text = PersonHelper.GetAddress(dRow.Item("Street").ToString(), _
+                        dRow.Item("Street2").ToString(), dRow.Item("City").ToString(), dRow.Item("Abbreviation").ToString(), _
+                        dRow.Item("ZipCode").ToString())
+
+                    If Not String.IsNullOrEmpty(dRow.Item("EmailAddress").ToString()) Then
+                        lblCoAppEmail.Text = dRow.Item("EmailAddress").ToString() & "&nbsp;<img id=""imgEmail"" style=""margin-right:8px;"" border=""0"" runat=""server"" align=""absmiddle"" src=""" & ResolveUrl("~/images/16x16_Email.png") & """ alt=""Email""/>"
+                    End If
+
+                    If Not String.IsNullOrEmpty(dRow.Item("ClientPhone").ToString()) And CInt(dRow.Item("PhoneTypeId")) = 27 Then
+                        lblCoAppTel.Text = dRow.Item("ClientPhone").ToString() & "&nbsp;<img id=""imgPhone"" style=""margin-right:8px;"" border=""0"" runat=""server"" align=""absmiddle"" src=""" & ResolveUrl("~/images/16x16_Phone.png") & """ alt=""Home Phone"" />"
+                    End If
+
+                    If Not String.IsNullOrEmpty(dRow.Item("ClientPhone").ToString()) And CInt(dRow.Item("PhoneTypeId")) = 29 Then
+                        lblCoAppFax.Text = dRow.Item("ClientPhone").ToString() & "&nbsp;<img id=""imgFax"" style=""margin-right:8px;"" border=""0"" runat=""server"" align=""absmiddle"" src=""" & ResolveUrl("~/images/16x16_Phone2.png") & """ alt=""Fax""/>"
+                    End If
+
+                End If
+            Next
+        Catch ex As Exception
+
+        Finally
+            dtClient.Dispose()
+            sa.Dispose()
+        End Try
+
+        lblZip.Attributes("onkeypress") = "javascript:onlyDigits();"
+        lblTelNumber.Attributes("onkeypress") = "javascript:onlyDigits();"
+        lblFaxNumber.Attributes("onkeypress") = "javascript:onlyDigits();"
+    End Sub
+
+    Protected Sub hidePopup_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+
+        Dim lnk As LinkButton = DirectCast(sender, LinkButton)
+
+        Select Case lnk.ID.ToLower
+            Case "lnkCloseAddress".ToLower
+                pceAddress.Cancel()
+        End Select
+
+    End Sub
+
+    Protected Sub lnkSaveAddress_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkSaveAddress.Click
+        Dim Street As String = hdnStreet.Value
+        Dim Street2 As String = hdnStreet2.Value
+        Dim City As String = hdnCity.Value
+        Dim firstName As String = hdnFirstName.Value
+        Dim lastName As String = hdnLastName.Value
+        Dim stateId As Integer = hdnState.Value
+        Dim zipCode As String = hdnZip.Value
+        Dim homePhone As String = hdnHomePhone.Value.Replace("(", "").Replace(")", "").Replace("-", "")
+        Dim faxPhone As String = hdnFax.Value.Replace("(", "").Replace(")", "").Replace("-", "")
+        Dim email As String = hdnEmail.Value
+
+        Dim HomeAreaCode As String
+        Dim HomeNumber As String
+        Dim FaxAreaCode As String
+        Dim FaxNumber As String
+
+        If homePhone.Length > 0 Then
+            HomeAreaCode = homePhone.Substring(0, 3)
+            HomeNumber = homePhone.Substring(3)
+        Else
+            HomeAreaCode = ""
+            HomeNumber = ""
+        End If
+
+        If faxPhone.Length > 0 Then
+            FaxAreaCode = faxPhone.Substring(0, 3)
+            FaxNumber = faxPhone.Substring(3)
+        Else
+            FaxAreaCode = ""
+            FaxNumber = ""
+        End If
+
+        PendingCancelHelper.UpdateClientContactInformation(CInt(hdnClientId.Value), CInt(Page.User.Identity.Name), firstName, lastName, Street, Street2, City, stateId, _
+                                                    zipCode, email, HomeAreaCode, HomeNumber, _
+                                                    FaxAreaCode, FaxNumber)
+
+        pceAddress.Cancel()
+
+        Me.LoadClientInfo(CInt(hdnClientId.Value))
+    End Sub
+End Class

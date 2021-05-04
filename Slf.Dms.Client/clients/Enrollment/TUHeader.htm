@@ -1,0 +1,71 @@
+﻿<html>
+<head>
+<style>
+    .tbHeader
+    {
+        padding-bottom: 20px; 
+        width: 100%;
+        }
+        
+    .tbHeader td
+    {
+        font-family: Tahoma;
+        font-size: 11px;
+        font-weight: bold;
+        color: #808080; 
+        border-left: solid 1px #C0C0C0;
+        text-align: left !important; 
+        width: 50%;
+        padding-left: 10px !important; 
+        }
+        
+    .tbHeader td:first-child
+    {
+        font-size: 15px !important;
+        color: #f38a17 !important;
+        text-transform: uppercase;
+        border-left: none !important;
+
+        }
+        
+</style>
+<script>
+function subst() {
+  var vars={};
+  var x=document.location.search.substring(1).split('&');
+  for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+  var x=['frompage','topage','page','webpage','section','subsection','subsubsection','date1'];
+  for(var i in x) {
+    var y = document.getElementsByClassName(x[i]);
+    for (var j = 0; j < y.length; ++j) {
+        if (x[i] == 'date1') {
+            y[j].textContent = vars[x[i]].replace(/\+/g,' ');
+        } else {
+            y[j].textContent = vars[x[i]];
+        }
+    }
+    }
+    if (vars['page'] != "1") {
+        document.getElementById('tbTUHeader').style.display = '';
+        document.getElementById('spNoBar').style.display = 'none';
+    }
+    else {
+        document.getElementById('tbTUHeader').style.display = 'none';
+        document.getElementById('spNoBar').style.display = '';
+    }
+}
+</script>
+</head>
+<body style="border:0; margin: 0;" onload="subst()">
+<table id="tbTUHeader" class="tbHeader"  >
+  <tr>
+    <td class="section1">TRANSUNION CONSUMER CREDIT REPORT</td>
+    <td style="text-align:right">
+      Results Issued: <span class="date1" ></span><br />  
+      Page: <span class="page"></span> of <span class="topage"></span>
+    </td>
+  </tr>
+</table>
+<span id="spNoBar">&nbsp;</span>
+</body></html>
+

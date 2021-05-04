@@ -1,0 +1,565 @@
+<%@ Page Language="VB" MasterPageFile="~/negotiation/Negotiation.master" AutoEventWireup="false"
+    EnableEventValidation="false" CodeFile="NewDefault.aspx.vb" Inherits="negotiation_NewDefault" %>
+
+<%@ Register Assembly="DevExpress.Web.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dx" %>
+<%@ MasterType TypeName="negotiation_Negotiation" %>
+<%@ Register Src="webparts/SettlementStatisticsControl.ascx" TagName="SettlementStatisticsControl"
+    TagPrefix="LexxControl" %>
+<%@ Register Src="~/negotiation/webparts/ClientSearchControl.ascx" TagName="ClientSearchControl"
+    TagPrefix="LexxControl" %>
+<%@ Register Src="~/negotiation/webparts/AvailableNegotiationsControl.ascx" TagName="AvailableNegotiations"
+    TagPrefix="LexxControl" %>
+<%@ Register TagPrefix="LexxControl" TagName="RecentVisits" Src="~/negotiation/webparts/RecentVisits.ascx" %>
+<%@ Register TagPrefix="LexxControl" TagName="RecentSearches" Src="~/negotiation/webparts/RecentSearches.ascx" %>
+<%@ Register TagPrefix="LexxControl" TagName="SearchResults" Src="~/negotiation/webparts/SearchResults.ascx" %>
+<%@ Register Src="webparts/RecentDialerCalls.ascx" TagName="RecentDialerCalls" TagPrefix="uc1" %>
+<%@ Register Src="../CustomTools/UserControls/SwitchUserGroup.ascx" TagName="SwitchUserGroup"
+    TagPrefix="uc2" %>
+<%@ Register Assembly="DevExpress.Web.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dx" %>
+<asp:Content ID="cntBody" ContentPlaceHolderID="cphBody" runat="Server">
+    <style type="text/css">
+        .searchResultsRow td
+        {
+            border-top: solid 1px #D3D3D3;
+            padding-top: 6px;
+        }
+        .creditor-item
+        {
+            border-bottom: solid 1px #d3d3d3;
+            white-space: nowrap;
+            font-family: Tahoma;
+            font-size: 11px;
+            color: Black;
+            padding: 2;
+        }
+        .headItem
+        {
+            background-color: #e1e1e1;
+            font-family: Tahoma;
+            font-size: 11px;
+            font-weight: normal;
+            color: Black;
+            text-align: left;
+            padding: 2;
+        }
+    </style>
+
+    <script language="javascript" type="text/javascript">   
+    function RowHover(tbl, over)
+    {
+//        var obj = event.srcElement;
+//        
+//        if (obj.tagName == "IMG")
+//            obj = obj.parentElement;
+//            
+//        if (obj.tagName == "TD")
+//        {
+//            //remove hover from last tr
+//            if (tbl.getAttribute("lastTr") != null)
+//            {
+//                var lastTr = tbl.getAttribute("lastTr");
+//                if (lastTr.coldColor == null)
+//                    lastTr.coldColor = "#ffffff";
+//                lastTr.style.backgroundColor = lastTr.coldColor;
+//            }
+
+//            //if the mouse is over the table, set hover to current tr
+//            if (over)
+//            {
+//                var curTr = obj.parentElement;
+//                curTr.style.backgroundColor = "#e6e6e6";
+//                tbl.setAttribute("lastTr", curTr);
+//            }
+//        }
+    }
+    
+    function RowClick(cid, crid) {
+        window.location.href = '<%=ResolveUrl("~/negotiation/clients/") %>?cid=' + cid + '&crid=' + crid;
+    }
+    
+    function getElement(aID)
+    { 
+         return (document.getElementById) ? document.getElementById(aID) : getElement[aID];
+    }
+
+    function ChangePlusMinus(PlusMinusCellID)
+    {
+	    try
+	    {
+		    var PlusMinusCellObj = getElement(PlusMinusCellID);
+		    var img = PlusMinusCellObj.childNodes[0];
+		    if(img != null)
+		    {
+			    if(img.src.match(/detail_expand/) != null)
+				    img.src = "images/detail_minimize.png";
+			    else
+				    img.src = "images/detail_expand.png";
+		    }
+	    }
+	    catch(e)
+	    {
+		    alert("Error in ChangePlusMinus Method: " + e); 
+		}
+    }
+    
+    function HideShowPanel(Panel)
+    {
+	    try
+	    {
+		    var ChosenPanel = getElement(Panel);
+		    if (ChosenPanel != null)
+		    {
+			    var currentdisplay = getElement(Panel).style.display;
+			    if (currentdisplay != "block")
+				    getElement(Panel).style.display = "block";
+			    else
+				    getElement(Panel).style.display = "none";
+		    }
+	    }
+	    catch(e)
+	    {
+		    alert( "Error in HideShowPanel Method: " + e);
+		}
+    }
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        function toggleDocument(docName, gridviewID, c, id) {
+            var rowName = 'tr_' + docName;
+            var gv = document.getElementById(gridviewID);
+            var rows = gv.getElementsByTagName('tr');
+            for (var row in rows) {
+                var rowID = rows[row].id
+                if (rowID != undefined) {
+                    if (rowID.indexOf(rowName + '_child') != -1) {
+                        rows[row].style.display = (rows[row].style.display != 'none' ? 'none' : '');
+                    }
+
+                    if (rowID == id) {
+                        if (rows[row].cells[c].children[0] != undefined) {
+                            var tree = rows[row].cells[c].children[0].src;
+                            rows[row].cells[c].children[0].src = (tree.indexOf('tree_plus') != -1 ? tree.replace('tree_plus', 'tree_minus') : tree.replace('tree_minus', 'tree_plus'));
+                        }
+                    }
+                }
+            }
+        }
+
+        function popupPhoneInfo(Id, chk) {
+            var r = showModalDialog('<%= ResolveUrl("~/util/pop/holder.aspx") %>?t=Phone Info Popup&type=' + status + '&sid=' + Id + '&chk=' + chk + '&p=<%= ResolveUrl("~/processing/popups/PhoneProcessing.aspx") %>', window, 'status:off;help:off;dialogWidth:750px;dialogHeight:400px');
+            if (r == -1) {
+                window.location = window.location.href.replace(/#/g, "");
+            }
+        }
+    </script>
+
+    <script language="javascript" type="text/javascript">
+    function RecentCall(callid, clientid)
+    {
+        document.getElementById('<%=hdnRecentCall.ClientID %>').value = '?id=' +  clientid + '&callid=' + callid;
+        
+        <%=Page.ClientScript.GetPostBackEventReference(lnkRecentCall, Nothing) %>;
+    }
+    </script>
+<asp:UpdatePanel ID="upMain" runat="server">
+<ContentTemplate>
+
+    <table id="tblHolder" class="entry">
+        <tr>
+            <td valign="top" style="width: 200px">
+                <dx:ASPxNavBar ID="nbSearch" runat="server" CssFilePath="~/App_Themes/Office2010Blue/{0}/styles.css"
+                    CssPostfix="Office2010Blue" SpriteCssFilePath="~/App_Themes/Office2010Blue/{0}/sprite.css"
+                    CssClass="entry" ShowLoadingPanel="true">
+                    <LoadingPanelStyle ImageSpacing="5px">
+                    </LoadingPanelStyle>
+                    <LoadingPanelImage Url="~/App_Themes/Office2010Blue/Web/Loading.gif">
+                    </LoadingPanelImage>
+                    <Groups>
+                        <dx:NavBarGroup Text="Search" Name="search">
+                            <Items>
+                                <dx:NavBarItem>
+                                    <Template>
+                                        <table class="entry">
+                                            <tr>
+                                                <td style="width: 85%;">
+                                                    <asp:TextBox ID="txtSearch" runat="server" CssClass="entry" />
+                                                </td>
+                                                <td style="width: 15%;">
+                                                    <asp:Button ID="btnSearch" runat="server" Text="GO" OnClick="lnkSearch_Click" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <asp:RadioButtonList ID="rblSearchType" runat="server">
+                                                        <asp:ListItem Text="Search my assignments" Value="assign" />
+                                                        <asp:ListItem Text="Search entire system" Value="system" Selected="True" />
+                                                    </asp:RadioButtonList>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </Template>
+                                </dx:NavBarItem>
+                            </Items>
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="Recent Searches" Name="RecentSearches">
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="Recent Visits" Name="RecentVisits">
+                        </dx:NavBarGroup>
+                    </Groups>
+                </dx:ASPxNavBar>
+            </td>
+            <td valign="top">
+                <dx:ASPxNavBar ID="nbMain" runat="server" CssFilePath="~/App_Themes/Office2010Blue/{0}/styles.css"
+                    CssPostfix="Office2010Blue" SpriteCssFilePath="~/App_Themes/Office2010Blue/{0}/sprite.css"
+                    CssClass="entry" ShowLoadingPanel="true">
+                    <LoadingPanelStyle ImageSpacing="5px">
+                    </LoadingPanelStyle>
+                    <LoadingPanelImage Url="~/App_Themes/Office2010Blue/Web/Loading.gif">
+                    </LoadingPanelImage>
+                    <Groups>
+                        <dx:NavBarGroup Text="My Assignments" Name="MyAssignments">
+                            <Items>
+                                <dx:NavBarItem>
+                                    <Template>
+                                        <LexxControl:AvailableNegotiations ID="pncPendingNegotiations" runat="server" ListLocation="HomePage" />
+                                    </Template>
+                                </dx:NavBarItem>
+                            </Items>
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="Search Results" Name="SearchResults">
+                            <Items>
+                                <dx:NavBarItem>
+                                    <Template>
+                                       
+                                            <table class="entry">
+                                                <tr>
+                                                    <td class="webpartgridhdrstyle">
+                                                    </td>
+                                                    <td class="webpartgridhdrstyle" style="width: 35%;">
+                                                        Name
+                                                    </td>
+                                                    <td class="webpartgridhdrstyle" style="width: 35%;">
+                                                        Address
+                                                    </td>
+                                                    <td class="webpartgridhdrstyle" style="width: 30%;">
+                                                        Contact Number
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                       
+                                        <asp:GridView ID="grvResults" Width="100%" AllowSorting="True" AllowPaging="true"
+                                            BorderStyle="none" AutoGenerateColumns="False" CellPadding="2" ForeColor="#333333"
+                                            GridLines="None" OnRowDataBound="grvResults_RowDataBound" OnPageIndexChanging="grvResults_PageIndexChanging"
+                                            OnSorting="grvResults_Sorting" runat="server">
+                                         
+                                            <Columns>
+                                                <asp:TemplateField ItemStyle-VerticalAlign="top">
+                                                    <ItemTemplate>
+                                                        
+                                                        <asp:Panel ID="pnlHeader" runat="server" CssClass="Accordion_Header" Height="25px" >
+                                                            
+                                                                <table class="entry">
+                                                                    
+                                                                    <tr>
+                                                                        <td style="width: 16px;">
+                                                                            <asp:ImageButton ID="Image1" runat="server" ImageUrl="~/negotiation/images/detail_expand.png"
+                                                                                AlternateText="(Show Details...)" />
+                                                                        </td>
+                                                                        <td style="width: 35%;">
+                                                                            <asp:Label ID="lblNameDisplay" runat="server" Text='<%#eval("NameDisplay") %>' />
+                                                                        </td>
+                                                                        <td style="width: 35%;">
+                                                                            <asp:Label ID="lblAddressDisplay" runat="server" Text='<%#eval("AddressDisplay") %>' />
+                                                                        </td>
+                                                                        <td style="width: 30%;">
+                                                                            <asp:Label ID="lblContactNumberDisplay" runat="server" Text='<%#eval("ContactNumberDisplay") %>' />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                           
+                                                        </asp:Panel>
+                                                        <asp:Panel ID="pnlContent" runat="server"  Height="0" CssClass="accordionContent" HorizontalAlign="Right" >
+                                                        
+                                                            <asp:GridView ID="gvResultChild" runat="server" CssClass="entry" AutoGenerateColumns="false" GridLines="None" >
+                                                                <Columns>
+                                                                    <asp:TemplateField HeaderText="Creditor" SortExpression="CurrentCreditorName">
+                                                                        <ItemTemplate>
+                                                                        <asp:PlaceHolder ID="phCreditor" runat="server" />
+                                                                           
+                                                                        </ItemTemplate>
+                                                                        <HeaderStyle CssClass="headItem5" HorizontalAlign="Left"/>
+                                                                        <ItemStyle CssClass="listItem" HorizontalAlign="Left"/>
+                                                                    </asp:TemplateField>
+                                                                    <asp:BoundField DataField="CurrentCreditorPhone" HeaderText="Phone" ReadOnly="True"
+                                                                        SortExpression="CurrentCreditorPhone" HeaderStyle-CssClass="headItem5" ItemStyle-CssClass="listItem"/>
+                                                                    <asp:BoundField DataField="CurrentAccountNumber" HeaderText="Account #" SortExpression="CurrentAccountNumber" 
+                                                                    HeaderStyle-CssClass="headItem5" ItemStyle-CssClass="listItem" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left"/>
+                                                                    <asp:BoundField DataField="AccountStatusCode" HeaderText="Status" SortExpression="AccountStatusCode" 
+                                                                    HeaderStyle-CssClass="headItem5" ItemStyle-CssClass="listItem" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"/>
+                                                                    <asp:BoundField DataField="OriginalAmount" HeaderText="Original" SortExpression="OriginalAmount" 
+                                                                      HeaderStyle-CssClass="headItem5" ItemStyle-CssClass="listItem" dataformatstring="{0:c2}" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right"/>
+                                                                    <asp:BoundField DataField="CurrentAmount" HeaderText="Current" 
+                                                                    SortExpression="CurrentAmount" HeaderStyle-CssClass="headItem5" 
+                                                                    ItemStyle-CssClass="listItem" dataformatstring="{0:c2}"  HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" />
+                                                                    <asp:BoundField DataField="AccountId" HeaderText="AccountId" InsertVisible="False"
+                                                                        ReadOnly="True" SortExpression="AccountId" Visible="False" />
+                                                                    <asp:BoundField DataField="creditorinstanceid" HeaderText="creditorinstanceid" InsertVisible="False"
+                                                                        ReadOnly="True" SortExpression="creditorinstanceid" Visible="False" />
+                                                                    <asp:BoundField DataField="OriginalAccountNumber" HeaderText="OriginalAccountNumber"
+                                                                        SortExpression="OriginalAccountNumber" Visible="False" />
+                                                                    <asp:BoundField DataField="OriginalReferenceNumber" HeaderText="OriginalReferenceNumber"
+                                                                        SortExpression="OriginalReferenceNumber" Visible="False" />
+                                                                    <asp:BoundField DataField="OriginalCreditorID" HeaderText="OriginalCreditorID" InsertVisible="False"
+                                                                        ReadOnly="True" SortExpression="OriginalCreditorID" Visible="False" />
+                                                                    <asp:BoundField DataField="OriginalCreditorName" HeaderText="OriginalCreditorName"
+                                                                        SortExpression="OriginalCreditorName" Visible="False" />
+                                                                    <asp:BoundField DataField="OriginalCreditorPhone" HeaderText="OriginalCreditorPhone"
+                                                                        ReadOnly="True" SortExpression="OriginalCreditorPhone" Visible="False" />
+                                                                    <asp:BoundField DataField="CurrentReferenceNumber" HeaderText="CurrentReferenceNumber"
+                                                                        SortExpression="CurrentReferenceNumber" Visible="False" />
+                                                                    <asp:BoundField DataField="CurrentCreditorID" HeaderText="CurrentCreditorID" InsertVisible="False"
+                                                                        ReadOnly="True" SortExpression="CurrentCreditorID" Visible="False" />
+                                                                    <asp:BoundField DataField="CreditorName" HeaderText="CreditorName" ReadOnly="True"
+                                                                        SortExpression="CreditorName" Visible="False" />
+                                                                    <asp:BoundField DataField="AccountStatusID" HeaderText="AccountStatusID" InsertVisible="False"
+                                                                        ReadOnly="True" SortExpression="AccountStatusID" Visible="False" />
+                                                                    <asp:BoundField DataField="AccountStatusDescription" HeaderText="AccountStatusDescription"
+                                                                        SortExpression="AccountStatusDescription" Visible="False" />
+                                                                    <asp:BoundField DataField="numcomms" HeaderText="numcomms" ReadOnly="True" SortExpression="numcomms"
+                                                                        Visible="False" />
+                                                                    <asp:BoundField DataField="verified" HeaderText="verified" ReadOnly="True" SortExpression="verified"
+                                                                        Visible="False" />
+                                                                    <asp:BoundField DataField="settled" HeaderText="settled" SortExpression="settled"
+                                                                        Visible="False" />
+                                                                    <asp:BoundField DataField="removed" HeaderText="removed" SortExpression="removed"
+                                                                        Visible="False" />
+                                                                    <asp:BoundField DataField="NR" HeaderText="NR" ReadOnly="True" SortExpression="NR"
+                                                                        Visible="False" />
+                                                                    <asp:BoundField DataField="ClosedMatters" HeaderText="ClosedMatters" ReadOnly="True"
+                                                                        SortExpression="ClosedMatters" Visible="False" />
+                                                                    <asp:BoundField DataField="ActiveMatters" HeaderText="ActiveMatters" ReadOnly="True"
+                                                                        SortExpression="ActiveMatters" Visible="False" />
+                                                                </Columns>
+                                                            </asp:GridView>
+                                                        
+                                                        </asp:Panel>
+                                                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeResults" runat="Server" TargetControlID="pnlContent"
+                                                            ExpandControlID="pnlHeader" CollapseControlID="pnlHeader" Collapsed="true" CollapsedSize="1" ImageControlID="Image1"
+                                                            ExpandedText="(Hide Details...)" CollapsedText="(Show Details...)" ExpandedImage="~/negotiation/images/detail_minimize.png"
+                                                            CollapsedImage="~/negotiation/images/detail_expand.png" SuppressPostBack="true" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="NameDisplay" HeaderText="Name" SortExpression="Name" HtmlEncode="false"
+                                                    Visible="false">
+                                                    <HeaderStyle HorizontalAlign="Left" />
+                                                    <ItemStyle HorizontalAlign="Left" Wrap="false" VerticalAlign="top" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="AddressDisplay" HeaderText="Address" SortExpression="Address"
+                                                    HtmlEncode="false" Visible="false">
+                                                    <HeaderStyle HorizontalAlign="Left" />
+                                                    <ItemStyle HorizontalAlign="Left" VerticalAlign="top" Wrap="false" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="ContactNumberDisplay" HeaderText="Contact Number" SortExpression="ContactNumber"
+                                                    HtmlEncode="false" Visible="false">
+                                                    <HeaderStyle HorizontalAlign="Left" />
+                                                    <ItemStyle HorizontalAlign="Left" VerticalAlign="top" Wrap="false" />
+                                                </asp:BoundField>
+                                            </Columns>
+                                            <EmptyDataTemplate>
+                                                <asp:Panel ID="pnlNoSearchClients" Style="text-align: center; color: #A1A1A1; padding: 5px 5px 5px 5px;"
+                                                    runat="server">
+                                                    No clients were found for those search terms
+                                                </asp:Panel>
+                                            </EmptyDataTemplate>
+                                            <PagerSettings Mode="NumericFirstLast" PageButtonCount="20" />
+                                        </asp:GridView>
+                                    </Template>
+                                </dx:NavBarItem>
+                            </Items>
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="My Stats" Name="MyStats">
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="Switch Group" Name="Switch Group">
+                            <Items>
+                                <dx:NavBarItem>
+                                    <Template>
+                                        <table class="entry">
+                                            <tr>
+                                                <td>
+                                                    <uc2:SwitchUserGroup ID="SwitchUserGroup1" runat="server" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </Template>
+                                </dx:NavBarItem>
+                            </Items>
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="Recent Dialer Calls" Name="RecentDialerCalls">
+                            <Items>
+                                <dx:NavBarItem>
+                                    <Template>
+                                        <table style="table-layout: fixed; width: 180px;" cellpadding="5" cellspacing="0"
+                                            border="0">
+                                            <tbody>
+                                                <asp:Repeater ID="rptCalls" runat="server">
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td nowrap="nowrap" style="padding: 0px 5px 5px 20px;">
+                                                                <a href="#" onclick="javascript:RecentCall('<%#DataBinder.Eval(Container.DataItem, "CallMadeId")%>', '<%#DataBinder.Eval(Container.DataItem, "ClientId")%>');">
+                                                                    <%#DataBinder.Eval(Container.DataItem, "FullName")%>&nbsp;<%# DataBinder.Eval(Container.DataItem, "EventDate")%>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                                <tr runat="server" id="trNoCalls">
+                                                    <td style="padding: 0px 5px 5px 20px;">
+                                                        <font style="color: #A1A1A1; font-style: italic;">No Recent Dialer Calls</font>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </Template>
+                                </dx:NavBarItem>
+                            </Items>
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="Verification History" Name="VerificationHistory">
+                            <Items>
+                                <dx:NavBarItem>
+                                    <Template>
+                                        <div style="overflow: auto; height: 210px;">
+                                            <asp:GridView ID="gvVerificationHistory" runat="server" AutoGenerateColumns="false"
+                                                CellPadding="5" Width="100%" GridLines="None" ShowHeader="True" BorderStyle="None"
+                                                Visible="true" DataSourceID="ds_VerificationHistory" OnRowDataBound="gvVerificationHistory_RowDataBound">
+                                                <Columns>
+                                                    <asp:TemplateField ItemStyle-Width="16px">
+                                                        <HeaderTemplate>
+                                                            <img id="Img1" runat="server" src="~/images/16x16_icon.png" alt="" />
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <img id="imgTreeDate" runat="server" src="~/images/tree_plus.bmp" alt="" />
+                                                        </ItemTemplate>
+                                                        <HeaderStyle CssClass="headItem" />
+                                                        <ItemStyle CssClass="creditor-item" HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField HeaderText="Completed" DataField="completed" ItemStyle-CssClass="creditor-item"
+                                                        HeaderStyle-CssClass="headItem" DataFormatString="{0:d}" ItemStyle-Width="80px" />
+                                                    <asp:TemplateField ItemStyle-Width="16px">
+                                                        <HeaderTemplate>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <img id="imgTreeCompany" runat="server" src="~/images/tree_plus.bmp" alt="" />
+                                                        </ItemTemplate>
+                                                        <HeaderStyle CssClass="headItem" />
+                                                        <ItemStyle CssClass="creditor-item" HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField HeaderText="" DataField="company" ItemStyle-CssClass="creditor-item"
+                                                        HeaderStyle-CssClass="headItem" ItemStyle-Width="80px" />
+                                                    <asp:TemplateField ItemStyle-Width="16px">
+                                                        <HeaderTemplate>
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <img id="imgTreeRep" runat="server" src="~/images/tree_plus.bmp" alt="" />
+                                                        </ItemTemplate>
+                                                        <HeaderStyle CssClass="headItem" />
+                                                        <ItemStyle CssClass="creditor-item" HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField HeaderText="" DataField="rep" ItemStyle-CssClass="creditor-item"
+                                                        HeaderStyle-CssClass="headItem" ItemStyle-Width="130px" />
+                                                    <asp:BoundField HeaderText="" DataField="client" ItemStyle-CssClass="creditor-item"
+                                                        HeaderStyle-CssClass="headItem" ItemStyle-Width="210px" />
+                                                    <asp:BoundField HeaderText="Clients" DataField="clients" ItemStyle-CssClass="creditor-item"
+                                                        HeaderStyle-CssClass="headItem" />
+                                                </Columns>
+                                            </asp:GridView>
+                                        </div>
+                                        <asp:SqlDataSource ID="ds_VerificationHistory" runat="server" ConnectionString="<%$ appSettings:connectionstring %>"
+                                            SelectCommandType="StoredProcedure" SelectCommand="stp_VerificationHistory">
+                                        </asp:SqlDataSource>
+                                    </Template>
+                                </dx:NavBarItem>
+                            </Items>
+                        </dx:NavBarGroup>
+                    </Groups>
+                </dx:ASPxNavBar>
+            </td>
+        </tr>
+    </table>
+     <div id="updateDiv" style="display: none; height: 40px; width: 40px">
+            <asp:Image ID="imgLoading" runat="server" ImageUrl="~/images/loading.gif" />
+        </div>
+    </ContentTemplate>
+</asp:UpdatePanel>
+
+    
+    <asp:HiddenField ID="hdnRecentCall" runat="server" />
+    <asp:LinkButton ID="lnkRecentCall" runat="server" />
+    <asp:HiddenField ID="hdnSearch" runat="server" />
+    <asp:HiddenField ID="hdnDepth" runat="server" />
+    <asp:HiddenField ID="hdnOrder" runat="server" />
+    <asp:HiddenField ID="hdnClientID" runat="server" />
+    
+<script type="text/javascript">
+
+    function onUpdating() {
+        // get the update progress div
+        var updateProgressDiv = $get('updateDIV');
+        // make it visible
+        updateProgressDiv.style.display = '';
+
+        //  get the gridview element
+        var gridView = $get('tblHolder');
+
+        // get the bounds of both the gridview and the progress div
+        var gridViewBounds = Sys.UI.DomElement.getBounds(gridView);
+        var updateProgressDivBounds = Sys.UI.DomElement.getBounds(updateProgressDiv);
+
+        //    do the math to figure out where to position the element (the center of the gridview)
+        var x = gridViewBounds.x + Math.round(gridViewBounds.width / 2) - Math.round(updateProgressDivBounds.width / 2);
+        var y = gridViewBounds.y + Math.round(gridViewBounds.height / 2) - Math.round(updateProgressDivBounds.height / 2);
+
+        //    set the progress element to this position
+        Sys.UI.DomElement.setLocation(updateProgressDiv, x, y);
+    }
+
+    function onUpdated() {
+        // get the update progress div
+        var updateProgressDiv = $get('updateDIV');
+        // make it invisible
+        updateProgressDiv.style.display = 'none';
+    }
+             
+</script>    
+    <ajaxToolkit:UpdatePanelAnimationExtender ID="upaeNegotiation" BehaviorID="HarassNegotiationanimation"
+    runat="server" TargetControlID="upMain">
+    <Animations>
+                    <OnUpdating>
+                        <Parallel duration="0">
+                            <%-- place the update progress div over the gridview control --%>
+                            <ScriptAction Script="onUpdating();" />  
+                            <EnableAction AnimationTarget="tblHolder" Enabled="false" />
+                                             
+                            <%-- fade-out the holder --%>
+                            <FadeOut minimumOpacity=".5" />
+                         </Parallel>
+                    </OnUpdating>
+                    <OnUpdated>
+                        <Parallel duration="0">
+                            <%-- fade back in the holder --%>
+                            <FadeIn minimumOpacity=".5" />
+                            <EnableAction AnimationTarget="tblHolder" Enabled="true" />
+                            <%--find the update progress div and place it over the gridview control--%>
+                            <ScriptAction Script="onUpdated();" /> 
+                        </Parallel> 
+                    </OnUpdated>
+    </Animations>
+</ajaxToolkit:UpdatePanelAnimationExtender>
+</asp:Content>

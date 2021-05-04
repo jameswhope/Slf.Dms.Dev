@@ -1,0 +1,241 @@
+.igmv_NautilusControl
+{
+	font-size:x-small;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border:solid 1px Silver;
+	margin:0px;
+	overflow: auto;
+	position: relative;
+}
+
+
+.igmv_NautilusControl table
+{
+	border-collapse:Collapse;
+}
+
+
+.igmv_NautilusWeekNumber
+{
+	background-color:White;
+	font-size:10pt;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	border-top:solid 1px White;
+	padding-right:1px;
+	width: 20px;
+	text-align:center;
+}
+
+
+.igmv_NautilusMonthDayOfWeekHeader
+{
+	font-size:8pt;
+	font-family: Arial,Helvetica,sans-serif;
+	border-top:solid 1px Silver;
+	border-bottom:solid 1px Silver;
+	margin-top:1px;
+	margin-right:1px;
+	margin-left:1px;
+	height: 5%;
+	line-height: 14px;
+	cursor:default;
+	text-align:center;
+}
+
+
+.igmv_NautilusCaptionHeader
+{
+	background-color:#F0F0F0;
+	background-position:right top ;
+	background-image: url(images/header_hover.gif);
+	font-weight:bold;
+	font-size:8pt;
+	font-family: Arial, Helvetica, sans-serif;
+	border:solid 1px #223E6E;
+	border-bottom-width:0px;
+	height: 25px;
+	color:#223E6E;
+	text-align:center;
+}
+
+
+tr.igmv_NautilusCaptionHeader td.igmv_NautilusWeekNumber
+{
+	background-color:#CECECE;
+	background-position:center right top ;
+	background-image: url(images/header_hover.gif);
+	border-width:0px;
+	line-height: 19px;
+	height: 1%;
+}
+
+
+.igmv_NautilusDay
+{
+	background-color:White;
+	background-repeat:repeat-x;
+	background-position:top ;
+	background-image: url(images/fadetop2.png);
+	border-left:solid 1px Silver;
+	height: 10%;
+	cursor:hand;
+	color:Black;
+	vertical-align:top;
+}
+
+
+.igmv_NautilusCompressedDay
+{
+	border-left:solid 1px Silver;
+	height: 4%;
+	vertical-align:top;
+}
+
+
+.igmv_NautilusOtherMonthDay
+{
+	background-color:White;
+	border-left:solid 1px Silver;
+	height: 12%;
+	cursor:hand;
+	color:Black;
+	vertical-align:top;
+}
+
+
+.igmv_NautilusOtherCompressedDay
+{
+	border-left:solid 1px Silver;
+	height: 4%;
+	vertical-align:top;
+}
+
+
+.igmv_NautilusToday
+{
+}
+
+
+.igmv_NautilusActiveDay
+{
+	background-color:White;
+	background-image: url(images/ig_treewhite.gif);
+}
+
+
+.igmv_NautilusDayHeader
+{
+	background-color:Gainsboro;
+	background-position:top ;
+	background-image: url(images/header11.png);
+	font-weight:bold;
+	font-size:xx-small;
+	font-family: Arial,Helvetica,sans-serif;
+	border-top:solid 1px Silver;
+	border-left:solid 1px Silver;
+	padding-top:0px;
+	padding-right:2px;
+	height: 3%;
+	line-height: 15px;
+	color:White;
+	text-align:right;
+	vertical-align:top;
+}
+
+
+.igmv_NautilusOtherMonthDayHeader
+{
+	background-position:center ;
+	background-image: url(images/header_hover.gif);
+	font-size:xx-small;
+	font-family: Arial,Helvetica,sans-serif;
+	border-top:solid 1px Silver;
+	border-left:solid 1px Silver;
+	padding-top:0px;
+	padding-right:2px;
+	height: 3%;
+	line-height: 15px;
+	color:#B4B4B4;
+	text-align:right;
+	vertical-align:top;
+}
+
+
+.igmv_NautilusTodayHeader
+{
+	background-position:top ;
+	background-image: url(images/headerhover.png);
+}
+
+
+.igmv_NautilusActiveDayHeader
+{
+	background-position:top ;
+	background-image: url(images/headerhover.png);
+}
+
+
+.igmv_NautilusAppointment
+{
+	background-color:DarkGray;
+	background-repeat:repeat-x;
+	font-size:xx-small;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	margin-top:1px;
+	margin-right:1px;
+	margin-left:1px;
+	padding-left:1px;
+	line-height: 15px;
+	cursor:hand;
+	text-align:left;
+}
+
+
+.igmv_NautilusAllDayEvent
+{
+	background-color:White;
+	background-repeat:repeat-x;
+	font-size:xx-small;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	border:solid 1px #000000;
+	margin-top:1px;
+	margin-right:1px;
+	margin-left:1px;
+	line-height: 15px;
+	cursor:hand;
+	text-align:left;
+}
+
+
+.igmv_NautilusSelectedAppointment
+{
+	background-color:#316AC5;
+	color:White;
+}
+
+
+.igmv_NautilusNavigationButton
+{
+	background-color:Transparent;
+	border-width:0px;
+	margin:0px;
+	padding:4px 0px 0px 0px;
+	position: absolute;
+	top: 2px;
+	width: 12px;
+	cursor:hand;
+}
+
+
+.igmv_NavigationButtonPrev
+{
+	left: 3px;
+}
+
+
+.igmv_NavigationButtonNext
+{
+	right: 3px;
+}
+
+

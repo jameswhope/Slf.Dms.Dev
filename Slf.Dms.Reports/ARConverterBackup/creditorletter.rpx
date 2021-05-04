@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3" PrintWidth="10800" DocumentName="ActiveReports Document" ScriptLang="C#" CodeFile="creditorletter.vb">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0; " />
+    <Style Name="Heading1" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 16pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading2" Value="font-family: Times New Roman; font-style: italic; font-variant: inherit; font-weight: bold; font-size: 14pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading3" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 13pt; font-size-adjust: inherit; font-stretch: inherit; " />
+  </StyleSheet>
+  <Sections>
+    <Section Type="PageHeader" Name="PageHeader" Height="0" BackColor="16777215" CanShrink="0" />
+    <Section Type="Detail" Name="Detail" Height="6449" BackColor="16777215" NewPage="3" CanShrink="0">
+      <Control Type="AR.RTF" Name="RichTextBox" MOD="4" Left="540" Top="180" Width="4680" Height="1980" AutoReplaceFields="1" BackStyle="0">
+        <Data><![CDATA[00000000000000007B5C727466315C616E73695C616E7369637067313235325C64656666307B5C666F6E7474626C7B5C66305C66726F6D616E5C66707271325C6663686172736574302054696D6573204E657720526F6D616E3B7D7B5C66315C6673776973735C66707271325C66636861727365743020417269616C3B7D7B5C66325C666E696C5C66636861727365743020417269616C3B7D7D0D0A7B5C636F6C6F7274626C203B5C726564305C677265656E305C626C7565303B7D0D0A5C766965776B696E64345C7563315C706172645C6C616E67313033335C625C66305C66733234205448452053454944454D414E204C4157204649524D5C7061720D0A5C62305C6673313820412050726F66657373696F6E616C20436F72706F726174696F6E5C7061720D0A5C706172645C71725C66315C667331305C7061720D0A5C706172645C7061720D0A5C6366315C66305C6673313820502E4F2E20424F5820313930305C7061720D0A52414E43484F20435543414D4F4E47412C2043412039313732392D313930305C6366305C7061720D0A5C7061720D0A2839303929203934362D363337395C7061720D0A5C706172645C6E6F77696463746C7061725C736C3234305C736C6D756C74305C66325C667332305C7061720D0A7D0D0A]]></Data>
+      </Control>
+      <Control Type="AR.Field" Name="txtCreditorAddress" MOD="4" Left="540" Top="3060" Width="9900" Height="990" Text="txtCreditorAddress" />
+      <Control Type="AR.Field" Name="lblRe" MOD="4" Left="540" Top="4410" Width="2160" Height="288" Text="Re:" />
+      <Control Type="AR.Field" Name="lblAccountNumber" MOD="4" Left="540" Top="4680" Width="2160" Height="288" Text="Account Number:" />
+      <Control Type="AR.Field" Name="txtRe" DataField="ClientName" MOD="4" Left="2700" Top="4410" Width="7740" Height="288" Text="txtRe" />
+      <Control Type="AR.Field" Name="txtAccountNumber" DataField="AccountNumber" MOD="4" Left="2700" Top="4680" Width="7740" Height="288" Text="txtAccountNumber" />
+      <Control Type="AR.Field" Name="lblReferenceNumber" MOD="4" Left="540" Top="4968" Width="2160" Height="288" Text="Reference Number:" />
+      <Control Type="AR.Field" Name="txtReferenceNumber" DataField="ReferenceNumber" MOD="4" Left="2700" Top="4968" Width="7740" Height="288" Text="txtReferenceNumber" />
+      <Control Type="AR.Field" Name="txtAttorneyName" MOD="4" Left="5670" Top="810" Width="4680" Height="288" Text="txtAttorneyName" Style="ddo-char-set: 1; text-align: right; font-size: 8pt; " />
+      <Control Type="AR.Field" Name="txtAttorneyState" MOD="4" Left="5670" Top="1035" Width="4680" Height="288" Text="txtAttorneyState" Style="ddo-char-set: 1; text-align: right; font-size: 8pt; " />
+      <Control Type="AR.Field" Name="txtNow" MOD="4" Left="540" Top="2430" Width="3330" Height="288" Text="txtNow" />
+      <Control Type="AR.Field" Name="txtBody" MOD="4" Left="540" Top="5760" Width="9900" Height="288" Text="" Style="text-align: justify; " />
+    </Section>
+    <Section Type="PageFooter" Name="PageFooter" Height="973" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Line" Name="Line" MOD="4" X1="3420" Y1="0" X2="540" Y2="0" LineColor="8421504" />
+      <Control Type="AR.RTF" Name="RichTextBox3" MOD="4" Left="540" Top="90" Width="9900" Height="720" AutoReplaceFields="1" BackStyle="0">
+        <Data><![CDATA[00000000000000007B5C727466315C616E73695C616E7369637067313235325C64656666307B5C666F6E7474626C7B5C66305C6673776973735C66707271325C66636861727365743020417269616C3B7D7B5C66315C666E696C5C66636861727365743020417269616C3B7D7D0D0A7B5C2A5C67656E657261746F7220526963686564323020352E34302E31312E323231303B7D5C766965776B696E64345C7563315C706172645C6E6F77696463746C7061725C736C3234305C736C6D756C74305C6C616E67313033335C73757065725C66305C6673313820315C6E6F73757065727375622020496E20746865206576656E7420746865726520776173206120666F7265636C6F73757265206F6E20636F6C6C61746572616C2C2064656D616E64206973206D61646520666F7220746865206E6F7469636520676976656E20746F206F757220636C69656E74206F662074686520646174652C2074696D6520616E6420706C616365206F662073616C652C20666F72207468652061707072616973616C287329206F627461696E6564207072696F7220746F2073616C6520616E6420666F7220746865206964656E74696669636174696F6E206F66207468652070757263686173657220617420666F7265636C6F7375726520696E2073756666696369656E742064657461696C20736F2074686174207075726368617365722063616E20626520636F6E7461637465642E5C66315C667332305C7061720D0A7D0D0A]]></Data>
+      </Control>
+    </Section>
+  </Sections>
+  <PageSettings />
+</ActiveReportsLayout>

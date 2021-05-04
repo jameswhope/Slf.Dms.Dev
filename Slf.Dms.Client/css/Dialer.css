@@ -1,0 +1,145 @@
+﻿
+table
+{
+    font-size: 11px;
+    font-family: Tahoma;
+}
+input
+{
+    font-size: 11px;
+    font-family: Tahoma;
+}
+select
+{
+    font-size: 11px;
+    font-family: Tahoma;
+}
+
+.pnHeader
+{
+    background-color: #D3DEEF;
+    border-bottom: solid 1px white;
+    cursor: hand;
+}
+.pnHeader div
+{
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline;
+    margin-left: 5px;
+}
+.pnHeader span
+{
+    color: black;
+    font-style: italic;
+}
+.accordionHeader
+{
+    background-color: rgb(198,222,242);
+    border-top: solid 1px white; 
+    color: #000;
+    cursor: hand;
+    height: 22px;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 5px 5px 10px;
+    margin-top: 0px;
+    font-family: Tahoma;
+    background-image: url('../images/expand.png');
+    background-position:right center; 
+    background-repeat:no-repeat;     
+}
+.accordionHeaderSelected
+{
+    background-color: rgb(227,239,249);
+    border-top: solid 1px white; 
+    color:#000;
+    cursor: hand;
+    height: 22px;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 5px 5px 10px;
+    margin-top: 0px;
+    font-family: Tahoma;
+    background-image: url('../images/collapse.png');
+    background-position:right center; 
+    background-repeat:no-repeat;     
+}
+.accordionContent
+{
+    padding: 1px 1px 1px 10px;
+    border:none;
+    background-color: #FFFFFF;
+}
+.thCall
+{
+    text-align: left;
+    white-space: nowrap;
+    background-color: #C0C0C0;
+    height: 20px;
+}
+.tdLabel
+{
+    font-weight: bold;
+}
+.tdSep
+{
+    width: 10;
+    background-image: url('../images/dot.png');
+    background-repeat: repeat-y;
+    background-position: center top;
+}
+.gridviewHeader
+{
+    font-weight: bold;
+    background-color: #C0C0C0;
+    font-size: 10px;
+    font-family: Tahoma;
+    height: 20px;
+}
+.subitemHeader
+{
+    font-weight: bold;
+    white-space: nowrap; 
+    height: 25px; 
+}
+.subitem
+{
+    font-weight: normal;
+}
+.gridviewItem
+{
+    font-weight: normal;
+    height: 20px;
+}
+.tdHSep
+{
+    height: 1px; 
+    background-image: url('../images/dot.png');
+    background-repeat: repeat-x;
+    background-position: left center;
+}
+.btn
+{
+    font-family: Tahoma;
+    font-size: 10px;
+}
+p
+{
+    margin-bottom: 5px;
+    margin-top: 5px; 
+    }
+    
+ .coverlist 
+ {
+    margin-top: 3px; 
+    margin-bottom: 3px;
+  }
+  
+  .coverlist li
+  {
+      padding-left: 0px;
+      margin-left:0px;  
+      }
+

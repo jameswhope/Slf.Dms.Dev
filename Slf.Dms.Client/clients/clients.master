@@ -1,0 +1,9 @@
+<%@ Master Language="VB" MasterPageFile="~/site.master" CodeFile="clients.master.vb" Inherits="clients_clients" %>
+<asp:Content id="cntMenu" runat="server" ContentPlaceHolderID="cphMenu">
+    <asp:ContentPlaceHolder ID="cphMenu" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content id="cntBody" runat="server" ContentPlaceHolderID="cphBody">
+    <asp:ContentPlaceHolder ID="cphBody" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

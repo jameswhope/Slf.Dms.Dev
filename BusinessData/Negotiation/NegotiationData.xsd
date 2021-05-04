@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NegotiationData" targetNamespace="http://tempuri.org/NegotiationData.xsd" xmlns:mstns="http://tempuri.org/NegotiationData.xsd" xmlns="http://tempuri.org/NegotiationData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="ExcludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" IsAppSettingsProperty="True" Modifier="Assembly" Name="ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DMS_8_29ConnectionString" IsAppSettingsProperty="True" Modifier="Assembly" Name="DMS_8_29ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DMS_8_29ConnectionString.ConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="NegotiationData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="NegotiationData" msprop:Generator_DataSetName="NegotiationData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="NegotiationFilterData" msprop:Generator_UserTableName="NegotiationFilterData" msprop:Generator_RowDeletedName="NegotiationFilterDataRowDeleted" msprop:Generator_TableClassName="NegotiationFilterDataDataTable" msprop:Generator_RowChangedName="NegotiationFilterDataRowChanged" msprop:Generator_RowClassName="NegotiationFilterDataRow" msprop:Generator_RowChangingName="NegotiationFilterDataRowChanging" msprop:Generator_RowEvArgName="NegotiationFilterDataRowChangeEvent" msprop:Generator_RowEvHandlerName="NegotiationFilterDataRowChangeEventHandler" msprop:Generator_TablePropName="NegotiationFilterData" msprop:Generator_TableVarName="tableNegotiationFilterData" msprop:Generator_RowDeletingName="NegotiationFilterDataRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FilterId" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="FilterId" msprop:Generator_ColumnPropNameInRow="FilterId" msprop:Generator_ColumnVarNameInTable="columnFilterId" msprop:Generator_ColumnPropNameInTable="FilterIdColumn" type="xs:int" />
+              <xs:element name="FilterClause" msprop:Generator_UserColumnName="FilterClause" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnFilterClause" msprop:Generator_ColumnPropNameInTable="FilterClauseColumn" msprop:Generator_ColumnPropNameInRow="FilterClause" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_UserColumnName="Description" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnPropNameInRow="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="FilterType" msprop:Generator_UserColumnName="FilterType" msprop:Generator_ColumnPropNameInRow="FilterType" msprop:Generator_ColumnVarNameInTable="columnFilterType" msprop:Generator_ColumnPropNameInTable="FilterTypeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ParentFilterId" msprop:Generator_UserColumnName="ParentFilterId" msprop:Generator_ColumnPropNameInRow="ParentFilterId" msprop:Generator_ColumnVarNameInTable="columnParentFilterId" msprop:Generator_ColumnPropNameInTable="ParentFilterIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="FilterText" msprop:Generator_UserColumnName="FilterText" msprop:Generator_ColumnPropNameInRow="FilterText" msprop:Generator_ColumnVarNameInTable="columnFilterText" msprop:Generator_ColumnPropNameInTable="FilterTextColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:NegotiationFilterData" />
+      <xs:field xpath="mstns:FilterId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

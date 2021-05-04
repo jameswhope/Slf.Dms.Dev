@@ -1,0 +1,128 @@
+.igwv_NautilusControl
+{
+	border-width:0px;
+	margin-top:2px;
+}
+
+
+.igwv_NautilusCaptionHeader
+{
+	background-color:#F0F0F0;
+	background-position:right top ;
+	background-image: url(images/header_hover.gif);
+	font-weight:bold;
+	font-size:8pt;
+	font-family: Arial, Helvetica, sans-serif;
+	border:solid 1px Silver;
+	border-bottom-width:0px;
+	height: 25px;
+	color:#223E6E;
+	text-align:center;
+}
+
+
+.igwv_NautilusDayHeader
+{
+	background-position:right top ;
+	background-image: url(images/header12.png);
+	font-size:8pt;
+	font-family: arial;
+	border-top-width:0px;
+	padding-right:5px;
+	height: 20px;
+	color:White;
+	text-align:right;
+}
+
+
+.igwv_NautilusDay
+{
+	background-color:White;
+	background-repeat:repeat-x;
+	background-position:top ;
+	background-image: url(images/fadetop2.png);
+	font-size:8pt;
+	font-family: Arial, Helvetica, sans-serif;
+	overflow-x: hidden;
+	height: 20px;
+	cursor:hand;
+}
+
+
+.igwv_NautilusAppointment
+{
+	margin:0px 1px 0px 1px;
+	padding:2px;
+	line-height: 150%;
+	white-space: nowrap;
+	cursor:pointer;
+}
+
+
+.igwv_NautilusAllDayEvent
+{
+	background-color:#FAFAFA;
+	border:solid 1px Silver;
+}
+
+
+.igwv_NautilusNavigationButton
+{
+	background-color:Transparent;
+	border-width:0px;
+	width: 17px;
+	cursor:hand;
+	vertical-align:middle;
+}
+
+
+.igwv_NautilusDayArea
+{
+	border:solid 1px Silver;
+}
+
+
+.igwv_NautilusTodayHeader
+{
+	background-color:White;
+	background-repeat:repeat-x;
+	background-position:top ;
+	background-image: url(images/headerhover1.png);
+	color:White;
+}
+
+
+.igwv_NautilusToday
+{
+}
+
+
+.igwv_NautilusSelectedAppointment
+{
+	background-color:#DAEAFF;
+	margin-top:1px;
+	margin-right:1px;
+	margin-left:1px;
+	padding:1px;
+	cursor:pointer;
+	color:#052684;
+}
+
+
+.igwv_NautilusActiveDayHeader
+{
+	background-color:White;
+	background-repeat:repeat-x;
+	background-position:top ;
+	background-image: url(images/headerhover1.png);
+	color:White;
+}
+
+
+.igwv_NautilusActiveDay
+{
+	background-color:White;
+	background-image: url(images/fadetop1.png);
+}
+
+

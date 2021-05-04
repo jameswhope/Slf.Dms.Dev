@@ -1,0 +1,223 @@
+﻿body
+{
+	font-family: Tahoma;
+	font-size: 11px;
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+	
+}
+
+table
+{
+	font-family: Tahoma;
+	font-size: 11px;
+}
+
+.HeaderDiv
+{
+	border: 0px;
+	margin: 0px;
+	overflow: hidden;
+	padding: 0px;
+}
+
+.ListCriteriaContainer
+{
+	cursor: pointer;
+	overflow: visible;
+	width: 400px;
+}
+
+.ListCriteriaContainerCheckbox
+{
+	height: 10px;
+	margin: 5px;
+	width: 10px;
+	vertical-align: middle;
+}
+
+.ListCriteriaContainerDrag
+{
+	font-weight: bold;
+	height: 20px;
+}
+
+.ListEntityContainerElement
+{
+	cursor: default;
+}
+
+.ListCriteriaContainerHide table
+{
+	z-index: 9999;
+}
+
+.ListCriteriaContainerHide td
+{
+	filter: progid:DXImageTransform.Microsoft.BasicImage(opacity=0.0);
+	opacity: 0.0;
+}
+
+a.ListEntityContainerName
+{
+	color: #000000;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a.ListEntityContainerName:hover
+{
+	color: #0000C0;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.ListCriteriaContainerShow td
+{
+	filter: progid:DXImageTransform.Microsoft.BasicImage(opacity=0.4);
+	opacity: 0.4;
+}
+
+.ListCriteriaContainerToggle
+{
+	cursor: pointer;
+	margin-right: 3px;
+}
+
+.ListCriteriaItem
+{
+	height: 20px;
+	width: 400px;
+}
+
+.ListCriteriaItemHide td
+{
+	filter: progid:DXImageTransform.Microsoft.BasicImage(opacity=0.0);
+	opacity: 0.0;
+}
+
+.ListCriteriaItemShow td
+{
+	filter: progid:DXImageTransform.Microsoft.BasicImage(opacity=0.4);
+	opacity: 0.4;
+}
+
+.ListEntityContainer td
+{
+	border-bottom: solid 1px #000000;
+}
+
+.ListEntityContainerPadding
+{
+	height: 15px;
+}
+
+.ListHeader
+{
+	background-color: #B0C4DE;
+	border-right: solid 1px #000000;
+	border-bottom: solid 1px #000000;
+	font-weight: bold;
+}
+
+.ListHeaderFirst
+{
+	background-color: #B0C4DE;
+	border-left: solid 1px #000000;
+	border-right: solid 1px #000000;
+	border-bottom: solid 1px #000000;
+	font-weight: bold;
+}
+
+.ListTable
+{
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	width: 400px;
+}
+
+.ListTable tfoot
+{
+	visibility: hidden;
+}
+
+.ListTableHide
+{
+	border: 0px;
+	padding: 0px;
+	position: absolute;
+	margin: 0px;
+	width: 400px;
+	z-index: 0;
+}
+
+.ListTableHide tbody
+{
+	visibility: hidden;
+}
+
+.ListTableHide thead
+{
+	display: block;
+}
+
+.ListTitle
+{
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	border: solid 1px #000000;
+}
+
+.ListUnassignedContainerElement
+{
+	background-color: #F0F0F0;
+	border-bottom: solid 1px #000000;
+	cursor: default;
+}
+
+.ProgressMessage
+{
+	background-color: #FFFFFF;
+	border: solid 1px #000000;
+	filter: progid:DXImageTransform.Microsoft.shadow(color=#000000, strength=5, direction=135);
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+	left: 50%;
+	padding: 10px 20px 10px 10px;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	vertical-align: middle;
+	z-index: 9999;
+}
+
+.ProgressMessage img
+{
+	margin-right: 5px;
+}
+
+.Scrollable
+{
+	overflow: hidden;
+}
+
+.ScrollButton
+{
+	background-position: center;
+	background-repeat: no-repeat;
+	border-style: outset;
+	border-width: 1px;
+	cursor: pointer;
+	height: 20px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.UnassignedDrop td
+{
+	border-bottom: solid 1px #A00000;
+}

@@ -1,0 +1,23 @@
+﻿body
+{
+    font-family: Tahoma;
+    font-size: 11px;
+}
+
+.Canvas
+{
+	border-right-style: dotted;
+	border-right-width: 1px;   
+}
+
+.Toolbox
+{
+	border-right-style: dotted;
+	border-right-width: 1px;
+}
+
+.Content
+{
+    font-family: Tahoma;
+    font-size: 11px;
+}  

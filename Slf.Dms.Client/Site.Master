@@ -1,0 +1,105 @@
+<%@ Master Language="VB" CodeFile="Site.master.vb" Inherits="Site" %>
+<%--<%@ Register TagPrefix="drg_util" Namespace="Drg.Utilities" Assembly="Drg.Utilities" %>--%>
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    
+    <title>Debt Mediation Portal</title>
+    <link runat="server" href="~/css/default.css" type="text/css" rel="stylesheet" />
+    <link  href="css/dialer.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript" src="<%# ResolveUrl("~/jscript/setfocus.js")%>" />
+    <script type="text/javascript" src="<%# ResolveUrl("~/jscript/onlydigits.js")%>" />
+    <script type="text/javascript" src="<%# ResolveUrl("~/jscript/dom.js")%>" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../../../jquery/ScrollableTablePlugin_1.0_min.js" type="text/javascript"></script>
+   
+
+    <script type="text/javascript">
+        function HandleKeyDown()
+        {
+            if (event.keyCode==8)
+            {
+                var tagName=event.srcElement.tagName.toLowerCase();
+                
+                if (tagName!="input" && tagName!="textarea")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</head>
+<!-- 11/28/07   jhernandez  Removed onkeydown="return HandleKeyDown();" from body tag. Causing 'object expected' errors when typing. No known use for this function call. -->
+<body id="body" runat="server" style="background-position: left top; background-repeat: repeat-x; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0;">
+    <form id="form1" runat="server">
+      <asp:literal runat="server" id="ltrTimeoutJscrpt"></asp:literal>
+    <table cellpadding="0" cellspacing="0" border="0" style="width:100%;height:100%;">
+        <tr>
+            <td class="tabMainHolder">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <tr>
+                        <td style="width:250px;height:35px"><%--<img style="margin-bottom:10px;margin-left:10px;margin-top:10px;" alt="Logo" runat="server" src="~/images/logo.gif"/>--%></td>
+                        <td valign="bottom">
+                            <table class="tabMain" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="width:55px;" id="tabDefault" runat="server" align="center"><asp:linkbutton id="tabDefaultLnk" runat="server" CausesValidation="false">Home</asp:linkbutton></td>
+                                    <td style="width:65px;" id="tabClients" runat="server" align="center"><asp:linkbutton id="tabClientsLnk" runat="server" CausesValidation="false">Clients</asp:linkbutton></td>
+                                    <td style="width:80px;" id="tabResearch" runat="server" align="center"><asp:linkbutton id="tabResearchLnk" runat="server" CausesValidation="false">Research</asp:linkbutton></td>
+                                    <td style="width:100px;" id="tabCID" runat="server" align="center"><asp:linkbutton id="tabCIDLnk" runat="server" CausesValidation="false">Client Intake</asp:linkbutton></td>
+                                    <td style="width:120px;" id="tabCredServ" runat="server" align="center"><asp:linkbutton id="tabCredServLnk" runat="server" CausesValidation="false">Creditor Services</asp:linkbutton></td>
+                                    <td style="width:50px;" id="tabTasks" runat="server" align="center"><asp:linkbutton id="tabTasksLnk" runat="server" CausesValidation="false">Tasks</asp:linkbutton></td>
+                                    <td style="width:55;" id="tabAdmin" runat="server" align="center"><asp:linkbutton id="tabAdminLnk" runat="server" CausesValidation="false">Admin</asp:linkbutton></td>
+                                    <td class="tabHelp" align="right"><img alt="" id="Img1" height="1" width="50" runat="server" src="~/images/spacer.gif" /><a style="color:black;" runat="server" class="lnk" href="~/help" target="_blank">Help</a>&nbsp;&nbsp;|&nbsp;&nbsp;<asp:linkbutton ForeColor="black" CssClass="lnk" runat="server" ID="lnkLogout">Logout</asp:linkbutton></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table><table class="tabMid" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td class="tabMidLeft" style="width:250px">&nbsp;</td>
+                        <td id="tabDefaultMid" runat="server" style="width:55px">&nbsp;</td>
+                        <td id="tabClientsMid" runat="server" style="width:65px">&nbsp;</td>
+                        <td id="tabResearchMid" runat="server" style="width:80px">&nbsp;</td>
+                        <td id="tabCIDMid" runat="server" style="width:100px">&nbsp;</td>
+                        <td id="tabCredServMid" runat="server" style="width:120px">&nbsp;</td>
+                        <td id="tabTasksMid" runat="server" style="width:50px">&nbsp;</td>
+                        <td id="tabAdminMid" runat="server" style="width:55">&nbsp;</td>
+                        <td class="tabMidRight">&nbsp;</td>
+                    </tr>
+                </table><table class="tabBot" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td class="tabBotUns" style="width:250px"><img alt="" runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td id="tabDefaultBot" runat="server" style="width:55"><img alt="" runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td id="tabClientsBot" runat="server" style="width:65"><img alt="" runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td id="tabResearchBot" runat="server" style="width:80"><img alt=""  runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td id="tabCIDBot" runat="server" style="width:100"><img alt=""  runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td id="tabCredServBot" runat="server" style="width:120"><img alt=""  runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td id="tabTasksBot" runat="server" style="width:50"><img alt=""  runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td id="tabAdminBot" runat="server" style="width:55"><img alt=""  runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                        <td class="tabBotUns"><img alt=""  runat="server" src="~/images/spacer.gif" border="0" width="1" height="1"/></td>
+                    </tr>
+                </table></td>
+        </tr>
+        <tr>
+            <td class="tabTxtHolder">
+                <table class="tabTxtTable" style="width:100%;" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td>Welcome, <asp:Label runat="server" ID="lblUser"></asp:Label></td>
+                        <td align="right"><%#DateTime.Now.ToString("dddd, MMMM d, yyyy")%></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="height:26;"><asp:contentplaceholder id="cphMenu" runat="server"></asp:contentplaceholder></td>
+        </tr>
+        <tr>
+            <td valign="top"><asp:contentplaceholder id="cphBody" runat="server"></asp:contentplaceholder></td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Request>
+<Response>
+  <CallUUID></CallUUID>
+  <From></From>
+  <To></To>
+  <CallStatus></CallStatus>
+  <Direction></Direction>
+  <ALegUUID></ALegUUID>
+</Response>
+</Request>
+<Response>
+  <Speak>You Got It.</Speak>
+</Response>

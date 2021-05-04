@@ -1,0 +1,96 @@
+<%@ Master Language="VB" MasterPageFile="~/research/research.master" CodeFile="queries.master.vb" Inherits="research_queries_queries" %>
+
+<asp:Content ID="cntBody" ContentPlaceHolderID="cphBody" Runat="Server"><asp:PlaceHolder ID="pnlBody" runat="server">
+
+    <script type="text/javascript">
+
+    function sideTab_OnMouseOver(obj)
+    {
+        obj.style.color = "rgb(90,90,90)";
+        obj.style.backgroundColor = "rgb(240,245,251)";
+    }
+    function sideTab_OnMouseOut(obj)
+    {
+        obj.style.color = "";
+        obj.style.backgroundColor = "";
+    }
+
+    </script>
+
+    <table style="width: 100%; height: 100%;" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td style="width: 200; background-color: rgb(214,231,243);padding-top: 35px;" valign="top">
+                <table style="font-family: tahoma; font-size: 11px; width: 100%;" cellpadding="0" cellspacing="0" border="0">
+                    <tr id="trTabClients" runat="server">
+                        <td id="tdTabClients" runat="server">
+                            <table id="tblTabClients" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;">
+                                        <img id="imgTabClients" runat="server" /></td>
+                                    <td style="width:100%;">Clients</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trTabFinancial" runat="server">
+                        <td id="tdTabFinancial" runat="server">
+                            <table id="tblTabFinancial" runat="server" cellpadding="5" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding-left:20;">
+                                        <img id="imgTabFinancial" runat="server" /></td>
+                                    <td style="width:100%;">Financial</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: solid 1px white;padding: 30 20 20 20;">
+                            <asp:Panel runat="server" ID="pnlRollupViews">
+                                <table class="sideRollupTable" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <td class="sideRollupCellHeader">Views</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sideRollupCellBody">
+                                            <table id="tblRollupViews" runat="server" class="sideRollupCellBodyTable" cellpadding="0" cellspacing="7" border="0">
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="height:20px;">&nbsp;</div>
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="pnlRollupCommonTasks">
+                                <table class="sideRollupTable" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <td class="sideRollupCellHeader">Common Tasks</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sideRollupCellBody">
+                                            <table id="tblRollupCommonTasks" runat="server" class="sideRollupCellBodyTable" cellpadding="0" cellspacing="7" border="0">
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="height:20px;">&nbsp;</div>
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="pnlRollupRelatedLinks">
+                                <table class="sideRollupTable" cellpadding="" cellspacing="0" border="0">
+                                    <tr>
+                                        <td class="sideRollupCellHeader">Related Links</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="tdRollupRelatedLinks" runat="server" class="sideRollupCellBody">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td valign="top">
+                <asp:contentplaceholder id="cphBody" runat="server"></asp:contentplaceholder>
+            </td>
+        </tr>
+    </table>
+</asp:PlaceHolder></asp:Content>
